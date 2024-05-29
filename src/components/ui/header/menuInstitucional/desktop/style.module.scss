@@ -1,0 +1,102 @@
+@import '../../../../../../../../../assets/fonts';
+.menucontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding:32px 34px;
+  background-color: rgba(49,49,49,0.20);
+  border-radius: 400px;
+}
+
+.sectionNav {
+  color: #ffff;
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+  a{
+    @include fonts-desktop(body-small-1);
+  }
+  a:hover{
+    color: #000000;
+    cursor: pointer;
+  }
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  @include fonts-desktop(body-small-1);
+  color: white;
+  border-radius: 400px;
+  background-color: transparent;
+  padding: 8px 16px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+  }
+}
+
+.dropdownContent {
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  position: absolute;
+  background-color: #ffffff;
+  z-index: 1;
+  top: 75px;
+  left: -4rem;
+  width: 336px;
+  height: 488px;
+  border-radius: 30px;
+  padding: 32px;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+  p {
+    width: 100%;
+    @include fonts-desktop(body-large-1);
+    color: #000000;
+  }
+}
+
+.sectionSearch {
+  color: #0414A1;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 400px;
+  background-color: #ffffff;
+  padding: 14px 16px;
+
+  input {
+    border: none;
+    width: 120px;
+    padding: 4px;
+    background-color: transparent;
+    outline: none;
+
+    &::placeholder {
+      @include fonts-desktop(body-small-1);
+      color: #0414A1;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import 'assets/fonts.scss';
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+
+  background: rgba(78, 81, 79, 0.3);
+  border-radius: 40px;
+  @include fonts-desktop(body-small-1);
+  color: white;
+  height: 40px;
+  width: 148px;
+
+  &:hover {
+    background-color: #dadeea;
+    cursor: pointer;
+  }
+}
+
+.dropdownContent {
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 30px;
+  position: absolute;
+  background-color: #faf9f9;
+  @include fonts-desktop(body-small-1);
+  color: rgba(4, 20, 161, 1);
+  z-index: 1;
+
+  top: 48px;
+  left: -1rem;
+  min-width: 15vw;
+  min-height: 80px;
+  border-radius: 30px;
+  padding: 25px 30px;
+
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.tagStates {
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  &:hover {
+    background-color: rgba(4, 20, 161, 0.2);
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+  }
+}

@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+}
+
+.dot {
+  display: inline-block;
+  height: 8px;
+  border-radius: 12px;
+  margin: 0 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #0414A1; /* Cor do ponto ativo */
+  }
+  
+  /* Definição da animação de transição */
+  @keyframes dotTransition {
+    0% {
+      background-color: #C8C8C8;
+    }
+    100% {
+      background-color: #0414A1;
+    }
+  }

@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+
+  .component {
+    display: flex;
+    padding: 24px;
+  }
+
+  .news {
+    display: flex;
+    flex-flow: wrap;
+    gap: 32px;
+  }
+}

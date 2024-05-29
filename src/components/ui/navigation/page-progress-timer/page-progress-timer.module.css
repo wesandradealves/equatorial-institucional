@@ -1,0 +1,40 @@
+.indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.indicator {
+  width: 16px;
+  height: 8px;
+  background-color: #c8c8c8;
+  border-radius: 12px;
+  margin: 0 3px;
+  transition: width 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.indicator.active {
+  width: 48px;
+}
+
+.indicator.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #0414a1;
+  animation: progressAnimation linear forwards;
+  animation-duration: var(--animation-duration);
+}
+
+@keyframes progressAnimation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
