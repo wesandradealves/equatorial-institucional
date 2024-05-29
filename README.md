@@ -16,7 +16,7 @@ _OBS: EM caso de não possuir as ferramentas instaladas, ir até o [site da Node
 Comece clonando este repositório para sua máquina local. Para clonar o repositório, clique no botão "Clone" acima ou execute o seguinte comando no terminal:
 
 ```bash
-git clone https://us-south.git.cloud.ibm.com/equatorial/site-equatorial.git
+git clone https://us-south.git.cloud.ibm.com/equatorial-one/institucional-react.git
 ```
 
 Isso criará uma cópia local do repositório em seu ambiente.
