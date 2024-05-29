@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Equatorial One
 
-## Getting Started
+Este repositório contém um projeto desenvolvido utilizando o framework [Next.js](https://nextjs.org/) utilizando a biblioteca javascript React JS como base. Neste arquivo README, você encontrará um guia passo a passo para abrir o projeto em seu ambiente local.
 
-First, run the development server:
+## Pré-requisitos
+
+Antes de começar, verifique se você possui as seguintes ferramentas instaladas em sua máquina:
+
+- Node.js (versão 12 ou superior)
+- npm (gerenciador de pacotes do Node.js)
+
+_OBS: EM caso de não possuir as ferramentas instaladas, ir até o [site da Node.js](https://nodejs.org/en) e selecionar a versão compatível com seu sistema operacional._
+
+## Passo 1: Clonar o repositório
+
+Comece clonando este repositório para sua máquina local. Para clonar o repositório, clique no botão "Clone" acima ou execute o seguinte comando no terminal:
+
+```bash
+git clone https://us-south.git.cloud.ibm.com/equatorial/site-equatorial.git
+```
+
+Isso criará uma cópia local do repositório em seu ambiente.
+
+## Passo 2: Instalar dependências
+
+Navegue até o diretório raiz do projeto e execute o seguinte comando para instalar as dependências do Node.js:
+
+```bash
+cd /nome-do-app
+npm install
+```
+
+Esse comando irá ler o arquivo `package.json` e instalar todas as dependências necessárias para o projeto.
+
+## Passo 3: Rodar o site
+
+Para iniciar o site, execute o seguinte comando:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Isso iniciará o servidor e você poderá acessá-lo através do seu navegador no endereço [http://localhost:3000](http://localhost:3000) .
