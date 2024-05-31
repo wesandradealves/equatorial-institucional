@@ -1,0 +1,70 @@
+@import 'assets/fonts.scss';
+
+.input-text {
+  margin-bottom: 16px;
+
+  .label-text {
+    color: var(--Neutral-800, #000);
+    @include fonts-desktop(body-medium-2);
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .text-input {
+      flex: 1;
+      padding: 20px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--Neutral-400, #C8C8C8);
+      background: var(--Neutral-100, #FFF);
+      transition: border-color 0.3s ease-in-out;
+      @include fonts-desktop(body-medium-2);
+      outline: none;
+      margin-top: 8px; 
+    }
+
+    .error-icon {
+      position: absolute;
+      right: 12px;
+      cursor: pointer;
+      color: red;
+    }
+
+    .success-icon {
+      position: absolute;
+      right: 12px;
+      cursor: pointer; 
+      color: green;
+    }
+
+    
+  }
+
+  .text-input::placeholder {
+    color: var(--Neutral-600, #606060);
+  }
+
+  .text-input:focus {
+    border-color: var(--Blue-200, #636CC5); 
+  }
+
+  .success-message {
+    display: flex;
+    align-items: center;
+    color: green; 
+    margin-top: 8px; 
+    @include fonts-desktop(body-medium-2);
+
+  }
+
+  .error-message {
+    display: flex;
+    color: red;
+    align-items: center;
+    margin-top: 8px; 
+    @include fonts-desktop(body-medium-2);
+  }
+
+}

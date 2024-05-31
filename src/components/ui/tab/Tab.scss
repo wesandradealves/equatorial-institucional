@@ -1,0 +1,49 @@
+@import 'assets/fonts.scss';
+
+.tab {
+  display: flex;
+  padding: 28px var(--md, 32px);
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1000px;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  width: fit-content;
+  cursor: pointer;
+
+  .icon-container {
+    margin-right: 8px;
+  }
+
+  .icon {
+    fill: currentColor;
+  }
+}
+
+.tab--large {
+  padding: 16px var(--md, 24px);
+  @include fonts-desktop(body-large-1);
+}
+
+.tab--small {
+  padding: 8px var(--md, 16px);
+  @include fonts-desktop(body-medium-1);
+}
+
+.tab--normal {
+  background-color: white;
+  color: var(--Neutral-700, #313131);
+  &:hover {
+    color: var(--Blue-300, #0414A1);
+  }
+  &:active {
+    background-color: #EFF3FF;
+    color: var(--Blue-300, #0414A1);
+  }
+}
+
+.tab--selected {
+  background: var(--Blue-100, #EFF3FF);
+  color: var(--Blue-300, #0414A1);
+}

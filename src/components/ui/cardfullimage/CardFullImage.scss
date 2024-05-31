@@ -1,0 +1,154 @@
+@import 'assets/fonts.scss';
+
+.card-full-image {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+  height: 100%; /* Respeitará a altura definida pelo parâmetro no TSX */
+  border-radius: 24px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.25);
+
+  .content-layer {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px; /* Default padding for desktop */
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+      padding: 16px; /* Padding for mobile */
+    }
+
+    .line {
+      width: 25px;
+      height: 3px;
+      border-radius: 1000px;
+      background: var(--Neutral-100, #FFF);
+      margin-bottom: 16px; /* Espaçamento entre a linha e a label */
+    }
+
+    .label {
+      color: white;
+      margin-bottom: auto;
+      font-size: 14px;
+      @include fonts-desktop(overline);
+      font-family: Inter;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 16px; /* 133.333% */
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+    }
+
+    .bottom-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .title {
+        @include fonts-desktop(header-2);
+        font-family: Inter;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 56px; /* 116.667% */
+        letter-spacing: -0.96px;
+        color: white;
+      }
+
+      .description {
+        @include fonts-desktop(body-large-1);
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        color: white;
+        margin-top: var(--xs, 8px); /* Margem superior da descrição */
+      }
+
+      .button {
+        border: none;
+        font-size: 16px;
+        margin-top: var(--s, 8px); /* Margin top for the button */
+      }
+    }
+  }
+
+  .gradient-layer {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+
+  .image-layer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+
+    .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+
+      &.active {
+        opacity: 1;
+      }
+
+      &.loading {
+        filter: blur(10px);
+      }
+    }
+  }
+
+  .loading-indicator {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+
+  .navigation-buttons {
+    position: absolute;
+    z-index: 5;
+    right: 48px; /* Same padding as content-layer */
+    bottom: 48px; /* Aligned to the bottom for desktop */
+
+    @media (max-width: 768px) {
+      right: 16px; /* Adjust padding for mobile */
+      bottom: 16px; /* Aligned to the bottom for mobile */
+    }
+
+    .next-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+}
