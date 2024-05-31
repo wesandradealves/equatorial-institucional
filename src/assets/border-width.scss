@@ -1,0 +1,21 @@
+
+$border-width-variants:(
+  none:(
+    border:none
+  ),
+  border-width-1:(
+    border: 1px solid black
+  ),
+  border-width-2:(
+    border: 2px solid black
+  ),
+  border-width-3:(
+    border: 3px solid black
+  )
+);
+
+@mixin border-width($variant) {
+  @each $name, $style in map-get($border-width-variants,$variant) {
+    #{$name}:$style;
+  }
+}
