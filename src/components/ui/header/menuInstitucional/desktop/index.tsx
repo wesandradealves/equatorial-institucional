@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { MdKeyboardArrowDown, MdOutlineSearch } from "react-icons/md";
 import style from './style.module.scss'
 import Image from "next/image"
-import logo from 'assets/img/Logo.svg'
+import logo from '../../../../../assets/img/Logo.svg';
 
 export interface MenusType {
   id:number,
