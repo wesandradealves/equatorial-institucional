@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="055681a3-8dad-499a-8da2-871557d32c31" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/img/Accessibility.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/Logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/imagemClaraPose.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/inputs/Collapse/collapse.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/inputs/Collapse/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/inputs/text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/Context/MenuDrawerContext/menuDrawerContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/desktop/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/desktop/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/mobile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/mobile/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/institucional-react.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/pages/convenienceAndSecurity/page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/pages/convenienceAndSecurity/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/storybook/ConvenienceAndSecurity/ConvenienceAndSecurity.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/cardfullimage/CardFullImage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/cardfullimage/CardFullImage.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +40,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/matheuspinho/Documentos/Sys",
+    "last_opened_file_path": "/home/matheuspinho/Documentos/Sys/institucional-react",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -57,7 +51,8 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "ts.external.directory.path": "/opt/idea-IU-233.14808.21/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "ts.external.directory.path": "/home/matheuspinho/Documentos/Sys/institucional-react/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -101,6 +96,8 @@
       <workItem from="1717157158635" duration="1264000" />
       <workItem from="1717160589972" duration="32000" />
       <workItem from="1717160629683" duration="100000" />
+      <workItem from="1717585708532" duration="87000" />
+      <workItem from="1717585796345" duration="1344000" />
     </task>
     <servers />
   </component>
