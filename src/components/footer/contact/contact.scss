@@ -1,0 +1,64 @@
+@import "../../../assets/colors.scss";
+@import "../../../assets/fonts.scss";
+@import "../../../assets/spacing.scss";
+
+.contact {
+  display: grid;
+  grid-template-columns: 38% 24% 38%;
+  color: $color-primary-300;
+
+  p {
+    @include fonts-desktop(body-small-2);
+  }
+
+  span {
+    @include fonts-desktop(body-small-1);
+  }
+
+  a {
+    @include fonts-desktop(link-text);
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+  }
+
+  .col-1 {
+    background: #f8f8f8;
+    padding: 32px 32px 32px 227px;
+  }
+
+  .col-2 {
+    background: #dee7ff;
+    padding: 32px;
+
+    .sac {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  .col-3 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background: #fcd403;
+    padding: 32px 227px 32px 32px;
+
+    .assistente-link {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .assistente-image {
+      img {
+        width: 127px;
+        height: 163px;
+        object-fit: cover;
+      }
+    }
+  }
+}

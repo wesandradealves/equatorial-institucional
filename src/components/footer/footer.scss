@@ -1,0 +1,40 @@
+@import "../../assets/colors.scss";
+@import "../../assets/fonts.scss";
+@import "../../assets/spacing.scss";
+
+footer {
+  /* background-color: #040F6D; */
+  /* padding: 0px 227px; */
+  width: 100vw;
+  /* height: 814px; */
+
+  .one {
+    background: #040f6d;
+    padding: 44px 227px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 32px;
+    color: #ffffff;
+  }
+
+  .two {
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    color: $color-primary-300;
+
+    .col-1 {
+      background: #f8f8f8;
+      padding: 32px 32px 32px 227px;
+    }
+
+    .col-2 {
+      background: #dee7ff;
+      padding: 32px;
+    }
+
+    .col-3 {
+      background: #fcd403;
+      padding: 32px 227px 32px 32px;
+    }
+  }
+}
