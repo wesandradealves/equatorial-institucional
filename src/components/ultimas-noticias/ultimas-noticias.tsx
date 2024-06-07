@@ -1,6 +1,9 @@
-import UltimasNoticias from "@/components/ultimas-noticias/ultimas-noticias";
+import styles from "./ultimas-noticias.module.scss";
+import NewsCard from "@/components/ui/patterns/Card/news-card/news-card";
+import TagContent from "@/components/ui/patterns/tag/tag-content/tag-content";
+import Button from "@/components/ui/actions/Button";
 
-export default function Index() {
+export default function UltimasNoticias() {
   const items = [
     {
       title:
@@ -33,8 +36,7 @@ export default function Index() {
 
   return (
     <>
-      <UltimasNoticias />
-      {/* <div className={styles.container}>
+      <div className={styles.container}>
         <div className={styles.title}>
           <h4>
             Fique por dentro<br></br> das últimas notícias
@@ -63,7 +65,7 @@ export default function Index() {
             </div>
           ))}
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
