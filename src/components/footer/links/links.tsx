@@ -5,40 +5,40 @@ import Image from "next/image";
 
 export default function Links() {
   const linksConsumoTarifas = [
-    { name: "Cobrança de ICMS", href: "/" },
-    { name: "Bandeiras tarifárias", href: "/" },
-    { name: "Consumo na tarifa branca", href: "/" },
-    { name: "Valores de tarifas e serviços", href: "/" },
-    { name: "Tarifa social de baixa renda", href: "/" },
-    { name: "Contribuição de iluminação pública", href: "/" },
+    { id: 0, name: "Cobrança de ICMS", href: "/" },
+    { id: 1, name: "Bandeiras tarifárias", href: "/" },
+    { id: 2, name: "Consumo na tarifa branca", href: "/" },
+    { id: 3, name: "Valores de tarifas e serviços", href: "/" },
+    { id: 4, name: "Tarifa social de baixa renda", href: "/" },
+    { id: 5, name: "Contribuição de iluminação pública", href: "/" },
   ];
 
   const linksDicasInstrucoes = [
-    { name: "Como ler a conta de luz", href: "/" },
-    { name: "Como ler o medidor", href: "/" },
-    { name: "Economia de energia", href: "/" },
-    { name: "Dicas de segurança", href: "/" },
+    { id: 1, name: "Como ler a conta de luz", href: "/" },
+    { id: 2, name: "Como ler o medidor", href: "/" },
+    { id: 3, name: "Economia de energia", href: "/" },
+    { id: 4, name: "Dicas de segurança", href: "/" },
   ];
 
   const linksApoio = [
-    { name: "Perguntas frequentes", href: "/" },
-    { name: "Glossário", href: "/" },
-    { name: "Sala de imprensa", href: "/" },
-    { name: "Acessibilidade", href: "/" },
-    { name: "Política de privacidade", href: "/" },
+    { id: 1, name: "Perguntas frequentes", href: "/" },
+    { id: 2, name: "Glossário", href: "/" },
+    { id: 3, name: "Sala de imprensa", href: "/" },
+    { id: 4, name: "Acessibilidade", href: "/" },
+    { id: 5, name: "Política de privacidade", href: "/" },
   ];
 
   const linksSocial = [
-    { image: "images/facebook.svg", href: "https://facebook.com" },
-    { image: "images/x-social.svg", href: "https://x.com" },
-    { image: "images/instagram.svg", href: "https://instagram.com" },
-    { image: "images/youtube.svg", href: "https://youtube.com" },
-    { image: "images/linkedin.svg", href: "https://linkedin.com" },
+    { id: 1, image: "images/facebook.svg", href: "https://facebook.com" },
+    { id: 2, image: "images/x-social.svg", href: "https://x.com" },
+    { id: 3, image: "images/instagram.svg", href: "https://instagram.com" },
+    { id: 4, image: "images/youtube.svg", href: "https://youtube.com" },
+    { id: 5, image: "images/linkedin.svg", href: "https://linkedin.com" },
   ];
 
   const badges = [
-    { image: "/images/badge-googleplay.png", href: "https://linkedin.com" },
-    { image: "/images/bagde-appstore.png", href: "https://linkedin.com" },
+    { id: 1, image: "/images/badge-googleplay.png", href: "https://linkedin.com" },
+    { id: 2, image: "/images/bagde-appstore.png", href: "https://linkedin.com" },
   ];
 
   return (
@@ -48,7 +48,7 @@ export default function Links() {
         <ul>
           {linksConsumoTarifas.map((link) => {
             return (
-              <li>
+              <li key={link.id}>
                 <Link href={link.href}>{link.name}</Link>
               </li>
             );
@@ -60,7 +60,7 @@ export default function Links() {
         <ul>
           {linksDicasInstrucoes.map((link) => {
             return (
-              <li>
+              <li key={link.id}>
                 <Link href={link.href}>{link.name}</Link>
               </li>
             );
@@ -72,7 +72,7 @@ export default function Links() {
         <ul>
           {linksApoio.map((link) => {
             return (
-              <li>
+              <li key={link.id}>
                 <Link href={link.href}>{link.name}</Link>
               </li>
             );
@@ -86,7 +86,7 @@ export default function Links() {
         <div className="redes-socias-links">
           {linksSocial.map((link) => {
             return (
-              <Link passHref href={link.href}>
+              <Link passHref href={link.href} key={link.id}>
                 <Image
                   priority
                   src={link.image}
@@ -102,7 +102,7 @@ export default function Links() {
         <div className="badges">
           {badges.map((badge) => {
             return (
-              <Link passHref href={badge.href}>
+              <Link passHref href={badge.href} key={badge.id}>
                 <Image
                   priority
                   src={badge.image}
