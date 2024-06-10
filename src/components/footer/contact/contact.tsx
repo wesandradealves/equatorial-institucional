@@ -1,3 +1,5 @@
+import Icon from '@mdi/react'; 
+import * as mdiIcons from '@mdi/js';
 import "./contact.scss";
 import Link from "next/link";
 
@@ -10,6 +12,12 @@ export default function Contact() {
             <p>
               Atendimento Equatorial <span>116</span>
             </p>
+            <button>
+                <span className="icon-container">
+                  <Icon path={mdiIcons.mdiPhone} className="icon" />
+                </span>
+                <span>0800 280 2800</span>
+            </button>
           </li>
           <li>
             <p>
@@ -42,9 +50,9 @@ export default function Contact() {
           <p>Fale com a Clara, nossa assistente virtual no WhatsApp</p>
           <Link href={""}>Fale com a Clara</Link>
         </div>
-        {/* <div className="assistente-image">
+        <div className="assistente-image">
           <img src="/images/clara.png" />
-        </div> */}
+        </div>
       </div>
     </div>
   );
