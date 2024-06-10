@@ -1,38 +1,39 @@
-// @import "../../assets/colors.scss";
-// @import "../../assets/fonts.scss";
-// @import "../../assets/spacing.scss";
+@import "../../assets/colors.scss";
+@import "../../assets/fonts.scss";
+@import "../../assets/spacing.scss";
 
-// .container {
-//   @include padding(all, md);
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   flex-wrap: wrap;
-//   gap: 32px;
-//   height: 630px;
+.container {
+  @include padding(all, md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  height: 630px;
 
-//   .title {
-//     display: flex;
-//     width: fit-content;
-//     height: fit-content;
-//   }
+  .title {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+  }
 
-//   .action {
-//     display: flex;
-//     height: fit-content;
-//   }
+  .action {
+    display: flex;
+    height: fit-content;
+  }
 
-//   .news {
-//     display: flex;
-//     background-color: $color-neutral-100;
-//     gap: 32px;
-//   }
+  .news {
+    display: flex;
+    background-color: $color-neutral-100;
+    gap: 32px;
+    width: 70%;
+  }
 
-//   h4 {
-//     color: $color-neutral-800;
-//     @include fonts-desktop(header-4);
-//   }
-// }
+  h4 {
+    color: $color-neutral-800;
+    @include fonts-desktop(header-4);
+  }
+}
 
 // @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 //   .container {

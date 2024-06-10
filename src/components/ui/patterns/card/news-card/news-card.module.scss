@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  width: 367px;
+  width: 35%;
   padding: 16px 8px;
   flex-direction: column;
   align-items: flex-start;
@@ -51,7 +51,7 @@
 
 @media only screen and (max-width: 480px) {
   .container {
-    width: 304px;
+    width: 100%;
 
     .card {
       height: 172px;

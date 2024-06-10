@@ -1,4 +1,8 @@
+import NewsCard from "@/components/ui/patterns/Card/news-card/news-card";
+import styles from "./page.module.scss";
 import UltimasNoticias from "@/components/ultimas-noticias/ultimas-noticias";
+import Button from "@/components/ui/actions/Button";
+import TagContent from "@/components/ui/patterns/tag/tag-content/tag-content";
 
 export default function Index() {
   const items = [
@@ -49,18 +53,17 @@ export default function Index() {
         </div>
         <div className={styles.news}>
           {items.map((item, index) => (
-            <div key={index}>
-              <NewsCard
-                title={item.title}
-                body={item.body}
-                mesano={item.mesano}
-                imageUrl={item.imageUrl}
-              >
-                {item.tags.map((tag, j) => (
-                  <TagContent key={j} label={tag.label} />
-                ))}
-              </NewsCard>
-            </div>
+            <NewsCard
+              key={index}
+              title={item.title}
+              body={item.body}
+              mesano={item.mesano}
+              imageUrl={item.imageUrl}
+            >
+              {item.tags.map((tag, j) => (
+                <TagContent key={j} label={tag.label} />
+              ))}
+            </NewsCard>
           ))}
         </div>
       </div> */}

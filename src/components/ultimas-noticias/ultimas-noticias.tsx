@@ -51,18 +51,17 @@ export default function UltimasNoticias() {
         </div>
         <div className={styles.news}>
           {items.map((item, index) => (
-            <div key={index}>
-              <NewsCard
-                title={item.title}
-                body={item.body}
-                mesano={item.mesano}
-                imageUrl={item.imageUrl}
-              >
-                {item.tags.map((tag, j) => (
-                  <TagContent key={j} label={tag.label} />
-                ))}
-              </NewsCard>
-            </div>
+            <NewsCard
+              key={index}
+              title={item.title}
+              body={item.body}
+              mesano={item.mesano}
+              imageUrl={item.imageUrl}
+            >
+              {item.tags.map((tag, j) => (
+                <TagContent key={j} label={tag.label} />
+              ))}
+            </NewsCard>
           ))}
         </div>
       </div>
