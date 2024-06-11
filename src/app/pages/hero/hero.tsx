@@ -9,7 +9,10 @@ import ServiceCard from "@/components/ui/patterns/card/service-card/service-card
 import StateSelector from "@/components/ui/header/stateSelector";
 import imagemClaraPose from '@/assets/img/imagemClaraPose.svg'
 export function Hero():JSX.Element {
-    const [listaService, setListaService] = useState(['item um','item um', 'item um', 'item um','item um','item um'])
+    const [listaService, setListaService] = useState([{id:1,title:'Emitir segunda via da conta',icon:'file_copy'},
+        {id:2,title:'Informar falta de luz',icon:'flash_off'},{id:3,title:'Solicitar religação',icon:'lightbulb_outline'},{id:4,title:'Passar a conta para seu nome',icon:'supervisor_account'},{id:5,title:'Entender a sua conta de luz',icon:'flash_on'},
+        {id:6,title:'Todos os serviços',icon:'grid_view'}
+    ])
     return (
         <div className="container">
             <div className="wrapper">
@@ -45,8 +48,8 @@ export function Hero():JSX.Element {
                                </div>
                        </div>
                        <div className='listaCardService'>
-                           {listaService.map((item, index) => (
-                               <ServiceCard key={index}/>
+                           {listaService.map((item) => (
+                               <ServiceCard key={item.id} title={item.title} symbols={item.icon}/>
                            ))}
                        </div>
                    </div>
