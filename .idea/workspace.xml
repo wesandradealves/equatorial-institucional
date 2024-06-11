@@ -5,19 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="055681a3-8dad-499a-8da2-871557d32c31" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/img/Accessibility.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/Logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/img/imagemClaraPose.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/inputs/Collapse/collapse.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/inputs/Collapse/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/inputs/text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/Context/MenuDrawerContext/menuDrawerContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/desktop/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/desktop/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/mobile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/mobile/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/institucional-react.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/fundoHero.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/pages/hero/hero.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/pages/hero/hero.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/storybook/Page/Hero/HeroPage.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/fonts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fonts.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/desktop/style.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/desktop/style.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/menuInstitucional/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/header/stateSelector/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/stateSelector/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/header/stateSelector/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/stateSelector/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/header/status/status.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/status/status.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/header/status/status.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/header/status/status.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,49 +42,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/matheuspinho/Documentos/Sys",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "ts.external.directory.path": "/opt/idea-IU-233.14808.21/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/matheuspinho/Documentos/Sys/institucional-react&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/matheuspinho/Documentos/Sys/institucional-react/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/img" />
       <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/components/ui" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="institucional-react" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="institucional-react" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -101,6 +94,11 @@
       <workItem from="1717157158635" duration="1264000" />
       <workItem from="1717160589972" duration="32000" />
       <workItem from="1717160629683" duration="100000" />
+      <workItem from="1717778751507" duration="2119000" />
+      <workItem from="1717924538039" duration="394000" />
+      <workItem from="1717983619221" duration="315000" />
+      <workItem from="1718025604953" duration="7432000" />
+      <workItem from="1718062010485" duration="8154000" />
     </task>
     <servers />
   </component>
