@@ -11,7 +11,7 @@ export const NoBox:Story = {
   args: {
     title: 'Text line',
     description: 'Lorem ipsum é uma linguagem utilizada para complementar um texto',
-    box:false
+    box:false,
   }
 }
 
