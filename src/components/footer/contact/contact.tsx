@@ -1,5 +1,5 @@
-import Icon from '@mdi/react'; 
-import * as mdiIcons from '@mdi/js';
+import Icon from "@mdi/react";
+import * as mdiIcons from "@mdi/js";
 import "./contact.scss";
 import Link from "next/link";
 
@@ -13,26 +13,44 @@ export default function Contact() {
               Atendimento Equatorial <span>116</span>
             </p>
             <button>
-                <span className="icon-container">
-                  <Icon path={mdiIcons.mdiPhone} className="icon" />
-                </span>
-                <span>0800 280 2800</span>
+              <span className="icon-container">
+                <Icon path={mdiIcons.mdiPhone} size={.5} className="icon" />
+              </span>
+              <span>116</span>
             </button>
           </li>
           <li>
             <p>
               Grandes Clientes <span>0800 098 2997</span>
             </p>
+            <button>
+              <span className="icon-container">
+                <Icon path={mdiIcons.mdiPhone} size={.5} className="icon" />
+              </span>
+              <span>0800 098 2997</span>
+            </button>
           </li>
           <li>
             <p>
               Negociação Equatorial <span>0800 098 2997</span>
             </p>
+            <button>
+              <span className="icon-container">
+                <Icon path={mdiIcons.mdiPhone} size={.5} className="icon" />
+              </span>
+              <span>0800 098 2997</span>
+            </button>
           </li>
           <li>
             <p>
               Ouvidoria <span>0800 098 2997</span>
             </p>
+            <button>
+              <span className="icon-container">
+                <Icon path={mdiIcons.mdiPhone} size={.5} className="icon" />
+              </span>
+              <span>0800 098 2997</span>
+            </button>
           </li>
         </ul>
       </div>

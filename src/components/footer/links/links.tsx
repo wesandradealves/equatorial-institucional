@@ -2,6 +2,7 @@
 import Link from "next/link";
 import "./links.scss";
 import Image from "next/image";
+import Collapse from "@/components/ui/inputs/Collapse";
 
 export default function Links() {
   const linksConsumoTarifas = [
@@ -37,13 +38,22 @@ export default function Links() {
   ];
 
   const badges = [
-    { id: 1, image: "/images/badge-googleplay.png", href: "https://linkedin.com" },
-    { id: 2, image: "/images/bagde-appstore.png", href: "https://linkedin.com" },
+    {
+      id: 1,
+      image: "/images/badge-googleplay.png",
+      href: "https://linkedin.com",
+    },
+    {
+      id: 2,
+      image: "/images/bagde-appstore.png",
+      href: "https://linkedin.com",
+    },
   ];
 
   return (
     <div className="links">
       <div>
+        {/* <Collapse title={"Consumo e tarifas"} description={"Desxc"}></Collapse> */}
         <h6>Consumo e tarifas</h6>
         <ul>
           {linksConsumoTarifas.map((link) => {
@@ -80,42 +90,46 @@ export default function Links() {
         </ul>
       </div>
       <div>
-        <h6 className="redes-socias-title">
-          Fale com a Equatorial nas redes sociais
-        </h6>
-        <div className="redes-socias-links">
-          {linksSocial.map((link) => {
-            return (
-              <Link passHref href={link.href} key={link.id}>
-                <Image
-                  priority
-                  src={link.image}
-                  alt=""
-                  width={32}
-                  height={32}
-                />
-              </Link>
-            );
-          })}
+        <div>
+          <h6 className="redes-socias-title">
+            Fale com a Equatorial nas redes sociais
+          </h6>
+          <div className="redes-socias-links">
+            {linksSocial.map((link) => {
+              return (
+                <Link passHref href={link.href} key={link.id}>
+                  <Image
+                    priority
+                    src={link.image}
+                    alt=""
+                    width={32}
+                    height={32}
+                  />
+                </Link>
+              );
+            })}
+          </div>
         </div>
-        <h6 className="redes-socias-title">Baixe nosso app</h6>
-        <div className="badges">
-          {badges.map((badge) => {
-            return (
-              <Link passHref href={badge.href} key={badge.id}>
-                <Image
-                  priority
-                  src={badge.image}
-                  alt=""
-                  width={0}
-                  height={0}
-                  // layout="fill"
-                  sizes="100vw"
-                  style={{ width: 'auto', height: '40px' }}
-                />
-              </Link>
-            );
-          })}
+
+        <div>
+          <h6 className="redes-socias-title">Baixe nosso app</h6>
+          <div className="badges">
+            {badges.map((badge) => {
+              return (
+                <Link passHref href={badge.href} key={badge.id}>
+                  <Image
+                    priority
+                    src={badge.image}
+                    alt=""
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "auto", height: "40px" }}
+                  />
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
