@@ -52,8 +52,7 @@ export default function Links() {
 
   return (
     <div className="links">
-      <div>
-        {/* <Collapse title={"Consumo e tarifas"} description={"Desxc"}></Collapse> */}
+      <div className="ulli">
         <h6>Consumo e tarifas</h6>
         <ul>
           {linksConsumoTarifas.map((link) => {
@@ -65,7 +64,29 @@ export default function Links() {
           })}
         </ul>
       </div>
-      <div>
+
+      <div className="collapse">
+        <Collapse
+          title={"Consumo e tarifas"}
+          textColor="#FFFFFF"
+          iconColor="#FFFFFF"
+          backgroundColor="#040F6D"
+          children={
+            <ul>
+              {linksConsumoTarifas.map((link) => {
+                return (
+                  <li key={link.id}>
+                    <Link href={link.href}>{link.name}</Link>
+                  </li>
+                );
+              })}
+            </ul>
+          }
+          box={false}
+        ></Collapse>
+      </div>
+
+      <div className="ulli">
         <h6>Dicas e instruções</h6>
         <ul>
           {linksDicasInstrucoes.map((link) => {
@@ -77,7 +98,29 @@ export default function Links() {
           })}
         </ul>
       </div>
-      <div>
+
+      <div className="collapse">
+        <Collapse
+          title={"Dicas e instruções"}
+          textColor="#FFFFFF"
+          iconColor="#FFFFFF"
+          backgroundColor="#040F6D"
+          children={
+            <ul>
+              {linksDicasInstrucoes.map((link) => {
+                return (
+                  <li key={link.id}>
+                    <Link href={link.href}>{link.name}</Link>
+                  </li>
+                );
+              })}
+            </ul>
+          }
+          box={false}
+        ></Collapse>
+      </div>
+
+      <div className="ulli">
         <h6>Links de apoio</h6>
         <ul>
           {linksApoio.map((link) => {
@@ -89,6 +132,28 @@ export default function Links() {
           })}
         </ul>
       </div>
+
+      <div className="collapse">
+        <Collapse
+          title={"Links de apoio"}
+          textColor="#FFFFFF"
+          iconColor="#FFFFFF"
+          backgroundColor="#040F6D"
+          children={
+            <ul>
+              {linksApoio.map((link) => {
+                return (
+                  <li key={link.id}>
+                    <Link href={link.href}>{link.name}</Link>
+                  </li>
+                );
+              })}
+            </ul>
+          }
+          box={false}
+        ></Collapse>
+      </div>
+
       <div>
         <div>
           <h6 className="redes-socias-title">

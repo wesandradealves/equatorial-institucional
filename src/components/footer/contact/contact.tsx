@@ -10,7 +10,7 @@ export default function Contact() {
         <ul>
           <li>
             <p>
-              Atendimento Equatorial <span>116</span>
+              Atendimento Equatorial <span className="phone">116</span>
             </p>
             <button>
               <span className="icon-container">
@@ -21,7 +21,7 @@ export default function Contact() {
           </li>
           <li>
             <p>
-              Grandes Clientes <span>0800 098 2997</span>
+              Grandes Clientes <span className="phone">0800 098 2997</span>
             </p>
             <button>
               <span className="icon-container">
@@ -32,7 +32,7 @@ export default function Contact() {
           </li>
           <li>
             <p>
-              Negociação Equatorial <span>0800 098 2997</span>
+              Negociação Equatorial <span className="phone">0800 098 2997</span>
             </p>
             <button>
               <span className="icon-container">
@@ -43,7 +43,7 @@ export default function Contact() {
           </li>
           <li>
             <p>
-              Ouvidoria <span>0800 098 2997</span>
+              Ouvidoria <span className="phone">0800 098 2997</span>
             </p>
             <button>
               <span className="icon-container">

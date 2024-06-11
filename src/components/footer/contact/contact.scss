@@ -14,6 +14,10 @@
 
   span {
     @include fonts-desktop(body-small-1);
+
+    .phone {
+      display: block;
+    }
   }
 
   a {
@@ -85,6 +89,9 @@
     span {
       @include fonts-mobile(body-small-1);
       display: inline-flex;
+      .phone {
+        display: none;
+      }
     }
 
     a {
