@@ -1,0 +1,51 @@
+@import "../../../assets/colors.scss";
+@import "../../../assets/fonts.scss";
+@import "../../../assets/spacing.scss";
+
+.brand {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 48px 227px;
+  background-color: $color-brand-dark;
+
+  p {
+    color: $color-neutral-100;
+    text-align: right;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+  }
+
+  .logo {
+    display: flex;
+  }
+
+  .copyright {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 40px 24px;
+    background-color: $color-brand-dark;
+    gap: 40px;
+  
+    p {
+      color: $color-neutral-100;
+      text-align: right;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px;
+    }
+  }
+}
