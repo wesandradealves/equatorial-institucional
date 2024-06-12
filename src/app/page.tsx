@@ -1,9 +1,13 @@
-import Hero from "@/app/pages/hero/hero";
+import PerguntasFrequentes from "@/app/pages/perguntasFrequentes";
+import UltimasNoticias from "@/components/ultimas-noticias/ultimas-noticias";
+
 export default function Home() {
     return (
         <>
-            <Hero/>
-            <main/>
+            <main>
+                <UltimasNoticias/>
+                <PerguntasFrequentes/>
+            </main>
         </>
     );
 }
