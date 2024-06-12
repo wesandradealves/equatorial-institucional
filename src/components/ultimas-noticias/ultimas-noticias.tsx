@@ -1,7 +1,7 @@
 import styles from "./ultimas-noticias.module.scss";
-import NewsCard from "@/components/ui/patterns/Card/news-card/news-card";
 import TagContent from "@/components/ui/patterns/tag/tag-content/tag-content";
 import Button from "@/components/ui/actions/Button";
+import NewsCard from "@/components/ui/patterns/card/news-card/news-card";
 
 export default function UltimasNoticias() {
   const items = [
