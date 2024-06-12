@@ -1,11 +1,9 @@
-import Footer from "@/components/footer/Footer";
-
-export default function Index() {
-
-    return (  
+import Hero from "@/app/pages/hero/hero";
+export default function Home() {
+    return (
         <>
-        <main></main>
+            <Hero/>
+            <main/>
         </>
     );
 }
-

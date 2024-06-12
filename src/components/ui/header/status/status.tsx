@@ -9,7 +9,7 @@ export function Status(props: StatusProps) {
       <div className={styles['first']}>
         <div className={styles['ellipse']}></div>
         <span>Bandeira tarifária: verde</span>
-      </div>x
+      </div>
 
       <div>
         <span>Desligamento programado</span>
