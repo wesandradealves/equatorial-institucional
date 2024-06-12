@@ -2,14 +2,14 @@ version: "3"
 
 services:
   next-app:
-    container_name: next-app
+    container_name: institucional-react
     build:
-      context: ./next-app
-      dockerfile: dev.Dockerfile
+      context: .
+      dockerfile: Dockerfile
 
-    environment:
-      ENV_VARIABLE: ${ENV_VARIABLE}
-      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+#    environment:
+#      ENV_VARIABLE: ${ENV_VARIABLE}
+#      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
 
     # Set environment variables based on the .env file
     env_file:
@@ -25,4 +25,4 @@ services:
 
 networks:
   my_network:
-    external: true
+    driver: bridge

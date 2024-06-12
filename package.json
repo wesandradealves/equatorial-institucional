@@ -41,5 +41,8 @@
     "sass": "^1.77.4",
     "storybook": "^8.1.4",
     "typescript": "^5"
+  },
+  "publishConfig": {
+    "registry": "http://nexus3-cicd.apps.ocpdrupal.equatorial.corp"
   }
 }
