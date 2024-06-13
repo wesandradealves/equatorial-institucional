@@ -142,3 +142,31 @@ a {
     color-scheme: dark;
   }
 } */
+
+/* Estilizando o scroll geral */
+::-webkit-scrollbar {
+  width: 8px; /* largura do scroll vertical */
+  height: 12px; /* altura do scroll horizontal */
+}
+
+/* Estilizando a parte interna do track do scroll */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Estilizando a barra do scroll (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #9b9a9a;
+  border-radius: 10px;
+}
+
+/* Estilizando a barra do scroll quando está sendo interagida (ativa) */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Estilizando os cantos do scroll */
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}

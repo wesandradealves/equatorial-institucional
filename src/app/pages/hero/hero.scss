@@ -11,6 +11,7 @@
 }
 
 .wrapper{
+  position: relative;
   width: 100%;
   height: 100vh;
   justify-content: center;
@@ -41,7 +42,12 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: flex-end;
+}
 
+.bodyhiddentoTop {
+  animation: hidden-toTop 2s forwards;
+}
+.bodyActiveBottom {
   animation-name: animate-pop;
   animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
   animation-duration: 1s;
@@ -54,6 +60,61 @@
   align-items: flex-end;
   height: 500px;
 }
+
+.listaServicePlus {
+  padding: 10px;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  color: black;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  height: 10vh;
+}
+
+.listaCardServiceActive {
+  animation: animate-toTop 1s forwards;
+}
+.listaCardServiceDisable {
+  height: 70vh;
+  animation: animate-toBottom 1s forwards;
+}
+
+@keyframes hidden-toTop {
+  0%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+@keyframes animate-toTop {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    height: 70vh;
+    transform: translateY(0);
+  }
+}
+@keyframes animate-toBottom {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    height: 0;
+    transform:translateY(100%);
+  }
+}
+
 .listaInfo {
   display: flex;
   flex-direction: column;
