@@ -14,6 +14,7 @@ export function Hero():JSX.Element {
         {id:2,title:'Informar falta de luz',icon:'flash_off'},{id:3,title:'Solicitar religação',icon:'lightbulb_outline'},{id:4,title:'Passar a conta para seu nome',icon:'supervisor_account'},{id:5,title:'Entender a sua conta de luz',icon:'flash_on'},
         {id:6,title:'Todos os serviços',icon:'grid_view'}
     ])
+    const listaMenu = [{id:1, title: 'Todos'},{id:2, title: 'Serviços de energia'},{id:3, title: 'Serviços de pagamento'},{id:4, title: 'Consultas'},{id:5, title: 'Dados cadastrais'},]
 
     const handleClickPlus = ()=> {
         setActivePlusServices(!activePlusServices)
@@ -62,12 +63,56 @@ export function Hero():JSX.Element {
                 </div>
             </div>
             <div className={`listaServicePlus ${activePlusServices ? 'listaCardServiceActive' : 'listaCardServiceDisable'}`} >
-                <h3>Lista de itens plus</h3>
-                <ul>
-                    <li>Thiago</li>
-                    <li>Willian</li>
-                    <li>Matheus</li>
-                </ul>
+                <div className='listaServicePlusWrapper'>
+                    <div>
+                        <h3>Todos os serviços</h3>
+                    </div>
+                    <div className='cardplusBody'>
+                       <div>
+                           {listaMenu.map((item) => (
+                               <div className='cardplus' key={item.id}>
+                                   <span className='material-symbols-rounded'>lightbulb_outline</span> <p>{item.title}</p>
+                               </div>
+                           ))}
+                       </div>
+                       <div className='cardplusListService'>
+                           <div className='cardplusListService-section'>
+                               <p>Informar falta de luz</p>
+                               <p>Solicitar energia</p>
+                               <p>Solicitar desligamento</p>
+                               <p>Enviar autoleitura</p>
+                               <p>Alterar local do medidor</p>
+                               <p>Alterar padrão de energia</p>
+                               <p>Geração distribuída</p>
+                               <p>Aparelho pra manutenção da vida</p>
+                               <p>Trocar titularidade</p>
+                               <p>Atualizar dados cadastrais</p>
+                               <p>Receber conteúdos e notícias</p>
+
+                           </div>
+                           <div className='cardplusListService-section'>
+                               <p>Pagar contas</p>
+                               <p>Emitir segunda via de conta</p>
+                               <p>Parcelar débitos</p>
+                               <p>Receber conta por e-mail</p>
+                               <p>Receber conta por WhatsApp</p>
+                               <p>Cadastrar débito automático</p>
+                               <p>Mudar data de vencimento</p>
+                               <p>Gerar declaração anual de quitação</p>
+                           </div>
+                           <div className='cardplusListService-section'>
+                               <p>Acompanhar solicitações</p>
+                               <p>Ver histórico de consumo e faturamento</p>
+                               <p>Ver a composição de consumo</p>
+                               <p>Solicitar gravação de atendimento</p>
+                               <p>Consultar contrato de adesão</p>
+                               <p>Consultar indicadores de continuidade</p>
+                               <p>Consultar desligamento programado</p>
+                           </div>
+                       </div>
+                   </div>
+
+                </div>
             </div>
         </div>
     )
