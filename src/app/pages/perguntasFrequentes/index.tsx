@@ -1,8 +1,8 @@
 import styles from './style.module.scss'
 import Image from 'next/image'
-import imagemClaraPose from 'assets/img/imagemClaraPose.svg'
-import Collapse from '../../components/ui/inputs/Collapse';
-import Button from '../../components/ui/actions/Button';
+import imagemClaraPose from '@/assets/img/imagemClaraPose.svg';
+import Collapse from '@/components/ui/inputs/Collapse';
+import Button from '@/components/ui/actions/Button';
 export function PerguntasFrequentes(){
   return (
     <div className={styles.container}>

@@ -1,4 +1,4 @@
-@import '../../../../assets/fonts';
+@import 'src/assets/fonts';
 
 .dropdown {
   position: relative;
@@ -50,7 +50,7 @@
 
 .tagStates {
   padding: 10px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   text-decoration: none;
   &:hover {
     background-color: rgba(4, 20, 161, 0.2);
