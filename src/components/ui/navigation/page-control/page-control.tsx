@@ -1,29 +1,34 @@
-import styles from './page-control.module.scss';
 
-/* eslint-disable-next-line */
-export interface PageControlProps {
+import styles from './page-control.module.scss';
+import React, { useState } from 'react';
+
+interface PageControlProps {
+  totalPages: number;
   currentIndex: number;
-  total: number;
+  onChangeIndex?: (index: number) => void;
 }
 
-export function PageControl(props: PageControlProps) {
-  const dots = Array.from({ length: props.total }, (_, index) => index);
+const PageControl: React.FC<PageControlProps> = ({ totalPages, currentIndex, onChangeIndex }) => {
+  const [selectedIndex, setSelectedIndex] = useState<number>(currentIndex);
+
+  const handleIndexClick = (index: number) => {
+    setSelectedIndex(index);
+    if (onChangeIndex) {
+      onChangeIndex(index);
+    }
+  };
 
   return (
-    <div className={styles['container']}>
-      {/* Mapear a matriz de pontos e renderizar um ponto para cada item */}
-      {dots.map((index) => (
-        <span
+    <div className={styles.pageControl}>
+      {Array.from({ length: totalPages }, (_, index) => (
+        <div
           key={index}
-          style={{
-            width: index === props.currentIndex ? 48 : 12,
-            backgroundColor: index === props.currentIndex ? '#0414A1' : '#C8C8C8',
-          }}
-          className={styles['dot']}
-        />
+          className={`${styles.pageIndicator} ${index === currentIndex ? styles.active : ''}`}
+          onClick={() => handleIndexClick(index)}
+        ></div>
       ))}
     </div>
   );
-}
+};
 
 export default PageControl;
