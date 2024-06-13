@@ -40,4 +40,5 @@ Para iniciar o site, execute o seguinte comando:
 npm run dev
 ```
 
-Isso iniciará o servidor e você poderá acessá-lo através do seu navegador no endereço [http://localhost:3000](http://localhost:3000) .
+Isso iniciará o servidor e você poderá acessá-lo através do seu navegador no endereço [http://localhost:3000](http://localhost:3000)
+
