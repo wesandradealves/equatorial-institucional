@@ -1,19 +1,44 @@
+import React, { useState } from 'react';
+import { Meta, StoryFn } from '@storybook/react';
 import PageControl from '@/components/ui/navigation/page-control/page-control';
-import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof PageControl> = {
-  title: 'Navigation/Tab/PageControl',
+export default {
+  title: 'Components/PageControl',
   component: PageControl,
-  tags: ['autodocs'],
+  argTypes: {
+    totalPages: {
+      control: {
+        type: 'number',
+        min: 1,
+      },
+    },
+    currentIndex: {
+      control: {
+        type: 'number',
+        min: 0,
+      },
+    },
+  },
+} as Meta;
+
+const Template: StoryFn<{ totalPages: number; currentIndex: number }> = (args) => {
+  const [currentIndex, setCurrentIndex] = useState(args.currentIndex);
+
+  const handleIndexChange = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  return (
+    <PageControl
+      {...args}
+      currentIndex={currentIndex}
+      onIndexChange={handleIndexChange}
+    />
+  );
 };
 
-export default meta;
-type Story = StoryObj<typeof PageControl>;
-
-export const Componente: Story = {
-  render: (args) => (
-    <div>
-      <PageControl currentIndex={0} total={5} />
-    </div>
-  ),
+export const Default = Template.bind({});
+Default.args = {
+  totalPages: 10,
+  currentIndex: 0,
 };
