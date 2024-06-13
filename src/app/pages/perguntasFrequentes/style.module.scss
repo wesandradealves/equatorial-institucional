@@ -1,0 +1,41 @@
+@import 'src/assets/fonts.scss';
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+}
+
+.header {
+  h1 {
+    @include fonts-desktop(header-4);
+  }
+}
+
+.cotainerPrincipal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.estiloImagem {
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.containerlistMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow-y: hidden;
+  width: 40%;
+}
+
+.listMenu {
+  max-height: 60%;
+  overflow-y: scroll;
+}

@@ -1,0 +1,116 @@
+@import "../../../assets/colors.scss";
+@import "../../../assets/fonts.scss";
+@import "../../../assets/spacing.scss";
+
+.links {
+  background: $color-brand-dark;
+  padding: 44px 227px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 32px;
+  color: $color-neutral-100;
+
+  .ulli {
+    display: block;
+  }
+
+  .collapse {
+    display: none;
+  }
+
+  h6 {
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  .redes-socias-title {
+    font-weight: 400;
+  }
+
+  .redes-socias-links {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .badges {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li {
+    @include margin(y, md);
+  }
+
+  a {
+    @include fonts-desktop(body-small-2);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .links {
+    background: $color-brand-dark;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    color: $color-neutral-100;
+
+    .ulli {
+      display: none;
+    }
+
+    .collapse {
+      display: block;
+    }
+
+    h6 {
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 20px;
+    }
+
+    .redes-socias-title {
+      font-weight: 400;
+    }
+
+    .redes-socias-links {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    .badges {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul li {
+      @include margin(y, md);
+    }
+
+    a {
+      @include fonts-desktop(body-small-2);
+    }
+  }
+}

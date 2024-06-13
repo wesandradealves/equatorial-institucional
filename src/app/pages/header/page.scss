@@ -1,0 +1,16 @@
+body {
+    padding: 24px;
+  
+    .component {
+      color: black;
+      padding: 16px;
+      gap: 16px;
+  
+      .template {
+        display: inline-flex;
+        background-color: #313131;
+        padding: 24px;
+        gap: 8px;
+      }
+    }
+  }
