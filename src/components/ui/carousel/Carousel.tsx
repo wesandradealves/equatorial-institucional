@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react';
 import PageControl from '../navigation/page-control/page-control';
 import VideoGallery from '../videogallery/VideoGallery';

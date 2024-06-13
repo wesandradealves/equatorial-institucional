@@ -1,7 +1,12 @@
 @import '../../../assets/fonts.scss';
+@import "../../../assets/spacing.scss";
 
 .carousel-wrapper {
+    @include padding(all, md);
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 630px;
     align-items: flex-start;
     width: 100%;
 
