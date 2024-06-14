@@ -70,7 +70,7 @@
   bottom: 0;
   left: 0;
   opacity: 0;
-  height: 10vh;
+  height: 12vh;
 
   .cardplus {
     display: flex;
@@ -215,6 +215,11 @@
       font-weight: 600;
       text-decoration: underline;
     }
+  }
+
+  .listaServiceHeader{
+    display: flex;
+    justify-content: space-between;
   }
 
 

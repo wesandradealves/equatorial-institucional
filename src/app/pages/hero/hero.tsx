@@ -8,6 +8,7 @@ import {useState} from "react";
 import ServiceCard from "@/components/ui/patterns/card/service-card/service-card";
 import StateSelector from "@/components/ui/header/stateSelector";
 import imagemClaraPose from '@/assets/img/imagemClaraPose.svg'
+import { AiOutlineCloseCircle } from "react-icons/ai";
 export function Hero():JSX.Element {
     const [activePlusServices, setActivePlusServices] = useState(false)
     const [listaService, setListaService] = useState([{id:1,title:'Emitir segunda via da conta',icon:'file_copy'},
@@ -18,8 +19,8 @@ export function Hero():JSX.Element {
 
     const handleClickPlus = ()=> {
         setActivePlusServices(!activePlusServices)
-
     }
+
     return (
         <div className="container">
             <div className="wrapper">
@@ -30,7 +31,7 @@ export function Hero():JSX.Element {
                     </div>
                     <MenuInstitucional/>
                 </div>
-                <div className="body" onClick={handleClickPlus}>
+                <div className="body">
                     <div className={`listaItem ${activePlusServices ? 'bodyhiddentoTop' : 'bodyActiveBottom'}`}>
                         <div className='listaInfo'>
                             <div>
@@ -64,8 +65,9 @@ export function Hero():JSX.Element {
             </div>
             <div className={`listaServicePlus ${activePlusServices ? 'listaCardServiceActive' : 'listaCardServiceDisable'}`} >
                 <div className='listaServicePlusWrapper'>
-                    <div>
+                    <div className='listaServiceHeader'>
                         <h3>Todos os serviços</h3>
+                        <AiOutlineCloseCircle onClick={()=>setActivePlusServices(false)} size={40}/>
                     </div>
                     <div className='cardplusBody'>
                        <div>
