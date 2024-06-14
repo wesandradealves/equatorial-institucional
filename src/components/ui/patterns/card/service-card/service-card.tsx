@@ -2,26 +2,28 @@ import styles from './service-card.module.scss';
 
 /* eslint-disable-next-line */
 export class ServiceCardProps {
-  title?: string = '';
-  symbols?: string = '';
-  theme?: string = '';
+    title?: string = '';
+    symbols?: string = '';
+    theme?: string = '';
+    onClick?: () => void;
 }
 
 export function ServiceCard(props: ServiceCardProps) {
-  const {
-    title = 'A title with one or two lines',
-    symbols = 'volume_off',
-    theme = '',
-  } = props;
+    const {
+        title = 'A title with one or two lines',
+        symbols = 'volume_off',
+        theme = '',
+        onClick
+    } = props;
 
-  return (
-    <div className={`${styles.container} ${styles.default} ${styles[theme]}`}>
+    return (
+        <div className={`${styles.container} ${styles.default} ${styles[theme]}`} onClick={onClick}>
       <span className={`material-symbols-rounded ${styles.icon}`}>
         {symbols}
       </span>
-      <p>{title}</p>
-    </div>
-  );
+            <p>{title}</p>
+        </div>
+    );
 }
 
 export default ServiceCard;
