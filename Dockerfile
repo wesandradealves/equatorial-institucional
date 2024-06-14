@@ -13,6 +13,9 @@ COPY src ./src
 COPY public ./public
 COPY next.config.mjs .
 COPY tsconfig.json .
+
+RUN chown -R node. /app
+
 USER node
 
 CMD \
