@@ -12,7 +12,7 @@ interface CardServicesProps {
   overline: string;
   buttonText: string;
   logo: string;
-  onClick: () => void;
+  onClick?: () => void;
   closed?: boolean;
   height?: string;
 }
