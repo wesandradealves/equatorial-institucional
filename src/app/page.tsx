@@ -1,12 +1,14 @@
 import PerguntasFrequentes from "@/app/pages/perguntasFrequentes";
 import UltimasNoticias from "@/components/ultimas-noticias/ultimas-noticias";
 import Carousel from "@/components/ui/carousel/Carousel";
+import IniciativasEquatorial from "@/components/iniciativas-equatorial/iniciativas-equatorial";
 
 export default function Home() {
 
     return (
         <>
             <main>
+                <IniciativasEquatorial/>
                 <UltimasNoticias/>
                 <Carousel title="Dicas de economia e facilide pra te ajudar!" videos={[
         {

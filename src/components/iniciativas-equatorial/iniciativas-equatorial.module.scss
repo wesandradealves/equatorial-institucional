@@ -1,0 +1,36 @@
+@import "../../assets/colors.scss";
+@import "../../assets/fonts.scss";
+@import "../../assets/spacing.scss";
+
+.iniciativas-equatorial {
+  display: flex;
+  flex-direction: column;
+  // padding: 80px 227px;
+  gap: 64px;
+
+  .row-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+    padding: 80px 227px;
+    margin: 0px 183px;
+
+    h2 {
+        color: $color-neutral-800;
+        @include fonts-desktop(header-2);
+        letter-spacing: -2px;
+
+        span {
+            font-weight: 400;
+            letter-spacing: -0.96px;
+        }
+    }
+
+    p {
+        @include fonts-desktop(subtitle-2);
+    }
+  }
+
+}
