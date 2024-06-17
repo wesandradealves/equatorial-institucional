@@ -9,8 +9,8 @@ export default function Home() {
     return (
         <>
             <main>
-                <IniciativasEquatorial/>
                 <ConvenienceAndSecurity/>
+                <IniciativasEquatorial/>
                 <UltimasNoticias/>
                 <PerguntasFrequentes/>
             </main>
