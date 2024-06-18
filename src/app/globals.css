@@ -8,6 +8,8 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  box-sizing: border-box;
+  max-width: 1920px;
   font-family: inherit;
   line-height: inherit;
   margin: 0;
