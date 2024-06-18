@@ -1,6 +1,5 @@
 import PerguntasFrequentes from "@/app/pages/perguntasFrequentes";
 import UltimasNoticias from "@/components/ultimas-noticias/ultimas-noticias";
-import Carousel from "@/components/ui/carousel/Carousel";
 import Institucional from "@/components/institucional/institucional";
 import ConvenienceAndSecurity from "@/app/pages/convenienceAndSecurity/page";
 import Carousel from "@/components/ui/carousel/Carousel";
