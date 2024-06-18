@@ -20,7 +20,7 @@ interface CarrouselCardsProps {
 
 const CarrouselCards: React.FC<CarrouselCardsProps> = ({
   images,
-  currentIndex = 1,
+  currentIndex,
   onChangeIndex,
 }) => {
   const WIDTH_COLUMN = 982;
@@ -33,12 +33,7 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
   const swiperRef = useRef<SwiperRef>(null);
 
   useEffect(() => {
-    setSelectedIndex(currentIndex);
-    // window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // const container = document.getElementsByClassName("carrousel-cards")[0];
-    // const middle = container.children[1];
-    // middle.scrollIntoView();
+    changeIndex(currentIndex);
   }, []);
 
   const changeIndex = (index: number) => {
@@ -49,23 +44,9 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
   };
 
   const next = () => {
-    // if (currentIndex < images.length - 1) {
-      if (swiperRef.current) swiperRef.current?.swiper.slideNext();
-      currentIndex++;
-      changeIndex(currentIndex);
-
-      // const container = document.getElementsByClassName("carrousel-cards")[0];
-      // const middle = container.children[currentIndex];
-      // middle.scrollIntoView();
-    // } else {
-      // currentIndex = 0;
-      // changeIndex(currentIndex);
-
-      // const container = document.getElementsByClassName("carrousel-cards")[0];
-      // const middle = container.children[currentIndex];
-      // middle.scrollIntoView();
-    // }
-    // handleNextScroll();
+    if (swiperRef.current) swiperRef.current?.swiper.slideNext();
+    currentIndex++;
+    changeIndex(currentIndex);
   };
 
   const previous = () => {
@@ -73,9 +54,6 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
       currentIndex--;
       changeIndex(currentIndex);
       if (swiperRef.current) swiperRef.current?.swiper.slidePrev();
-      // const container = document.getElementsByClassName("carrousel-cards")[0];
-      // const middle = container.children[currentIndex];
-      // middle.scrollIntoView();
     }
   };
 
@@ -109,13 +87,13 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
         scrollbar={{ draggable: true }}
         pagination={{ clickable: true }}
         allowSlidePrev={false}
-        loop={true}
+        // loop={false}
+        rewind={true}
+        // loop={true}
         onSlideChange={() => {
-          console.log("ref");
+
         }}
-        onSwiper={(swiper) => {
-          swiper = swiper;
-        }}
+        onSwiper={(swiper) => {}}
       >
         {images.map((item, index) => (
           <SwiperSlide key={index}>
@@ -137,16 +115,5 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
     </div>
   );
 };
-
-{
-  /* <p>currentIndex: {currentIndex}</p> */
-}
-{
-  /* <p>scrollPosition: {scrollPosition.scrollLeft}</p> */
-}
-{
-  /* <p>Item {Math.ceil((index * 982) / 1884)}</p> */
-}
-// className={`${["card-image"]} ${currentIndex === index ? styles.active : ''}`}
 
 export default CarrouselCards;

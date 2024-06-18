@@ -1,10 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./iniciativas-equatorial.module.scss";
-import CardImage from "../ui/cardImage/CardImage";
 import PageControl from "../ui/navigation/page-control/page-control";
 import CarrouselCards, {
-  CardIniciativaItem,
 } from "../ui/carrouselCards/CarrouselCards";
 
 export default function IniciativasEquatorial() {
@@ -78,7 +76,7 @@ export default function IniciativasEquatorial() {
       <PageControl
         totalPages={images.length}
         currentIndex={currentIndex}
-        onChangeIndex={handleIndexChange}
+        // onChangeIndex={handleIndexChange}
       />
     </div>
   );
