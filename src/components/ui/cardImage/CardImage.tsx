@@ -58,7 +58,7 @@ export function CardImage(props: CardImageProps) {
           )}
           {body && <p className="body-content">{body}</p>}
         </div>
-        <div>
+        <div className="button-content">
           <ButtonIcon
             variant="inversed"
             onClick={() => changeIndex(props.index)}

@@ -23,7 +23,6 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
   currentIndex,
   onChangeIndex,
 }) => {
-  const WIDTH_COLUMN = 982;
   const [selectedIndex, setSelectedIndex] = useState<number>(currentIndex);
   const [scrollPosition, setScrollPosition] = useState({
     scrollTop: 0,
@@ -57,11 +56,11 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
     }
   };
 
-  const handleNextScroll = () => {
-    scrollPosition.scrollLeft += WIDTH_COLUMN;
-    setScrollPosition(scrollPosition);
-    handleScroll();
-  };
+  // const handleNextScroll = () => {
+  //   scrollPosition.scrollLeft += WIDTH_COLUMN;
+  //   setScrollPosition(scrollPosition);
+  //   handleScroll();
+  // };
 
   const handleScroll = () => {
     if (scrollCarrosuelRef.current) {
@@ -82,12 +81,19 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
       <Swiper
         ref={swiperRef}
         spaceBetween={0}
-        slidesPerView={1.5}
+        // slidesPerView={1.5}
+        breakpoints={{
+          768: {
+            slidesPerView: 1.5,
+          },
+          360: {
+            slidesPerView: 1.2
+          }
+        }}
         centeredSlides={true}
         scrollbar={{ draggable: true }}
         pagination={{ clickable: true }}
-        allowSlidePrev={false}
-        // loop={false}
+        // allowSlidePrev={false}
         rewind={true}
         // loop={true}
         onSlideChange={() => {

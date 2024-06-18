@@ -12,3 +12,16 @@
 .selected {
   scale: 1;
 }
+
+@media only screen and (max-width: 480px) {
+  .carrousel-cards {
+    width: 100vw;
+    display: flex;
+    scroll-behavior: smooth;
+    transition: all 0.25s ease-in;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+  }
+}
