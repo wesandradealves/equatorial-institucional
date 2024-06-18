@@ -1,4 +1,4 @@
-
+'use client'
 import styles from './page-control.module.scss';
 import React, { useState } from 'react';
 
