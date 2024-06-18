@@ -1,5 +1,5 @@
 'use client';
-import style from './collapse.module.scss';
+import './collapse.scss';
 import { useEffect, useState, ReactNode } from 'react';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
@@ -17,27 +17,31 @@ export default function Collapse(props: CollapseProps) {
   const { title, description, box, backgroundColor = '#FFFFFF', textColor = 'inherit', iconColor = 'inherit', children } = props;
   const [collapsState, setCollapseState] = useState(false);
   const [collapsClass, setCollapsClass] = useState<string>('');
-
   useEffect(() => {
-    setCollapsClass(`${style.collapsibleBase} ${box ? style.collapsibleBaseBox : ''}`);
+    setCollapsClass(`collapsibleBase ${box ? 'collapsibleBaseBox' : ''}`);
   }, [box]);
 
   return (
-      <div className={style.wrapper}>
-        <button
-            type="button"
-            className={collapsClass}
-            onClick={() => setCollapseState(!collapsState)}
-            aria-expanded={collapsState}
-            style={{ color: textColor }}
-        >
-          <span>{title}</span>
-          {collapsState ? <MdKeyboardArrowUp size={30} color={iconColor} /> : <MdKeyboardArrowDown size={30} color={iconColor} />}
-        </button>
-        <div className={style.content} style={{ display: collapsState ? 'block' : 'none', color: textColor, backgroundColor: backgroundColor, position: 'relative' }}>
-          {description && <p>{description}</p>}
-          {children}
-        </div>
+      <div>
+          <div className={`collapse-panel ${collapsState ? 'collapse-panel-active' : ''}`}>
+              <button
+                  type="button"
+                  className={collapsClass}
+                  onClick={() => setCollapseState(!collapsState)}
+                  aria-expanded={collapsState}
+                  style={{color: textColor}}
+              >
+                  <span>{title}</span>
+                  {collapsState ? <MdKeyboardArrowUp size={30} color={iconColor}/> :
+                      <MdKeyboardArrowDown size={30} color={iconColor}/>}
+              </button>
+          </div>
+          <div className={`collapse-content ${collapsState ? 'collapse-content-active' : ''}`}>
+              <div>
+                  {description && <p>{description}</p>}
+                  {children}
+              </div>
+          </div>
       </div>
   );
 }
