@@ -5,11 +5,10 @@
   transition: all 0.25s ease-in;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  // overflow: auto;
-  overflow: hidden;
+  overflow: auto;
   scroll-snap-type: x mandatory;
 }
 
 .selected {
-  scale: 1.0
+  scale: 1;
 }
