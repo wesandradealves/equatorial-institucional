@@ -1,0 +1,111 @@
+@import "../../assets/colors.scss";
+@import "../../assets/fonts.scss";
+@import "../../assets/spacing.scss";
+
+.iniciativas-equatorial {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  .row-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+    padding: 80px 227px;
+    margin: 0px 183px;
+
+    h2 {
+      color: $color-neutral-800;
+      @include fonts-desktop(header-2);
+      letter-spacing: -2px;
+
+      span {
+        font-weight: 400;
+        letter-spacing: -0.96px;
+      }
+    }
+
+    p {
+      @include fonts-desktop(subtitle-2);
+    }
+  }
+
+  .row-carrosel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease-in;
+
+    .carrosel-view {
+      width: 100vw;
+      display: flex;
+      scroll-behavior: smooth;
+      transition: all 0.25s ease-in;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      overflow: auto;
+      scroll-snap-type: x mandatory;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+.iniciativas-equatorial {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 64px 0px;
+  
+  .row-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+    padding: 24px;
+    margin: 0px;
+
+    h2 {
+      color: $color-neutral-800;
+      @include fonts-mobile(header-2);
+      letter-spacing: -2px;
+
+      span {
+        font-weight: 300;
+        font-size: 32px;
+        font-style: normal;
+        line-height: 40px;
+      }
+    }
+
+    p {
+      @include fonts-mobile(subtitle-2);
+      color: $color-neutral-800;
+      font-weight: 300;
+    }
+  }
+
+  .row-carrosel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease-in;
+
+    .carrosel-view {
+      width: 100vw;
+      display: flex;
+      scroll-behavior: smooth;
+      transition: all 0.25s ease-in;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      overflow: auto;
+      scroll-snap-type: x mandatory;
+    }
+  }
+}
+}
