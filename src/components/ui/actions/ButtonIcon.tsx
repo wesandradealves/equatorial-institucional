@@ -12,9 +12,7 @@ export interface ButtonIcon {
 function ButtonIcon(props:ButtonIcon) {
   const [buttonClass,setButtonClass] = useState<string>()
   const [iconClass,setIconClass] = useState({})
-  const handleClick = () => {
-    console.log('Called')
-  }
+  // const handleClick = onclick
 
   const buildButton = () => {
     getButtonClass()
@@ -59,7 +57,7 @@ function ButtonIcon(props:ButtonIcon) {
   return (
     <button
       className={buttonClass}
-      onClick={handleClick}>
+      onClick={props.onClick}>
       <MdArrowForward {...iconClass}/>
     </button>
   )

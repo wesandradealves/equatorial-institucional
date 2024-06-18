@@ -8,17 +8,7 @@ import CarrouselCards, {
 } from "../ui/carrouselCards/CarrouselCards";
 
 export default function IniciativasEquatorial() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    console.log(currentIndex);
-    setCurrentIndex(currentIndex);
-  }, []);
-
-  const handleIndexChange = (index: number) => {
-    console.log(index);
-    setCurrentIndex(index);
-  };
+  const [currentIndex, setCurrentIndex] = useState(1);
 
   const images = [
     {
@@ -26,12 +16,28 @@ export default function IniciativasEquatorial() {
       title: "Valorizamos a cultura e a identidade de cada povo",
       body: "A Plataforma E+ Cultura contribui com diversas iniciativas que valorizam a população local e suas tradições. ",
       url: "/images/iniciativas1.png",
+      rich: "cultura"
     },
     {
       tag: "sustentabilidade",
-      title: "Energia limpa e  renovável na comunidade",
+      title: "Energia limpa e renovável na comunidade",
       body: "A gente tem um compromisso com um futuro mais sustentável e isso se reflete nos nossos resultados de ESG.",
       url: "/images/iniciativas2.jpeg",
+      rich: "renovável"
+    },
+    {
+      tag: "emprego",
+      title: "Mais emprego e renda para a população local",
+      body: "O Projeto Energia Profissional qualifica a mão-de-obra local para suprir a demanda dos empreendimentos no estado.",
+      url: "/images/iniciativas3.png",
+      rich: "renda"
+    },
+    {
+      tag: "sustentabilidade",
+      title: "Energia limpa e renovável na comunidade",
+      body: "A gente tem um compromisso com um futuro mais sustentável e isso se reflete nos nossos resultados de ESG.",
+      url: "/images/iniciativas2.jpeg",
+      rich: "renovável"
     },
     {
       tag: "emprego",
@@ -40,6 +46,14 @@ export default function IniciativasEquatorial() {
       url: "/images/iniciativas3.png",
     },
   ];
+
+  useEffect(() => {
+    setCurrentIndex(currentIndex);
+  }, []);
+
+  const handleIndexChange = (index: number) => {
+    setCurrentIndex(index);
+  };
 
   return (
     <div className={styles["iniciativas-equatorial"]}>
@@ -60,19 +74,6 @@ export default function IniciativasEquatorial() {
           currentIndex={currentIndex}
           onChangeIndex={handleIndexChange}
         />
-        {/* <div className={styles["carrosel-view"]}>
-          {images.map((item, index) => (
-            <CardImage
-              key={index}
-              tag={item.tag}
-              title={item.title}
-              body={item.body}
-              imageUrl={item.url}
-              currentIndex={index}
-              onChangeIndex={() => {setCurrentIndex(index), console.log(index)}}
-            />
-          ))}
-        </div> */}
       </div>
       <PageControl
         totalPages={images.length}
