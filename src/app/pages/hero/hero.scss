@@ -170,7 +170,12 @@
   }
   h1 {
     color: var(--Neutral-High-pure, var(--Neutral-100, #FFF));
-    @include fonts-desktop(display-2);
+    font-family: $font-stack;
+    font-size:4.5rem;
+    line-height:5rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-decoration: none;
 
   }
 }
