@@ -5,7 +5,8 @@
   transition: all 0.25s ease-in;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  overflow: auto;
+  // overflow: auto;
+  overflow: hidden;
   scroll-snap-type: x mandatory;
 }
 

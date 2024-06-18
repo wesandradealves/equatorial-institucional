@@ -8,7 +8,7 @@ import CarrouselCards, {
 } from "../ui/carrouselCards/CarrouselCards";
 
 export default function IniciativasEquatorial() {
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
     {

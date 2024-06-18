@@ -40,7 +40,6 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
     // const container = document.getElementsByClassName("carrousel-cards")[0];
     // const middle = container.children[1];
     // middle.scrollIntoView();
-
   }, []);
 
   const changeIndex = (index: number) => {
@@ -53,6 +52,13 @@ const CarrouselCards: React.FC<CarrouselCardsProps> = ({
   const next = () => {
     if (currentIndex < images.length - 1) {
       currentIndex++;
+      changeIndex(currentIndex);
+
+      const container = document.getElementsByClassName("carrousel-cards")[0];
+      const middle = container.children[currentIndex];
+      middle.scrollIntoView();
+    } else {
+      currentIndex = 0;
       changeIndex(currentIndex);
 
       const container = document.getElementsByClassName("carrousel-cards")[0];
