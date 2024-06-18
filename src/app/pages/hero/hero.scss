@@ -171,7 +171,8 @@
   h1 {
     color: var(--Neutral-High-pure, var(--Neutral-100, #FFF));
     font-family: $font-stack;
-    font-size:4.5rem;
+    font-size:clamp(2rem, 2vw, 4.5rem);
+
     line-height:5rem;
     font-weight: 400;
     letter-spacing: 0;
