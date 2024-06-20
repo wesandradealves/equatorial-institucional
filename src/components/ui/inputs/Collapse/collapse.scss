@@ -50,14 +50,16 @@
   display: grid;
   grid-template-rows:0fr;
   padding: 1rem;
+  overflow-y: hidden;
   transition: grid-template-rows 0.3s ease-in-out;
 }
 
 .collapse-content > div {
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .collapse-content-active {
+  overflow-y: hidden;
   display: grid;
   margin-bottom: 1rem;
   grid-template-rows: 1fr;
