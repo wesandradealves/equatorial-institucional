@@ -22,7 +22,7 @@ export default function Collapse(props: CollapseProps) {
   }, [box]);
 
   return (
-      <div>
+      <>
           <div className={`collapse-panel ${collapsState ? 'collapse-panel-active' : ''}`}>
               <button
                   type="button"
@@ -38,10 +38,10 @@ export default function Collapse(props: CollapseProps) {
           </div>
           <div className={`collapse-content ${collapsState ? 'collapse-content-active' : ''}`}>
               <div>
-                  {description && <p>{description}</p>}
+                  {description && <p dangerouslySetInnerHTML={{__html: description}}/>}
                   {children}
               </div>
           </div>
-      </div>
+      </>
   );
 }
