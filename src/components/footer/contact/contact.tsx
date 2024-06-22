@@ -5,8 +5,8 @@ import Link from "next/link";
 
 export default function Contact() {
   return (
-    <div className="contact">
-      <div className="col-1">
+    <div className="contact d-flex align-items-stretch">
+      <div className="flex-fill col-1">
         <ul>
           <li>
             <p>
@@ -54,7 +54,7 @@ export default function Contact() {
           </li>
         </ul>
       </div>
-      <div className="col-2">
+      <div className="flex-fill col-2">
         <div className="sac">
           <p>
             Precisa tirar dúvidas, solicitar informações, fazer denúncias ou
@@ -63,7 +63,7 @@ export default function Contact() {
           <Link href={""}>Fale com a gente</Link>
         </div>
       </div>
-      <div className="col-3">
+      <div className="flex-fill col-3">
         <div className="assistente-link">
           <p>Fale com a Clara, nossa assistente virtual no WhatsApp</p>
           <Link href={""}>Fale com a Clara</Link>
