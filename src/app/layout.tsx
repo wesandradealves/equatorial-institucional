@@ -15,21 +15,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-br">
-      <body>
-        <div id="wrap" className={`vh-100 d-flex flex-column ${inter.className}`}>
-          <Helmet>
-            <title>Equatorial Energia</title>
-            <meta property="og:title" content="Equatorial Energia" />
-            <meta name="twitter:title" content="Equatorial Energia" />
-          </Helmet> 
-          <Header />
-          <main className="flex-fill">
-            {children}
-          </main>
-          <Footer /> 
-        </div>
-      </body>
-    </html>
+    <div id="wrap" className={`vh-100 d-flex flex-column ${inter.className}`}>
+      <Helmet>
+        <title>Equatorial Energia</title>
+        <meta property="og:title" content="Equatorial Energia" />
+        <meta name="twitter:title" content="Equatorial Energia" />
+      </Helmet> 
+      <Header />
+      <main className="flex-fill">
+        {children}
+      </main>
+      <Footer /> 
+    </div>
   )
 }

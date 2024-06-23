@@ -12,7 +12,6 @@ export default function Splash() {
   const http = new HttpService();
   const [config, setConfig] = useState<ConfigTypo[]>([]);
   const [navigation, setNavigation] = useState<NavTypo[]>([]);
-  const [isInit, setReady] = useState(false);
 
   const fetchData = async() => {
     const config:ConfigTypo[] = await http.get('/api/config')
@@ -24,10 +23,6 @@ export default function Splash() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  useEffect(() => {
-    if(config.hasOwnProperty("data")) setReady(true);
-  }, [config]);  
 
   return (
     <>
