@@ -13,10 +13,6 @@ export default async function Footer() {
   const getFooter = async() => {
     const footer:FooterTypo[] = await http.get('/api/footer')
     setFooterData(footer);
-    // const config:ConfigTypo[] = await http.get('/api/config')
-    // const navigation:NavTypo[] = await http.get('/api/menu_items/location')
-    // setConfig(config);
-    // setNavigation(navigation);
   }  
 
   useEffect(() => {
