@@ -1,9 +1,27 @@
+"use client"
 import styles from './style.module.scss'
 import Image from 'next/image'
 import imagemClaraPose from '@/assets/img/imagemClaraPose.svg';
 import Collapse from '@/components/ui/inputs/Collapse';
 import Button from '@/components/ui/actions/Button';
+import {HttpService} from "@/services";
+import {useEffect, useState} from "react";
+
+interface FAQ {
+    title:string,
+    body: string
+}
 export function PerguntasFrequentes(){
+    const http = new HttpService()
+    const [listFaq, setListFaq] = useState<FAQ[]>([])
+    const buscarFaq = async() => {
+        const result:FAQ[] = await http.get('/api/faq?items_per_page=3')
+        setListFaq(result);
+    }
+
+    useEffect(() => {
+        buscarFaq()
+    }, []);
   return (
     <div className={styles.container}>
       <div className={styles.cotainerPrincipal}>
@@ -20,14 +38,11 @@ export function PerguntasFrequentes(){
                   />
               </div>
           </div>
-
           <div className={styles.containerlistMenu}>
               <div className={styles.listMenu}>
-                  <Collapse box={true} title='Como Faço uma reclamação ?' description='Lorem Ipsum is simply dummy text of the printing and typesetting industry.'/>
-                  <Collapse box={true} title='Por que minha conta veio alta ?' description='Lorem Ipsum is simply dummy text of the printing and typesetting industry.'/>
-                  <Collapse box={true} title='Posso alterar os meus dados cadastrais ?' description='Lorem Ipsum is simply dummy text of the printing and typesetting industry.'/>
-                  <Collapse box={true} title='Como faço para solicitar uma nova ligação ?' description='Lorem Ipsum is simply dummy text of the printing and typesetting industry.'/>
-                  <Collapse box={true} title='Como posso entrar em contato com a Equatorial ?' description='Lorem Ipsum is simply dummy text of the printing and typesetting industry.'/>
+                  {listFaq.map((item,index) => (
+                      <Collapse key={index} title={item.title} description={item.body}/>
+                  ))}
                 </div>
           <Button label='Ver mais perguntas' variant='outline'/>
         </div>

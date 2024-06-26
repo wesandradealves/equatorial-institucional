@@ -45,8 +45,8 @@
 
 .listMenu {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   overflow-y: hidden;
   max-height: 72vh;
