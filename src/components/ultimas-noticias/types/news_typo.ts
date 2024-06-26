@@ -1,10 +1,11 @@
-interface NewsTypo {
+export interface NewsTypo {
   rows: News[];
 }
 
-interface News {
+export interface News {
   image: string;
-  category: string;
+  category: string[];
   title: string;
   body: string;
+  date: string;
 }

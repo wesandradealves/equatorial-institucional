@@ -5,14 +5,15 @@ import Button from "@/components/ui/actions/Button";
 import NewsCard from "@/components/ui/patterns/card/news-card/news-card";
 import { HttpService } from "@/services";
 import { useEffect, useState } from "react";
+import { News, NewsTypo } from "./types/news_typo";
 
 export default function UltimasNoticias() {
   const http = new HttpService();
-  const [newsData, setNewsData] = useState<NewsTypo[]>([]);
+  const [news, setNews] = useState<News[]>([]);
 
   const getLastNews = async () => {
-    const news: NewsTypo[] = await http.get("/api/noticias");
-    setNewsData(news);
+    const result: NewsTypo = await http.get("/api/noticias");
+    setNews(result.rows);
   };
 
   useEffect(() => {
@@ -35,16 +36,17 @@ export default function UltimasNoticias() {
           />
         </div>
         <div className={styles.news}>
-          {items.map((item, index) => (
+
+        {news && news.map((item, index) => (
             <NewsCard
               key={index}
               title={item.title}
               body={item.body}
-              mesano={item.mesano}
-              imageUrl={item.imageUrl}
+              mesano={item.date}
+              imageUrl={'https://6696-2804-214-8174-cd0b-2174-afb7-2f1b-5411.ngrok-free.app/'+item.image}
             >
-              {item.tags.map((tag, j) => (
-                <TagContent key={j} label={tag.label} />
+              {item.category.map((tag, j) => (
+                <TagContent key={j} label={tag} />
               ))}
             </NewsCard>
           ))}
