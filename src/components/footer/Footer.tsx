@@ -1,29 +1,27 @@
+"use client"
 import './footer.scss';
 import Brand from './brand/brand';
 import Links from './links/links';
 import Contact from './contact/contact';
-
-export const dynamic = 'force-dynamic';
-// const getData = async (): Promise<T> => {
-//   const apiUrl = process.env.NEXT_PUBLIC_BASE_URL;
-//   const data = await fetch(`${apiUrl}/api/footer`, { method: 'GET', cache: 'no-cache' });
-
-//   return data.json();
-// }
+import { HttpService } from '@/services';
+import { useEffect, useState } from 'react';
 
 export default async function Footer() {
+  const http = new HttpService();
+  const [footerData, setFooterData] = useState<FooterTypo[]>([])
 
-  const apiUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const response = await fetch(`${apiUrl}/api/footer`, { method: 'GET', cache: 'no-cache' })
-  .then(res => res.json())
-  .then(data => {
-    console.log(data);
-    // do something with data
-  })
-  .catch(rejected => {
-      console.log(rejected);
-  });
-  // const data = await getData();
+  const getFooter = async() => {
+    const footer:FooterTypo[] = await http.get('/api/footer')
+    setFooterData(footer);
+    // const config:ConfigTypo[] = await http.get('/api/config')
+    // const navigation:NavTypo[] = await http.get('/api/menu_items/location')
+    // setConfig(config);
+    // setNavigation(navigation);
+  }  
+
+  useEffect(() => {
+    getFooter()
+}, []);
 
   return (
     <footer>
