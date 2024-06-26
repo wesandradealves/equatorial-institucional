@@ -4,12 +4,25 @@ import MenuInstitucional from "@/components/ui/header/menuInstitucional";
 import Image from 'next/image'
 import Status from "@/components/ui/header/status/status";
 import Accessibility from "@/components/ui/header/accessibility/accessibility";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ServiceCard from "@/components/ui/patterns/card/service-card/service-card";
 import StateSelector from "@/components/ui/header/stateSelector";
 import imagemClaraPose from '@/assets/img/imagemClaraPose.svg'
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { HttpService } from "@/services";
 export function Hero():JSX.Element {
+    const http = new HttpService();
+    const [servicesData, setServicesData] = useState<ServiceTypo[]>([])
+  
+    const getServices = async() => {
+        const services :ServiceTypo[] = await http.get('/api/blocks/banner')
+        setServicesData(services);
+      }  
+  
+      useEffect(() => {
+          getServices()
+      }, []);
+
     const [activePlusServices, setActivePlusServices] = useState(false)
     const [listaService, setListaService] = useState([{id:1,title:'Emitir segunda via da conta',icon:'file_copy'},
         {id:2,title:'Informar falta de luz',icon:'flash_off'},{id:3,title:'Solicitar religação',icon:'lightbulb_outline'},{id:4,title:'Passar a conta para seu nome',icon:'supervisor_account'},{id:5,title:'Entender a sua conta de luz',icon:'flash_on'},
