@@ -10,43 +10,9 @@ export default function UltimasNoticias() {
   const http = new HttpService();
   const [newsData, setNewsData] = useState<NewsTypo[]>([]);
 
-  const items = [
-    {
-      title:
-        "Moradores da Ilha do Cajual recebem geladeiras novas da Equatorial Maranhão",
-      body: "A Distribuidora doou 35 geladeiras para as famílias que não possuíam o refrigerador em casa.",
-      mesano: "Fevereiro 2024",
-      imageUrl: "/images/news1.png",
-      tags: [{ label: "Economia" }, { label: "Sustentabilidade" }],
-    },
-    {
-      title:
-        "Orientamos a população sobre cuidados com energia elétrica no período chuvoso",
-      body: "Distribuidora compartilha dicas de segurança para evitar incidentes com a energia elétrica.",
-      mesano: "Fevereiro 2024",
-      imageUrl: "/images/news2.png",
-      tags: [
-        { label: "Segurança" },
-        { label: "Chuvas" },
-        { label: "Orientações" },
-      ],
-    },
-    {
-      title: "Abre alas pra energia do carnaval maranhense",
-      body: "A folia no Maranhão já chegou com força total, com as festas de pré-carnaval. Tempo de brincar, se divertir e se fantasiar.",
-      mesano: "Fevereiro 2024",
-      imageUrl: "/images/news3.png",
-      tags: [{ label: "Eventos" }, { label: "Carnaval" }],
-    },
-  ];
-
   const getLastNews = async () => {
     const news: NewsTypo[] = await http.get("/api/noticias");
     setNewsData(news);
-    // const config:ConfigTypo[] = await http.get('/api/config')
-    // const navigation:NavTypo[] = await http.get('/api/menu_items/location')
-    // setConfig(config);
-    // setNavigation(navigation);
   };
 
   useEffect(() => {
@@ -87,3 +53,33 @@ export default function UltimasNoticias() {
     </>
   );
 }
+
+const items = [
+  {
+    title:
+      "Moradores da Ilha do Cajual recebem geladeiras novas da Equatorial Maranhão",
+    body: "A Distribuidora doou 35 geladeiras para as famílias que não possuíam o refrigerador em casa.",
+    mesano: "Fevereiro 2024",
+    imageUrl: "/images/news1.png",
+    tags: [{ label: "Economia" }, { label: "Sustentabilidade" }],
+  },
+  {
+    title:
+      "Orientamos a população sobre cuidados com energia elétrica no período chuvoso",
+    body: "Distribuidora compartilha dicas de segurança para evitar incidentes com a energia elétrica.",
+    mesano: "Fevereiro 2024",
+    imageUrl: "/images/news2.png",
+    tags: [
+      { label: "Segurança" },
+      { label: "Chuvas" },
+      { label: "Orientações" },
+    ],
+  },
+  {
+    title: "Abre alas pra energia do carnaval maranhense",
+    body: "A folia no Maranhão já chegou com força total, com as festas de pré-carnaval. Tempo de brincar, se divertir e se fantasiar.",
+    mesano: "Fevereiro 2024",
+    imageUrl: "/images/news3.png",
+    tags: [{ label: "Eventos" }, { label: "Carnaval" }],
+  },
+];
