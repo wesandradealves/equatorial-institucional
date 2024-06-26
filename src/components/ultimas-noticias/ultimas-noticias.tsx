@@ -1,9 +1,15 @@
+"use client";
 import styles from "./ultimas-noticias.module.scss";
 import TagContent from "@/components/ui/patterns/tag/tag-content/tag-content";
 import Button from "@/components/ui/actions/Button";
 import NewsCard from "@/components/ui/patterns/card/news-card/news-card";
+import { HttpService } from "@/services";
+import { useEffect, useState } from "react";
 
 export default function UltimasNoticias() {
+  const http = new HttpService();
+  const [newsData, setNewsData] = useState<NewsTypo[]>([]);
+
   const items = [
     {
       title:
@@ -33,6 +39,19 @@ export default function UltimasNoticias() {
       tags: [{ label: "Eventos" }, { label: "Carnaval" }],
     },
   ];
+
+  const getLastNews = async () => {
+    const news: NewsTypo[] = await http.get("/api/noticias");
+    setNewsData(news);
+    // const config:ConfigTypo[] = await http.get('/api/config')
+    // const navigation:NavTypo[] = await http.get('/api/menu_items/location')
+    // setConfig(config);
+    // setNavigation(navigation);
+  };
+
+  useEffect(() => {
+    getLastNews();
+  }, []);
 
   return (
     <>
