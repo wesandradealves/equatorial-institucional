@@ -3,8 +3,16 @@ import Link from "next/link";
 import "./links.scss";
 import Image from "next/image";
 import Collapse from "@/components/ui/inputs/Collapse";
+import {
+  FooterData,
+  SocialNetworksTypo,
+  StoreTypo,
+} from "../types/footer_typo";
 
-export default function Links() {
+export default function Links(props: FooterData) {
+  // const [socialNetworks, setSocialNetworks] = useState<SocialNetworksTypo>()
+  // const [store, setStore] = useState<StoreTypo>()
+
   const linksConsumoTarifas = [
     { id: 0, name: "Cobrança de ICMS", href: "/" },
     { id: 1, name: "Bandeiras tarifárias", href: "/" },
@@ -157,7 +165,7 @@ export default function Links() {
       <div>
         <div>
           <h6 className="redes-socias-title">
-            Fale com a Equatorial nas redes sociais
+            {props?.data?.data?.social_networks?.label.pt_br}
           </h6>
           <div className="redes-socias-links">
             {linksSocial.map((link) => {
@@ -177,8 +185,22 @@ export default function Links() {
         </div>
 
         <div>
-          <h6 className="redes-socias-title">Baixe nosso app</h6>
+          <h6 className="redes-socias-title">
+            {props?.data?.data?.store?.label.pt_br}
+          </h6>
           <div className="badges">
+            {props?.data?.data?.store.links.appstore && (
+              <div>
+                <p>{props?.data?.data?.store.links.appstore.url}</p>
+                <p>{props?.data?.data?.store.links.appstore.img}</p>
+              </div>
+            )}
+            {props?.data?.data?.store.links.googleplay && (
+              <div>
+                <p>{props?.data?.data?.store.links.googleplay.url}</p>
+                <p>{props?.data?.data?.store.links.googleplay.img}</p>
+              </div>
+            )}
             {badges.map((badge) => {
               return (
                 <Link passHref href={badge.href} key={badge.id}>
