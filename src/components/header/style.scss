@@ -1,33 +1,27 @@
 @import 'src/assets/spacing.scss';
 @import 'src/assets/fonts.scss';
 
-.container {
-  height: 100vh;
-  width: 100%;
-  background-image: url("../../../../public/images/fundoHero.svg");
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.wrapper{
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
 .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   gap:map-get($spacing, md);
   padding: 10px;
+  width: 100%;
   color: white;
-  height: 184px;
-  width: 80%;
+  .container {
+    // height: 100vh;
+    // width: 100%;
+    // background-image: url("../../../../public/images/fundoHero.svg");
+    // background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
 }
 
 .accessbilitySection {

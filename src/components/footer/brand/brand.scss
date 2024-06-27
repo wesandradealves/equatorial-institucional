@@ -4,9 +4,21 @@
 
 .brand {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 48px 227px;
+  
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 24px 0;
+
+  @media screen and (min-width: 992px) {
+    justify-content: space-between;
+    flex-flow: row wrap;
+    text-align: initial;
+    gap: 0 24px;
+  }
+
+  padding: 48px 35px;
   background-color: $color-brand-dark;
 
   p {

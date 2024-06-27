@@ -3,9 +3,7 @@ import MenuInstitucionalMobile from './mobile';
 import MenuInstitucionalDeskTop from './desktop';
 export function MenuInstitucional(){
   return (
-      <>
     <MenuInstitucionalDeskTop/>
-    </>
   )
 }
 

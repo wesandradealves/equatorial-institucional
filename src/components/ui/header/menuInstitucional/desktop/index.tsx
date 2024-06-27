@@ -59,7 +59,7 @@ export default function MenuInstitucionalDeskTop() {
     ))
   }
   return (
-    <div className={style.menucontainer}>
+    <div className={`${style.menucontainer} container flex-row`}>
       <div>
         <Image
           src={logo}

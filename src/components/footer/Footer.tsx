@@ -1,3 +1,5 @@
+"use client"; // This is a client component 👈🏽
+
 import './footer.scss';
 import Brand from './brand/brand';
 import Links from './links/links';
@@ -8,7 +10,7 @@ const Footer = () => {
     <footer>
       <Links/>
       <Contact/>
-      <Brand/>
+      {/* <Brand/> */}
     </footer>
   );
 };
