@@ -11,10 +11,33 @@ import imagemClaraPose from "@/assets/img/imagemClaraPose.svg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { HttpService } from "@/services";
 import { Service, ServiceFieldTypo, ServiceTypo } from "./types/service_typo";
+import Toggle from "@/components/ui/header/togglecx";
 export function Hero(): JSX.Element {
   const http = new HttpService();
   const [service, setService] = useState<ServiceTypo[]>([]);
   const [listServices, setListServices] = useState<Service[]>([]);
+
+  const [isToggled, setIsToggled] = useState(false);
+  const [activePlusServices, setActivePlusServices] = useState(false);
+  const [listaService, setListaService] = useState([
+    { id: 1, title: "Emitir segunda via da conta", icon: "file_copy" },
+    { id: 2, title: "Informar falta de luz", icon: "flash_off" },
+    { id: 3, title: "Solicitar religação", icon: "lightbulb_outline" },
+    {
+      id: 4,
+      title: "Passar a conta para seu nome",
+      icon: "supervisor_account",
+    },
+    { id: 5, title: "Entender a sua conta de luz", icon: "flash_on" },
+    { id: 6, title: "Todos os serviços", icon: "grid_view" },
+  ]);
+  const listaMenu = [
+    { id: 1, title: "Todos" },
+    { id: 2, title: "Serviços de energia" },
+    { id: 3, title: "Serviços de pagamento" },
+    { id: 4, title: "Consultas" },
+    { id: 5, title: "Dados cadastrais" },
+  ];
 
   const getServices = async () => {
     const result: ServiceTypo[] = await http.get("/api/blocks/banner");
@@ -26,7 +49,6 @@ export function Hero(): JSX.Element {
 
   const getParagraph = async (id: any) => {
     const result: ServiceFieldTypo = await http.get(`entity/paragraph/${id}`);
-
     //cria um objeto, e pega as informações referente ao Serviço
     const service = new Service({
       id: id,
@@ -43,27 +65,6 @@ export function Hero(): JSX.Element {
     getServices();
   }, []);
 
-  const [activePlusServices, setActivePlusServices] = useState(false);
-  // const [listaService, setListaService] = useState([
-  //   { id: 1, title: "Emitir segunda via da conta", icon: "file_copy" },
-  //   { id: 2, title: "Informar falta de luz", icon: "flash_off" },
-  //   { id: 3, title: "Solicitar religação", icon: "lightbulb_outline" },
-  //   {
-  //     id: 4,
-  //     title: "Passar a conta para seu nome",
-  //     icon: "supervisor_account",
-  //   },
-  //   { id: 5, title: "Entender a sua conta de luz", icon: "flash_on" },
-  //   { id: 6, title: "Todos os serviços", icon: "grid_view" },
-  // ]);
-  const listaMenu = [
-    { id: 1, title: "Todos" },
-    { id: 2, title: "Serviços de energia" },
-    { id: 3, title: "Serviços de pagamento" },
-    { id: 4, title: "Consultas" },
-    { id: 5, title: "Dados cadastrais" },
-  ];
-
   const handleClickPlus = () => {
     setActivePlusServices(!activePlusServices);
   };
@@ -74,7 +75,21 @@ export function Hero(): JSX.Element {
         <div className="header">
           <div className="accessbilitySection">
             <Status />
-            <Accessibility />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "10px",
+              }}
+            >
+              <Toggle
+                rounded={true}
+                isToggled={isToggled}
+                onToggle={() => setIsToggled(!isToggled)}
+              />
+              <Accessibility />
+            </div>
           </div>
           <MenuInstitucional />
         </div>
@@ -107,14 +122,15 @@ export function Hero(): JSX.Element {
               </div>
             </div>
             <div className="listaCardService">
-              {listServices && listServices.map((item) => (
-                <ServiceCard
-                  onClick={handleClickPlus}
-                  key={item.id}
-                  title={item.titulo}
-                  symbols={"flash_off"}
-                />
-              ))}
+              {listServices &&
+                listServices.map((item) => (
+                  <ServiceCard
+                    onClick={handleClickPlus}
+                    key={item.id}
+                    title={item.titulo}
+                    symbols={"flash_off"}
+                  />
+                ))}
             </div>
           </div>
         </div>
