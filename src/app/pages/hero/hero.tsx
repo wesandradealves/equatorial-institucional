@@ -9,7 +9,9 @@ import ServiceCard from "@/components/ui/patterns/card/service-card/service-card
 import StateSelector from "@/components/ui/header/stateSelector";
 import imagemClaraPose from '@/assets/img/imagemClaraPose.svg'
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import Toggle from "@/components/ui/header/togglecx";
 export function Hero():JSX.Element {
+    const [isToggled, setIsToggled] = useState(false);
     const [activePlusServices, setActivePlusServices] = useState(false)
     const [listaService, setListaService] = useState([{id:1,title:'Emitir segunda via da conta',icon:'file_copy'},
         {id:2,title:'Informar falta de luz',icon:'flash_off'},{id:3,title:'Solicitar religação',icon:'lightbulb_outline'},{id:4,title:'Passar a conta para seu nome',icon:'supervisor_account'},{id:5,title:'Entender a sua conta de luz',icon:'flash_on'},
@@ -27,7 +29,14 @@ export function Hero():JSX.Element {
                 <div className="header">
                     <div className="accessbilitySection">
                         <Status/>
-                        <Accessibility/>
+                        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px'}}>
+                            <Toggle
+                                rounded={true}
+                                isToggled={isToggled}
+                                onToggle={() => setIsToggled(!isToggled)}
+                            />
+                            <Accessibility/>
+                        </div>
                     </div>
                     <MenuInstitucional/>
                 </div>
