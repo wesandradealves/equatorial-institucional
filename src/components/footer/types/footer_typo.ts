@@ -4,54 +4,8 @@ export interface FooterData {
 
 export interface FooterTypo {
   social_networks: SocialNetworksTypo,
-  // social_networks: {
-  //   links: {
-  //     facebook: string;
-  //     twitter: string;
-  //     instagram: string;
-  //     youtube: string;
-  //   };
-  //   label: {
-  //     en: string;
-  //     pt_br: string;
-  //   };
-  // };
   store: StoreTypo,
-  // store: {
-  //   links: {
-  //     appstore: {
-  //       img: string;
-  //       url: string;
-  //     };
-  //     googleplay: {
-  //       img: string;
-  //       url: string;
-  //     };
-  //   };
-  //   label: {
-  //     en: string;
-  //     pt_br: string;
-  //   };
-  // };
   contact: ContactTypo,
-  // contact: {
-  //   phone: {
-  //     pt_br: string;
-  //     en: string;
-  //   };
-  //   talktous: {
-  //     pt_br: string;
-  //     en: string;
-  //     url: string;
-  //   };
-  //   talktoclara: {
-  //     pt_br: string;
-  //     en: string;
-  //     url: string;
-  //     img: string;
-  //   };
-  // };
-  
 }
 
 export interface SocialNetworksTypo {
