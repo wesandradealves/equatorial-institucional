@@ -12,7 +12,7 @@ export default function UltimasNoticias() {
   const [news, setNews] = useState<News[]>([]);
   // const [config, setConfig] = useState<ConfigTypo[]>([]);
 
-  const fetchData = async() => {
+  const getUltimasNoticias = async() => {
     // const config:ConfigTypo[] = await http.get('/api/config')
     const result: NewsTypo = await http.get("/api/noticias");
     // setConfig(config);
@@ -20,7 +20,7 @@ export default function UltimasNoticias() {
   }  
 
   useEffect(() => {
-    fetchData();
+    getUltimasNoticias();
   }, []);
 
   return (
@@ -47,7 +47,7 @@ export default function UltimasNoticias() {
               body={item.summary}
               mesano={item.date}
               // imageUrl={`${props?.data?.basePath + props?.data?.logo}`}
-              imageUrl={'https://6696-2804-214-8174-cd0b-2174-afb7-2f1b-5411.ngrok-free.app/'+ item.image}
+              imageUrl={'https://d792-191-165-222-70.ngrok-free.app/'+ item.image}
             >
               {item.category.map((tag, j) => (
                 <TagContent key={j} label={tag} />
