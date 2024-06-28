@@ -7,5 +7,6 @@ export interface News {
   category: string[];
   title: string;
   body: string;
+  summary: string;
   date: string;
 }

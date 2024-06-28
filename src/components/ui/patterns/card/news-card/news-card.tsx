@@ -32,8 +32,8 @@ export function NewsCard(props: NewsCardProps) {
         <div className={styles['card-content']}>{props.children}</div>
       </div>
       <p className={styles.title}>{title}</p>
-      {/* <p className={styles.body} dangerouslySetInnerHTML={{ __html: body }}></p> */}
-      <p className={styles.body} dangerouslySetInnerHTML={getFirstParagraphElement(body)}></p>
+      <p className={styles.body} dangerouslySetInnerHTML={{ __html: body }}></p>
+      {/* <p className={styles.body} dangerouslySetInnerHTML={getFirstParagraphElement(body)}></p> */}
       <p className={styles.small}>{mesano}</p>
     </div>
   );

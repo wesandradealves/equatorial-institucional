@@ -10,14 +10,17 @@ import { News, NewsTypo } from "./types/news_typo";
 export default function UltimasNoticias() {
   const http = new HttpService();
   const [news, setNews] = useState<News[]>([]);
+  // const [config, setConfig] = useState<ConfigTypo[]>([]);
 
-  const getLastNews = async () => {
+  const fetchData = async() => {
+    // const config:ConfigTypo[] = await http.get('/api/config')
     const result: NewsTypo = await http.get("/api/noticias");
+    // setConfig(config);
     setNews(result.rows);
-  };
+  }  
 
   useEffect(() => {
-    getLastNews();
+    fetchData();
   }, []);
 
   return (
@@ -41,9 +44,10 @@ export default function UltimasNoticias() {
             <NewsCard
               key={index}
               title={item.title}
-              body={item.body}
+              body={item.summary}
               mesano={item.date}
-              imageUrl={'https://6696-2804-214-8174-cd0b-2174-afb7-2f1b-5411.ngrok-free.app/'+item.image}
+              // imageUrl={`${props?.data?.basePath + props?.data?.logo}`}
+              imageUrl={'https://6696-2804-214-8174-cd0b-2174-afb7-2f1b-5411.ngrok-free.app/'+ item.image}
             >
               {item.category.map((tag, j) => (
                 <TagContent key={j} label={tag} />
