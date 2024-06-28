@@ -10,23 +10,34 @@ import StateSelector from "@/components/ui/header/stateSelector";
 import imagemClaraPose from "@/assets/img/imagemClaraPose.svg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { HttpService } from "@/services";
-import { ServiceTypo } from "./types/service_typo";
+import { Service, ServiceFieldTypo, ServiceTypo } from "./types/service_typo";
 export function Hero(): JSX.Element {
   const http = new HttpService();
-  const [services, setServices] = useState<ServiceTypo[]>([]);
-  const [item, setItem] = useState<ServiceTypo[]>([]);
+  const [service, setService] = useState<ServiceTypo[]>([]);
+  const [listServices, setListServices] = useState<Service[]>([]);
 
   const getServices = async () => {
     const result: ServiceTypo[] = await http.get("/api/blocks/banner");
-    console.log(result);
-    setServices(result);
-    // getParagraph();
+    setService(result);
+    result[0].services.map((service) => {
+      getParagraph(service);
+    });
   };
 
-  const getParagraph = async (id: number) => {
-    const result: any[] = await http.get(`entity/paragraph/${id}`);
+  const getParagraph = async (id: any) => {
+    const result: ServiceFieldTypo = await http.get(`entity/paragraph/${id}`);
+
+    //cria um objeto, e pega as informações referente ao Serviço
+    const service = new Service({
+      id: id,
+      titulo: result.field_titulo[0].value,
+      icon: result.field_imagem[0].url,
+      url: result.field_link[0].value,
+    });
+
     //Criar array de itens de serviço, a cada requisição, adicionar na lista
-    setItem(result);
+    listServices.push(service);
+    // setListServices(listServices);
   };
 
   useEffect(() => {
@@ -34,18 +45,18 @@ export function Hero(): JSX.Element {
   }, []);
 
   const [activePlusServices, setActivePlusServices] = useState(false);
-  const [listaService, setListaService] = useState([
-    { id: 1, title: "Emitir segunda via da conta", icon: "file_copy" },
-    { id: 2, title: "Informar falta de luz", icon: "flash_off" },
-    { id: 3, title: "Solicitar religação", icon: "lightbulb_outline" },
-    {
-      id: 4,
-      title: "Passar a conta para seu nome",
-      icon: "supervisor_account",
-    },
-    { id: 5, title: "Entender a sua conta de luz", icon: "flash_on" },
-    { id: 6, title: "Todos os serviços", icon: "grid_view" },
-  ]);
+  // const [listaService, setListaService] = useState([
+  //   { id: 1, title: "Emitir segunda via da conta", icon: "file_copy" },
+  //   { id: 2, title: "Informar falta de luz", icon: "flash_off" },
+  //   { id: 3, title: "Solicitar religação", icon: "lightbulb_outline" },
+  //   {
+  //     id: 4,
+  //     title: "Passar a conta para seu nome",
+  //     icon: "supervisor_account",
+  //   },
+  //   { id: 5, title: "Entender a sua conta de luz", icon: "flash_on" },
+  //   { id: 6, title: "Todos os serviços", icon: "grid_view" },
+  // ]);
   const listaMenu = [
     { id: 1, title: "Todos" },
     { id: 2, title: "Serviços de energia" },
@@ -97,12 +108,12 @@ export function Hero(): JSX.Element {
               </div>
             </div>
             <div className="listaCardService">
-              {listaService.map((item) => (
+              {listServices && listServices.map((item) => (
                 <ServiceCard
                   onClick={handleClickPlus}
                   key={item.id}
-                  title={item.title}
-                  symbols={item.icon}
+                  title={item.titulo}
+                  symbols={"flash_off"}
                 />
               ))}
             </div>

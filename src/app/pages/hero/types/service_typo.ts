@@ -1,37 +1,42 @@
 export interface ServiceTypo {
-    id: string
-    image: string
-    title: string
-    services: Number[]
+  id: string;
+  image: string;
+  title: string;
+  services: Number[];
+}
+
+export interface ServiceFieldTypo {
+  field_imagem: FieldImage[];
+  field_link: FieldLink[];
+  field_titulo: FieldTitulo[];
 }
 
 export interface FieldImage {
-// "field_imagem": [
-//     {
-//         "target_id": 82,
-//         "alt": "Informar falta de luz",
-//         "title": "",
-//         "width": 32,
-//         "height": 32,
-//         "target_type": "file",
-//         "target_uuid": "344c2754-1cba-426a-a45a-e1f95f2ba7b6",
-//         "url": "https:\/\/b7ae-2804-214-8174-cd0b-a0fa-2e32-f4a4-e9cf.ngrok-free.app\/sites\/default\/files\/2024-06\/flash_off_0.png"
-//     }
-// ],
+  alt: string;
+  title: string;
+  width: number;
+  height: number;
+  url: string;
 }
 
-export interface fieldLink {
-//     "field_link": [
-//     {
-//         "value": "#"
-//     }
-// ],
+export interface FieldLink {
+  value: string;
 }
 
-export interface fieldTitulo {
-//  "field_titulo": [
-//     {
-//         "value": "Informar falta de luz"
-//     }
-// ]   
+export interface FieldTitulo {
+  value: string;
+}
+
+export class Service {
+  public id: number
+  public titulo: string;
+  public icon: string;
+  public url: string;
+
+  public constructor(data: any = {}) {
+    this.id = data.id || 0
+    this.titulo = data.titulo || "";
+    this.icon = data.icon || "";
+    this.url = data.url || "";
+  }
 }
