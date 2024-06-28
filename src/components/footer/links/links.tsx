@@ -3,8 +3,19 @@ import Link from "next/link";
 import "./links.scss";
 import Image from "next/image";
 import Collapse from "@/components/ui/inputs/Collapse";
+import {
+  SocialNetworksTypo,
+  StoreTypo,
+} from "../types/footer_typo";
+import { NavigationTypo } from "../types/navigation_typo";
 
-export default function Links() {
+export interface LinksProps {
+  socialNetworks?: SocialNetworksTypo;
+  store?: StoreTypo;
+  navigation?: NavigationTypo[];
+}
+
+export default function Links(props: LinksProps) {
   const linksConsumoTarifas = [
     { id: 0, name: "Cobrança de ICMS", href: "/" },
     { id: 1, name: "Bandeiras tarifárias", href: "/" },
@@ -29,13 +40,13 @@ export default function Links() {
     { id: 5, name: "Política de privacidade", href: "/" },
   ];
 
-  const linksSocial = [
-    { id: 1, image: "images/facebook.svg", href: "https://facebook.com" },
-    { id: 2, image: "images/x-social.svg", href: "https://x.com" },
-    { id: 3, image: "images/instagram.svg", href: "https://instagram.com" },
-    { id: 4, image: "images/youtube.svg", href: "https://youtube.com" },
-    { id: 5, image: "images/linkedin.svg", href: "https://linkedin.com" },
-  ];
+  // const linksSocial = [
+  //   { id: 1, image: "images/facebook.svg", href: "https://facebook.com" },
+  //   { id: 2, image: "images/x-social.svg", href: "https://x.com" },
+  //   { id: 3, image: "images/instagram.svg", href: "https://instagram.com" },
+  //   { id: 4, image: "images/youtube.svg", href: "https://youtube.com" },
+  //   { id: 5, image: "images/linkedin.svg", href: "https://linkedin.com" },
+  // ];
 
   const badges = [
     {
@@ -52,39 +63,46 @@ export default function Links() {
 
   return (
     <div className="links">
-      <div className="ulli">
-        <h6>Consumo e tarifas</h6>
-        <ul>
-          {linksConsumoTarifas.map((link) => {
-            return (
-              <li key={link.id}>
-                <Link href={link.href}>{link.name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-
-      <div className="collapse">
-        <Collapse
-          title={"Consumo e tarifas"}
-          textColor="#FFFFFF"
-          iconColor="#FFFFFF"
-          backgroundColor="#040F6D"
-          children={
+      {props.navigation &&
+        props.navigation.map((item, index) => (
+          <div className="ulli" key={index}>
+            <h6> {item?.title}</h6>
             <ul>
-              {linksConsumoTarifas.map((link) => {
+              {item.below.map((link, index) => {
                 return (
-                  <li key={link.id}>
-                    <Link href={link.href}>{link.name}</Link>
+                  <li key={index}>
+                    <Link href={link.absolute}>{link.title}</Link>
                   </li>
                 );
               })}
             </ul>
-          }
-          box={false}
-        ></Collapse>
-      </div>
+          </div>
+        ))}
+
+      {props.navigation &&
+        props.navigation.map((item, index) => (
+          <div className="collapse" key={index}>
+            <Collapse
+              key={index}
+              title={item.title}
+              textColor="#FFFFFF"
+              iconColor="#FFFFFF"
+              backgroundColor="#040F6D"
+              children={
+                <ul>
+                  {item.below.map((link, index) => {
+                    return (
+                      <li key={index}>
+                        <Link href={link.absolute}>{link.title}</Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              }
+              box={false}
+            ></Collapse>
+          </div>
+        ))}
 
       <div className="ulli">
         <h6>Dicas e instruções</h6>
@@ -155,12 +173,58 @@ export default function Links() {
       </div>
 
       <div>
-        <div>
-          <h6 className="redes-socias-title">
-            Fale com a Equatorial nas redes sociais
-          </h6>
-          <div className="redes-socias-links">
-            {linksSocial.map((link) => {
+        {props?.socialNetworks && (
+          <div>
+            <h6 className="redes-socias-title">
+              {props?.socialNetworks?.label.pt_br}
+            </h6>
+            <div className="redes-socias-links">
+              <Link passHref href={props?.socialNetworks?.links.facebook}>
+                <Image
+                  priority
+                  src={"images/facebook.svg"}
+                  alt=""
+                  width={32}
+                  height={32}
+                />
+              </Link>
+              <Link passHref href={props?.socialNetworks?.links.twitter}>
+                <Image
+                  priority
+                  src={"images/x-social.svg"}
+                  alt=""
+                  width={32}
+                  height={32}
+                />
+              </Link>
+              <Link passHref href={props?.socialNetworks?.links.instagram}>
+                <Image
+                  priority
+                  src={"images/instagram.svg"}
+                  alt=""
+                  width={32}
+                  height={32}
+                />
+              </Link>
+              <Link passHref href={props?.socialNetworks?.links.youtube}>
+                <Image
+                  priority
+                  src={"images/youtube.svg"}
+                  alt=""
+                  width={32}
+                  height={32}
+                />
+              </Link>
+              <Link passHref href={"#"}>
+                <Image
+                  priority
+                  src={"images/linkedin.svg"}
+                  alt=""
+                  width={32}
+                  height={32}
+                />
+              </Link>
+              {/* {linksSocial.map((link) => {
               return (
                 <Link passHref href={link.href} key={link.id}>
                   <Image
@@ -172,30 +236,62 @@ export default function Links() {
                   />
                 </Link>
               );
-            })}
+            })} */}
+            </div>
           </div>
-        </div>
-
-        <div>
-          <h6 className="redes-socias-title">Baixe nosso app</h6>
-          <div className="badges">
-            {badges.map((badge) => {
-              return (
-                <Link passHref href={badge.href} key={badge.id}>
-                  <Image
-                    priority
-                    src={badge.image}
-                    alt=""
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: "auto", height: "40px" }}
-                  />
-                </Link>
-              );
-            })}
+        )}
+        {props?.store && (
+          <div>
+            <h6 className="redes-socias-title">{props?.store?.label.pt_br}</h6>
+            <div className="badges">
+              {props?.store.links.appstore && (
+                <div>
+                  <Link passHref href={props?.store.links.appstore.url}>
+                    <Image
+                      priority
+                      src={props?.store.links.appstore.img}
+                      alt=""
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: "auto", height: "40px" }}
+                    />
+                  </Link>
+                </div>
+              )}
+              {props?.store.links.googleplay && (
+                <div>
+                  <Link passHref href={props?.store.links.googleplay.url}>
+                    <Image
+                      priority
+                      src={props?.store.links.googleplay.img}
+                      alt=""
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: "auto", height: "40px" }}
+                    />
+                  </Link>
+                </div>
+              )}
+              {/* {badges.map((badge) => {
+                    return (
+                      <Link passHref href={badge.href} key={badge.id}>
+                        <Image
+                          priority
+                          src={badge.image}
+                          alt=""
+                          width={0}
+                          height={0}
+                          sizes="100vw"
+                          style={{ width: "auto", height: "40px" }}
+                        />
+                      </Link>
+                    );
+                  })} */}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

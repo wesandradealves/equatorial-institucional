@@ -2,76 +2,72 @@ import Icon from "@mdi/react";
 import * as mdiIcons from "@mdi/js";
 import "./contact.scss";
 import Link from "next/link";
+import { ContactTypo } from "../types/footer_typo";
 
-export default function Contact() {
+export interface ContactProps {
+  contact?: ContactTypo;
+}
+
+export default function Contact(props: ContactProps) {
+  const list = props.contact?.phone.pt_br.split("\r\n");
+
+  const getContactText = (input: string) => {
+    return input.replace(/\d/g, "");
+  };
+
+  const getContactNumber = (input: string) => {
+    return input.replace(/\D/g, " ");
+  };
+
   return (
     <div className="contact">
-      <div className="col-1">
-        <ul>
-          <li>
-            <p>
-              Atendimento Equatorial <span className="phone">116</span>
-            </p>
-            <button>
-              <span className="icon-container">
-                <Icon path={mdiIcons.mdiPhone} size={.5} className="icon" />
-              </span>
-              <span>116</span>
-            </button>
-          </li>
-          <li>
-            <p>
-              Grandes Clientes <span className="phone">0800 098 2997</span>
-            </p>
-            <button>
-              <span className="icon-container">
-                <Icon path={mdiIcons.mdiPhone} size={.5} className="icon" />
-              </span>
-              <span>0800 098 2997</span>
-            </button>
-          </li>
-          <li>
-            <p>
-              Negociação Equatorial <span className="phone">0800 098 2997</span>
-            </p>
-            <button>
-              <span className="icon-container">
-                <Icon path={mdiIcons.mdiPhone} size={.5} className="icon" />
-              </span>
-              <span>0800 098 2997</span>
-            </button>
-          </li>
-          <li>
-            <p>
-              Ouvidoria <span className="phone">0800 098 2997</span>
-            </p>
-            <button>
-              <span className="icon-container">
-                <Icon path={mdiIcons.mdiPhone} size={.5} className="icon" />
-              </span>
-              <span>0800 098 2997</span>
-            </button>
-          </li>
-        </ul>
-      </div>
-      <div className="col-2">
-        <div className="sac">
-          <p>
-            Precisa tirar dúvidas, solicitar informações, fazer denúncias ou
-            reclamações?
-          </p>
-          <Link href={""}>Fale com a gente</Link>
+      {props?.contact && (
+        <div className="col-1">
+          <ul>
+            {list &&
+              list.map((item, index) => (
+                <li key={index}>
+                  <p>
+                    {" "}
+                    {getContactText(item)}{" "}
+                    <span className="phone">{getContactNumber(item)}</span>
+                  </p>
+                  <button>
+                    <span className="icon-container">
+                      <Icon
+                        path={mdiIcons.mdiPhone}
+                        size={0.5}
+                        className="icon"
+                      />
+                    </span>
+                    <span>{getContactNumber(item)}</span>
+                  </button>
+                </li>
+              ))}
+          </ul>
         </div>
-      </div>
-      <div className="col-3">
-        <div className="assistente-link">
-          <p>Fale com a Clara, nossa assistente virtual no WhatsApp</p>
-          <Link href={""}>Fale com a Clara</Link>
+      )}
+
+      {props?.contact && (
+        <div className="col-2">
+          <div className="sac">
+            <p>{props?.contact?.talktous.pt_br}</p>
+            <Link href={props?.contact?.talktous.url}>Fale com a gente</Link>
+          </div>
         </div>
-        <div className="assistente-image">
-          <img src="/images/clara.png" />
+      )}
+
+      {props?.contact && (
+        <div className="col-3">
+          <div className="assistente-link">
+            <p>{props?.contact?.talktoclara.pt_br}</p>
+            <Link href={props?.contact?.talktoclara.url}>Fale com a Clara</Link>
+          </div>
+          <div className="assistente-image">
+            <img src="/images/clara.png" />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

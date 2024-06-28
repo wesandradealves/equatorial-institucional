@@ -75,6 +75,7 @@ export default function Institucional() {
                 <div className={styles.cards}>
                     {items.map((item, index) => (
                         <CardServices
+                            key={index}
                             cover={item.cover}
                             title={item.title}
                             description={item.description}
