@@ -1,5 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
-import MenuInstitucionalDeskTop from '../../components/ui/header/menuInstitucional/desktop';
+import MenuInstitucionalDeskTop from "@/components/ui/header/menuInstitucional/desktop";
+
 
 const meta: Meta<typeof MenuInstitucionalDeskTop> = {
   title: 'Actions/Header/MenuInstitucional/Menu Institucional Desktop',

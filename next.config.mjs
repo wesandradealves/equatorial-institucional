@@ -6,7 +6,7 @@ const nextConfig = {
     includePaths: [path.join("/", "pages"), "src/assets"],
   },
   images: {
-    domains: ['institucional-drupal.ddev.site', 'institucional-drupal.ddev.site'],
+    domains: ['b7ae-2804-214-8174-cd0b-a0fa-2e32-f4a4-e9cf.ngrok-free.app'],
   } 
 };
 

@@ -1,5 +1,6 @@
-import Hero from "@/app/pages/hero/hero"
+
 import type { Meta, StoryObj } from '@storybook/react';
+import Hero from "@/components/hero/hero";
 
 const meta: Meta<typeof Hero> = {
     title: 'Page/Hero',

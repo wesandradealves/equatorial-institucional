@@ -1,4 +1,4 @@
-import CardBase from '@/components/ui/patterns/card';
+import CardBase from '../../components/ui/patterns/card';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof  CardBase> = {
