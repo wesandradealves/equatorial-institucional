@@ -37,7 +37,6 @@ export function Hero(): JSX.Element {
 
     //Criar array de itens de serviço, a cada requisição, adicionar na lista
     listServices.push(service);
-    // setListServices(listServices);
   };
 
   useEffect(() => {
