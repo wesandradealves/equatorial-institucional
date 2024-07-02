@@ -1,5 +1,3 @@
-"use client"; // This is a client component 👈🏽
-
 import { Helmet } from 'react-helmet';
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer/Footer";
