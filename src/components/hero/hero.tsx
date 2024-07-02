@@ -1,9 +1,6 @@
 "use client"
 import "./hero.scss"
-import MenuInstitucional from "@/components/ui/header/menuInstitucional";
 import Image from 'next/image'
-import Status from "@/components/ui/header/status/status";
-import Accessibility from "@/components/ui/header/accessibility/accessibility";
 import {useState} from "react";
 import ServiceCard from "@/components/ui/patterns/card/service-card/service-card";
 import StateSelector from "@/components/ui/header/stateSelector";
