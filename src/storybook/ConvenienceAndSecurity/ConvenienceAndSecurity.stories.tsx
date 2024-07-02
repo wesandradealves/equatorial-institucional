@@ -1,13 +1,15 @@
 import React from 'react'
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import ConvenienceAndSecurity from "@/app/pages/convenienceAndSecurity/page";
+// @ts-ignore
+import {ComponentMeta, ComponentStory} from '@storybook/react';
+import ConvenienceAndSecurity from "@/components/convenienceAndSecurity/page";
+
 
 export default {
     title: 'Pages/ConvenienceAndSecurity',
     component: ConvenienceAndSecurity
 } as ComponentMeta<typeof ConvenienceAndSecurity>
 
-const Template: ComponentStory<typeof ConvenienceAndSecurity> = (args) => <ConvenienceAndSecurity {...args} />;
+const Template: ComponentStory<typeof ConvenienceAndSecurity> = (args:any) => <ConvenienceAndSecurity {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

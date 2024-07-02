@@ -20,9 +20,9 @@ export default function Contact(props: ContactProps) {
   };
 
   return (
-    <div className="contact">
+    <div className="contact d-flex align-items-stretch">
       {props?.contact && (
-        <div className="col-1">
+        <div className="flex-fill col-1">
           <ul>
             {list &&
               list.map((item, index) => (
@@ -49,7 +49,7 @@ export default function Contact(props: ContactProps) {
       )}
 
       {props?.contact && (
-        <div className="col-2">
+        <div className="flex-fill col-2">
           <div className="sac">
             <p>{props?.contact?.talktous.pt_br}</p>
             <Link href={props?.contact?.talktous.url}>Fale com a gente</Link>
@@ -58,7 +58,7 @@ export default function Contact(props: ContactProps) {
       )}
 
       {props?.contact && (
-        <div className="col-3">
+        <div className="flex-fill col-3">
           <div className="assistente-link">
             <p>{props?.contact?.talktoclara.pt_br}</p>
             <Link href={props?.contact?.talktoclara.url}>Fale com a Clara</Link>

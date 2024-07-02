@@ -1,4 +1,4 @@
-import Logo from '@/components/ui/header/logo/logo';
+import Logo from '../../components/ui/header/logo/logo';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const imageLogo = './images/logo-equatorial.png';

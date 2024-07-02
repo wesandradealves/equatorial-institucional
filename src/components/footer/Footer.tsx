@@ -30,7 +30,7 @@ export default function Footer() {
     <footer>
       <Links socialNetworks={footerData?.data.social_networks} store={footerData?.data.store} navigation={navigation}/>
       <Contact contact={footerData?.data.contact}/>
-      <Brand />
+      {/* <Brand /> */}
     </footer>
   );
 }

@@ -1,19 +1,19 @@
 import "./brand.scss";
 import Image from "next/image";
-
-export default function Brand() {
+import { ConfigTypo } from '@/types/enums';
+export default function Brand(props: ConfigTypo) {
   return (
     <div className="brand">
       <div className="logo">
         <Image
-          src={"/images/logo-equatorial.png"}
-          alt={"Logo"}
+          src={props?.data?.basePath + props?.data?.logo}
+          alt={props?.data?.site_name}
           width={120}
           height={34}
         />
       </div>
       <div className="copyright">
-        <p>Equatorial © 2024. Todos os direiros reservados</p>
+        <p>{props?.data?.copyright?.pt_br}</p>
       </div>
     </div>
   );
