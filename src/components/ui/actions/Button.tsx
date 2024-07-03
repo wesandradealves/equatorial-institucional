@@ -11,6 +11,7 @@ export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'textlink';
   size?: 'large' | 'small';
   label: string;
+  className: string;
 }
 
 function Button(props: ButtonProps) {
@@ -36,7 +37,7 @@ function Button(props: ButtonProps) {
 
   return (
     <button
-      className={buttonClass}
+      className={`${buttonClass} ${props?.className}`}
       onClick={props.onClick}
       disabled={props.disabled}
     >

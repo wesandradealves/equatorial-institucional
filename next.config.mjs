@@ -20,7 +20,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
-    domains: ['b7ae-2804-214-8174-cd0b-a0fa-2e32-f4a4-e9cf.ngrok-free.app','drupal-institucional-drupal-dev.apps.ocpdrupal.equatorial.corp'],
+    domains: ['b7ae-2804-214-8174-cd0b-a0fa-2e32-f4a4-e9cf.ngrok-free.app','drupal-institucional-drupal-dev.apps.ocpdrupal.equatorial.corp', 'institucional-drupal.ddev.site'],
   },
   swcMinify: true,
   async headers() {

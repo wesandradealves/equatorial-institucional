@@ -208,7 +208,7 @@ export const Content = styled.div<ContentTypo>`
     padding-top: 160px;
     padding-bottom: 218px;
     ${({ backgroundImage }) => backgroundImage && css`
-        background: url(${backgroundImage}) center -1100px / auto no-repeat;
+        background: url(${backgroundImage}) center 0 / cover no-repeat;
     `}      
     > * {
         position: relative;
