@@ -28,10 +28,10 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
+          // {
+          //   key: 'X-Frame-Options',
+          //   value: 'DENY',
+          // },
             // Habilitar assim que estiver tranquilo o proxy da api
           // {
           //   key: 'Content-Security-Policy',
