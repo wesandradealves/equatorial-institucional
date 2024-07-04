@@ -35,7 +35,7 @@ export function Hero():JSX.Element {
     }, []);
 
     return (
-        <HeroContainer backgroundImage={config?.data?.basePath + navigation[0].image}>
+        <HeroContainer backgroundImage={config?.data?.basePath + navigation[0]?.image}>
             <div className="container">
                 <div className="wrapper">
                     <div className="body">
