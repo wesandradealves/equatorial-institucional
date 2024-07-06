@@ -11,7 +11,10 @@ export const Container = styled.div`
             padding-top: 48px;
             padding-bottom: 48px;
             gap: 0;
-        }        
+        }   
+        @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+            max-width: initial
+        }             
     }
 `;
 

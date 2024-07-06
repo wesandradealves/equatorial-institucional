@@ -1,5 +1,4 @@
 "use client";
-import "./footer.scss";
 import { HttpService } from "@/services";
 import { useContext, useEffect, useState } from "react";
 import ConfigProvider from "@/context/store";
@@ -29,9 +28,16 @@ export default function Footer() {
 
   const handleContactInfo = (o: any) => {
     return (Object.keys(o).map(function(key){
-      return (<ContactCol className="flex-fill">
-        <ColText dangerouslySetInnerHTML={{ __html: o[key]?.pt_br}}></ColText>
-        {o[key]?.link && o[key]?.link?.url && <ColText><Anchor href={o[key]?.link?.url}>{o[key]?.link?.label?.pt_br}</Anchor></ColText>}
+      return (<ContactCol className={`flex-fill ${key}`}>
+        <span className="inner d-flex flex-wrap">
+          <span className="flex-fill">
+            <ColText dangerouslySetInnerHTML={{ __html: o[key]?.pt_br}}></ColText>
+            {o[key]?.link && o[key]?.link?.url && <ColText>
+              <Anchor href={o[key]?.link?.url}>{o[key]?.link?.label?.pt_br}</Anchor>
+            </ColText>}
+          </span>
+          {o[key]?.img && <img alt={o[key]?.pt_br} src={o[key]?.img} />}          
+        </span>
       </ContactCol>);
     }));   
   };
@@ -39,7 +45,7 @@ export default function Footer() {
   return (
     <Container>
       {footerData && footerData?.data?.contact && <Contact>
-        <div className="container d-flex align-items-stretch">
+        <div className="container d-flex flex-column flex-lg-row align-items-stretch">
           <>{handleContactInfo(footerData?.data?.contact)}</>
         </div>
       </Contact>} 

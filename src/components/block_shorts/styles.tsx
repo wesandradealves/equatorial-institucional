@@ -5,12 +5,7 @@ interface VideoPillTypo {
 }
 
 export const Content = styled.section`
-    @media screen and (max-width: ${props => props.theme.screenSmMin}) {
-        .container {
-            padding-left: 0;
-            padding-right: 0;
-        }
-    }
+ 
 `;
 
 export const Container = styled.div`
@@ -20,6 +15,11 @@ export const Container = styled.div`
         padding-top: 209px;
         padding-bottom: 179px;
     }
+    @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: initial;
+    }            
 `;
 
 export const Columns = styled.div`
