@@ -24,6 +24,7 @@ export default function BlockShorts(props: any) {
 
   const settings = {
     dots: true,
+    arrows: false,
     infinite: false,
     speed: 500,
     centerMode: true,

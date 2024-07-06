@@ -58,24 +58,14 @@
                     margin: 0 10px;
 
                     @media screen and (min-width: $screen-lg-min) {
-                        // @media screen and (max-width: $screen-sm-min) {
-                        //     margin: 0 10px;
-                        // }
-
-                        margin: 0 15px 0 20px;
+                        margin: 0 15px 0 0px;
                         
                         transition: 600ms ease-in-out all;
                         &.slick-active.slick-center.slick-current {
-                            // transition: 300ms ease-in-out all;
                             transform: scale(1.15);
-                            margin-right: 35px;
-                            margin-left: 35px;
+                            margin-right: 45px;
+                            margin-left: 20px;
 
-                            // @media screen and (max-width: $screen-sm-min) {
-                            //     margin-right: 20px;
-                            //     margin-left: 15px;
-                            // }
-                                
                             & + * {
                                 transform: scale(1.05)
                             }
