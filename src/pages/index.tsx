@@ -1,17 +1,18 @@
 "use client"; // This is a client component 👈🏽
-
 import { Helmet } from 'react-helmet';
-import Brand from '@/components/footer/brand/brand';
+import Brand  from '@/components/brand/brand';
 import { Wrapper, ListNav, Navigation, NavItem, NavTitle, Logo, NavLink, Content, Footer, Inner, GlobalStyle, Spinner, Loader } from '@/assets/styles';
 import { useEffect, useState } from 'react';
 import { ConfigTypo, NavTypo } from '@/types/enums';
 import { HttpService } from '@/services';
 import Image from "next/image";
+import { ThemeProvider } from 'styled-components';
 
 export default function Splash() {
   const http = new HttpService();
   const [config, setConfig] = useState<ConfigTypo[]>([]);
   const [navigation, setNavigation] = useState<NavTypo[]>([]);
+  const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!../assets/variables.scss');
 
   const fetchData = async() => {
     const config:ConfigTypo[] = await http.get('/api/config')
@@ -25,7 +26,7 @@ export default function Splash() {
   }, []);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Wrapper>
         {config.hasOwnProperty("data") && <>
           <Content backgroundImage={config?.data?.basePath + config?.data?.location_screen_bg}>
@@ -68,6 +69,6 @@ export default function Splash() {
         </>}
       </Wrapper>
       <GlobalStyle />
-    </>
+    </ThemeProvider>
   )
 }

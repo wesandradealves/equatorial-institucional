@@ -4,14 +4,19 @@ interface VideoPillTypo {
     backgroundImage: string;
 }
 
-export const Content = styled.div`
-
+export const Content = styled.section`
+    @media screen and (max-width: ${props => props.theme.screenSmMin}) {
+        .container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
 `;
 
 export const Container = styled.div`
     padding-top: 64px;
     padding-bottom: 64px;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding-top: 209px;
         padding-bottom: 179px;
     }
@@ -19,7 +24,7 @@ export const Container = styled.div`
 
 export const Columns = styled.div`
     gap: 48px 0;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         gap: 0
     }
 `;
@@ -30,16 +35,16 @@ export const Column = styled.div`
 
 export const BlockTitle = styled.h2`
     font-size: 1.5rem;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         font-size: 2.5rem;
     }
 `;
 
 export const BlockHeading = styled.div`
     gap: 53px 0;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding-right: 60px;
-        @media screen and (min-width: 1360px) {
+        @media screen and (min-width: ${props => props.theme.screenXlMin}) {
             padding-right: 120px;
         }
     }    
@@ -53,9 +58,9 @@ export const VideoPill = styled.div<VideoPillTypo>`
     overflow: hidden;
     position: relative;
     height: 350px;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         height: 400px;
-        @media screen and (min-width: 1360px) {
+        @media screen and (min-width: ${props => props.theme.screenXlMin}) {
             height: 450px;
         }
     }      

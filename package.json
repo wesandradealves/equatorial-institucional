@@ -47,7 +47,11 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "eslint-plugin-storybook": "^0.8.0",
+    "node-sass": "^9.0.0",
     "sass": "^1.77.4",
+    "sass-extract": "^3.0.0",
+    "sass-extract-js": "^0.4.0",
+    "sass-extract-loader": "^1.1.0",
     "storybook": "^8.1.4",
     "typescript": "^5"
   },

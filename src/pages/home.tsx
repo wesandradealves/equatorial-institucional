@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import RootLayout from "@/app/layout"
 import PerguntasFrequentes from "@/components/perguntasFrequentes";
 import UltimasNoticias from "@/components/ultimas-noticias/ultimas-noticias";
-import Carousel from "@/components/ui/carousel/Carousel";
 import IniciativasEquatorial from "@/components/iniciativas-equatorial/iniciativas-equatorial";
 import Institucional from "@/components/institucional/institucional";
 import ConvenienceAndSecurity from "@/components/convenienceAndSecurity/page";
@@ -21,13 +20,13 @@ export default function Home() {
           <meta name="twitter:title" content="Equatorial Energia - Página Inicial" />
           <meta name="twitter:description" content="This is a description of my page" />
         </Helmet>        
-        <Hero/>
-        <ConvenienceAndSecurity />
+        {/* <Hero/> */}
+        {/* <ConvenienceAndSecurity /> */}
         <BlockShorts />
-        <IniciativasEquatorial />
-        <UltimasNoticias />
-        <Institucional />
-        <PerguntasFrequentes />
+        {/* <IniciativasEquatorial /> */}
+        {/* <UltimasNoticias /> */}
+        {/* <Institucional /> */}
+        {/* <PerguntasFrequentes /> */}
     </RootLayout>
   )
 }

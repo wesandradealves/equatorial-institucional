@@ -1,5 +1,5 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css');
-
+@import '@/assets/variables.scss';
 html {
   -webkit-text-size-adjust: 100%;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -11,10 +11,14 @@ html {
 }
 body {
   box-sizing: border-box;
-  /* max-width: 1920px; */
   font-family: inherit;
   line-height: inherit;
   margin: 0;
+  overflow-x: hidden;
+  min-width: $screen-xxs-min;
+  #__next {
+    overflow-x: inherit;
+  }
 }
 h1,
 h2,
@@ -173,4 +177,8 @@ a {
 /* Estilizando os cantos do scroll */
 ::-webkit-scrollbar-corner {
   background: #f1f1f1;
+}
+
+.flex-fill {
+  flex: 1 !important
 }

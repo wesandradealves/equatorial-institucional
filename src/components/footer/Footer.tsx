@@ -1,15 +1,16 @@
 "use client";
 import "./footer.scss";
-import Brand from "./brand/brand";
-import Links from "./links/links";
-import Contact from "./contact/contact";
 import { HttpService } from "@/services";
-import { useEffect, useState } from "react";
-import { FooterData } from "./types/footer_typo";
-import { NavigationTypo } from "./types/navigation_typo";
+import { useContext, useEffect, useState } from "react";
+import ConfigProvider from "@/context/store";
+import { Container, Contact, ColText, ContactCol, Anchor } from './style';
+import Brand from "../brand/brand";
+import { NavigationTypo, FooterData } from "@/types/enums";
 
 export default function Footer() {
   const http = new HttpService();
+
+  const { config } = useContext<any>(ConfigProvider);
   const [footerData, setFooterData] = useState<FooterData>();
   const [navigation, setNavigation] = useState<NavigationTypo[]>([]);
 
@@ -26,11 +27,26 @@ export default function Footer() {
     getFooter();
   }, []);
 
+  const handleContactInfo = (o: any) => {
+    return (Object.keys(o).map(function(key){
+      return (<ContactCol className="flex-fill">
+        <ColText dangerouslySetInnerHTML={{ __html: o[key]?.pt_br}}></ColText>
+        {o[key]?.link && o[key]?.link?.url && <ColText><Anchor href={o[key]?.link?.url}>{o[key]?.link?.label?.pt_br}</Anchor></ColText>}
+      </ContactCol>);
+    }));   
+  };
+
   return (
-    <footer>
-      <Links socialNetworks={footerData?.data.social_networks} store={footerData?.data.store} navigation={navigation}/>
-      <Contact contact={footerData?.data.contact}/>
-      {/* <Brand /> */}
-    </footer>
+    <Container>
+      {footerData && footerData?.data?.contact && <Contact>
+        <div className="container d-flex align-items-stretch">
+          <>{handleContactInfo(footerData?.data?.contact)}</>
+        </div>
+      </Contact>} 
+
+      {config && (
+        <Brand data={config} />
+      )} 
+    </Container>
   );
 }
