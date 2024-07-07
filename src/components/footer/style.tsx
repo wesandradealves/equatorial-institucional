@@ -39,6 +39,7 @@ export const ContactCol = styled.div`
     &.phone {
         .inner {
             p {
+                line-height: 2;
                 @media screen and (max-width: ${props => props.theme.screenLgMin}) {
                     display: flex;
                     flex-wrap: wrap;
@@ -52,14 +53,20 @@ export const ContactCol = styled.div`
                             padding-right: 0;
                             padding-left: 14px;
                             display: flex;
+                            @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+                                flex: 1;
+                                @media screen and (max-width: ${props => props.theme.screenSmMin}) {
+                                    flex: 0 0 auto;
+                                }                                
+                            }
                             > span {
                                 background: ${props => props.theme.colorPrimary150};
-                                padding: 6px 9px;
+                                padding: 2px 8px;
                                 border-radius: 999px;
                                 display: flex;
                                 align-items: center;
-                                margin-right: auto;
                                 gap: 0 6px;
+                                width: 100%;
                             }
                         }
                     }
@@ -133,9 +140,7 @@ export const Nav = styled.nav`
 
 export const NavCol = styled.ul`
     padding: 26px 16px;
-    &:not(:last-of-type) {
-        border-bottom: 1px ${props => props.theme.colorPrimary100} solid;
-    }
+    border-bottom: 1px ${props => props.theme.colorPrimary200} solid;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding: 0;
         &:not(:last-of-type) {
@@ -146,6 +151,17 @@ export const NavCol = styled.ul`
 
 export const NavItem = styled.li`
     gap: 40px 0;
+    ul {
+        li {
+            &:not(:last-of-type) {
+                @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+                    border-bottom: 1px ${props => props.theme.colorPrimary400} solid;
+                    margin: 0 -16px -16px;
+                    padding: 0 16px 24px;
+                }
+            }
+        }
+    }
 `;
 
 export const NavLink = styled.a`

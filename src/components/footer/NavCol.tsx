@@ -5,9 +5,9 @@ import { NavColTypo } from '@/types/enums';
 export function NavColumn({props = 'default value'}: NavColTypo) {
   const [isExpanded, setExpand] = useState<any>(false);
 
-  return (<NavCol key={props.i} className="flex-fill">
+  return (<NavCol className="flex-fill">
     <NavItem className="d-flex flex-column">
-      <NavLink className="d-flex align-items-center justify-content-between" href="#">{props?.title} {props?.below && <Arrow onClick={() => {
+      <NavLink className="d-flex align-items-center justify-content-between" >{props?.title} {props?.below && <Arrow onClick={() => {
         setExpand(!isExpanded);
       }} className={`fa-solid fa-angle-${isExpanded ? 'up' : 'down'} d-lg-none`}></Arrow>}</NavLink>
       {props?.below && <NavSubmenu className={`d-${isExpanded ? 'flex' : 'none'} d-lg-flex flex-column`}>
