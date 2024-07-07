@@ -6,6 +6,7 @@ export enum EHttpMethod {
 }
 
 interface DataTypo {
+    pt_br: DataTypo
     copyright?: {
         en?: string
         pt_br?: string
@@ -18,7 +19,7 @@ interface DataTypo {
 }
 
 export interface ConfigTypo {
-    data?: Record<any, DataTypo>
+    data: Record<any, DataTypo>
     config?: Record<any, DataTypo>
     setConfig?: React.Dispatch<any>
 }
