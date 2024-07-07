@@ -100,9 +100,9 @@ export default function Footer() {
         </div>
       </Contact>} 
 
-      {config && (
+      {/* {config && (
         <Brand data={config} />
-      )} 
+      )}  */}
     </Container>
   );
 }

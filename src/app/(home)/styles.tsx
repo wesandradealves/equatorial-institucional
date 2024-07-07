@@ -1,7 +1,7 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
 interface ContentTypo {
-    backgroundimage: string;
+    background_image: string;
 }
 
 export const ListNav = styled.ul`
@@ -207,8 +207,8 @@ export const Content = styled.div<ContentTypo>`
     overflow: hidden;
     padding-top: 160px;
     padding-bottom: 218px;
-    ${({ backgroundimage }) => backgroundimage && css`
-        background: url(${backgroundimage}) center 0 / cover no-repeat;
+    ${({ background_image }) => background_image && css`
+        background: url(${background_image}) center 0 / cover no-repeat;
     `}      
     > * {
         position: relative;
