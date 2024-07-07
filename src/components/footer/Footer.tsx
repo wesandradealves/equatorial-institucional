@@ -102,7 +102,7 @@ export default function Footer() {
             })}
           </Nav>}
           {footerData && (footerData?.data?.store || footerData?.data?.social_networks) && <>
-            <div>
+            <div className="col-lg-4 col-xl-auto">
               {footerData?.data?.social_networks && footerData?.data?.social_networks?.links && <div className="mb-5">
                 {footerData?.data?.social_networks?.label && <Label className="mb-3">
                     {footerData?.data?.social_networks?.label?.pt_br}
