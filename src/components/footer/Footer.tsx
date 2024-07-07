@@ -83,7 +83,7 @@ export default function Footer() {
                 </SocialNetworks>              
               </div>}
 
-              {footerData?.data?.store && footerData?.data?.store?.links && <Apps className="d-flex flex-column flex-lg-row flex-wrap">
+              {footerData?.data?.store && footerData?.data?.store?.links && <Apps className="d-flex flex-row flex-wrap">
                 {footerData?.data?.store?.label && <Label className="mb-3 col-12">
                     {footerData?.data?.store?.label?.pt_br}
                 </Label>}
@@ -99,10 +99,6 @@ export default function Footer() {
           {handleContactInfo(footerData?.data?.contact)}
         </div>
       </Contact>} 
-
-      {/* {config && (
-        <Brand data={config} />
-      )}  */}
     </Container>
   );
 }
