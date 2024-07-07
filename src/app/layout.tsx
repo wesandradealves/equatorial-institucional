@@ -28,7 +28,6 @@ export default function RootLayout({
 
   useEffect(() => {
     fetchData();
-    console.log(theme);
   }, []); 
   
   return (
