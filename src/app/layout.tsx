@@ -7,6 +7,7 @@ import { HttpService } from '@/services';
 import { ThemeProvider } from 'styled-components';
 
 import "@/globals.scss";
+import { GlobalStyle } from './(home)/styles';
 
 export default function RootLayout({
   children,
@@ -35,6 +36,7 @@ export default function RootLayout({
             <>{children}</>
             </ConfigProvider.Provider>
           </HelmetProvider>
+          <GlobalStyle />
         </ThemeProvider>             
       </body>
     </html>

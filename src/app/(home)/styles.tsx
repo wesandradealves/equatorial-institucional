@@ -177,18 +177,6 @@ export const Loader = styled.div`
 `;
 
 export const Wrapper = styled.div`
-    @keyframes opacity {
-        from {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        to {
-            opacity: 1;
-            visibility: visible;
-        } 
-    }
-    animation: opacity 600ms forwards;
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -255,5 +243,18 @@ export const Logo = styled.h1`
 `;
 
 export const GlobalStyle = createGlobalStyle`
+    @keyframes opacity {
+        from {
+            opacity: 0;
+            visibility: hidden;
+        }
 
+        to {
+            opacity: 1;
+            visibility: visible;
+        } 
+    }
+    body {
+        animation: opacity 600ms forwards;
+    }
 `;
