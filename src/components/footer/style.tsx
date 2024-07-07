@@ -187,7 +187,7 @@ export const Label = styled.p`
 `;
 
 export const Apps = styled.div`
-    gap: 18px 0;
+    gap: 18px 24px;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         gap: 0 24px
     }        
