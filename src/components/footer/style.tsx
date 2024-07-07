@@ -143,9 +143,7 @@ export const NavCol = styled.ul`
     border-bottom: 1px ${props => props.theme.colorPrimary200} solid;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding: 0;
-        &:not(:last-of-type) {
-            border: 0
-        }
+        border: 0;
     }  
 `;
 
