@@ -36,6 +36,37 @@ export const ContactCol = styled.div`
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding: 43px 48px;
     }     
+    &.phone {
+        .inner {
+            p {
+                @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    white-space: initial;
+                    gap: 24px 0;
+                    > span {
+                        flex: 0 0 50%;
+                        padding-right: 14px;
+                        &:nth-child(2n+2) {
+                            padding-right: 0;
+                            padding-left: 14px;
+                            display: flex;
+                            > span {
+                                background: ${props => props.theme.colorPrimary150};
+                                padding: 6px 9px;
+                                border-radius: 999px;
+                                display: flex;
+                                align-items: center;
+                                margin-right: auto;
+                                gap: 0 6px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     &.talktous {
         background: ${props => props.theme.colorPrimary100};
     }
