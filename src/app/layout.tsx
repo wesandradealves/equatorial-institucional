@@ -1,5 +1,5 @@
 'use client'
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Inter } from "next/font/google";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/header";
@@ -28,20 +28,30 @@ export default function RootLayout({
 
   useEffect(() => {
     fetchData();
-    // console.log(theme);
+    console.log(theme);
   }, []); 
   
   return (
     <ThemeProvider theme={theme}>
-      <ConfigProvider.Provider value={{config, setConfig}}>       
-        <div id="wrap" className={`vh-100 d-flex flex-column ${inter.className}`}>
-          {/* <Header /> */}
-          <main className="flex-fill">
-            {children}
-          </main>
-          <Footer />
-        </div>
-      </ConfigProvider.Provider>
+      <HelmetProvider>
+        <ConfigProvider.Provider value={{config, setConfig}}>     
+          <Helmet>
+            <title>Equatorial Energia - Página Inicial</title>
+            <meta name="description" content="This is a description of my page" />
+            <meta property="og:title" content="Equatorial Energia - Página Inicial" />
+            <meta property="og:description" content="This is a description of my page" />
+            <meta name="twitter:title" content="Equatorial Energia - Página Inicial" />
+            <meta name="twitter:description" content="This is a description of my page" />
+          </Helmet>              
+          <div id="wrap" className={`vh-100 d-flex flex-column ${inter.className}`}>
+            {/* <Header /> */}
+            <main className="flex-fill">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </ConfigProvider.Provider>
+      </HelmetProvider>
     </ThemeProvider>
   )
 }

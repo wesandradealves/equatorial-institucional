@@ -1,11 +1,11 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
 export const Container = styled.footer`
-    background-color: ${props => props.theme.colorPrimary300};    
+    background: ${props => props.theme.colorPrimary300};    
 `;
 
 export const Contact = styled.div`
-    background-color: white;
+    background: white;
     overflow: hidden;
     position: relative;
     .container {
@@ -37,10 +37,10 @@ export const ContactCol = styled.div`
         padding: 43px 48px;
     }     
     &.talktous {
-        background-color: ${props => props.theme.colorPrimary100};
+        background: ${props => props.theme.colorPrimary100};
     }
     &.talktoclara {
-        background-color: ${props => props.theme.colorHighlight300};
+        background: ${props => props.theme.colorHighlight300};
         &::after {
             content: "";
             position: absolute;
@@ -70,7 +70,94 @@ export const Anchor = styled.a`
     text-decoration: underline;
     margin-top: 16px;
     display: block;
+    color: inherit;
     &:hover {
         text-decoration: none;
     }
+`;
+
+
+export const FooterTop = styled.div`
+    .container {
+        padding-top: 40px;
+        padding-bottom: 40px;   
+        gap: 40px 0; 
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            padding-top: 90px;
+            padding-bottom: 90px;
+            gap: 0 24px;
+        }
+        color: white;
+        @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+            max-width: initial;
+        }        
+    }
+`;
+
+export const Nav = styled.nav`
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        gap: 0 24px
+    }  
+`;
+
+export const NavCol = styled.ul`
+    padding: 26px 16px;
+    &:not(:last-of-type) {
+        border-bottom: 1px ${props => props.theme.colorPrimary100} solid;
+    }
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        padding: 0;
+        &:not(:last-of-type) {
+            border: 0
+        }
+    }  
+`;
+
+export const NavItem = styled.li`
+    gap: 40px 0;
+`;
+
+export const NavLink = styled.a`
+    color: inherit;
+    &:hover {
+        text-decoration: underline
+    }
+    &:not(:only-child) {
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            font-weight: bold;
+        }          
+        &:hover {
+            text-decoration: initial
+        }
+    }
+`;
+
+export const NavSubmenu = styled.ul`
+    gap: 40px 0;
+`;
+
+export const Arrow = styled.i`
+    cursor: pointer;
+`;
+
+export const SocialNetworks = styled.ul`
+    gap: 24px;
+`;
+
+export const SocialItem = styled.li`
+`;
+
+export const SocialLink = styled.a`
+    color: inherit;
+    font-size: 1.8rem;
+`;
+
+export const Label = styled.p`
+`;
+
+export const Apps = styled.div`
+    gap: 18px 0;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        gap: 0 24px
+    }        
 `;

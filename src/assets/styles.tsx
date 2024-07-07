@@ -1,14 +1,14 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
 interface ContentTypo {
-    backgroundImage: string;
+    backgroundimage: string;
 }
 
 export const ListNav = styled.ul`
     flex: 0 0 auto;
     padding: 24px;
     min-width: 100%;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding: 40px 56px;
         min-width: 512px;
     }
@@ -22,7 +22,7 @@ export const Navigation = styled.nav`
     flex-flow: column;
     gap: 40px 0;
     width: 100%;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         gap: 0 82px;
         width: auto;
         flex-flow: row wrap;  
@@ -85,7 +85,7 @@ export const NavTitle = styled.h2`
     font-weight: normal;
     text-align: center;
     font-size: 2.5rem;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         text-align: initial;
         font-size: 5rem;
     }
@@ -207,8 +207,8 @@ export const Content = styled.div<ContentTypo>`
     overflow: hidden;
     padding-top: 160px;
     padding-bottom: 218px;
-    ${({ backgroundImage }) => backgroundImage && css`
-        background: url(${backgroundImage}) center 0 / cover no-repeat;
+    ${({ backgroundimage }) => backgroundimage && css`
+        background: url(${backgroundimage}) center 0 / cover no-repeat;
     `}      
     > * {
         position: relative;
@@ -226,9 +226,9 @@ export const Content = styled.div<ContentTypo>`
     }
     display: flex;
     justify-content: center;
-    @media screen and (max-width: 992px) {
-        padding-left: 35px;
-        padding-right: 35px;
+    @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+        padding-left: 24px;
+        padding-right: 24px;
     }    
 `;
 
@@ -245,7 +245,7 @@ export const Inner = styled.div`
     align-items: center;
     gap: 105px 0;
     width: 100%;
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         width: auto;
     }
 `;
@@ -255,122 +255,5 @@ export const Logo = styled.h1`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-    *,
-    *:before,
-    *:after {
-        box-sizing: border-box;
-    }
-
-    html,
-    body,
-    div,
-    span,
-    object,
-    iframe,
-    figure,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    blockquote,
-    pre,
-    a,
-    code,
-    em,
-    img,
-    small,
-    strike,
-    strong,
-    sub,
-    sup,
-    tt,
-    b,
-    u,
-    i,
-    ol,
-    ul,
-    li,
-    fieldset,
-    form,
-    label,
-    table,
-    caption,
-    tbody,
-    tfoot,
-    thead,
-    tr,
-    th,
-    td,
-    main,
-    canvas,
-    embed,
-    footer,
-    header,
-    nav,
-    section,
-    video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        vertical-align: baseline;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        text-size-adjust: none;
-        text-decoration: none;
-        font-family: inherit;
-    }
-
-    footer,
-    header,
-    nav,
-    section,
-    main {
-        display: block;
-    }
-
-    body {
-        line-height: 1;
-        font-family: "Inter", sans-serif;
-        font-optical-sizing: auto;
-        min-width: 375px;
-        font-style: normal;            
-    }
-
-    ol,
-    ul {
-        list-style: none;
-    }
-
-    blockquote,
-    q {
-        quotes: none;
-    }
-
-    blockquote:before,
-    blockquote:after,
-    q:before,
-    q:after {
-        content: '';
-        content: none;
-    }
-
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        * {
-            background-color: transparent;
-            vertical-align: middle;
-        }    
-    }
-
-    input {
-        -webkit-appearance: none;
-        border-radius: 0;
-        font-family: 'Rubik', sans-serif;
-    }
 `;

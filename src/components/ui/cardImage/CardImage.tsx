@@ -41,7 +41,7 @@ export function CardImage(props: CardImageProps) {
     <div
       className={`card-image ${currentIndex === props.index ? "selected" : ""}`}
       style={{
-        backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%), url(${imageUrl})`,
+        backgroundimage: `linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%), url(${imageUrl})`,
       }}
     >
       <div className="content-top">

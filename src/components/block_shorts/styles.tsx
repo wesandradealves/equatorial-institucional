@@ -1,7 +1,7 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
 interface VideoPillTypo {
-    backgroundImage: string;
+    backgroundimage: string;
 }
 
 export const Content = styled.section`
@@ -44,21 +44,18 @@ export const BlockHeading = styled.div`
     gap: 53px 0;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding-right: 60px;
-        @media screen and (min-width: ${props => props.theme.screenXlMin}) {
-            padding-right: 120px;
-        }
     }    
 `;
 
 export const VideoPill = styled.div<VideoPillTypo>`
-    ${({ backgroundImage }) => backgroundImage && css`
-        background: url(${backgroundImage}) center 0 / cover no-repeat;
+    ${({ backgroundimage }) => backgroundimage && css`
+        background: url(${backgroundimage}) center 0 / cover no-repeat;
     `}   
     border-radius: 19px;
     overflow: hidden;
     position: relative;
     height: 350px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
         height: 400px;
         @media screen and (min-width: ${props => props.theme.screenXlMin}) {
             height: 450px;

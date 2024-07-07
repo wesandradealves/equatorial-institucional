@@ -51,7 +51,9 @@
         .slick-list {
             margin: 0 -5px;
             .slick-track {
-                padding: 35px 0;
+                @media screen and (min-width: $screen-lg-min) {
+                    padding: 35px 0;
+                }
                 display: flex;
                 align-items: center;                    
                 .slick-slide {
@@ -60,7 +62,8 @@
                     @media screen and (min-width: $screen-lg-min) {
                         margin: 0 15px 0 0px;
                         
-                        transition: 600ms ease-in-out all;
+                        transition: 250ms ease-in-out all;
+
                         &.slick-active.slick-center.slick-current {
                             transform: scale(1.15);
                             margin-right: 45px;

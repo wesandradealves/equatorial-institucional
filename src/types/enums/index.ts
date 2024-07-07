@@ -164,3 +164,7 @@ export interface ContactTypo {
     img?: string
   }
 }
+
+export interface NavColTypo {
+  props?: any;
+}
