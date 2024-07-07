@@ -19,7 +19,7 @@ export default function RootLayout({
   const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!@/assets/variables.scss');
 
   const fetchData = async() => {
-    const config:ConfigTypo[] = await http.get('/api/config')
+    const config:ConfigTypo = await http.get('/api/config')
     setConfig(config?.data);
   }  
 
@@ -29,14 +29,14 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
         <ThemeProvider theme={theme}>
           <HelmetProvider>                        
             <ConfigProvider.Provider value={{config, setConfig}}>  
             <>{children}</>
             </ConfigProvider.Provider>
           </HelmetProvider>
-          <GlobalStyle />
+          <GlobalStyle/>
         </ThemeProvider>             
       </body>
     </html>

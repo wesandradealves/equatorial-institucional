@@ -19,7 +19,7 @@ interface DataTypo {
 }
 
 export interface ConfigTypo {
-    data: Record<any, DataTypo>
+    data?: Record<any, DataTypo>
     config?: Record<any, DataTypo>
     setConfig?: React.Dispatch<any>
 }

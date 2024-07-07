@@ -1,7 +1,7 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
 interface VideoPillTypo {
-    backgroundimage: string;
+    background_image: string;
 }
 
 export const Content = styled.section`
@@ -48,8 +48,8 @@ export const BlockHeading = styled.div`
 `;
 
 export const VideoPill = styled.div<VideoPillTypo>`
-    ${({ backgroundimage }) => backgroundimage && css`
-        background: url(${backgroundimage}) center 0 / cover no-repeat;
+    ${({ background_image }) => background_image && css`
+        background: url(${background_image}) center 0 / cover no-repeat;
     `}   
     border-radius: 19px;
     overflow: hidden;

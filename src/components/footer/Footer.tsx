@@ -1,7 +1,6 @@
 "use client";
 import { HttpService } from "@/services";
 import { useContext, useEffect, useState } from "react";
-import ConfigProvider from "@/context/store";
 import { Container, Contact, ColText, ContactCol, Anchor, FooterTop, Nav, SocialNetworks, SocialItem, SocialLink, Label, Apps } from './style';
 import { NavigationTypo, FooterData } from "@/types/enums";
 import { NavColumn } from "./NavCol";
@@ -9,12 +8,11 @@ import { NavColumn } from "./NavCol";
 export default function Footer() {
   const http = new HttpService();
 
-  const { config } = useContext<any>(ConfigProvider);
   const [footerData, setFooterData] = useState<FooterData[] | any>(null);
   const [navigation, setNavigation] = useState<NavigationTypo[] | any>(null);
   const [dimensions, setWindowDimensions] = useState<any>({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: typeof window !== "undefined" ? window?.innerWidth : null,
+    height: typeof window !== "undefined" ? window?.innerHeight : null,
   });
 
   const getFooter = async () => {

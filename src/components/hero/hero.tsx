@@ -19,7 +19,7 @@ export function Hero():JSX.Element {
     }
 
     return (
-        <section id="hero" className="hero">
+        <section id="hero" className="hero overflow-hidden col-12">
             <div className="container">
                 <div className="wrapper">
                     <div className="body">

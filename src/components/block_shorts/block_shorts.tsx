@@ -62,7 +62,7 @@ export default function BlockShorts(props: any) {
 
   useEffect(() => {
     if(blockData) {
-      fetchData('/api/config').then((response: any[]) => {
+      fetchData('/api/config').then((response: any) => {
         if(response) {
           const basePath = response?.data?.basePath;
           
@@ -105,7 +105,7 @@ export default function BlockShorts(props: any) {
             <Slider {...settings}>
               {data.map((row: any, i: any) => (
                 <div key={i}>
-                  <VideoPill backgroundimage={row.thumbnail}  >
+                  <VideoPill background_image={row.thumbnail}  >
                     <VideoPillInner className='d-flex flex-column justify-content-end'>
                       <VideoPillTitle>{row.title}</VideoPillTitle>
 

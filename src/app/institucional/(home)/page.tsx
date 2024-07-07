@@ -18,7 +18,13 @@ export default function Home() {
       {config && <Helmet>
         <title>{`${config?.site_name} - Página Inicial`}</title>
       </Helmet>}      
+      <Hero/>
+      <ConvenienceAndSecurity />
       <BlockShorts />
+      <IniciativasEquatorial />
+      <UltimasNoticias />
+      <Institucional />
+      <PerguntasFrequentes />      
     </>
   )
 }
