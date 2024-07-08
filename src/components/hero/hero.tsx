@@ -1,12 +1,18 @@
 "use client"
 import "./hero.scss"
 import Image from 'next/image'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ServiceCard from "@/components/ui/patterns/card/service-card/service-card";
 import StateSelector from "@/components/ui/header/stateSelector";
 import imagemClaraPose from '@/assets/img/imagemClaraPose.svg'
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import {HeroContainer} from "@/components/hero/style";
+import {ConfigTypo, NavTypo} from "@/types/enums";
+import {HttpService} from "@/services";
 export function Hero():JSX.Element {
+    const http = new HttpService();
+    const [config, setConfig] = useState<ConfigTypo[]>([]);
+    const [navigation, setNavigation] = useState<NavTypo[]>([]);
     const [activePlusServices, setActivePlusServices] = useState(false)
     const [listaService, setListaService] = useState([{id:1,title:'Emitir segunda via da conta',icon:'file_copy'},
         {id:2,title:'Informar falta de luz',icon:'flash_off'},{id:3,title:'Solicitar religação',icon:'lightbulb_outline'},{id:4,title:'Passar a conta para seu nome',icon:'supervisor_account'},{id:5,title:'Entender a sua conta de luz',icon:'flash_on'},
@@ -14,12 +20,22 @@ export function Hero():JSX.Element {
     ])
     const listaMenu = [{id:1, title: 'Todos'},{id:2, title: 'Serviços de energia'},{id:3, title: 'Serviços de pagamento'},{id:4, title: 'Consultas'},{id:5, title: 'Dados cadastrais'},]
 
+    const fetchData = async() => {
+        const config:ConfigTypo[] = await http.get('/api/config')
+        const navigation:NavTypo[] = await http.get('/api/blocks/banner')
+        setConfig(config);
+        setNavigation(navigation);
+    }
     const handleClickPlus = ()=> {
         setActivePlusServices(!activePlusServices)
     }
 
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     return (
-        <section id="hero" className="hero overflow-hidden col-12">
+        <HeroContainer backgroundImage={config?.data?.basePath + navigation[0]?.image}>
             <div className="container">
                 <div className="wrapper">
                     <div className="body">
@@ -108,7 +124,7 @@ export function Hero():JSX.Element {
                     </div>
                 </div>
             </div>
-        </section>
+        </HeroContainer>
     )
 }
 
