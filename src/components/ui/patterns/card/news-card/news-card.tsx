@@ -26,7 +26,7 @@ export function NewsCard(props: NewsCardProps) {
   return (
     <div className={styles['container']}>
       <div
-        style={{ backgroundImage: `url(${imageUrl})` }}
+        style={{ backgroundimage: `url(${imageUrl})` }}
         className={styles['card']}
       >
         <div className={styles['card-content']}>{props.children}</div>

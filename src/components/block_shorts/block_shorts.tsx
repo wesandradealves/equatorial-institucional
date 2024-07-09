@@ -24,7 +24,8 @@ export default function BlockShorts(props: any) {
 
   const settings = {
     dots: true,
-    infinite: false,
+    arrows: false,
+    infinite: true,
     speed: 500,
     centerMode: true,
     slidesToShow: 2,
@@ -61,7 +62,7 @@ export default function BlockShorts(props: any) {
 
   useEffect(() => {
     if(blockData) {
-      fetchData('/api/config').then((response: any[]) => {
+      fetchData('/api/config').then((response: any) => {
         if(response) {
           const basePath = response?.data?.basePath;
           
@@ -103,17 +104,17 @@ export default function BlockShorts(props: any) {
           <Column className='col-12 col-lg-7'>
             <Slider {...settings}>
               {data.map((row: any, i: any) => (
-                <div>
-                  <VideoPill backgroundImage={row.thumbnail} key={i} >
+                <div key={i}>
+                  <VideoPill background_image={row.thumbnail}  >
                     <VideoPillInner className='d-flex flex-column justify-content-end'>
                       <VideoPillTitle>{row.title}</VideoPillTitle>
 
                       {row.url && <PlayVideo onClick={() => setOpen({
                         status: true,
                         video: row.url.split("shorts/")[1]
-                      })}  className='d-flex flex-column justify-content-start align-items-end justify-content-lg-center align-items-lg-center' href="javascript:void(0)">
+                      })}  className='d-flex flex-column justify-content-start align-items-end justify-content-lg-center align-items-lg-center' href="#">
                         <svg className='d-none d-lg-block' xmlns="http://www.w3.org/2000/svg" width="59" height="58" viewBox="0 0 59 58" fill="none">
-                          <path d="M43.8667 26.3161C47.1324 28.136 47.1443 30.4253 43.8667 32.4828L18.541 49.563C15.3588 51.2612 13.1976 50.2585 12.9708 46.584L12.8633 10.8355C12.7916 7.45075 15.5797 6.49444 18.2365 8.11726L43.8667 26.3161Z" stroke="white" stroke-width="4.05691"/>
+                          <path d="M43.8667 26.3161C47.1324 28.136 47.1443 30.4253 43.8667 32.4828L18.541 49.563C15.3588 51.2612 13.1976 50.2585 12.9708 46.584L12.8633 10.8355C12.7916 7.45075 15.5797 6.49444 18.2365 8.11726L43.8667 26.3161Z" stroke="white" strokeWidth="4.05691"/>
                         </svg>      
                         <svg className='d-block d-lg-none' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
                           <path d="M19.998 27.5C21.3814 27.5 22.498 28.6167 22.498 30C22.498 31.3833 21.3814 32.5 19.998 32.5C18.6147 32.5 17.498 31.3833 17.498 30C17.498 28.6167 18.6147 27.5 19.998 27.5ZM17.498 20C17.498 21.3833 18.6147 22.5 19.998 22.5C21.3814 22.5 22.498 21.3833 22.498 20C22.498 18.6167 21.3814 17.5 19.998 17.5C18.6147 17.5 17.498 18.6167 17.498 20ZM17.498 10C17.498 11.3833 18.6147 12.5 19.998 12.5C21.3814 12.5 22.498 11.3833 22.498 10C22.498 8.61667 21.3814 7.5 19.998 7.5C18.6147 7.5 17.498 8.61667 17.498 10Z" fill="white"/>

@@ -39,7 +39,7 @@ const CardVideo: React.FC<CardVideoProps> = ({
     return (
         <div className="card-video" style={{ width, height, position: 'relative', backgroundColor: 'black' }}>
             {!isPlayerVisible && (
-                <div className="video-thumbnail" style={{ backgroundImage: `url(${thumbnailUrl})`, width: '100%', height: '100%' }}>
+                <div className="video-thumbnail" style={{ backgroundimage: `url(${thumbnailUrl})`, width: '100%', height: '100%' }}>
                      
                     <div className="overlay">
                         
