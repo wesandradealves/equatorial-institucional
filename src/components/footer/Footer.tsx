@@ -1,6 +1,6 @@
 "use client";
 import { HttpService } from "@/services";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Contact, ColText, ContactCol, Anchor, FooterTop, Nav, SocialNetworks, SocialItem, SocialLink, Label, Apps } from './style';
 import { NavigationTypo, FooterData } from "@/types/enums";
 import { NavColumn } from "./NavCol";
@@ -93,7 +93,7 @@ export default function Footer() {
   };  
 
   return (
-    <Container>
+    <Container className="footer">
       {footerData && navigation && <FooterTop>
         <div className="container d-flex flex-column flex-lg-row flex-wrap align-items-stretch">
           {navigation && <Nav className="flex-fill d-flex flex-column flex-lg-row flex-wrap align-items-stretch">
