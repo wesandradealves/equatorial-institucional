@@ -15,12 +15,12 @@ export default function Footer() {
 
   const {navigation, setNavigation} = useContext<any>(NavigationProvider);
 
-  const [dimensions, setWindowDimensions] = useState<any>({
-    width: typeof window !== "undefined" ? window?.innerWidth : null,
-    height: typeof window !== "undefined" ? window?.innerHeight : null,
-  });
+  // const [dimensions, setWindowDimensions] = useState<any>({
+  //   width: typeof window !== "undefined" ? window?.innerWidth : null,
+  //   height: typeof window !== "undefined" ? window?.innerHeight : null,
+  // });
 
-  const getFooter = async () => {
+  const fetchData = async () => {
     const footer: FooterData = await http.get("/api/footer");
     setFooterData(footer);
   };
@@ -32,19 +32,19 @@ export default function Footer() {
     setNavigation(navigation);
   };  
 
-  const handleResize = () => {
-    setWindowDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  };  
+  // const handleResize = () => {
+  //   setWindowDimensions({
+  //     width: window.innerWidth,
+  //     height: window.innerHeight,
+  //   });
+  // };  
 
   useEffect(() => {
-    getFooter();
+    fetchData();
     getNavigation();
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);    
+    // window.addEventListener("resize", handleResize);
+    // return () => window.removeEventListener("resize", handleResize);    
   }, []);
 
   const handlePhones = (o: any) => {

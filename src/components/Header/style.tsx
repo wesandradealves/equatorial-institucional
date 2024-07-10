@@ -4,7 +4,7 @@ interface HeaderTypo {
     is_scrolling: any;
 }
 
-export const Container = styled.header`      
+export const Container = styled.header`   
     position: fixed;
     top: 0;
     left: 0;
