@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { HttpService } from '@/services';
 import { ThemeProvider } from 'styled-components';
 
-import "@/globals.scss";
+import "@/assets/scss/globals.scss";
 import { GlobalStyle } from './(home)/styles';
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   const http = new HttpService();
   const [config, setConfig] = useState<ConfigTypo | any>(null);
-  const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!@/assets/variables.scss');
+  const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!@/assets/scss/variables.scss');
 
   const fetchData = async() => {
     const config:ConfigTypo = await http.get('/api/config')
@@ -25,7 +25,11 @@ export default function RootLayout({
 
   useEffect(() => {
     fetchData();
-  }, []); 
+  }, []);  
+
+  useEffect(() => {
+    console.log(theme)
+  }, [theme]);    
 
   return (
     <html lang="en">
