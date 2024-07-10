@@ -1,5 +1,5 @@
 "use client";
-import Brand from "@/components/brand/brand";
+import Brand from "@/components/Brand/Brand";
 export default function Template({ children }: { children: React.ReactNode }) {
     return (
         <>

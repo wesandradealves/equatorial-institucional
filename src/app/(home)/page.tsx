@@ -1,7 +1,7 @@
 "use client";
 import { Helmet } from "react-helmet-async";
 import { Wrapper, Content, Inner, Logo, Navigation, NavTitle, ListNav, NavItem, NavLink} from "./styles";
-import ConfigProvider from "@/context/store";
+import ConfigProvider from "@/context/config";
 import { useContext, useEffect, useState } from "react";
 import { HttpService } from "@/services";
 import { NavTypo } from "@/types/enums";
