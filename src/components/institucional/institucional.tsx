@@ -1,7 +1,4 @@
 import styles from "./institucional.module.scss";
-import TabList from "../ui/tab/TabList";
-import CardServices from "../ui/cardservices/CardServices";
-import PageControl from "../ui/navigation/page-control/page-control";
 
 export default function Institucional() {
 
@@ -65,14 +62,14 @@ export default function Institucional() {
                         Somos a primeira empresa multi-utilities do país.
                     </h2>
                     <div className={styles.tab}>
-                    <TabList
+                    {/* <TabList
                         orientation="horizontal"
                         size="small"
-                        tabs={tabs} />
+                        tabs={tabs} /> */}
                     </div>
                 </div>
 
-                <div className={styles.cards}>
+                {/* <div className={styles.cards}>
                     {items.map((item, index) => (
                         <CardServices
                             key={index}
@@ -86,13 +83,13 @@ export default function Institucional() {
                             height={item.height}
                         />
                     ))}
-                </div>
-                <div className={styles.control}>
+                </div> */}
+                {/* <div className={styles.control}>
                     <PageControl
                         totalPages={items.length}
                         currentIndex={1}
                     />
-                </div>
+                </div> */}
             </div>
         </>
     );

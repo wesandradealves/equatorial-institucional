@@ -1,6 +1,4 @@
-@import "../../assets/colors.scss";
-@import "../../assets/fonts.scss";
-@import "../../assets/spacing.scss";
+@import '@/assets/scss/variables';
 
 .container {
   @include padding(all, md);

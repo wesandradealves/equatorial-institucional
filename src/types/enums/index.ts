@@ -24,6 +24,26 @@ export interface ConfigTypo {
     setConfig?: React.Dispatch<any>
 }
 
+export interface ServicesTypo {
+  field_link?: {
+    value: String
+  }
+  field_titulo?: {
+    value: String
+  }
+  field_imagem?: {
+    value: String
+  }
+}
+
+export interface BannerTypo {
+  [x: string]: any
+  image?: String
+  clara_shortcut?: String
+  title?: String
+  services?: any
+}
+
 export interface NavTypo {
     title?: String
     description?: String

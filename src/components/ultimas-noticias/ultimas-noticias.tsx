@@ -1,8 +1,5 @@
 "use client";
 import styles from "./ultimas-noticias.module.scss";
-import TagContent from "@/components/ui/patterns/tag/tag-content/tag-content";
-import Button from "@/components/ui/actions/Button";
-import NewsCard from "@/components/ui/patterns/card/news-card/news-card";
 import { HttpService } from "@/services";
 import { useEffect, useState } from "react";
 import { News, NewsTypo } from "./types/news_typo";
@@ -31,16 +28,16 @@ export default function UltimasNoticias() {
             Fique por dentro<br></br> das últimas notícias
           </h4>
         </div>
-        <div className={styles.action}>
+        {/* <div className={styles.action}>
           <Button
             label="Ver todas as notícias"
             size="small"
             variant="secondary"
           />
-        </div>
+        </div> */}
         <div className={styles.news}>
 
-        {news && news.map((item, index) => (
+        {/* {news && news.map((item, index) => (
             <NewsCard
               key={index}
               title={item.title}
@@ -53,7 +50,7 @@ export default function UltimasNoticias() {
                 <TagContent key={j} label={tag} />
               ))}
             </NewsCard>
-          ))}
+          ))} */}
         </div>
       </div>
     </>

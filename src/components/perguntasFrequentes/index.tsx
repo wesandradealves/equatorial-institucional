@@ -2,8 +2,6 @@
 import styles from './style.module.scss'
 import Image from 'next/image'
 import imagemClaraPose from '@/assets/img/imagemClaraPose.svg';
-import Collapse from '@/components/ui/inputs/Collapse';
-import Button from '@/components/ui/actions/Button';
 import {HttpService} from "@/services";
 import {useEffect, useState} from "react";
 
@@ -40,11 +38,11 @@ export function PerguntasFrequentes(){
           </div>
           <div className={styles.containerlistMenu}>
               <div className={styles.listMenu}>
-                  {listFaq.map((item,index) => (
+                  {/* {listFaq.map((item,index) => (
                       <Collapse key={index} title={item.title} description={item.body}/>
-                  ))}
+                  ))} */}
                 </div>
-          <Button label='Ver mais perguntas' variant='outline'/>
+                {/* <Button label='Ver mais perguntas' variant='outline'/> */}
         </div>
       </div>
     </div>

@@ -1,18 +1,18 @@
 "use client"
 import "./hero.scss"
 import Image from 'next/image'
-import {useEffect, useState} from "react";
-import ServiceCard from "@/components/ui/patterns/card/service-card/service-card";
-import StateSelector from "@/components/ui/header/stateSelector";
+import {useContext, useEffect, useState} from "react";
+// import ServiceCard from "@/components/ui/patterns/card/service-card/service-card";
+// import StateSelector from "@/components/ui/header/stateSelector";
 import imagemClaraPose from '@/assets/img/imagemClaraPose.svg'
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import {HeroContainer} from "@/components/hero/style";
-import {ConfigTypo, NavTypo} from "@/types/enums";
+import {BannerTypo} from "@/types/enums";
 import {HttpService} from "@/services";
-export function Hero():JSX.Element {
+
+export default function Hero(props: any) {
     const http = new HttpService();
-    const [config, setConfig] = useState<ConfigTypo[]>([]);
-    const [navigation, setNavigation] = useState<NavTypo[]>([]);
+    const [data, setData] = useState<BannerTypo>([]);
     const [activePlusServices, setActivePlusServices] = useState(false)
     const [listaService, setListaService] = useState([{id:1,title:'Emitir segunda via da conta',icon:'file_copy'},
         {id:2,title:'Informar falta de luz',icon:'flash_off'},{id:3,title:'Solicitar religação',icon:'lightbulb_outline'},{id:4,title:'Passar a conta para seu nome',icon:'supervisor_account'},{id:5,title:'Entender a sua conta de luz',icon:'flash_on'},
@@ -21,10 +21,9 @@ export function Hero():JSX.Element {
     const listaMenu = [{id:1, title: 'Todos'},{id:2, title: 'Serviços de energia'},{id:3, title: 'Serviços de pagamento'},{id:4, title: 'Consultas'},{id:5, title: 'Dados cadastrais'},]
 
     const fetchData = async() => {
-        const config:ConfigTypo[] = await http.get('/api/config')
-        const navigation:NavTypo[] = await http.get('/api/blocks/banner')
-        setConfig(config);
-        setNavigation(navigation);
+        const response:BannerTypo = await http.get('/api/blocks/banner')
+        if(response) setData(response.shift())
+
     }
     const handleClickPlus = ()=> {
         setActivePlusServices(!activePlusServices)
@@ -32,10 +31,10 @@ export function Hero():JSX.Element {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, []); 
 
     return (
-        <HeroContainer backgroundImage={config?.data?.basePath + navigation[0]?.image}>
+        <HeroContainer background_image={`${props?.basePath}${data?.image}`}>
             <div className="container">
                 <div className="wrapper">
                     <div className="body">
@@ -43,7 +42,8 @@ export function Hero():JSX.Element {
                             <div className='listaInfo'>
                                 <div>
                                     <div>
-                                        <span>Você está em</span> <StateSelector/>
+                                        <span>Você está em</span> 
+                                        {/* <StateSelector/> */}
                                     </div>
                                     <h1>Como podemos te ajudar hoje?</h1>
                                 </div>
@@ -62,11 +62,11 @@ export function Hero():JSX.Element {
                                     <p>Prefere resolver pelo WhatsApp? <a>Fale com a Clara</a></p>
                                 </div>
                             </div>
-                            <div className='listaCardService'>
+                            {/* <div className='listaCardService'>
                                 {listaService.map((item) => (
                                     <ServiceCard onClick={handleClickPlus} key={item.id} title={item.title} symbols={item.icon}/>
                                 ))}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -126,6 +126,4 @@ export function Hero():JSX.Element {
             </div>
         </HeroContainer>
     )
-}
-
-export default Hero
+} 
