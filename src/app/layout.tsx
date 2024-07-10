@@ -1,12 +1,16 @@
 'use client'
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import ConfigProvider from '@/context/store';
-import { ConfigTypo } from '@/types/enums';
+import ConfigProvider from '@/context/config';
+import LanguageProvider from '@/components/LanguageSwitcher/context';
+import NavigationProvider from '@/components/Footer/context';
+import { ConfigTypo, LanguagesTypo, NavigationTypo } from '@/types/enums';
 import { useEffect, useState } from 'react';
 import { HttpService } from '@/services';
 import { ThemeProvider } from 'styled-components';
 
 import "@/assets/scss/globals.scss";
+import "@/../hamburgers/_sass/hamburgers/hamburgers.scss";
+
 import { GlobalStyle } from './(home)/styles';
 
 export default function RootLayout({
@@ -16,11 +20,13 @@ export default function RootLayout({
 }) {
   const http = new HttpService();
   const [config, setConfig] = useState<ConfigTypo | any>(null);
+  const [lang, setLanguage] = useState<LanguagesTypo | any>(null);
+  const [navigation, setNavigation] = useState<NavigationTypo | any>(null);
   const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!@/assets/scss/variables.scss');
 
   const fetchData = async() => {
     const config:ConfigTypo = await http.get('/api/config')
-    setConfig(config?.data);
+    if(config) setConfig(config?.data)
   }  
 
   useEffect(() => {
@@ -35,10 +41,14 @@ export default function RootLayout({
     <html lang="pt-br">
       <body suppressHydrationWarning={true}>
         <ThemeProvider theme={theme}>
-          <HelmetProvider>                        
-            <ConfigProvider.Provider value={{config, setConfig}}>  
-            <>{children}</>
-            </ConfigProvider.Provider>
+          <HelmetProvider>                     
+            <LanguageProvider.Provider value={{lang, setLanguage}}>
+              <NavigationProvider.Provider value={{navigation, setNavigation}}>  
+                <ConfigProvider.Provider value={{config, setConfig}}>  
+                  <>{children}</>
+                </ConfigProvider.Provider>
+              </NavigationProvider.Provider>
+            </LanguageProvider.Provider>   
           </HelmetProvider>
           <GlobalStyle/>
         </ThemeProvider>             

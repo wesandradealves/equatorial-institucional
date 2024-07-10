@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React from "react";
 import Slider from "react-slick";
-import "@/components/block_shorts/style.scss";
+import "@/components/BlockShorts/style.scss";
 import ModalVideo from 'react-modal-video';
 import { Button } from '@/assets/tsx/objects';
 

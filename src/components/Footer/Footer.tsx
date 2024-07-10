@@ -1,15 +1,20 @@
 "use client";
 import { HttpService } from "@/services";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Container, Contact, ColText, ContactCol, Anchor, FooterTop, Nav, SocialNetworks, SocialItem, SocialLink, Label, Apps } from './style';
 import { NavigationTypo, FooterData } from "@/types/enums";
 import { NavColumn } from "./NavCol";
+import LanguageProvider from "@/components/LanguageSwitcher/context";
+import NavigationProvider from "@/components/Footer/context";
 
 export default function Footer() {
   const http = new HttpService();
+  const { lang } = useContext<any>(LanguageProvider);
 
-  const [footerData, setFooterData] = useState<FooterData[] | any>(null);
-  const [navigation, setNavigation] = useState<NavigationTypo[] | any>(null);
+  const [footerData, setFooterData] = useState<FooterData | any>(null);
+
+  const {navigation, setNavigation} = useContext<any>(NavigationProvider);
+
   const [dimensions, setWindowDimensions] = useState<any>({
     width: typeof window !== "undefined" ? window?.innerWidth : null,
     height: typeof window !== "undefined" ? window?.innerHeight : null,
@@ -61,16 +66,18 @@ export default function Footer() {
       return (<ContactCol key={i} className={`flex-fill ${key}`}>
         <span className="inner d-flex flex-wrap">
           <span className="flex-fill">
-            {dimensions.width <= 992 ? 
-              <ColText dangerouslySetInnerHTML={{ __html: handlePhones(o[key]?.pt_br.split('\r\n')) }}></ColText> : 
-              <ColText dangerouslySetInnerHTML={{ __html: o[key]?.pt_br }}></ColText>
-            }
+            {/* {dimensions.width <= 992 ? 
+              <ColText dangerouslySetInnerHTML={{ __html: handlePhones(o[key][lang?.key.replace("-","_")].split('\r\n')) }}></ColText> : 
+              <ColText dangerouslySetInnerHTML={{ __html: o[key][lang?.key.replace("-","_")] }}></ColText>
+            } */}
+
+            <ColText dangerouslySetInnerHTML={{ __html: o[key][lang?.key.replace("-","_")] }}></ColText>
 
             {o[key]?.link && o[key]?.link?.url && <ColText>
-              <Anchor href={o[key]?.link?.url}>{o[key]?.link?.label?.pt_br}</Anchor>
+              <Anchor href={o[key]?.link?.url}>{o[key]?.link?.label[lang?.key.replace("-","_")]}</Anchor>
             </ColText>}
           </span>
-          {o[key]?.img && <img alt={o[key]?.pt_br} src={o[key]?.img} />}          
+          {o[key]?.img && <img alt={o[key][lang?.key.replace("-","_")]} src={o[key]?.img} />}          
         </span>
       </ContactCol>);
     }));   
@@ -105,7 +112,7 @@ export default function Footer() {
             <div className="col-lg-4 col-xl-auto">
               {footerData?.data?.social_networks && footerData?.data?.social_networks?.links && <div className="mb-5">
                 {footerData?.data?.social_networks?.label && <Label className="mb-3">
-                    {footerData?.data?.social_networks?.label?.pt_br}
+                    {footerData?.data?.social_networks?.label[lang?.key.replace("-","_")]}
                 </Label>}
                 <SocialNetworks className="d-flex align-items-center">
                   {handleSocialLinks(footerData?.data?.social_networks?.links)}
@@ -114,7 +121,7 @@ export default function Footer() {
 
               {footerData?.data?.store && footerData?.data?.store?.links && <Apps className="d-flex flex-row flex-wrap">
                 {footerData?.data?.store?.label && <Label className="mb-3 col-12">
-                    {footerData?.data?.store?.label?.pt_br}
+                    {footerData?.data?.store?.label[lang?.key.replace("-","_")]}
                 </Label>}
                 {handleAppStore(footerData?.data?.store?.links)}
               </Apps>}

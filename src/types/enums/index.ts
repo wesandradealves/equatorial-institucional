@@ -109,10 +109,14 @@ export class Service {
 }
 
 export interface NavigationTypo {
-	title?: string,
+  data?: any
+	title?: string
 	description?: string
 	absolute?: string
 	below?: any
+  navigation?: any 
+  className?: any
+  setNavigation?: React.Dispatch<any>  
 }
 
 export interface FooterData {
@@ -150,4 +154,10 @@ export interface HeaderTypo {
   text: any
   tariff_band: any
   searchbar: any
+}
+
+export interface LanguagesTypo {
+  [x: string]: any
+  lang?: any | undefined
+  setLanguage?: React.Dispatch<any>  
 }
