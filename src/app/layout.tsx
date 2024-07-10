@@ -32,7 +32,7 @@ export default function RootLayout({
   }, [theme]);    
 
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body suppressHydrationWarning={true}>
         <ThemeProvider theme={theme}>
           <HelmetProvider>                        

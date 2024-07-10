@@ -1,0 +1,71 @@
+@import '../../../../assets/fonts';
+
+.wrapper {
+  width: 100%;
+}
+
+.collapsibleBase {
+  @include fonts-mobile(body-large-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  cursor: pointer;
+  padding: 14px;
+  width: 100%;
+  height: 88px;
+  border-radius: 4px;
+  text-align: left;
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+  span{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    max-width: 100%;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.collapsibleBase--box {
+  justify-content: space-between;
+  width: 345px;
+  &:hover {
+    background-color: rgba(235, 235, 235, 1);
+  }
+}
+
+.collapse-panel {
+  width: 100%;
+  border-bottom: 1px solid #EBEBEB;
+  transition:all 0.3s ease-in-out;
+}
+.collapse-panel-active {
+  background-color: #EBEBEB;
+}
+.collapse-content {
+  width: 100%;
+  display: grid;
+  grid-template-rows:0fr;
+  padding: 1rem;
+  overflow-y: hidden;
+  transition: grid-template-rows 0.3s ease-in-out;
+}
+
+.collapse-content > div {
+  overflow-y: scroll;
+}
+
+.collapse-content-active {
+  overflow-y: hidden;
+  display: grid;
+  margin-bottom: 1rem;
+  grid-template-rows: 1fr;
+  border-bottom: 1px solid #EBEBEB;
+  border-left: 1px solid #EBEBEB;
+  border-right: 1px solid #EBEBEB;
+}
+
+

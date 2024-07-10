@@ -7,41 +7,32 @@ export enum EHttpMethod {
 
 interface DataTypo {
     pt_br: DataTypo
-    copyright?: {
-        en?: string
-        pt_br?: string
-    }
-    site_name?: string
-    basePath?: string
-    logo?: string
-    location_screen_bg?: string
-    favico?: string
+    copyright?: any | undefined
+    site_name?: string | undefined
+    basePath?: string | undefined
+    logo?: string | undefined
+    location_screen_bg?: string | undefined
+    favico?: string | undefined
 }
 
 export interface ConfigTypo {
-    data?: Record<any, DataTypo>
-    config?: Record<any, DataTypo>
+    data?: any | undefined
+    config?: any | undefined
     setConfig?: React.Dispatch<any>
 }
 
 export interface ServicesTypo {
-  field_link?: {
-    value: String
-  }
-  field_titulo?: {
-    value: String
-  }
-  field_imagem?: {
-    value: String
-  }
+  field_link?: any
+  field_titulo?: any
+  field_imagem?: any
 }
 
 export interface BannerTypo {
   [x: string]: any
-  image?: String
-  clara_shortcut?: String
-  title?: String
-  services?: any
+  image?: String | undefined
+  clara_shortcut?: String | undefined
+  title?: String | undefined
+  services?: any | undefined
 }
 
 export interface NavTypo {
@@ -56,7 +47,7 @@ interface SettingsBlockTypo {
 
 export interface BlockTypo {
     rows?: any | undefined
-    settings?: Record<any, SettingsBlockTypo>
+    settings?: any | undefined
     id?: string | undefined
     title?: any | undefined
     info?: string | undefined
@@ -78,13 +69,13 @@ export interface ServiceTypo {
     id?: string
     image?: string
     title?: string
-    services?: Number[]
+    services?: any
 }
 
 export interface ServiceFieldTypo {
-    field_imagem?: FieldImage[]
-    field_link?: FieldLink[]
-    field_titulo?: FieldTitulo[]
+    field_imagem?: any
+    field_link?: any
+    field_titulo?: any
 }
 
 export interface FieldImage {
@@ -121,71 +112,42 @@ export interface NavigationTypo {
 	title?: string,
 	description?: string
 	absolute?: string
-	below?: NavigationTypo[]
+	below?: any
 }
 
 export interface FooterData {
-  data?: Record<any, FooterTypo> 
+  data?: any
 }
 
 export interface FooterTypo {
-  phone?: {
-    en?: string
-    pt_br?: string
-  }
-  social_networks?: SocialNetworksTypo,
-  store?: StoreTypo,
-  contact?: ContactTypo,
+  phone?: any
+  social_networks?: any,
+  store?: any,
+  contact?: any,
 }
 
 export interface SocialNetworksTypo {
-  links?: {
-    facebook?: string
-    twitter?: string
-    instagram?: string
-    youtube?: string
-  }
-  label?: {
-    en?: string
-    pt_br?: string
-  }
+  links?: any
+  label?: any
 }
 
 export interface StoreTypo {
-  links?: {
-    appstore?: {
-      img?: string
-      url?: string
-    }
-    googleplay?: {
-      img?: string
-      url?: string
-    }
-  }
-  label?: {
-    en?: string
-    pt_br?: string
-  }
+  links?: any
+  label?: any
 }
 
 export interface ContactTypo {
-  phone?: {
-    pt_br?: string
-    en?: string
-  }
-  talktous?: {
-    pt_br?: string
-    en?: string
-    url?: string
-  }
-  talktoclara?: {
-    pt_br?: string
-    en?: string
-    url?: string
-    img?: string
-  }
+  phone?: any
+  talktous?: any
+  talktoclara?: any
 }
 
 export interface NavColTypo {
-  props?: any;
+  props?: any
+}
+
+export interface HeaderTypo {
+  text: any
+  tariff_band: any
+  searchbar: any
 }
