@@ -6,12 +6,20 @@ import Image from "next/image";
 import NavigationProvider from "@/components/Footer/context";
 import Navigation from "@/components/Header/Navigation";
 import SearchIcon from '@mui/icons-material/Search';
+import SearchBar from "@/components/SearchBar/SearchBar";
+import { HeaderTypo, NavigationTypo } from "@/types/enums";
+import { HttpService } from "@/services";
 
 export default function Header() {
+  const http = new HttpService();
   const { config } = useContext<any>(ConfigProvider);
   const [scrollPosition, setScrollPosition] = useState<any>(typeof window !== "undefined" ? window?.scrollY : null);
   const classNames = require('classnames');
-  const { navigation } = useContext<any>(NavigationProvider);
+
+  // const { navigation } = useContext<any>(NavigationProvider);
+  const [navigation, setNavigation] = useState<NavigationTypo | any>(null);
+
+  const [data, setData] = useState<HeaderTypo | any>(null);
 
   const [isExpanded, expandMenu] = useState<boolean>(false);  
 
@@ -19,7 +27,25 @@ export default function Header() {
     setScrollPosition(window?.scrollY);
   };  
 
+  const fetchNavigation = async () => {
+    const navigation: NavigationTypo[] = await http.get(
+      "/api/menu_items/main"
+    );
+    setNavigation(navigation);
+  };
+
+  const fetchData = async(uri: any) => {
+    let response:any[] = await http.get(uri)
+    return response
+  }  
+
   useEffect(() => {
+    if(!data) {
+      fetchData('/api/header/?v=1').then((response: HeaderTypo | any) => {
+        if(response) setData(response?.data)
+      }).catch(console.error);
+    }    
+    if(!navigation) fetchNavigation()
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);    
   }, []);
@@ -33,8 +59,9 @@ export default function Header() {
         }
       )      
     }>
-      <Topbar is_scrolling={scrollPosition > 0 ? 1 : 0} />
-      <HeaderBottom is_scrolling={scrollPosition > 0 ? 1 : 0}>
+      {data && <Topbar data={data} is_scrolling={scrollPosition > 0 ? 1 : 0} />}
+
+      {config && navigation && <HeaderBottom is_scrolling={scrollPosition > 0 ? 1 : 0}>
         <div className="container d-flex justify-content-center align-items-center justify-content-lg-between">
           <SearchIcon className="search-icon d-flex d-lg-none" />         
           {config?.logo && <Logo className="d-flex justify-content-center" href="/institucional">
@@ -68,8 +95,9 @@ export default function Header() {
               </Hamburger>
             </>
           }
+          <SearchBar data={data?.searchbar} className="d-none d-lg-flex" />
         </div>
-      </HeaderBottom>
+      </HeaderBottom>}
     </Container>
   );
 };
