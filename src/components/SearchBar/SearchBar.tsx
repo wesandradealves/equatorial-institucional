@@ -6,9 +6,9 @@ import { useContext, useEffect } from "react";
 export default function SearchBar(props: any) {
   const { lang } = useContext<any>(LanguageProvider);
 
-  useEffect(() => {
-    console.log(lang?.key, props?.data)
-  }, [props, lang]);    
+  // useEffect(() => {
+  //   console.log(lang?.key, props?.data)
+  // }, [props, lang]);    
   
   return (
     <Container className={`searchbar ${props?.className}`}>
