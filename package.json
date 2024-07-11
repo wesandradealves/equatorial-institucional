@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000 -H $(grep NEXT_PUBLIC_HOST .env.local | cut -d '=' -f2)",
+    "dev": "next dev -p 3000 -H localhost",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
