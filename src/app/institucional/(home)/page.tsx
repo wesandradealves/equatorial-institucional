@@ -19,12 +19,12 @@ export default function Home() {
         <title>{`${config?.site_name} - Página Inicial`}</title>
       </Helmet>}     
       {/* <Hero/> */}
-      {/* <ConvenienceAndSecurity /> */}
+      <ConvenienceAndSecurity />
       <BlockShorts />
-      {/* <IniciativasEquatorial /> */}
-      {/* <UltimasNoticias /> */}
-      {/* <Institucional /> */}
-      {/* <PerguntasFrequentes />      */}
+      <IniciativasEquatorial />
+      <UltimasNoticias />
+      <Institucional />
+      <PerguntasFrequentes />     
     </>
   )
 }
