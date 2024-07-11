@@ -39,38 +39,55 @@ export const ContactCol = styled.div`
     &.phone {
         .inner {
             p {
-                line-height: 2;
-                // @media screen and (max-width: ${props => props.theme.screenLgMin}) {
-                //     display: flex;
-                //     flex-wrap: wrap;
-                //     align-items: center;
-                //     white-space: initial;
-                //     gap: 24px 0;
-                //     > span {
-                //         flex: 0 0 50%;
-                //         padding-right: 14px;
-                //         &:nth-child(2n+2) {
-                //             padding-right: 0;
-                //             padding-left: 14px;
-                //             display: flex;
-                //             @media screen and (max-width: ${props => props.theme.screenLgMin}) {
-                //                 flex: 1;
-                //                 @media screen and (max-width: ${props => props.theme.screenSmMin}) {
-                //                     flex: 0 0 auto;
-                //                 }                                
-                //             }
-                //             > span {
-                //                 background: ${props => props.theme.colorPrimary150};
-                //                 padding: 2px 8px;
-                //                 border-radius: 999px;
-                //                 display: flex;
-                //                 align-items: center;
-                //                 gap: 0 6px;
-                //                 width: 100%;
-                //             }
-                //         }
-                //     }
-                // }
+                line-height: initial;
+                white-space: initial;
+                @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                    line-height: 2;
+                    whites-space: pre-line;
+                }
+                @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+                    gap: 24px 0;
+                    > span {
+                        gap: 0 8px;
+
+                        > span {
+                            flex: 1;
+                            &:last-of-type:not(:only-of-type) {
+                                background: ${props => props.theme.colorPrimary150};
+                                padding: 8px;
+                                border-radius: 999px;
+                                display: flex;
+                                align-items: center;
+                                gap: 0 6px;
+                                width: 100%;
+                            } 
+                        } 
+                    }
+                    // > span {
+                    //     flex: 0 0 50%;
+                    //     padding-right: 14px;
+                    //     &:nth-child(2n+2) {
+                    //         padding-right: 0;
+                    //         padding-left: 14px;
+                    //         display: flex;
+                    //         @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+                    //             flex: 1;
+                    //             @media screen and (max-width: ${props => props.theme.screenSmMin}) {
+                    //                 flex: 0 0 auto;
+                    //             }                                
+                    //         }
+                    //         > span {
+                    //             background: ${props => props.theme.colorPrimary150};
+                    //             padding: 2px 8px;
+                    //             border-radius: 999px;
+                    //             display: flex;
+                    //             align-items: center;
+                    //             gap: 0 6px;
+                    //             width: 100%;
+                    //         }
+                    //     }
+                    // }
+                }
             }
         }
     }
@@ -93,11 +110,19 @@ export const ContactCol = styled.div`
         .inner {
             > span {
                 padding-right: 100px;
+                @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                    padding-right: 130px;
+                }
             }
             img {
                 position: absolute;
-                right: 0;
+                right: 24px;
                 bottom: 0;
+                max-width: 96px;
+                @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                    max-width: 127px;
+                    right: 0;
+                }
             }
         }
     }
