@@ -32,10 +32,10 @@ export default function RootLayout({
     if(config) setConfig(config?.data)
   }  
 
-  useEffect(() => {
-    fetchData();
-    if(subdomain && pathname == '/') redirect('institucional')
-  }, []);  
+  // useEffect(() => {
+  //   fetchData();
+  //   if(subdomain && pathname == '/') redirect('institucional')
+  // }, []);  
 
   // useEffect(() => {
   //   console.log(theme)
