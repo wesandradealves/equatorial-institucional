@@ -7,6 +7,7 @@ import { ConfigTypo, LanguagesTypo, NavigationTypo } from '@/types/enums';
 import { useEffect, useState } from 'react';
 import { HttpService } from '@/services';
 import { ThemeProvider } from 'styled-components';
+import { usePathname, redirect } from 'next/navigation';
 
 import "@/assets/scss/globals.scss";
 import "@/../hamburgers/_sass/hamburgers/hamburgers.scss";
@@ -23,6 +24,8 @@ export default function RootLayout({
   const [lang, setLanguage] = useState<LanguagesTypo | any>(null);
   const [navigation, setNavigation] = useState<NavigationTypo | any>(null);
   const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!@/assets/scss/variables.scss');
+  const [ , , subdomain] = typeof window !== "undefined" ? window.location.hostname.split(".").reverse() : [];
+  const pathname = usePathname();
 
   const fetchData = async() => {
     const config:ConfigTypo = await http.get('/api/config')
@@ -31,11 +34,12 @@ export default function RootLayout({
 
   useEffect(() => {
     fetchData();
+    if(subdomain && pathname == '/') redirect('institucional')
   }, []);  
 
-  useEffect(() => {
-    console.log(theme)
-  }, [theme]);    
+  // useEffect(() => {
+  //   console.log(theme)
+  // }, [theme]);    
 
   return (
     <html lang="pt-br">
