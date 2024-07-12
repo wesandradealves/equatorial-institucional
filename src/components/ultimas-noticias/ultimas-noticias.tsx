@@ -1,13 +1,11 @@
 "use client";
-import { Button } from "@/assets/tsx/objects";
 import NewsCard from "@/components/ui/newsCard/NewsCard"; // Atualize com o caminho correto
 import { HttpService } from "@/services";
-import * as mdiIcons from "@mdi/js";
-import Icon from "@mdi/react";
 import { useEffect, useState } from "react";
 import { News, NewsTypo } from "./types/news_typo";
 import styles from "./ultimas-noticias.module.scss";
 import { BlockTypo } from "@/types/enums";
+import BlockHead from "@/template-parts/BlockHead/BlockHead";
 
 export default function UltimasNoticias() {
   const http = new HttpService();
@@ -39,27 +37,10 @@ export default function UltimasNoticias() {
     }    
   }, []);
 
-  useEffect(() => {
-    console.log(blockData)
-  }, [blockData]);
-
   return (
     <>
       <div className={`d-flex flex-wrap ${styles.container}`}>
-        <div className="d-flex flex-wrap flex-column">
-          <div className={styles.title}>
-            <h4 dangerouslySetInnerHTML={{__html: blockData?.title ? blockData?.title  : blockData?.info}}></h4>
-          </div>
-          {blockData?.cta_label && blockData?.cta_url && <div className={styles.action}>
-            <Button href={blockData?.cta_url}>
-              {blockData?.cta_label}
-
-              <span className="icon-container">
-                <Icon path={mdiIcons.mdiArrowRight} size={1} className="icon" />
-              </span>
-            </Button>
-          </div>}
-        </div>
+        {blockData && <BlockHead className="col-12 col-lg-6 col-xl-4 col-xxl-3" data={blockData} />}
         <div className={`flex-fill ${styles.news}`}>
           {news &&
             news.map((item, index) => (

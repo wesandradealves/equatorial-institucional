@@ -43,7 +43,7 @@ export default function Header() {
 
   useEffect(() => {
     if(!data) {
-      fetchData('/api/header/?v=1').then((response: HeaderTypo | any) => {
+      fetchData('/api/header').then((response: HeaderTypo | any) => {
         if(response) setData(response?.data)
       }).catch(console.error);
     }    
@@ -66,7 +66,7 @@ export default function Header() {
       {config && navigation && <HeaderBottom is_scrolling={scrollPosition > 0 ? 1 : 0}>
         <div className="container d-flex justify-content-center align-items-center justify-content-xxl-between">
           <SearchIcon className="search-icon d-flex d-xxl-none" />         
-          {config?.logo && <Logo className="d-flex justify-content-center" href="/institucional">
+          {config?.logo && <Logo className="d-flex justify-content-center" href={process.env.NEXT_PUBLIC_HOME_URL}>
             <Image
               src={config?.logo}
               alt={config?.site_name}

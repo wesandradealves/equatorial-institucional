@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { NavCol, NavItem, NavLink, NavSubmenu, Arrow } from './style';
 import { NavColTypo } from '@/types/enums';
 
-export function NavColumn({props = 'default value'}: NavColTypo) {
+export function Navigation({props = 'default value'}: NavColTypo) {
   const [isExpanded, setExpand] = useState<any>(false);
 
   return (<NavCol className="flex-fill">
@@ -14,7 +14,7 @@ export function NavColumn({props = 'default value'}: NavColTypo) {
         {props?.below.map(function(row: any, i: number){
             return (
               <NavItem key={i}>
-                <NavLink href={row?.absolute}>{row?.title}</NavLink>
+                <NavLink href={row?.absolute.replace(process.env.NEXT_PUBLIC_BASE_URL, "")}>{row?.title}</NavLink>
               </NavItem>
             );
         })}    

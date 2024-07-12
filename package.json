@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3000 -H $(grep NEXT_PUBLIC_HOST .env.local | cut -d '=' -f2)",
     "build": "next build",
+    "hml": "next start",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",

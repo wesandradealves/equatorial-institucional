@@ -97,7 +97,7 @@ export default function LanguageSwitcher() {
 
   useEffect(() => {
     if(!data) {
-      fetchData('/api/languages/?v=1').then((response: LanguagesTypo | any) => {
+      fetchData('/api/languages').then((response: LanguagesTypo | any) => {
         let languages = response?.data?.languages;
 
         if(response) setData(response?.data?.languages)
