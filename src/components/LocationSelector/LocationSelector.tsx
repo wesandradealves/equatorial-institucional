@@ -5,7 +5,6 @@ import { Container, Label, Select, SelectField, Option } from "./style";
 import { useContext, useEffect, useState } from "react";
 import { NavTypo } from "@/types/enums";
 import LanguageProvider from "../LanguageSwitcher/context";
-import { _T } from '@/app/dictionaries'
 
 export default function LocationSelector(props: any) {
   const { lang } = useContext<any>(LanguageProvider);
