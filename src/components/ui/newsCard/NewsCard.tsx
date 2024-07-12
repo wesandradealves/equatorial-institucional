@@ -79,6 +79,10 @@ const ResponsiveDate = styled.div`
 
 const tags = ["Notícia", "Atualização", "Importante"];
 
+const baseURL =
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  "http://drupal-institucional-drupal-dev.apps.ocpdrupal.equatorial.corp";
+
 const NewsCard: React.FC<NewsCardProps> = ({
   image,
   title,
@@ -87,7 +91,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
   link,
   category,
 }) => {
-  const imageUrl = process.env.NEXT_PUBLIC_BASE_URL + image;
+  const imageUrl = baseURL + image;
   return (
     <NewsCardContainer>
       <CardImage imageUrl={imageUrl} tags={category} />
