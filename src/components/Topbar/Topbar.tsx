@@ -1,3 +1,5 @@
+"use client";
+
 import { useContext } from "react";
 import { Container, TariffBand, Text } from "./style";
 import AccessibilityShortcut from "./Accessibility";

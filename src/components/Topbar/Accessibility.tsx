@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { Container, TariffBand, Text, Accessibility, Ico } from "./style";
 import { HttpService } from "@/services";

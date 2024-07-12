@@ -1,3 +1,5 @@
+"use client";
+
 import { HttpService } from '@/services';
 import Switch, { SwitchProps } from '@mui/material/Switch';
 import { useContext, useEffect, useState } from 'react';

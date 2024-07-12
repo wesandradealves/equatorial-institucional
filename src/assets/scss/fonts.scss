@@ -51,6 +51,14 @@ $font-desktop:(
                 letter-spacing: 0,
                 text-decoration: none
         ),
+        header-5: (
+                font-family: $font-stack,
+                font-size:2rem,
+                line-height:3rem,
+                font-weight: 400,
+                letter-spacing: 0,
+                text-decoration: none
+        ),        
         subtitle-1: (
                 font-family: $font-stack,
                 font-size: 1.5rem,

@@ -27,7 +27,6 @@ const nextConfig = {
     ],    
   },
   compiler: {
-    // Enables the styled-components SWC transform
     styledComponents: true
   },  
   swcMinify: true,
@@ -36,15 +35,6 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          // {
-          //   key: 'X-Frame-Options',
-          //   value: 'DENY',
-          // },
-            // Habilitar assim que estiver tranquilo o proxy da api
-          // {
-          //   key: 'Content-Security-Policy',
-          //   value: cspHeader.replace(/\n/g, ''),
-          // },
           {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',

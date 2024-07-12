@@ -14,18 +14,18 @@ export const Container = styled.header`
     &.sticky {
         padding: 24px
     }
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
         padding: 0 24px;
     }
 `;
 
 export const HeaderBottom = styled.div<HeaderTypo>`
     .container {
-        background: rgba(255, 255, 255, .5);
+        background: rgba(255, 255, 255, .3);
         backdrop-filter: blur(40px);  
         border-radius: 999px;
         padding: 16px;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
             padding: 32px 52px;       
         }
         .search-icon {
@@ -35,10 +35,7 @@ export const HeaderBottom = styled.div<HeaderTypo>`
             background-color: white; 
             padding: 10px;  
             color: ${props => props.theme.colorPrimary300};
-        }
-        // ${({ is_scrolling }) => is_scrolling && css`
-        //     padding: 24px 52px !important;
-        // `}               
+        }             
     }  
 `;
 
@@ -78,7 +75,7 @@ export const Arrow = styled.i`
 
 export const Logo = styled.a`
     flex: 1;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
         flex: 0 0 auto
     }
 `;

@@ -1,3 +1,5 @@
+"use client";
+
 import { Container, HeaderBottom, Logo, Hamburger } from "./style";
 import Topbar from "@/components/Topbar/Topbar";
 import ConfigProvider from "@/context/config";
@@ -62,8 +64,8 @@ export default function Header() {
       {data && <Topbar data={data} is_scrolling={scrollPosition > 0 ? 1 : 0} />}
 
       {config && navigation && <HeaderBottom is_scrolling={scrollPosition > 0 ? 1 : 0}>
-        <div className="container d-flex justify-content-center align-items-center justify-content-lg-between">
-          <SearchIcon className="search-icon d-flex d-lg-none" />         
+        <div className="container d-flex justify-content-center align-items-center justify-content-xxl-between">
+          <SearchIcon className="search-icon d-flex d-xxl-none" />         
           {config?.logo && <Logo className="d-flex justify-content-center" href="/institucional">
             <Image
               src={config?.logo}
@@ -74,8 +76,8 @@ export default function Header() {
           </Logo>}     
           {navigation && 
             <>
-              <Navigation className="d-none d-lg-block" data={navigation} />
-              <Hamburger className="d-flex d-lg-none align-items-center justify-content-center">
+              <Navigation className="d-none d-xxl-block" data={navigation} />
+              <Hamburger className="d-flex d-xxl-none align-items-center justify-content-center">
                 <button onClick={(e: any) => {
                   expandMenu(!isExpanded)
                 }} 
@@ -95,7 +97,7 @@ export default function Header() {
               </Hamburger>
             </>
           }
-          <SearchBar data={data?.searchbar} className="d-none d-lg-flex" />
+          <SearchBar data={data?.searchbar} className="d-none d-xxl-flex" />
         </div>
       </HeaderBottom>}
     </Container>

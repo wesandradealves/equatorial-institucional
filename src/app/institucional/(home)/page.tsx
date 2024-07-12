@@ -7,8 +7,8 @@ import PerguntasFrequentes from "@/components/perguntasFrequentes";
 import UltimasNoticias from "@/components/ultimas-noticias/ultimas-noticias";
 import IniciativasEquatorial from "@/components/iniciativas-equatorial/iniciativas-equatorial";
 import Institucional from "@/components/institucional/institucional";
-import Hero from "@/components/hero/hero";
 import ConvenienceAndSecurity from '@/components/convenienceAndSecurity/convenienceAndSecurity';
+import Hero from '@/components/Hero/Hero';
 
 export default function Home() {
   const { config } = useContext<any>(ConfigProvider);
@@ -18,13 +18,13 @@ export default function Home() {
       {config && <Helmet>
         <title>{`${config?.site_name} - Página Inicial`}</title>
       </Helmet>}     
-      {/* <Hero/> */}
-      <ConvenienceAndSecurity />
+      <Hero />
       <BlockShorts />
+      {/* <ConvenienceAndSecurity />
       <IniciativasEquatorial />
       <UltimasNoticias />
       <Institucional />
-      <PerguntasFrequentes />     
+      <PerguntasFrequentes />      */}
     </>
   )
 }
