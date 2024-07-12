@@ -1,7 +1,5 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
-// 
-
 export const Button = styled.a`
     align-items: center;
     text-align: center;
