@@ -94,7 +94,7 @@ export default function BlockShorts(props: any) {
       {blockData && data && blockData?.title && <Container className='container'>
         <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center flex-lg-row justify-content-lg-start align-items-lg-start'>
           <BlockHeading className='d-flex flex-column col-12 col-lg-5'>
-              <BlockTitle className='text-center text-lg-start' dangerouslySetInnerHTML={{__html: blockData?.title}}></BlockTitle>
+              <BlockTitle className='text-center text-lg-start' dangerouslySetInnerHTML={{__html: blockData?.title ? blockData?.title  : blockData?.info}}></BlockTitle>
               <span className="d-none d-lg-block">
                 <Button href={""}>
                   Ver todos os vídeos 
