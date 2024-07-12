@@ -47,13 +47,18 @@ export const Mask = styled.svg`
 `;
 
 export const Information = styled.div`
-
+    position: relative;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        animation: moveLeft 600ms forwards;
+    }
 `;
 
 export const Services = styled.nav`
     margin: 108px -16px 0;
+    position: relative;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         margin: 0 -16px -42px;
+        animation: moveRight 600ms forwards;
     }
 `;
 
@@ -85,7 +90,11 @@ export const ServiceCard = styled.a<HeroTypo>`
 
 export const ClaraShortcut = styled.a<HeroTypo>`
     img {
-        max-width: 100%
+        max-width: 100%;
+        width: 100%;
+        @media screen and (min-width: ${props => props.theme.screenSmMin}) {
+            width: auto
+        }
     }
 `;
 

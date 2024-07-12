@@ -22,7 +22,7 @@ export default function LocationSelector(props: any) {
 
   return (navigation && <Container className="location-selection d-flex align-items-center">
     <Label>Você está em</Label>
-    <Select>
+    <Select className="me-auto">
       <SelectField onChange={(e: any) => {
         window.location.href = e.target.value
       }}>

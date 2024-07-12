@@ -22,6 +22,7 @@ export const Select = styled.div`
 
 export const SelectField = styled.select<LocationSelectorTypo>`
     background: none;
+    width: 107px;
     padding: 0;
     border: 0;
     outline: 0;

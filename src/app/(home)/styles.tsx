@@ -243,6 +243,32 @@ export const Logo = styled.h1`
 `;
 
 export const GlobalStyle = createGlobalStyle`
+    @keyframes moveLeft {
+        from {
+            opacity: 0;
+            left: -100%;
+            visibility: hidden;
+        }
+
+        to {
+            left: 0;
+            opacity: 1;
+            visibility: visible;
+        } 
+    }
+    @keyframes moveRight {
+        from {
+            opacity: 0;
+            right: -100%;
+            visibility: hidden;
+        }
+
+        to {
+            right: 0;
+            opacity: 1;
+            visibility: visible;
+        } 
+    }        
     @keyframes opacity {
         from {
             opacity: 0;
