@@ -1,14 +1,10 @@
 import LanguageProvider from "@/components/LanguageSwitcher/context";
 import SearchIcon from "@mui/icons-material/Search";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Container, Inner, Input, Submit } from "./style";
 
 export default function SearchBar(props: any) {
   const { lang } = useContext<any>(LanguageProvider);
-
-  useEffect(() => {
-    console.log(lang?.key, props?.data);
-  }, [props, lang]);
 
   return (
     <Container className={`searchbar ${props?.className}`}>

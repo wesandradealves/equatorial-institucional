@@ -1,13 +1,45 @@
 "use client";
+import styled from "styled-components";
+
 import { Button } from "@/assets/tsx/objects";
-import NewsCard from "@/components/ui/newsCard/NewsCard"; // Atualize com o caminho correto
+import NewsCard from "@/components/ui/newsCard/NewsCard";
 import { HttpService } from "@/services";
 import { BlockTypo } from "@/types/enums";
 import * as mdiIcons from "@mdi/js";
 import Icon from "@mdi/react";
 import { useEffect, useState } from "react";
 import { News, NewsTypo } from "./types/news_typo";
-import styles from "./ultimas-noticias.module.scss";
+import styles from "./UltimasNoticias.module.scss";
+
+const CardUltimasNoticias = styled.div`
+  @media (min-width: 992px) {
+    padding-top: 88px;
+    padding-bottom: 145px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+`;
+
+const StyledUltimasNoticiasItem = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 364px;
+  max-height: 261px;
+
+  @media (max-width: 768px) {
+    /* Para telas pequenas */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+`;
+
+const BotaoContainer = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 
 export default function UltimasNoticias() {
   const http = new HttpService();
@@ -40,17 +72,14 @@ export default function UltimasNoticias() {
           }
         })
         .catch(console.error);
+      console.table(blockData);
     }
   }, []);
 
-  useEffect(() => {
-    console.log(blockData);
-  }, [blockData]);
-
   return (
-    <>
+    <CardUltimasNoticias>
       <div className={`d-flex flex-wrap ${styles.container}`}>
-        <div className="d-flex flex-wrap flex-column">
+        <StyledUltimasNoticiasItem>
           <div className={styles.title}>
             <h4
               dangerouslySetInnerHTML={{
@@ -58,22 +87,24 @@ export default function UltimasNoticias() {
               }}
             ></h4>
           </div>
-          {blockData?.cta_label && blockData?.cta_url && (
-            <div className={styles.action}>
-              <Button href={blockData?.cta_url}>
-                {blockData?.cta_label}
+          <div>
+            {blockData?.cta_label && (
+              <BotaoContainer className={styles.action}>
+                <Button href={blockData?.cta_url ?? "#"}>
+                  {blockData?.cta_label}
 
-                <span className="icon-container">
-                  <Icon
-                    path={mdiIcons.mdiArrowRight}
-                    size={1}
-                    className="icon"
-                  />
-                </span>
-              </Button>
-            </div>
-          )}
-        </div>
+                  <span className="icon-container">
+                    <Icon
+                      path={mdiIcons.mdiArrowRight}
+                      size={1}
+                      className="icon"
+                    />
+                  </span>
+                </Button>
+              </BotaoContainer>
+            )}
+          </div>
+        </StyledUltimasNoticiasItem>
         <div className={`flex-fill ${styles.news}`}>
           {news &&
             news.map((item, index) => (
@@ -90,6 +121,6 @@ export default function UltimasNoticias() {
             ))}
         </div>
       </div>
-    </>
+    </CardUltimasNoticias>
   );
 }
