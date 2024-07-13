@@ -11,6 +11,8 @@ $spacing: (
   2xl: 56px,
 );
 
+$spacing-sm: 24px;
+
 @mixin padding($direction: all, $size: md) {
   @if $direction == all {
     @include spacer(padding, $size);

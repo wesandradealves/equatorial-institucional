@@ -62,9 +62,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: $spacing-sm;
     text-align: center;
-    padding: 24px;
+    padding: $spacing-sm;
     margin: 0px;
 
     h2 {

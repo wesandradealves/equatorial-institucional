@@ -10,12 +10,12 @@ export const Container = styled.header`
     left: 0;
     width: 100%;
     z-index: 99;
-    padding: 24px;
+    padding: ${props => props.theme.spacingSm};
     &.sticky {
-        padding: 24px
+        padding: ${props => props.theme.spacingSm}
     }
     @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
-        padding: 0 24px;
+        padding: 0 ${props => props.theme.spacingSm};
     }
 `;
 

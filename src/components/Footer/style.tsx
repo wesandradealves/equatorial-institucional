@@ -23,7 +23,7 @@ export const ColText = styled.p`
 `;
 
 export const ContactCol = styled.div`
-    padding: 43px 24px;
+    padding: 43px ${props => props.theme.spacingSm};
     position: relative;
     &:first-of-type {
         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
@@ -46,7 +46,7 @@ export const ContactCol = styled.div`
                     whites-space: pre-line;
                 }
                 @media screen and (max-width: ${props => props.theme.screenLgMin}) {
-                    gap: 24px 0;
+                    gap: ${props => props.theme.spacingSm} 0;
                     > span {
                         gap: 0 8px;
 
@@ -116,7 +116,7 @@ export const ContactCol = styled.div`
             }
             img {
                 position: absolute;
-                right: 24px;
+                right: ${props => props.theme.spacingSm};
                 bottom: 0;
                 max-width: 96px;
                 @media screen and (min-width: ${props => props.theme.screenLgMin}) {
@@ -148,7 +148,7 @@ export const FooterTop = styled.div`
         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
             padding-top: 90px;
             padding-bottom: 90px;
-            gap: 0 24px;
+            gap: 0 ${props => props.theme.spacingSm};
         }
         color: white;
         @media screen and (max-width: ${props => props.theme.screenLgMin}) {
@@ -195,7 +195,7 @@ export const FooterTop = styled.div`
 `;
 
 export const SocialNetworks = styled.ul`
-    gap: 24px;
+    gap: ${props => props.theme.spacingSm};
 `;
 
 export const SocialItem = styled.li`
@@ -210,8 +210,8 @@ export const Label = styled.p`
 `;
 
 export const Apps = styled.div`
-    gap: 18px 24px;
+    gap: 18px ${props => props.theme.spacingSm};
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        gap: 0 24px
+        gap: 0 ${props => props.theme.spacingSm}
     }        
 `;

@@ -9,7 +9,11 @@ export const Content = styled.section`
 `;
 
 export const Container = styled.div`
-
+    padding-left: 0;
+    padding-right: 0;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        padding-left: ${props => props.theme.spacingSm};
+    }
 `;
 
 export const Columns = styled.div`
