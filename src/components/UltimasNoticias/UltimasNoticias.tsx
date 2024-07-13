@@ -10,6 +10,7 @@ import Icon from "@mdi/react";
 import { useEffect, useState } from "react";
 import { News, NewsTypo } from "./types/news_typo";
 import styles from "./UltimasNoticias.module.scss";
+import BlockHead from "@/template-parts/BlockHead/BlockHead";
 
 const CardUltimasNoticias = styled.div`
   @media (min-width: 992px) {
@@ -79,32 +80,7 @@ export default function UltimasNoticias() {
   return (
     <CardUltimasNoticias>
       <div className={`d-flex flex-wrap ${styles.container}`}>
-        <StyledUltimasNoticiasItem>
-          <div className={styles.title}>
-            <h4
-              dangerouslySetInnerHTML={{
-                __html: blockData?.title ? blockData?.title : blockData?.info,
-              }}
-            ></h4>
-          </div>
-          <div>
-            {blockData?.cta_label && (
-              <BotaoContainer className={styles.action}>
-                <Button href={blockData?.cta_url ?? "#"}>
-                  {blockData?.cta_label}
-
-                  <span className="icon-container">
-                    <Icon
-                      path={mdiIcons.mdiArrowRight}
-                      size={1}
-                      className="icon"
-                    />
-                  </span>
-                </Button>
-              </BotaoContainer>
-            )}
-          </div>
-        </StyledUltimasNoticiasItem>
+        {blockData && <BlockHead className="col-12 col-lg-6 col-xl-4 col-xxl-3" data={blockData} />}
         <div className={`flex-fill ${styles.news}`}>
           {news &&
             news.map((item, index) => (

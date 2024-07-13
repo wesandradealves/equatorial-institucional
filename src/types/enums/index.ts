@@ -111,11 +111,13 @@ export class Service {
 export interface NavigationTypo {
   data?: any
 	title?: string
+  isExpandable?: boolean
 	description?: string
 	absolute?: string
 	below?: any
   navigation?: any 
   className?: any
+  classMenuName?: any
   setNavigation?: React.Dispatch<any>  
 }
 
@@ -148,6 +150,8 @@ export interface ContactTypo {
 
 export interface NavColTypo {
   props?: any
+  data?: any
+  className?: any
 }
 
 export interface HeaderTypo {

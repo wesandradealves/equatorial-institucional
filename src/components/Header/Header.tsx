@@ -5,8 +5,7 @@ import Topbar from "@/components/Topbar/Topbar";
 import ConfigProvider from "@/context/config";
 import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
-import NavigationProvider from "@/components/Footer/context";
-import Navigation from "@/components/Header/Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 import SearchIcon from '@mui/icons-material/Search';
 import SearchBar from "@/components/SearchBar/SearchBar";
 import { HeaderTypo, NavigationTypo } from "@/types/enums";
@@ -18,7 +17,6 @@ export default function Header() {
   const [scrollPosition, setScrollPosition] = useState<any>(typeof window !== "undefined" ? window?.scrollY : null);
   const classNames = require('classnames');
 
-  // const { navigation } = useContext<any>(NavigationProvider);
   const [navigation, setNavigation] = useState<NavigationTypo | any>(null);
 
   const [data, setData] = useState<HeaderTypo | any>(null);
@@ -76,7 +74,7 @@ export default function Header() {
           </Logo>}     
           {navigation && 
             <>
-              <Navigation className="d-none d-xxl-block" data={navigation} />
+              <Navigation classMenuName="flex-auto" className="d-none d-xxl-flex align-items-center justify-content-center" data={navigation} />
               <Hamburger className="d-flex d-xxl-none align-items-center justify-content-center">
                 <button onClick={(e: any) => {
                   expandMenu(!isExpanded)
