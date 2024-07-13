@@ -6,7 +6,7 @@ interface ContentTypo {
 
 export const ListNav = styled.ul`
     flex: 0 0 auto;
-    padding: 24px;
+    padding: ${props => props.theme.spacingSm};
     min-width: 100%;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding: 40px 56px;

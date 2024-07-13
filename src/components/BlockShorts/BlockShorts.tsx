@@ -30,13 +30,18 @@ export default function BlockShorts(props: any) {
     infinite: true,
     speed: 500,
     centerMode: true,
-    slidesToShow: 2,
+    slidesToShow: 3,
     initialSlide: 1,
-    mobileFirst: true,
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 2
+        }
+      },      
+      {
+        breakpoint: 600,
         settings: {
           slidesToShow: 1
         }

@@ -34,11 +34,11 @@ export const VideoPill = styled.div<VideoPillTypo>`
     border-radius: 19px;
     overflow: hidden;
     position: relative;
-    height: 350px;
+    height: 480px;
     @media screen and (min-width: ${props => props.theme.screenMdMin}) {
-        height: 400px;
+        // height: 610px;
         @media screen and (min-width: ${props => props.theme.screenXlMin}) {
-            height: 450px;
+            height: 440px;
         }
     }      
     &::after {
