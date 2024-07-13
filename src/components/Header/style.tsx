@@ -29,7 +29,7 @@ export const HeaderBottom = styled.div<HeaderTypo>`
             padding: 32px 52px;       
         }
         .nav {
-            gap: 0 64px;
+            gap: 0 32px;
         }
         .search-icon {
             height: 48px;

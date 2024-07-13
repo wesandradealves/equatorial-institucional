@@ -89,10 +89,12 @@ export const ServiceCard = styled.a<HeroTypo>`
         border-radius: 16px;
         background: ${props => props.theme.colorPrimary100};
         color: ${props => props.theme.colorPrimary300};
-        transition: 600ms ease-in-out all;
-        &:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 10px 20px -25px black;
+        @media screen and (min-width: ${props => props.theme.screenXlMin}) {
+            transition: 600ms ease-in-out all;
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0px 10px 20px -25px black;
+            }
         }
     }
 `;

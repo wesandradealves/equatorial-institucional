@@ -52,7 +52,7 @@ export default function Hero(props: any) {
           {services && <Services className="d-flex flex-wrap align-items-stretch">
             {services.map(function(service: any, i: number) {
               return (
-                <ServiceCard className="col-6 col-xl-4" href={service.field_link[0].value} key={i}>
+                <ServiceCard className="col-6 col-sm-4 col-lg-6 col-xl-4" href={service.field_link[0].value} key={i}>
                   <span className="card-inner d-flex flex-column justify-content-start align-items-start">
                     <CardIcon loading="lazy" alt={service.field_titulo[0].value} src={service.field_imagem[0].url} />
                     <CardTitle>{service.field_titulo[0].value}</CardTitle>
