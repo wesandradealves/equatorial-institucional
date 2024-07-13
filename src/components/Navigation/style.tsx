@@ -24,8 +24,10 @@ export const NavLink = styled.a`
     }
     &:hover {
         color: ${props => props.theme.colorHighlight300};
-        [class*="fa-"] {
-            transform: rotate(180deg)
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            [class*="fa-"] {
+                transform: rotate(180deg)
+            }
         }
     }
     font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};  
