@@ -9,17 +9,7 @@ export const Content = styled.section`
 `;
 
 export const Container = styled.div`
-    padding-top: 64px;
-    padding-bottom: 64px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        padding-top: 209px;
-        padding-bottom: 179px;
-    }
-    @media screen and (max-width: ${props => props.theme.screenLgMin}) {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        max-width: initial;
-    }            
+
 `;
 
 export const Columns = styled.div`
@@ -31,20 +21,6 @@ export const Columns = styled.div`
 
 export const Column = styled.div`
    
-`;
-
-export const BlockTitle = styled.h2`
-    font-size: 1.5rem;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        font-size: 2.5rem;
-    }
-`;
-
-export const BlockHeading = styled.div`
-    gap: 53px 0;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        padding-right: 60px;
-    }    
 `;
 
 export const VideoPill = styled.div<VideoPillTypo>`

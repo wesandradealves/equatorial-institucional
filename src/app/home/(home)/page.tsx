@@ -9,12 +9,13 @@ import { Helmet } from "react-helmet-async";
 // import ConvenienceAndSecurity from "@/components/convenienceAndSecurity/convenienceAndSecurity";
 import Hero from "@/components/Hero/Hero";
 import UltimasNoticias from "@/components/UltimasNoticias/UltimasNoticias";
+import { Content } from "./style";
 
 export default function Home() {
   const { config } = useContext<any>(ConfigProvider);
 
   return (
-    <>
+    <Content className="d-flex flex-column">
       {config && (
         <Helmet>
           <title>{`${config?.site_name} - Página Inicial`}</title>
@@ -29,6 +30,6 @@ export default function Home() {
 
       <Institucional />
       <PerguntasFrequentes />      */}
-    </>
+    </Content>
   );
 }

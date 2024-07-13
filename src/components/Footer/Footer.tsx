@@ -114,7 +114,7 @@ export default function Footer() {
     <Container className="footer">
       {footerData && navigation && <FooterTop>
         <div className="container d-flex flex-column flex-lg-row flex-wrap align-items-start">
-          <Navigation isExpandable={true} classMenuName="flex-fill" className="flex-fill col-12 d-flex flex-column flex-lg-row flex-wrap align-items-stretch" data={navigation} />
+          <Navigation classMenuName="flex-fill" className="flex-fill col-12 d-flex flex-column flex-lg-row flex-wrap align-items-stretch" data={navigation} />
 
           {footerData && (footerData?.data?.store || footerData?.data?.social_networks) && <>
             <div className="col-lg-4 col-xl-auto">
