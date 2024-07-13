@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { NavCol, NavItem, NavLink, NavSubmenu, Arrow } from './style';
 import { NavColTypo } from '@/types/enums';
 
@@ -6,6 +6,7 @@ export default function NavigationColumn(props: NavColTypo) {
   const [isExpanded, setExpand] = useState<any>(false);
   const [scrollPosition, setScroll] = useState<any>(false);
   const classNames = require('classnames');
+  const ref = useRef(null);
 
   const handleScroll = () => {
     setScroll(window.scrollY);
@@ -15,14 +16,34 @@ export default function NavigationColumn(props: NavColTypo) {
     if(scrollPosition > 0) setExpand(false)
   }, [scrollPosition]);  
 
+  const useOutsideAlerter = useCallback((ref: any) => {
+    function handleClickOutside(event: any) {
+      if(!event.target.closest("header")) {
+        if(Array.from(ref.current.classList).includes("is-expanded")) {
+          setExpand(false)
+        }
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);  
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);    
   }, []);
 
+  useEffect(() => {
+    useOutsideAlerter(ref);
+  }, [ref]);
+
   return (
     <>
-      <NavCol className={
+      <NavCol ref={ref}  className={
         classNames(
           `nav-col ${props?.className}`,
           {
