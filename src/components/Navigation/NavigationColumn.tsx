@@ -9,10 +9,15 @@ export default function NavigationColumn(props: NavColTypo) {
     <>
       <NavCol className={`nav-col ${props?.className}`}>
         <NavItem className="nav-item d-flex flex-column">
-          <NavLink className="nav-link d-flex align-items-center justify-content-between" >{props?.data?.title} {props?.data?.below && <Arrow onClick={() => {
-            setExpand(!isExpanded);
-          }} className={`fa-solid fa-angle-${isExpanded ? 'up' : 'down'} d-lg-none`}></Arrow>}</NavLink>
-          {props?.data?.below && <NavSubmenu className={`d-${isExpanded ? 'flex' : 'none'} nav-submenu d-lg-flex flex-column`}>
+          <NavLink className="nav-link d-flex align-items-center justify-content-between" >
+            {props?.data?.title} 
+            
+            {props?.data?.below && <Arrow onClick={() => {
+              setExpand(!isExpanded);
+            }} className={`fa-solid fa-angle-${isExpanded ? 'up' : 'down'}`} />}
+          </NavLink>
+          {console.log(props?.data)}
+          {props?.data?.below && <NavSubmenu className={`d-${isExpanded ? 'flex' : 'none'} nav-submenu flex-column`}>
             {props?.data?.below.map(function(row: any, i: number){
                 return (
                   <NavItem className='nav-item' key={i}>

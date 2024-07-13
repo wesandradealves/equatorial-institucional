@@ -177,6 +177,9 @@ export const FooterTop = styled.div`
                         padding: 0 16px;
                         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
                             padding: 0;
+                            [class*="fa-"] {
+                                display: none
+                            }
                         }
                         &:first-of-type:not(:only-child) {
                             font-weight: 600
@@ -185,7 +188,8 @@ export const FooterTop = styled.div`
                     .nav-submenu {
                         gap: 26px 0;
                         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                            gap: inherit
+                            gap: inherit;
+                            display: flex !important
                         }                    
                     }
                 }
