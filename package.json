@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000 ",
+    "dev": "next dev -p 3000",
     "build": "next build",
+    "dev-home": "next dev -p 3000 -H $(grep NEXT_PUBLIC_HOST .env.local | cut -d '=' -f2)",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",

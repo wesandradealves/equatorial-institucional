@@ -13,7 +13,7 @@ export default function SearchBar(props: any) {
           <SearchIcon />
         </Submit>
         <Input
-          // placeholder={props?.data[lang?.key.replace("-", "_")]}
+          placeholder={props?.data[lang?.key.replace("-", "_")]}
           type="text"
           className="flex-fill"
         />

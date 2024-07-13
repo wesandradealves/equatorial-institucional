@@ -2,9 +2,9 @@
 
 import { HttpService } from '@/services';
 import { Content, Container, Columns, Column } from './styles';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BlockTypo, BlockShortsTypo } from '@/types/enums';
-import { BlockTitle, BlockHeading, VideoPill, VideoPillInner, VideoPillTitle, PlayVideo } from './styles';
+import { VideoPill, VideoPillInner, VideoPillTitle, PlayVideo } from './styles';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React from "react";
@@ -12,6 +12,7 @@ import Slider from "react-slick";
 import "@/components/BlockShorts/style.scss";
 import ModalVideo from 'react-modal-video';
 import { Button } from '@/assets/tsx/objects';
+import BlockHead from '@/template-parts/BlockHead/BlockHead';
 
 // Button
 
@@ -93,17 +94,7 @@ export default function BlockShorts(props: any) {
     <Content className='block_shorts'>
       {blockData && data && blockData?.title && <Container className='container'>
         <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center flex-lg-row justify-content-lg-start align-items-lg-start'>
-          <BlockHeading className='d-flex flex-column col-12 col-lg-5'>
-              <BlockTitle className='text-center text-lg-start' dangerouslySetInnerHTML={{__html: blockData?.title ? blockData?.title  : blockData?.info}}></BlockTitle>
-              <span className="d-none d-lg-block">
-                <Button href={""}>
-                  Ver todos os vídeos 
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 3.75L15 9M15 9L10 14.25M15 9L3 9" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Button> 
-              </span>
-          </BlockHeading>
+          <BlockHead className="col-12 col-lg-5" data={blockData} />
           <Column className='col-12 col-lg-7'>
             <Slider {...settings}>
               {data.map((row: any, i: any) => (

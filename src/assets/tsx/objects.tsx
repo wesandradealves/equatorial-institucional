@@ -1,6 +1,10 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
-export const Button = styled.a`
+interface ButtonTypo {
+    className?: string;
+}
+
+export const Button = styled.a<ButtonTypo>`
     align-items: center;
     text-align: center;
     gap: 0 8px;
@@ -11,4 +15,18 @@ export const Button = styled.a`
     color: black;
     font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
     background-color: ${props => props.theme.colorHighlight300};
+`;
+
+export const BlockTitle = styled.h2`
+    font-size: 1.5rem;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        font-size: 2.5rem;
+    }
+`;
+
+export const BlockHeading = styled.div`
+    gap: 53px 0;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        padding-right: 60px;
+    }    
 `;

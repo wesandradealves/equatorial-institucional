@@ -9,7 +9,7 @@ export default function Navigation(props: NavigationTypo) {
         {props?.data.map(function(row: any, i: number){
             return (
               <NavItem key={i}>
-                <NavLink href={row?.absolute} className="d-flex align-items-center">
+                <NavLink href={row?.absolute.replace(process.env.NEXT_PUBLIC_BASE_URL, "")} className="d-flex align-items-center">
                   {row?.title}
                   {row?.below && <Arrow className={`fa-solid fa-angle-down`}></Arrow>}
                 </NavLink>
@@ -19,7 +19,7 @@ export default function Navigation(props: NavigationTypo) {
                       {row?.below.map(function(row: any, i: number){
                           return (
                             <NavItem key={i}>
-                              <NavLink href={row?.absolute}>
+                              <NavLink href={row?.absolute.replace(process.env.NEXT_PUBLIC_BASE_URL, "")}>
                                 {row?.title}
                               </NavLink>
                             </NavItem>

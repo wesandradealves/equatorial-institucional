@@ -246,7 +246,7 @@ export const GlobalStyle = createGlobalStyle`
     @keyframes moveLeft {
         from {
             opacity: 0;
-            left: -100%;
+            left: -30px;
             visibility: hidden;
         }
 
@@ -259,7 +259,7 @@ export const GlobalStyle = createGlobalStyle`
     @keyframes moveRight {
         from {
             opacity: 0;
-            right: -100%;
+            right: -30px;
             visibility: hidden;
         }
 

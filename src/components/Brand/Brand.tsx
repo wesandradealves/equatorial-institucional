@@ -12,7 +12,7 @@ export default function Brand(props: ConfigTypo) {
   return (
     <Container>
       <div className="container d-flex flex-column flex-md-row align-items-md-center justify-content-md-between">
-        {config?.logo && <a href="/institucional"><Image
+        {config?.logo && <a href={process.env.NEXT_PUBLIC_HOME_URL}><Image
           src={config?.logo}
           alt={config?.site_name}
           width={120}

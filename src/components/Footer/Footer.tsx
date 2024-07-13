@@ -3,7 +3,7 @@ import { HttpService } from "@/services";
 import { useContext, useEffect, useState } from "react";
 import { Container, Contact, ColText, ContactCol, Anchor, FooterTop, Nav, SocialNetworks, SocialItem, SocialLink, Label, Apps } from './style';
 import { NavigationTypo, FooterData } from "@/types/enums";
-import { NavColumn } from "./NavCol";
+import { Navigation } from "./Navigation";
 import LanguageProvider from "@/components/LanguageSwitcher/context";
 import NavigationProvider from "@/components/Footer/context";
 
@@ -116,7 +116,7 @@ export default function Footer() {
         <div className="container d-flex flex-column flex-lg-row flex-wrap align-items-stretch">
           {navigation && <Nav className="flex-fill d-flex flex-column flex-lg-row flex-wrap align-items-stretch">
             {navigation.map(function(row: any, i: number){
-              return <NavColumn key={i} props={row} />;
+              return <Navigation key={i} props={row} />;
             })}
           </Nav>}
           {footerData && (footerData?.data?.store || footerData?.data?.social_networks) && <>
