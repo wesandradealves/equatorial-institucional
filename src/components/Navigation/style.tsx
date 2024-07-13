@@ -14,21 +14,17 @@ export const NavCol = styled.ul`
 `;
 
 export const NavItem = styled.li`
+    color: white;
 `;
 
 export const NavLink = styled.a`
     gap: 0 12px;
-    color: white;
+    color: inherit;
     [class*="fa-"] {
         transition: 250ms ease-in-out all;
     }
     &:hover {
-        color: ${props => props.theme.colorHighlight300};
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-            [class*="fa-"] {
-                transform: rotate(180deg)
-            }
-        }
+        color: inherit;
     }
     font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};  
 `;
@@ -37,4 +33,5 @@ export const NavSubmenu = styled.ul`
 `;
 
 export const Arrow = styled.i`
+    cursor: pointer;
 `;

@@ -29,7 +29,32 @@ export const HeaderBottom = styled.div<HeaderTypo>`
             padding: 32px 52px;       
         }
         .nav {
-            gap: 0 32px;
+            gap: 0 ${props => props.theme.spacingSm};
+            &-col {
+                .nav-item {
+                    position: relative;
+                    .nav-submenu {
+                        padding: 32px 25px;
+                        gap: 16px 0;
+                        border-radius: 25px;
+                        background: ${props => props.theme.colorPrimary100};
+                        position: absolute;
+                        top: calc(100% + 16px);
+                        left: 0;  
+                        box-shadow: 0px 10px 30px -10px rgba(255,255,255,.5);
+                        min-width: 340px;
+                        .nav-item {
+                            color: ${props => props.theme.colorPrimary300}; 
+                            font-weight: 600;
+                            .nav-link {
+                                color: inherit;
+                                padding-top: 0;
+                                padding-bottom: 0;
+                            }
+                        }          
+                    }
+                }
+            }
         }
         .search-icon {
             height: 48px;

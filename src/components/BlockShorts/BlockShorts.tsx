@@ -55,6 +55,11 @@ export default function BlockShorts(props: any) {
   }  
 
   useEffect(() => {
+    const main: HTMLElement | null = document.getElementById("primary");
+    main?.classList.toggle("modal-opened");
+  }, [isOpen]);  
+
+  useEffect(() => {
     if(!blockData) {
       fetchData('/entity/block/block_shorts').then((response: BlockTypo[] | any) => {
         if(response) {

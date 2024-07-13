@@ -5,7 +5,7 @@ interface VideoPillTypo {
 }
 
 export const Content = styled.section`
- 
+    z-index: 2;
 `;
 
 export const Container = styled.div`
