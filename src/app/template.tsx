@@ -1,12 +1,11 @@
 "use client";
 import Brand from "@/components/Brand/Brand";
+import { App } from "./style";
 export default function Template({ children }: { children: React.ReactNode }) {
     return (
-        <>
-            <main>
-                {children}
-            </main>
+        <App id="primary">
+            {children}
             <Brand />             
-        </>
+        </App>
     )
   }

@@ -2,7 +2,7 @@ import { NavigationTypo } from "@/types/enums";
 import { Nav } from './style';
 import NavigationColumn from "./NavigationColumn";
 
-export default function Navigation(props: NavigationTypo) {
+export default function Navigation(props: NavigationTypo) {  
   return (
     <>
       {props?.data && <Nav className={`nav ${props?.className}`}>
