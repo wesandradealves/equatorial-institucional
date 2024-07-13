@@ -1,46 +1,21 @@
 "use client";
 
 import React from "react";
-import styled from "styled-components";
+import {CardImageContainer, Content, NewsCardContainer, ResponsiveTitle, Tag, TagsContainer, ResponsiveDescription, ResponsiveDate} from "@/components/ui/newsCard/style"
 
-const CardImageContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 200px;
-  border-radius: 8px;
-  background-size: cover;
-  background-position: center;
-`;
-
-// Estilizando as tags
-const TagsContainer = styled.div`
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  display: flex; // Isso fará com que as tags fiquem em linha
-`;
-
-// Estilizando as tags com fundo branco e bordas arredondadas
-const Tag = styled.span`
-  background-color: white;
-  padding: 5px;
-  border-radius: 15px;
-  font-size: 12px;
-  margin-right: 5px; // Espaço entre as tags
-`;
-
-// Modificando o componente CardImage para aceitar props
 const CardImage = ({
   imageUrl,
+  className,
   tags,
 }: {
+  className?: string;
   imageUrl: string;
   tags: string[];
 }) => {
   return (
-    <CardImageContainer style={{ backgroundImage: `url(${imageUrl})` }}>
+    <CardImageContainer className={className} style={{ backgroundImage: `url(${imageUrl})` }}>
       {tags && (
-        <TagsContainer>
+        <TagsContainer className="d-flex align-items-center flex-wrap">
           {tags.map((tag, index) => (
             <Tag key={index}>{tag}</Tag>
           ))}
@@ -50,58 +25,27 @@ const CardImage = ({
   );
 };
 
-const NewsCardContainer = styled.div`
-  max-width: 300px;
-`;
 interface NewsCardProps {
   title: string;
+  className: string | null | undefined;
   description: string;
   image: string;
   link: string;
   date: string;
   category: Array<string>;
 }
-const ResponsiveTitle = styled.div`
-  padding-top: 5px;
-  font-size: calc(16px + 1vmin);
 
-  font-weight: bold;
-  color: #0414a1;
-`;
-const ResponsiveDescription = styled.div`
-  padding: 5px 0;
-  font-size: calc(10px + 1vmin);
-`;
-const ResponsiveDate = styled.div`
-  padding: 5px 0;
-  font-size: calc(7px + 1vmin);
-`;
-
-const tags = ["Notícia", "Atualização", "Importante"];
-
-const baseURL =
-  process.env.NEXT_PUBLIC_BASE_URL ||
-  "http://drupal-institucional-drupal-dev.apps.ocpdrupal.equatorial.corp";
-
-const NewsCard: React.FC<NewsCardProps> = ({
-  image,
-  title,
-  description,
-  date,
-  link,
-  category,
-}) => {
-  const imageUrl = baseURL + image;
+const NewsCard: React.FC<NewsCardProps> = (props: any) => {
   return (
-    <NewsCardContainer>
-      <CardImage imageUrl={imageUrl} tags={category} />
-      <div className="news-card__content">
-        <ResponsiveTitle dangerouslySetInnerHTML={{ __html: title }} />
+    <NewsCardContainer className={`d-flex flex-column ${props?.className}`}>
+      <CardImage className="d-flex flex-column justify-content-end" imageUrl={props?.image} tags={props?.category} />
+      <Content className="news-card__content d-flex flex-column">
+        <ResponsiveTitle dangerouslySetInnerHTML={{ __html: props?.title }} />
         <ResponsiveDescription
-          dangerouslySetInnerHTML={{ __html: description }}
+          dangerouslySetInnerHTML={{ __html: props?.description }}
         />
-        <ResponsiveDate dangerouslySetInnerHTML={{ __html: date }} />
-      </div>
+        <ResponsiveDate dangerouslySetInnerHTML={{ __html: props?.date }} />
+      </Content>
     </NewsCardContainer>
   );
 };

@@ -1,10 +1,9 @@
 "use client"; 
 
 import { HttpService } from '@/services';
-import { Content, Container, Columns, Column } from './styles';
 import { useEffect, useState } from 'react';
 import { BlockTypo, BlockShortsTypo } from '@/types/enums';
-import { VideoPill, VideoPillInner, VideoPillTitle, PlayVideo } from './styles';
+import { VideoPill, VideoPillInner, VideoPillTitle, PlayVideo, Content, Container, Columns, Column } from './style';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React from "react";

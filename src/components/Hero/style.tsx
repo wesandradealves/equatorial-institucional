@@ -10,40 +10,53 @@ export const Container = styled.section<HeroTypo>`
     ${({ background_image }) => background_image && css`
         background: url(${background_image}) center center / cover no-repeat;
     `}    
+    margin-bottom: 242px;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        margin-bottom: -242px;
+        overflow: hidden;
+    }
     .container {
         padding-top: 134px;
-        padding-bottom: calc(4vw + 42px);
-        margin-bottom: 265px;
         @media screen and (min-width: ${props => props.theme.screenMdMin}) {
             padding-top: 234px;
             @media screen and (min-width: ${props => props.theme.screenLgMin}) {
                 padding-top: calc(234px + 279px);
-                padding-bottom: calc(4vw + 176px);
-                margin-bottom: 0;
+                padding-bottom: 230px;
             }       
         }
         position: relative;
         .inner {
             z-index: 10;
-            position: relative;                
-            margin-bottom: -320px;
+            position: relative;  
+            margin-bottom: -330px;     
             @media screen and (min-width: ${props => props.theme.screenLgMin}) {
                 gap: 0 32px;
-                margin-bottom: -220px;
+                margin-bottom: 0;
                 @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
                     gap: 0 192px;
                 }                
             }
         }
     }
+    position: relative;
+    z-index: 1;
+    & ~ * {
+        z-index: 2;
+    }
 `;
 
 export const Mask = styled.svg`
-    position: absolute;
-    bottom: -4vw;
+    bottom: 0;
+    width: 110vw;
+    left: calc(50% - 55vw);    
+    position: relative;
+    margin: 0;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        width: 3000px;
+        position: absolute;
+        left: calc(50% - 1500px);
+    }
     z-index: 1;
-    width: 100vw;
-    left: calc(50% - 50vw);
 `;
 
 export const Information = styled.div`

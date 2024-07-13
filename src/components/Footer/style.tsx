@@ -153,61 +153,45 @@ export const FooterTop = styled.div`
         color: white;
         @media screen and (max-width: ${props => props.theme.screenLgMin}) {
             max-width: initial;
-        }        
-    }
-`;
-
-export const Nav = styled.nav`
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        gap: 0 24px
-    }  
-`;
-
-export const NavCol = styled.ul`
-    padding: 26px 16px;
-    border-bottom: 1px ${props => props.theme.colorPrimary200} solid;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        padding: 0;
-        border: 0;
-    }  
-`;
-
-export const NavItem = styled.li`
-    gap: 40px 0;
-    ul {
-        li {
-            &:not(:last-of-type) {
-                @media screen and (max-width: ${props => props.theme.screenLgMin}) {
-                    border-bottom: 1px ${props => props.theme.colorPrimary400} solid;
-                    margin: 0 -16px -16px;
-                    padding: 0 16px 24px;
+        } 
+        .nav {
+            gap: 26px 0;
+            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                gap: 0
+            }        
+            &-col {
+                &:not(:last-of-type) {
+                    border-bottom: 1px white solid;
+                    padding-bottom: 26px;
+                    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                        border: 0;
+                        padding: 0
+                    }
+                }
+                .nav-item {
+                    gap: 26px 0;
+                    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                        gap: 40px 0
+                    }
+                    .nav-link {
+                        padding: 0 16px;
+                        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                            padding: 0;
+                        }
+                        &:first-of-type:not(:only-child) {
+                            font-weight: 600
+                        }
+                    }
+                    .nav-submenu {
+                        gap: 26px 0;
+                        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                            gap: inherit
+                        }                    
+                    }
                 }
             }
-        }
+        }       
     }
-`;
-
-export const NavLink = styled.a`
-    color: inherit;
-    &:hover {
-        text-decoration: underline
-    }
-    &:not(:only-child) {
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-            font-weight: bold;
-        }          
-        &:hover {
-            text-decoration: initial
-        }
-    }
-`;
-
-export const NavSubmenu = styled.ul`
-    gap: 40px 0;
-`;
-
-export const Arrow = styled.i`
-    cursor: pointer;
 `;
 
 export const SocialNetworks = styled.ul`

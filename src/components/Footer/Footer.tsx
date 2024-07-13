@@ -1,9 +1,9 @@
 "use client";
 import { HttpService } from "@/services";
 import { useContext, useEffect, useState } from "react";
-import { Container, Contact, ColText, ContactCol, Anchor, FooterTop, Nav, SocialNetworks, SocialItem, SocialLink, Label, Apps } from './style';
+import { Container, Contact, ColText, ContactCol, Anchor, FooterTop, SocialNetworks, SocialItem, SocialLink, Label, Apps } from './style';
 import { NavigationTypo, FooterData } from "@/types/enums";
-import { Navigation } from "./Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 import LanguageProvider from "@/components/LanguageSwitcher/context";
 import NavigationProvider from "@/components/Footer/context";
 
@@ -113,12 +113,9 @@ export default function Footer() {
   return (
     <Container className="footer">
       {footerData && navigation && <FooterTop>
-        <div className="container d-flex flex-column flex-lg-row flex-wrap align-items-stretch">
-          {navigation && <Nav className="flex-fill d-flex flex-column flex-lg-row flex-wrap align-items-stretch">
-            {navigation.map(function(row: any, i: number){
-              return <Navigation key={i} props={row} />;
-            })}
-          </Nav>}
+        <div className="container d-flex flex-column flex-lg-row flex-wrap align-items-start">
+          <Navigation classMenuName="flex-fill" className="flex-fill col-12 d-flex flex-column flex-lg-row flex-wrap align-items-stretch" data={navigation} />
+
           {footerData && (footerData?.data?.store || footerData?.data?.social_networks) && <>
             <div className="col-lg-4 col-xl-auto">
               {footerData?.data?.social_networks && footerData?.data?.social_networks?.links && <div className="mb-5">

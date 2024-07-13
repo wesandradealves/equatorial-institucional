@@ -12,7 +12,7 @@ import { usePathname, redirect } from 'next/navigation';
 import "@/assets/scss/globals.scss";
 import "@/../hamburgers/_sass/hamburgers/hamburgers.scss";
 
-import { GlobalStyle } from './(home)/styles';
+import { GlobalStyle } from './(home)/style';
 
 export default function RootLayout({
   children,
@@ -37,9 +37,9 @@ export default function RootLayout({
     // if(subdomain && pathname == '/') redirect('institucional')
   }, []);  
 
-  // useEffect(() => {
-  //   console.log(theme)
-  // }, [theme]);    
+  useEffect(() => {
+    console.log(theme)
+  }, [theme]);    
 
   return (
     <html lang="pt-br">
