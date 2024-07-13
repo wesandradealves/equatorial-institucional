@@ -10,7 +10,7 @@ export const Container = styled.section<HeroTypo>`
     ${({ background_image }) => background_image && css`
         background: url(${background_image}) center center / cover no-repeat;
     `}    
-    margin-bottom: 242px;
+    margin-bottom: 200px;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         margin-bottom: -242px;
         overflow: hidden;
@@ -28,7 +28,7 @@ export const Container = styled.section<HeroTypo>`
         .inner {
             z-index: 10;
             position: relative;  
-            margin-bottom: -330px;     
+            margin-bottom: -430px;     
             @media screen and (min-width: ${props => props.theme.screenLgMin}) {
                 gap: 0 32px;
                 margin-bottom: 0;
@@ -47,10 +47,10 @@ export const Container = styled.section<HeroTypo>`
 
 export const Mask = styled.svg`
     bottom: 0;
-    width: 110vw;
-    left: calc(50% - 55vw);    
+    width: 1024px;
+    left: 0;    
     position: relative;
-    margin: 0;
+    margin: 0 -24px;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         width: 3000px;
         position: absolute;
