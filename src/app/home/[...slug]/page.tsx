@@ -6,13 +6,15 @@ import React, { lazy, useCallback, useContext, useMemo, useState } from "react";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
+import { usePathname } from "next/navigation";
 
 export default function Page(props: any) {
   const { config } = useContext<any>(ConfigProvider);
   const http = new HttpService();
   const [data, setData] = useState<any>(null);
   const [content, setContent] = useState<any>(null);
-
+  const pathname = usePathname();
+  
   const fetchData = async($url: any) => {
     const response:any = await http.get($url);
     return response;
@@ -27,14 +29,9 @@ export default function Page(props: any) {
   }
  
   useEffect(() => {
-    if(props?.params?.slug) {
-      let $alias = props?.params?.slug.shift();
-      if($alias !== undefined) {
-        fetchData(`/api/page/${$alias}`).then((response: any) => {
-          if(response) setData(response)
-        })
-      }
-    }
+    fetchData(`/api/page/${pathname.split("/").filter(index => index !== "" && index !== "home").join("/")}`).then((response: any) => {
+      if(response) setData(response)
+    })
   }, [props]);    
 
   useEffect(() => {
@@ -59,7 +56,7 @@ export default function Page(props: any) {
 
     {content && <>
       {content.map((component: any, index: Number) => (
-        <DynamicComponent data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
+        <DynamicComponent page={data} data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
       ))}
     </>}
   </>;

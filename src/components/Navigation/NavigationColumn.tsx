@@ -60,8 +60,8 @@ export default function NavigationColumn(props: NavColTypo) {
         <NavItem className="nav-item d-flex flex-column">
           <NavLink className="nav-link d-flex align-items-center justify-content-between">
             <Link onClick={(e) => {
-              if(disallowed_urls.includes(props?.data?.relative) || pathname.split("/").includes(props?.data?.relative.replace('/',''))) e.preventDefault()
-            } } className="nav-link" href={props?.data?.relative.replace(`/`, `${pathname}/`)}>
+              if(disallowed_urls.includes(props?.data?.relative) || pathname.split("/").includes(props?.data?.alias)) e.preventDefault()
+            } } className="nav-link" href={`${pathname}/${props?.data?.alias}`}>
               {props?.data?.title} 
             </Link>
 
@@ -76,8 +76,8 @@ export default function NavigationColumn(props: NavColTypo) {
                   <NavItem className='nav-item' key={i}>
                     <NavLink className="nav-link d-flex align-items-center justify-content-between">
                       <Link onClick={(e) => {
-                        if(disallowed_urls.includes(row?.relative) || pathname.split("/").includes(row?.relative.replace('/',''))) e.preventDefault()
-                      } } className="nav-link" href={row?.relative.replace(`/`, `${pathname}/`)}>
+                        if(disallowed_urls.includes(row?.relative) || pathname.split("/").includes(row?.alias)) e.preventDefault()
+                      } } className="nav-link" href={`${pathname}/${row?.alias}`}>
                         {row?.title} 
                       </Link>
                     </NavLink>
