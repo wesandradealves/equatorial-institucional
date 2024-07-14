@@ -17,7 +17,7 @@ export const NavItem = styled.li`
     color: white;
 `;
 
-export const NavLink = styled.a`
+export const NavLink = styled.span`
     gap: 0 12px;
     color: inherit;
     [class*="fa-"] {

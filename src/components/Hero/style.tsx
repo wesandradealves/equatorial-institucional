@@ -1,6 +1,6 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
-interface HeroTypo {
+export interface HeroTypo {
     background_image?: string;
     href?: any;
     className?: any;

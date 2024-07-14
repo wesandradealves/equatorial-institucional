@@ -32,11 +32,15 @@ export const HeaderBottom = styled.div<HeaderTypo>`
             gap: 0 ${props => props.theme.spacingSm};
             &-col {
                 .nav-item {
+                    color: white;
                     position: relative;
+                    .nav-link {
+                        color: inherit;
+                        gap: 0 8px;
+                    }
                     .nav-submenu {
                         padding: 32px 25px;
                         gap: 16px 0;
-                        border-radius: 25px;
                         background: ${props => props.theme.colorPrimary100};
                         position: absolute;
                         top: calc(100% + 16px);

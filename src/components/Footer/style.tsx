@@ -159,6 +159,7 @@ export const FooterTop = styled.div`
             @media screen and (min-width: ${props => props.theme.screenLgMin}) {
                 gap: 0
             }        
+            color: white;
             &-col {
                 &:not(:last-of-type) {
                     border-bottom: 1px white solid;
@@ -175,6 +176,7 @@ export const FooterTop = styled.div`
                     }
                     .nav-link {
                         padding: 0 16px;
+                        color: white;
                         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
                             padding: 0;
                             [class*="fa-"] {

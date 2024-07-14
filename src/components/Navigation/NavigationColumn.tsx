@@ -1,12 +1,20 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { NavCol, NavItem, NavLink, NavSubmenu, Arrow } from './style';
 import { NavColTypo } from '@/types/enums';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation'
 
 export default function NavigationColumn(props: NavColTypo) {
   const [isExpanded, setExpand] = useState<any>(false);
   const [scrollPosition, setScroll] = useState<any>(false);
   const classNames = require('classnames');
   const ref = useRef(null);
+  const pathname = usePathname();
+  const disallowed_urls = [
+    '',
+    '#',
+    '/'
+  ];
 
   const handleScroll = () => {
     setScroll(window.scrollY);
@@ -19,9 +27,7 @@ export default function NavigationColumn(props: NavColTypo) {
   const useOutsideAlerter = useCallback((ref: any) => {
     function handleClickOutside(event: any) {
       if(!event.target.closest("header")) {
-        if(Array.from(ref.current.classList).includes("is-expanded")) {
-          setExpand(false)
-        }
+        if(ref && ref?.current && Array.from(ref?.current?.classList).includes("is-expanded")) setExpand(false)
       }
     }
 
@@ -52,9 +58,13 @@ export default function NavigationColumn(props: NavColTypo) {
         )      
       }>
         <NavItem className="nav-item d-flex flex-column">
-          <NavLink className="nav-link d-flex align-items-center justify-content-between" >
-            {props?.data?.title} 
-            
+          <NavLink className="nav-link d-flex align-items-center justify-content-between">
+            <Link onClick={(e) => {
+              if(disallowed_urls.includes(props?.data?.relative) || pathname.split("/").includes(props?.data?.relative.replace('/',''))) e.preventDefault()
+            } } className="nav-link" href={props?.data?.relative.replace(`/`, `${pathname}/`)}>
+              {props?.data?.title} 
+            </Link>
+
             {props?.data?.below && <Arrow onClick={() => {
               setExpand(!isExpanded);
             }} className={`fa-solid fa-angle-${isExpanded ? 'up' : 'down'}`} />}
@@ -64,7 +74,13 @@ export default function NavigationColumn(props: NavColTypo) {
             {props?.data?.below.map(function(row: any, i: number){
                 return (
                   <NavItem className='nav-item' key={i}>
-                    <NavLink className='nav-link' href={row?.absolute.replace(process.env.NEXT_PUBLIC_BASE_URL, "")}>{row?.title}</NavLink>
+                    <NavLink className="nav-link d-flex align-items-center justify-content-between">
+                      <Link onClick={(e) => {
+                        if(disallowed_urls.includes(row?.relative) || pathname.split("/").includes(row?.relative.replace('/',''))) e.preventDefault()
+                      } } className="nav-link" href={row?.relative.replace(`/`, `${pathname}/`)}>
+                        {row?.title} 
+                      </Link>
+                    </NavLink>
                   </NavItem>
                 );
             })}    

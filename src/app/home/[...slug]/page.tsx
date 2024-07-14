@@ -1,12 +1,66 @@
 "use client";
 
-import React from "react";
+import ConfigProvider from "@/context/config";
+import { HttpService } from "@/services";
+import React, { lazy, useCallback, useContext, useMemo, useState } from "react";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
 
 export default function Page(props: any) {
+  const { config } = useContext<any>(ConfigProvider);
+  const http = new HttpService();
+  const [data, setData] = useState<any>(null);
+  const [content, setContent] = useState<any>(null);
+
+  const fetchData = async($url: any) => {
+    const response:any = await http.get($url);
+    return response;
+  }  
+
+  const camelCase = (str:any) => {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+    }
+    return splitStr.join(' '); 
+  }
+ 
   useEffect(() => {
-    console.log(props?.params?.slug)
+    if(props?.params?.slug) {
+      let $alias = props?.params?.slug.shift();
+      if($alias !== undefined) {
+        fetchData(`/api/page/${$alias}`).then((response: any) => {
+          if(response) setData(response)
+        })
+      }
+    }
   }, [props]);    
 
-  return <>Pagina</>;
+  useEffect(() => {
+    if(data && data?.field_conteudo) {
+
+      let conteudo = data?.field_conteudo.map(function(row: any){
+          return row.target_id
+      });
+
+      Promise.all(conteudo.map(function(pid: any) {
+        return http.get(`/entity/paragraph/${pid}`);
+      })).then((response: any) => {
+        setContent(response)
+      }).catch(console.error);      
+    }
+  }, [data]);  
+
+  return <>
+    {data && <Helmet>
+      <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>
+    </Helmet>}  
+
+    {content && <>
+      {content.map((component: any, index: Number) => (
+        <DynamicComponent data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
+      ))}
+    </>}
+  </>;
 }
