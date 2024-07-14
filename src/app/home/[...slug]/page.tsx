@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
 import { usePathname } from "next/navigation";
+import { Content } from "../(home)/style";
 
 export default function Page(props: any) {
   const { config } = useContext<any>(ConfigProvider);
@@ -49,7 +50,7 @@ export default function Page(props: any) {
     }
   }, [data]);  
 
-  return <>
+  return <Content className="d-flex flex-column">
     {data && <Helmet>
       <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>
     </Helmet>}  
@@ -59,5 +60,5 @@ export default function Page(props: any) {
         <DynamicComponent page={data} data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
       ))}
     </>}
-  </>;
+  </Content>;
 }

@@ -14,6 +14,9 @@ export const Container = styled.div`
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding-left: ${props => props.theme.spacingSm};
     }
+    [class*="BlockTitle"] {
+        padding: 0 ${props => props.theme.spacingSm};
+    }
 `;
 
 export const Columns = styled.div`
