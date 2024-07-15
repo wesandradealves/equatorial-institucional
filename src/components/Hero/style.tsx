@@ -1,6 +1,6 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
-interface HeroTypo {
+export interface HeroTypo {
     background_image?: string;
     href?: any;
     className?: any;
@@ -39,6 +39,10 @@ export const Container = styled.section<HeroTypo>`
         }
     }
     position: relative;
+    z-index: 1;
+    & + * {
+        z-index: 2;
+    }
 `;
 
 export const Mask = styled.svg`

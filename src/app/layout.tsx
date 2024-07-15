@@ -11,6 +11,8 @@ import { usePathname, redirect } from 'next/navigation';
 
 import "@/assets/scss/globals.scss";
 import "@/../hamburgers/_sass/hamburgers/hamburgers.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { GlobalStyle } from './(home)/style';
 

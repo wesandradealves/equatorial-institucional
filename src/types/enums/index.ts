@@ -165,3 +165,8 @@ export interface LanguagesTypo {
   lang?: any | undefined
   setLanguage?: React.Dispatch<any>  
 }
+
+export interface DynamicComponentProps {
+  componentName: string;
+  [key: string]: any;
+}

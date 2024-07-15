@@ -11,8 +11,12 @@ export const Container = styled.header`
     width: 100%;
     z-index: 99;
     padding: ${props => props.theme.spacingSm};
+    transition: 250ms ease-in-out all;
     &.sticky {
-        padding: ${props => props.theme.spacingSm}
+        padding: ${props => props.theme.spacingSm};
+        .container {
+            background: rgba(0,0,0,.2);  
+        }
     }
     @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
         padding: 0 ${props => props.theme.spacingSm};
@@ -29,14 +33,25 @@ export const HeaderBottom = styled.div<HeaderTypo>`
             padding: 32px 52px;       
         }
         .nav {
-            gap: 0 ${props => props.theme.spacingSm};
+            @media screen and (min-width: ${props => props.theme.screenWideMin}) {
+                gap: 0 ${props => props.theme.spacingSm};
+            }   
             &-col {
                 .nav-item {
+                    color: white;
                     position: relative;
+                    .nav-link {
+                        color: inherit;
+                        gap: 0 8px;
+                        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                            &:hover {
+                                color: ${props => props.theme.colorHighlight300};
+                            }
+                        }                        
+                    }
                     .nav-submenu {
                         padding: 32px 25px;
                         gap: 16px 0;
-                        border-radius: 25px;
                         background: ${props => props.theme.colorPrimary100};
                         position: absolute;
                         top: calc(100% + 16px);
@@ -50,6 +65,11 @@ export const HeaderBottom = styled.div<HeaderTypo>`
                                 color: inherit;
                                 padding-top: 0;
                                 padding-bottom: 0;
+                                @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                                    &:hover {
+                                        color: black;
+                                    }
+                                }
                             }
                         }          
                     }

@@ -127,3 +127,92 @@ input {
   padding-right: $spacing-sm;
   max-width: 1568px;
 }
+
+.text-align-right {
+  text-align: right;
+}
+
+.slick-slider {
+  .slick-dots {
+    position: relative;
+    bottom: 0;
+    margin-top: $spacing-sm;
+    display: flex !important;
+    gap: 0 6px;
+    justify-content: center;
+    align-items: center;
+    li {
+        height: 6px;
+        width: 12px;
+        margin: 0;
+        transition: 600ms ease-in-out all;
+        &[class*="active"] {
+            width: 48px;
+            button {
+                background-color: $color-primary-300
+            }
+        }
+        button {
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $color-neutral-400;
+            border-radius: 6px;
+            transition: 200ms ease-in-out all;
+            &::before {
+              content: initial
+            }
+        }
+    }
+  }
+}
+
+
+.modal-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.5);
+  -webkit-backdrop-filter: blur($spacing-sm);
+  backdrop-filter: blur($spacing-sm);   
+  overflow: hidden;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal-video-inner {
+      width: 100%;
+      .modal-video-movie-wrap {
+          position: relative;
+          background-color: black;
+          padding: 35px 0 50% 0 !important;
+          overflow: hidden;
+          border-radius: 30px;
+          &::after {
+              content: '';
+              width: 48px;
+              height: 48px;
+              border: 5px solid #FFF;
+              border-bottom-color: transparent;
+              border-radius: 50%;
+              display: inline-block;
+              box-sizing: border-box;
+              animation: rotation 1s linear infinite;
+              position: absolute;
+              top: calc(50% - $spacing-sm);
+              left: calc(50% - $spacing-sm);
+              z-index: 1;
+          }
+          iframe {
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 2;
+          }
+      }
+  }
+}
