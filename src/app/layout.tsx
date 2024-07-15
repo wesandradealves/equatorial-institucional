@@ -36,7 +36,6 @@ export default function RootLayout({
 
   useEffect(() => {
     fetchData();
-    // if(subdomain && pathname == '/') redirect('institucional')
   }, []);  
 
   useEffect(() => {
@@ -47,15 +46,15 @@ export default function RootLayout({
     <html lang="pt-br">
       <body suppressHydrationWarning={true}>
         <ThemeProvider theme={theme}>
-          <HelmetProvider>                     
-            <LanguageProvider.Provider value={{lang, setLanguage}}>
-              <NavigationProvider.Provider value={{navigation, setNavigation}}>  
-                <ConfigProvider.Provider value={{config, setConfig}}>  
+          <ConfigProvider.Provider value={{config, setConfig}}> 
+            <HelmetProvider>                     
+              <LanguageProvider.Provider value={{lang, setLanguage}}>
+                <NavigationProvider.Provider value={{navigation, setNavigation}}>  
                   <>{children}</>
-                </ConfigProvider.Provider>
-              </NavigationProvider.Provider>
-            </LanguageProvider.Provider>   
-          </HelmetProvider>
+                </NavigationProvider.Provider>
+              </LanguageProvider.Provider>   
+            </HelmetProvider>
+          </ConfigProvider.Provider>
           <GlobalStyle/>
         </ThemeProvider>             
       </body>

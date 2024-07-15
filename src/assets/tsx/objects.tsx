@@ -27,21 +27,3 @@ export const Button = styled.a<ButtonTypo>`
     }
 `;
 
-export const BlockTitle = styled.h2`
-    font-size: 1.5rem;
-    br {
-        @media screen and (max-width: ${props => props.theme.screenLgMin}) {
-            display: none;
-        }
-    }
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        font-size: 2.5rem;
-    }
-`;
-
-export const BlockHeading = styled.div`
-    gap: 53px 0;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        padding-right: 60px;
-    }    
-`;

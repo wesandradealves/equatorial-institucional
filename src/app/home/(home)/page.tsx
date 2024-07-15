@@ -7,20 +7,19 @@ import Hero from "@/components/Hero/Hero";
 import UltimasNoticias from "@/components/UltimasNoticias/UltimasNoticias";
 import { Content } from "./style";
 import BlockVideos from "@/components/BlockVideos/BlockVideos";
+import BlockIniciativas from "@/components/BlockIniciativas/BlockIniciativas";
 
 export default function Home() {
   const { config } = useContext<any>(ConfigProvider);
-
   return (
     <Content className="d-flex flex-column">
       {config && (
-        <Helmet>
-          <title>{`${config?.site_name} - Página Inicial`}</title>
-        </Helmet>
+        <title>{`${config?.site_name} - Página Inicial`}</title>
       )}
       <Hero />
       <BlockVideos />
       <BlockShorts />
+      <BlockIniciativas />
       <UltimasNoticias />
     </Content>
   );
