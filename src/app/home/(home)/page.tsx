@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import Hero from "@/components/Hero/Hero";
 import UltimasNoticias from "@/components/UltimasNoticias/UltimasNoticias";
 import { Content } from "./style";
+import BlockVideos from "@/components/BlockVideos/BlockVideos";
 
 export default function Home() {
   const { config } = useContext<any>(ConfigProvider);
@@ -18,14 +19,9 @@ export default function Home() {
         </Helmet>
       )}
       <Hero />
-
+      <BlockVideos />
       <BlockShorts />
       <UltimasNoticias />
-      {/* <ConvenienceAndSecurity />
-      <IniciativasEquatorial />
-
-      <Institucional />
-      <PerguntasFrequentes />      */}
     </Content>
   );
 }

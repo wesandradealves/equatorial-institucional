@@ -1,7 +1,7 @@
 "use client"; 
 
 import { HttpService } from '@/services';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BlockTypo, BlockShortsTypo } from '@/types/enums';
 import { VideoPill, VideoPillInner, VideoPillTitle, PlayVideo, Content, Container, Columns, Column } from './style';
 import React from "react";
@@ -10,8 +10,7 @@ import "@/components/BlockShorts/style.scss";
 import ModalVideo from 'react-modal-video';
 import { Button } from '@/assets/tsx/objects';
 import BlockHead from '@/template-parts/BlockHead/BlockHead';
-
-// Button
+import ConfigProvider from '@/context/config';
 
 export default function BlockShorts(props: any) {
   const http = new HttpService();
@@ -21,6 +20,7 @@ export default function BlockShorts(props: any) {
     status: false,
     video: null
   });
+  const { config } = useContext<any>(ConfigProvider);
 
   const settings = {
     dots: true,
@@ -55,6 +55,8 @@ export default function BlockShorts(props: any) {
   useEffect(() => {
     const main: HTMLElement | null = document.getElementById("primary");
     main?.classList.toggle("modal-opened");
+    const el: HTMLElement | null = document.getElementById("block_shorts");
+    if(el) el.style.zIndex = isOpen.status ? '2' : '1';    
   }, [isOpen]);  
 
   useEffect(() => {
@@ -66,39 +68,30 @@ export default function BlockShorts(props: any) {
             if(response) setBlockData(response.shift())
           }).catch(console.error);        
         }
-      }).catch(console.error);
+      }).catch(console.error);   
+    }
+
+    if(!data) {
+      fetchData('/api/taxonomy/videos').then((response: any[]) => {
+        if(response) {
+          let term = response.find(o => o.name.shift().value = 'Shorts');
+          let tid = term.tid.shift().value;
+  
+          fetchData(`/api/videos/${tid}`).then((response: BlockTypo[] | any) => {
+            if(response) setContentData(response.rows.map(function(row: any, i: number){
+                return {
+                  ...row,
+                  thumbnail: row.thumbnail ? `${config?.basePath}${row.thumbnail}` : (row.url ? `https://img.youtube.com/vi/${ row.url.split("shorts/")[1] }/0.jpg` : '')
+                };
+            }))
+          }).catch(console.error);           
+        }
+      }).catch(console.error); 
     }
   }, []);
 
-  useEffect(() => {
-    if(blockData) {
-      fetchData('/api/config').then((response: any) => {
-        if(response) {
-          const basePath = response?.data?.basePath;
-          
-          fetchData('/api/taxonomy/videos').then((response: any[]) => {
-            if(response) {
-              let term = response.find(o => o.name.shift().value = 'Shorts');
-              let tid = term.tid.shift().value;
-
-              fetchData(`/api/videos/${tid}`).then((response: BlockTypo[] | any) => {
-                if(response) setContentData(response.rows.map(function(row: any, i: number){
-                    return {
-                      ...row,
-                      thumbnail: row.thumbnail ? `${basePath}${row.thumbnail}` : (row.url ? `https://img.youtube.com/vi/${ row.url.split("shorts/")[1] }/0.jpg` : '')
-                    };
-                }))
-              }).catch(console.error);           
-            }
-          }).catch(console.error);
-        }
-      }).catch(console.error);
-    }
-  }, [blockData]);  
-
-
   return (
-    <Content className='block_shorts'>
+    <Content id="block_shorts" className='block_shorts'>
       {blockData && data && blockData?.title && <Container className='container'>
         <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center flex-lg-row justify-content-lg-start align-items-lg-start'>
           <BlockHead className="col-12 col-lg-5" data={blockData} />
