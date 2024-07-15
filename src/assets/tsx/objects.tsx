@@ -8,6 +8,7 @@ export const Button = styled.a<ButtonTypo>`
     align-items: center;
     text-align: center;
     gap: 0 8px;
+    cursor: pointer;
     font-weight: 600;
     padding: 20px 32px;
     display: inline-flex;
@@ -16,12 +17,12 @@ export const Button = styled.a<ButtonTypo>`
     font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
     background-color: ${props => props.theme.colorHighlight300};
     border: 2px ${props => props.theme.colorHighlight300} solid;
-    svg {
+    [class*="fa"] {
         position: relative;
     }
     &:hover {
         background-color: transparent;
-        svg {
+        [class*="fa"] {
             right: -4px
         }
     }

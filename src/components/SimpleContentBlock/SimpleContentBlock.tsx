@@ -4,10 +4,6 @@ import { Content, Container, Text } from "./style";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
 
 export default function SimpleContentBlock(props: any) {
-  useEffect(() => {
-    console.log(props?.data, true)
-  }, [props]);
-    
   return (
     <>
       {props?.data && <Content className={props?.data?.type[0]?.target_id}>

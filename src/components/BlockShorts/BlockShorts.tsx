@@ -120,9 +120,7 @@ export default function BlockShorts(props: any) {
             <span className="d-block mt-5 d-lg-none text-center">
               <Button  href={""}>
                 Ver todos os vídeos 
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 3.75L15 9M15 9L10 14.25M15 9L3 9" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <i className="fa-solid fa-arrow-right"></i>
               </Button>    
             </span>
           </Column>

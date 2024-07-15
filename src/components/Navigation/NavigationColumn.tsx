@@ -58,7 +58,15 @@ export default function NavigationColumn(props: NavColTypo) {
         )      
       }>
         <NavItem className="nav-item d-flex flex-column">
-          <NavLink className="nav-link d-flex align-items-center justify-content-between">
+          <NavLink 
+            className={
+              classNames(
+                "nav-link d-flex align-items-center justify-content-between",
+                {
+                  'is-expanded': !!isExpanded
+                }
+              )      
+            }>
             <Link onClick={(e) => {
               if(disallowed_urls.includes(props?.data?.relative) || pathname.split("/").includes(props?.data?.alias)) e.preventDefault()
             } } className="nav-link" href={`${pathname}/${props?.data?.alias}`}>

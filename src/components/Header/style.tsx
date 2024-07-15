@@ -37,30 +37,36 @@ export const HeaderBottom = styled.div<HeaderTypo>`
                 gap: 0 ${props => props.theme.spacingSm};
             }   
             &-col {
+                &.is-expanded {
+                    background: ${props => props.theme.colorPrimary100};
+                    border-radius: 999px;
+                    .nav-item {
+                        .nav-link {
+                            color: ${props => props.theme.colorPrimary300}
+                        }
+                    }
+                }
                 .nav-item {
                     color: white;
                     position: relative;
                     .nav-link {
                         color: inherit;
-                        gap: 0 8px;
-                        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                            &:hover {
-                                color: ${props => props.theme.colorHighlight300};
-                            }
-                        }                        
+                        gap: 0;
                     }
                     .nav-submenu {
-                        padding: 32px 25px;
-                        gap: 16px 0;
+                        padding: 40px;
+                        gap: 32px 0;
+                        border-radius: 40px;
                         background: ${props => props.theme.colorPrimary100};
                         position: absolute;
-                        top: calc(100% + 16px);
-                        left: 0;  
+                        top: calc(100% + 44px);
+                        left: calc(50% - 200px);  
                         box-shadow: 0px 10px 30px -10px rgba(255,255,255,.5);
-                        min-width: 340px;
+                        min-width: 400px;
                         .nav-item {
-                            color: ${props => props.theme.colorPrimary300}; 
+                            color: ${props => props.theme.colorPrimary300};
                             font-weight: 600;
+                            font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};
                             .nav-link {
                                 color: inherit;
                                 padding-top: 0;

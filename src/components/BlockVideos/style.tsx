@@ -78,4 +78,9 @@ export const Info = styled.div`
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding: 48px;
     }
+    [class*="Button"] {
+        &:hover {
+            color: ${props => props.theme.colorHighlight300};
+        }
+    }
 `;
