@@ -1,5 +1,4 @@
 "use client";
-import { Helmet } from "react-helmet-async";
 import { Wrapper, Content, Inner, Logo, Navigation, NavTitle, ListNav, NavItem, NavLink} from "./style";
 import ConfigProvider from "@/context/config";
 import { useContext, useEffect, useState } from "react";
@@ -24,9 +23,7 @@ export default function Select() {
     <Wrapper>
       {config && <>
         <Content background_image={config?.location_screen_bg}>
-          <Helmet>
-            <title>{`${config?.site_name} - Escolha seu estado`}</title>
-          </Helmet>   
+          <title>{`${config?.site_name} - Escolha seu estado`}</title>
           <Inner>
             <Logo>
               <img

@@ -10,7 +10,6 @@ import "@/components/BlockShorts/style.scss";
 import ModalVideo from 'react-modal-video';
 import { Button } from '@/assets/tsx/objects';
 import BlockHead from '@/template-parts/BlockHead/BlockHead';
-import ConfigProvider from '@/context/config';
 
 export default function BlockShorts(props: any) {
   const http = new HttpService();
@@ -20,7 +19,6 @@ export default function BlockShorts(props: any) {
     status: false,
     video: null
   });
-  const { config } = useContext<any>(ConfigProvider);
 
   const settings = {
     dots: true,
@@ -81,7 +79,7 @@ export default function BlockShorts(props: any) {
             if(response) setContentData(response.rows.map(function(row: any, i: number){
                 return {
                   ...row,
-                  thumbnail: row.thumbnail ? `${config?.basePath}${row.thumbnail}` : (row.url ? `https://img.youtube.com/vi/${ row.url.split("shorts/")[1] }/0.jpg` : '')
+                  thumbnail: `https://img.youtube.com/vi/${ row.url.split("shorts/")[1] }/0.jpg`
                 };
             }))
           }).catch(console.error);           
@@ -94,7 +92,7 @@ export default function BlockShorts(props: any) {
     <Content id="block_shorts" className='block_shorts'>
       {blockData && data && blockData?.title && <Container className='container'>
         <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center flex-lg-row justify-content-lg-start align-items-lg-start'>
-          <BlockHead className="col-12 col-lg-5" data={blockData} />
+          {blockData && <BlockHead className="col-12 col-lg-5" data={blockData} />}
           <Column className='col-12 col-lg-7'>
             <Slider {...settings}>
               {data.map((row: any, i: any) => (

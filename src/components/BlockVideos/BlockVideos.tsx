@@ -70,7 +70,7 @@ export default function BlockVideos(props: any) {
         <Slider {...settings}>
           {data.map((row: any, index: any) => (
             <Item key={index} className="overflow-hidden">
-                <Inner className="d-flex flex-column overflow-hidden" background_image={row?.thumbnail ? row?.thumbnail : `https://img.youtube.com/vi/${ row.url.split("?v=")[1] }/0.jpg`}>
+                <Inner className="d-flex flex-column overflow-hidden" background_image={`https://img.youtube.com/vi/${ row.url.split("?v=")[1] }/0.jpg`}>
                   <Text className="d-flex flex-column" dangerouslySetInnerHTML={{__html: row?.body}} />
                   <Info className="d-flex flex-column">
                     <Title dangerouslySetInnerHTML={{__html: row?.title}} />

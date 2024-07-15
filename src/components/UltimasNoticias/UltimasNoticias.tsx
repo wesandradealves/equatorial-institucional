@@ -8,12 +8,11 @@ import { News, NewsTypo } from "./types/news_typo";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
 import ConfigProvider from '@/context/config';
 
-export default function UltimasNoticias() {
-  const { config } = useContext<any>(ConfigProvider);
+export default function UltimasNoticias(props: any) {
   const http = new HttpService();
   const [news, setNews] = useState<News[]>([]);
   const [blockData, setBlockData] = useState<BlockTypo[] | {} | any>(null);
-
+  const { config } = useContext<any>(ConfigProvider);
   const getUltimasNoticias = async () => {
     const result: NewsTypo = await http.get("/api/noticias");
     setNews(result.rows);

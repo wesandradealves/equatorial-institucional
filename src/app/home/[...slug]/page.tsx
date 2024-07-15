@@ -4,7 +4,6 @@ import ConfigProvider from "@/context/config";
 import { HttpService } from "@/services";
 import React, { lazy, useCallback, useContext, useMemo, useState } from "react";
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
 import { usePathname } from "next/navigation";
 import { Content } from "../(home)/style";
@@ -51,9 +50,7 @@ export default function Page(props: any) {
   }, [data]);  
 
   return <Content className="d-flex flex-column">
-    {data && <Helmet>
-      <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>
-    </Helmet>}  
+    {data && <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>}  
 
     {content && <>
       {content.map((component: any, index: Number) => (
