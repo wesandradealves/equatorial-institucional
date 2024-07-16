@@ -39,7 +39,7 @@ export default function RootLayout({
   }, []);  
 
   useEffect(() => {
-    console.log(theme)
+    if(theme) console.log(theme)
   }, [theme]);    
 
   return (

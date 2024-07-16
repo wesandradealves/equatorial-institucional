@@ -9,6 +9,7 @@ import { Content } from "./style";
 import BlockVideos from "@/components/BlockVideos/BlockVideos";
 import BlockIniciativas from "@/components/BlockIniciativas/BlockIniciativas";
 import PerguntasFrequentes from "@/components/perguntasFrequentes";
+import BlockInstitucionalEquatorial from "@/components/BlockInstitucionalEquatorial/BlockInstitucionalEquatorial";
 
 export default function Home() {
   const { config } = useContext<any>(ConfigProvider);
@@ -20,9 +21,10 @@ export default function Home() {
       <Hero />
       <BlockVideos />
       <BlockShorts />
+      <BlockInstitucionalEquatorial />
       <BlockIniciativas />
       <UltimasNoticias />
-      <PerguntasFrequentes />
+      {/* <PerguntasFrequentes /> */}
     </Content>
   );
 }

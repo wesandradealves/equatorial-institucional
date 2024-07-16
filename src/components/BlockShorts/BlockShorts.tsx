@@ -23,11 +23,11 @@ export default function BlockShorts(props: any) {
   const settings = {
     dots: true,
     arrows: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     centerMode: true,
     slidesToShow: 3,
-    initialSlide: 1,
+    initialSlide: 0,
     slidesToScroll: 1,
     responsive: [
       {
@@ -54,7 +54,7 @@ export default function BlockShorts(props: any) {
     const main: HTMLElement | null = document.getElementById("primary");
     main?.classList.toggle("modal-opened");
     const el: HTMLElement | null = document.getElementById("block_shorts");
-    if(el) el.style.zIndex = isOpen.status ? '2' : '1';    
+    if(el) el.style.zIndex = isOpen.status ? '2' : '3';    
   }, [isOpen]);  
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function BlockShorts(props: any) {
         if(response) {
           let uuid = response?.settings?.id.split("block_content:").pop();
           fetchData(`/api/blocks/${uuid}`).then((response: BlockTypo[]) => {
-            if(response) setBlockData(response.shift())
+            if(response) setBlockData(response[0])
           }).catch(console.error);        
         }
       }).catch(console.error);   
@@ -72,8 +72,8 @@ export default function BlockShorts(props: any) {
     if(!data) {
       fetchData('/api/taxonomy/videos').then((response: any[]) => {
         if(response) {
-          let term = response.find(o => o.name.shift().value = 'Shorts');
-          let tid = term.tid.shift().value;
+          let term = response.find(o => o.name[0].value = 'Shorts');
+          let tid = term.tid[0].value;
   
           fetchData(`/api/videos/${tid}`).then((response: BlockTypo[] | any) => {
             if(response) setContentData(response.rows.map(function(row: any, i: number){
@@ -117,12 +117,12 @@ export default function BlockShorts(props: any) {
                 </div>                  
               ))}
             </Slider>
-            <span className="d-block mt-5 d-lg-none text-center">
-              <Button  href={""}>
-                Ver todos os vídeos 
+            {blockData && <span className="d-block mt-5 d-lg-none text-center">
+              <Button  href={blockData?.cta_url}>
+                {blockData?.cta_label}
                 <i className="fa-solid fa-arrow-right"></i>
               </Button>    
-            </span>
+            </span>}
           </Column>
         </Columns>
       </Container>}
