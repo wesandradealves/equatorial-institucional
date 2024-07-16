@@ -25,12 +25,25 @@ export const Container = styled.div`
 export const Content = styled.section`
     position: relative;
     z-index: 2;
+    .accordion {
+        max-height: 330px;
+    }
 `;
 
 export const Inner = styled.div`
     gap: 32px 0;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         gap: 156px 0
+    }
+`;
+
+export const Mask = styled.svg`
+    position: absolute;
+    bottom: -100px;
+    left: calc(50% - 960px);
+    z-index: 1;
+    path {
+        fill: ${props => props.theme.colorPrimary100};
     }
 `;
 
