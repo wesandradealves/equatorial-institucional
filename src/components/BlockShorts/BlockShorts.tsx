@@ -27,7 +27,7 @@ export default function BlockShorts(props: any) {
     speed: 500,
     centerMode: true,
     slidesToShow: 3,
-    initialSlide: 0,
+    initialSlide: 1,
     slidesToScroll: 1,
     responsive: [
       {
