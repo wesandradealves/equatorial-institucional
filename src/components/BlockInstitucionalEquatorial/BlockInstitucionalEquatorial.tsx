@@ -23,7 +23,7 @@ export default function BlockInstitucionalEquatorial(props: any) {
     speed: 500,
     centerMode: true,
     slidesToShow: 1,
-    initialSlide: 0,
+    initialSlide: 1,
     slidesToScroll: 1  
   }; 
   
@@ -132,7 +132,7 @@ export default function BlockInstitucionalEquatorial(props: any) {
                           </Top>}
                           <Bottom className="mt-md-auto d-flex flex-column">
                             <Title>{row?.title}</Title>
-                            {(row?.summary) && <Text dangerouslySetInnerHTML={{__html: row?.summary.substr(0, 400)}} />}
+                            {(row?.summary) && <Text dangerouslySetInnerHTML={{__html: `${row?.summary.substr(0, 400)}...`}} />}
                             <Button className="me-md-auto mt-auto" href={row?.nid}>
                               Descubra nossos serviços
                             </Button> 

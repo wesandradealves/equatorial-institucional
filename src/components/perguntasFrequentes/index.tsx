@@ -1,7 +1,7 @@
 "use client"
 import {Wrapper, ListMenu, Conteudo, Actions, ImagemContainer, Title} from './style'
 import Image from 'next/image'
-import imagemClaraPose from '@/assets/img/imagemClaraPose.svg';
+// import imagemClaraPose from '@/assets/img/imagemClaraPose.svg';
 import Collapse from '@/components/ui/inputs/Collapse';
 import { Button } from '@/assets/tsx/objects';
 import { HttpService } from "@/services";
@@ -47,12 +47,12 @@ export function PerguntasFrequentes() {
                 <h1>Perguntas frequentes</h1>
             </Title>
             <Conteudo>
-                <ImagemContainer>
+                {/* <ImagemContainer>
                     <Image
                         src={imagemClaraPose}
                         alt='imagemClaraPose'
                     />
-                </ImagemContainer>
+                </ImagemContainer> */}
                 <Actions>
                     <ListMenu>
                         {listFaq.map((item, index) => (
