@@ -18,10 +18,10 @@ export const Button = styled.a<ButtonTypo>`
     justify-content: center;
     align-items: center;
     border-radius: 999px;
-    color: ${props => props.theme[props.fontColor || 'colorHighlight300']};
+    color: black;
     font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
-    background-color: ${props => props.theme[props.bgColor || 'colorHighlight300']};
-    border: 2px ${props => props.theme[props.borderColor || 'colorHighlight300']} solid;
+    background-color: ${props => props.theme.colorHighlight300};
+    border: 2px ${props => props.theme.colorHighlight300} solid;
     [class*="fa"] {
         position: relative;
     }

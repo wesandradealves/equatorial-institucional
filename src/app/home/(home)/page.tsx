@@ -8,7 +8,7 @@ import UltimasNoticias from "@/components/UltimasNoticias/UltimasNoticias";
 import { Content } from "./style";
 import BlockVideos from "@/components/BlockVideos/BlockVideos";
 import BlockIniciativas from "@/components/BlockIniciativas/BlockIniciativas";
-import PerguntasFrequentes from "@/components/perguntasFrequentes";
+import PerguntasFrequentes from "@/components/PerguntasFrequentes/PerguntasFrequentes";
 import BlockInstitucionalEquatorial from "@/components/BlockInstitucionalEquatorial/BlockInstitucionalEquatorial";
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
       <BlockInstitucionalEquatorial />
       <BlockIniciativas />
       <UltimasNoticias />
-       <PerguntasFrequentes />
+      <PerguntasFrequentes />
     </Content>
   );
 }

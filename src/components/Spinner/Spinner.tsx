@@ -6,10 +6,6 @@ import SpinnerProvider from "./context";
 export default function Spinner(props: any) {
   const classNames = require('classnames');
 
-  useEffect(() => {
-    console.log(props)
-  }, [props]);  
-
   return (<SpinnerWrapper 
     className={
       classNames(
