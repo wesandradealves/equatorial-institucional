@@ -142,7 +142,8 @@ export default function Footer() {
         <div className="container d-flex flex-column flex-lg-row align-items-stretch">
           {handleContactInfo(footerData?.data?.contact)}
         </div>
-      </Contact>} 
+      </Contact>
+      }
     </Container>
   );
 }
