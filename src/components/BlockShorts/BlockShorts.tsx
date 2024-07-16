@@ -54,7 +54,7 @@ export default function BlockShorts(props: any) {
     const main: HTMLElement | null = document.getElementById("primary");
     main?.classList.toggle("modal-opened");
     const el: HTMLElement | null = document.getElementById("block_shorts");
-    if(el) el.style.zIndex = isOpen.status ? '3' : '1'; 
+    if(el) el.style.zIndex = isOpen.status ? '4' : '3'; 
   }, [isOpen]);  
 
   useEffect(() => {

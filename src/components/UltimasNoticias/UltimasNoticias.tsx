@@ -1,6 +1,6 @@
 "use client";
 import { Column, Content, Columns, Container } from '@/components/UltimasNoticias/style';
-import NewsCard from "@/components/ui/newsCard/NewsCard";
+import NewsCard from "@/components/NewsCard/NewsCard";
 import { HttpService } from "@/services";
 import { BlockTypo } from "@/types/enums";
 import { useContext, useEffect, useState } from "react";

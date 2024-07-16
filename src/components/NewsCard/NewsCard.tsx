@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import {CardImageContainer, Content, NewsCardContainer, ResponsiveTitle, Tag, TagsContainer, ResponsiveDescription, ResponsiveDate} from "@/components/ui/newsCard/style"
+import {CardImageContainer, Content, NewsCardContainer, ResponsiveTitle, Tag, TagsContainer, ResponsiveDescription, ResponsiveDate} from "./style"
 
 const CardImage = ({
   imageUrl,

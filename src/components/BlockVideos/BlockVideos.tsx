@@ -62,7 +62,7 @@ export default function BlockVideos(props: any) {
     main?.classList.toggle("modal-opened");
     const el: HTMLElement | null = document.getElementById("block_videos");
     const block_shorts: HTMLElement | null = document.getElementById("block_shorts");
-    if(el) el.style.zIndex = isOpen.status ? '3' : '1';
+    if(el) el.style.zIndex = isOpen.status ? '5' : '1';
   }, [isOpen]);  
 
   return (
