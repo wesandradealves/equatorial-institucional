@@ -4,7 +4,13 @@
   width: 100%;
 }
 
+.container-collapse {
+  max-height: 150px;
+  overflow-y: hidden;
+}
+
 .collapsibleBase {
+  max-height: 150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,6 +56,7 @@
   background-color: #EBEBEB;
 }
 .collapse-content {
+  max-height: 150px;
   width: 100%;
   display: grid;
   grid-template-rows:0fr;

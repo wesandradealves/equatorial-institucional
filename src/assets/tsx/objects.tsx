@@ -2,6 +2,9 @@ import styled, {css, createGlobalStyle} from "styled-components";
 
 interface ButtonTypo {
     className?: string;
+    bgColor?:string;
+    borderColor?:string;
+    fontColor?:string;
 }
 
 export const Button = styled.a<ButtonTypo>`
@@ -15,10 +18,10 @@ export const Button = styled.a<ButtonTypo>`
     justify-content: center;
     align-items: center;
     border-radius: 999px;
-    color: black;
+    color: ${props => props.theme[props.fontColor || 'colorHighlight300']};
     font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
-    background-color: ${props => props.theme.colorHighlight300};
-    border: 2px ${props => props.theme.colorHighlight300} solid;
+    background-color: ${props => props.theme[props.bgColor || 'colorHighlight300']};
+    border: 2px ${props => props.theme[props.borderColor || 'colorHighlight300']} solid;
     [class*="fa"] {
         position: relative;
     }

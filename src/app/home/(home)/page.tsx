@@ -24,7 +24,7 @@ export default function Home() {
       <BlockInstitucionalEquatorial />
       <BlockIniciativas />
       <UltimasNoticias />
-      {/* <PerguntasFrequentes /> */}
+       <PerguntasFrequentes />
     </Content>
   );
 }
