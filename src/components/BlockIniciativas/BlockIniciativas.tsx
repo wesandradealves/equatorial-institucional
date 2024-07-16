@@ -59,10 +59,6 @@ export default function BlockIniciativas(props: any) {
     }    
   }, []); 
 
-  useEffect(() => {
-    console.log(data)
-  }, [data]); 
-  
   return (
     <>{data && blockData && <Content className="block_iniciativas">
       <Container className="container-fluid p-0">

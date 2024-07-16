@@ -8,6 +8,11 @@ class HttpService {
     "http://drupal-institucional-drupal-dev.apps.ocpdrupal.equatorial.corp";
 
   constructor() {
+    axios.interceptors.response.use(req => {
+      console.log(req)
+      return req
+    }, err => err);
+
     this.http = axios.create({
       baseURL: this.baseURL,
       withCredentials: false,
