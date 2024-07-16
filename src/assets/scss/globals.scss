@@ -117,6 +117,10 @@ input {
     font-family: inherit;
 }
 
+#primary {
+  z-index: 1;
+  position: relative;
+}
 
 .flex-fill {
   flex: 1 !important

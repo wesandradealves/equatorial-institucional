@@ -15,6 +15,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { GlobalStyle } from './(home)/style';
+import Spinner from '@/components/Spinner/Spinner';
+import SpinnerProvider from '@/components/Spinner/context';
 
 export default function RootLayout({
   children,
@@ -23,6 +25,7 @@ export default function RootLayout({
 }) {
   const http = new HttpService();
   const [config, setConfig] = useState<ConfigTypo | any>(null);
+  const [loading, setLoading] = useState<any>(false);
   const [lang, setLanguage] = useState<LanguagesTypo | any>(null);
   const [navigation, setNavigation] = useState<NavigationTypo | any>(null);
   const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!@/assets/scss/variables.scss');
@@ -38,25 +41,28 @@ export default function RootLayout({
     fetchData();
   }, []);  
 
-  useEffect(() => {
-    if(theme) console.log(theme)
-  }, [theme]);    
-
+  // useEffect(() => {
+  //   if(theme) console.log(theme)
+  // }, [theme]);   
+  
   return (
     <html lang="pt-br">
       <body suppressHydrationWarning={true}>
         <ThemeProvider theme={theme}>
-          <ConfigProvider.Provider value={{config, setConfig}}> 
-            <HelmetProvider>                     
-              <LanguageProvider.Provider value={{lang, setLanguage}}>
-                <NavigationProvider.Provider value={{navigation, setNavigation}}>  
-                  <>{children}</>
-                </NavigationProvider.Provider>
-              </LanguageProvider.Provider>   
-            </HelmetProvider>
-          </ConfigProvider.Provider>
+          <SpinnerProvider.Provider value={{loading, setLoading}}>
+            <Spinner loading={loading} />
+            <ConfigProvider.Provider value={{config, setConfig}}> 
+              <HelmetProvider>                     
+                <LanguageProvider.Provider value={{lang, setLanguage}}>
+                  <NavigationProvider.Provider value={{navigation, setNavigation}}> 
+                    <>{children}</>
+                  </NavigationProvider.Provider>
+                </LanguageProvider.Provider>   
+              </HelmetProvider>
+            </ConfigProvider.Provider>
+          </SpinnerProvider.Provider>
           <GlobalStyle/>
-        </ThemeProvider>             
+        </ThemeProvider>     
       </body>
     </html>
   )
