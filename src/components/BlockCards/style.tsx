@@ -34,9 +34,11 @@ export const Container = styled.div`
     gap: 72px 0;
     position: relative;
     &::after {
-        content: "";
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            content: "";
+        }
         position: absolute;
-        z-index: 1;
+        z-index: -1;
         width: 880px;
         height: 880px;
         top: calc(50% - 440px);

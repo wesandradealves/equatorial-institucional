@@ -12,6 +12,8 @@ export const Button = styled.a<ButtonTypo>`
     font-weight: 600;
     padding: 20px 32px;
     display: inline-flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 999px;
     color: black;
     font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};

@@ -20,7 +20,7 @@ export default function BlockIniciativas(props: any) {
     speed: 500,
     centerMode: true,
     slidesToShow: 1,
-    initialSlide: 1,
+    initialSlide: 0,
     slidesToScroll: 1  
   }; 
   
@@ -35,7 +35,7 @@ export default function BlockIniciativas(props: any) {
         if(response) {
           let uuid = response?.settings?.id.split("block_content:").pop();
           fetchData(`/api/blocks/${uuid}`).then((response: BlockTypo[]) => {
-            if(response) setBlockData(response.shift())
+            if(response) setBlockData(response[0])
           }).catch(console.error);        
         }
       }).catch(console.error);   

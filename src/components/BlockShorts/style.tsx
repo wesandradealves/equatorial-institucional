@@ -5,7 +5,7 @@ interface VideoPillTypo {
 }
 
 export const Content = styled.section`
-    z-index: 2;
+    z-index: 3;
 `;
 
 export const Container = styled.div`
@@ -19,7 +19,7 @@ export const Container = styled.div`
             padding-left: ${props => props.theme.spacingSm};
             padding-right: ${props => props.theme.spacingSm};
         }
-    }
+    }     
 `;
 
 export const Columns = styled.div`
@@ -41,12 +41,9 @@ export const VideoPill = styled.div<VideoPillTypo>`
     overflow: hidden;
     position: relative;
     height: 480px;
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
-        // height: 610px;
-        @media screen and (min-width: ${props => props.theme.screenXlMin}) {
-            height: 440px;
-        }
-    }      
+    @media screen and (min-width: ${props => props.theme.screenXlMin}) {
+        height: 440px;
+    }   
     &::after {
         content: "";
         position: absolute;
@@ -81,7 +78,7 @@ export const VideoPillInner = styled.div`
 export const VideoPillTitle = styled.h3`
     color: white;
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: ${props => props.theme.fontMobile.subtitle1.fontSize};
     z-index: 3;
 `;
 

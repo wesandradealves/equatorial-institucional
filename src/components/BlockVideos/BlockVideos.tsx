@@ -19,7 +19,7 @@ export default function BlockVideos(props: any) {
     dots: false,
     speed: 500,
     slidesToShow: 1,
-    initialSlide: 1,
+    initialSlide: 0,
     slidesToScroll: 1,
     responsive: [
       {

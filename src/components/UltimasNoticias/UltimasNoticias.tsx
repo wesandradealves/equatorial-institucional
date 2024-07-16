@@ -33,7 +33,7 @@ export default function UltimasNoticias(props: any) {
             let uuid = response?.settings?.id.split("block_content:").pop();
             fetchData(`/api/blocks/${uuid}`)
               .then((response: BlockTypo[]) => {
-                if (response) setBlockData(response.shift());
+                if (response) setBlockData(response[0]);
               })
               .catch(console.error);
           }

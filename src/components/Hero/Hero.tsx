@@ -20,7 +20,7 @@ export default function Hero(props: any) {
   useEffect(() => {
     if(!data) {
       fetchData('/api/blocks/banner').then((response: any) => {
-        if(response) setData(response.shift())
+        if(response) setData(response[0])
       }).catch(console.error);
     }  
   }, []); 
