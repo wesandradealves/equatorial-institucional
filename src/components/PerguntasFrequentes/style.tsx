@@ -28,6 +28,10 @@ export const Content = styled.section`
     .accordion {
         max-height: 330px;
     }
+    margin-bottom: -88px;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        margin-bottom: -179px;
+    }  
 `;
 
 export const Inner = styled.div`
