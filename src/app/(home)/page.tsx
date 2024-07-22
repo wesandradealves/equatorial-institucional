@@ -34,7 +34,7 @@ export default function Select() {
               />
             </Logo>
             <Navigation className='container d-flex flex-wrap gap-2'>
-                <NavTitle className='col-1 col-sm-12'>Escolha seu<br/>Estado:</NavTitle>
+                <NavTitle className='col-1 col-sm-12'>Escolha seu<br/><b>Estado:</b></NavTitle>
                 <ListNav className='d-flex flex-column col-lg-8 align-items-md-center align-items-lg-start'>
                   <Nav className='d-flex flex-column align-items-center'>
                     {navigation.map(function(row:any, i:number){
