@@ -70,7 +70,7 @@ export default function NavigationColumn(props: NavColTypo) {
             <Link onClick={(e) => {
               if(disallowed_urls.includes(props?.data?.relative) || pathname.split("/").includes(props?.data?.alias)) e.preventDefault()
             } } className="nav-link" href={`${pathname}/${props?.data?.alias}`}>
-              {props?.data?.title} 
+              {props?.data?.title}
             </Link>
 
             {props?.data?.below && <Arrow onClick={() => {

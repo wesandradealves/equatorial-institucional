@@ -13,19 +13,21 @@ export const Container = styled.div`
 `;
 
 export const Accessibility = styled.div`
+    border-radius: 30px;
+    background-color: ${props => props.theme.colorPrimary110};
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    
+    &:hover {
+        transform: scale(1.1);
+    }
 `;
 
 export const Ico = styled.svg`
-    border-radius: 999px;
-    transition: 500ms ease-in-out all;
-    box-shadow: 0px 0px 0px 10px rgba(255,255,255,.5);
-    height: 30px;
-    width: 30px;
-    border: 2px white solid;
-    padding: 2px;
-    &:hover {
-        box-shadow: 0px 0px 0px 5px rgba(255,255,255,.8);
+    border-radius: 30px;
+    padding: 8px;
+    path {
+        fill: ${props => props.theme.colorPrimary100};
     }
 `;
 
