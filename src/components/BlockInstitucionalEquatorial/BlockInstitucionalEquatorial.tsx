@@ -53,7 +53,7 @@ export default function BlockInstitucionalEquatorial(props: any) {
     }
 
     if(!data && config && filter) {
-      fetchData(`/api/solucoes/${filter[0]?.tid[0]?.value}?items_per_page=10`).then((response: any) => {
+      fetchData(`/api/solucoes/${filter[0]?.tid[0]?.value}`).then((response: any) => {
         if(response && response?.rows) {
           Promise.all(response?.rows.map(async (row: any) => {
             let category: any = await http.get(`/api/taxonomy/${row?.category}`);
@@ -94,7 +94,7 @@ export default function BlockInstitucionalEquatorial(props: any) {
                   }                
                   onClick={() => (
                     setCurrentFilter(index),
-                    fetchData(`/api/solucoes/${row?.tid[0]?.value}?items_per_page=10`).then((response: any) => {
+                    fetchData(`/api/solucoes/${row?.tid[0]?.value}`).then((response: any) => {
                       if(response && response?.rows) {
                         Promise.all(response?.rows.map(async (row: any) => {
                           let category: any = await http.get(`/api/taxonomy/${row?.category}`);
