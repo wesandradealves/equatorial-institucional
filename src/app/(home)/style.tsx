@@ -6,36 +6,36 @@ interface ContentTypo {
 
 export const ListNav = styled.ul`
     flex: 0 0 auto;
-    padding: ${props => props.theme.spacingSm};
+    display: flex;
     min-width: 100%;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        padding: 40px 56px;
+        //padding: 40px 56px;
         min-width: 512px;
     }
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.20);
-    backdrop-filter: blur(40px);      
 `;
 
+export const Nav = styled.div `
+    padding: ${props => props.theme.spacingSm};
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(40px);
+    
+    @media (min-width: ${props => props.theme.screenMdMin}) {
+        width: 502px;
+    }
+`
+
 export const Navigation = styled.nav`
-    display: flex;
-    flex-flow: column;
-    gap: 40px 0;
-    width: 100%;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        gap: 0 82px;
-        width: auto;
-        flex-flow: row wrap;  
-        align-items: stretch;
-    }    
 `;
 
 export const NavItem = styled.li`
     padding: 24px 16px;
+    //width: 502px;
+    width: 100%;
     color: white;
     position: relative;
     transition: 300ms ease-in-out all;
-    &:not(:last-child) {
+    &{
         border-bottom: 1px white solid;
         &::after {
             content: "";
@@ -79,10 +79,11 @@ export const NavLink = styled.a`
 `;
 
 export const NavTitle = styled.h2`
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
     color: white;
     flex: 1;
-    color: white;
-    font-weight: normal;
     text-align: center;
     font-size: 2.5rem;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
@@ -117,18 +118,8 @@ export const Content = styled.div<ContentTypo>`
         position: relative;
         z-index: 2;
     }
-    &::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        content: '';
-        background: linear-gradient(0deg, rgba(4, 20, 161, 0.00) 39.57%, rgba(4, 20, 161, 0.20) 55.41%), linear-gradient(0deg, rgba(4, 20, 161, 0.20) 0%, rgba(4, 20, 161, 0.20) 100%);
-    }
-    display: flex;
-    justify-content: center;
+    //display: flex;
+    //justify-content: center;
     @media screen and (max-width: ${props => props.theme.screenLgMin}) {
         padding-left: 24px;
         padding-right: 24px;

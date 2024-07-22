@@ -15,18 +15,32 @@ export const Container = styled.header`
     &.sticky {
         padding: ${props => props.theme.spacingSm};
         .container {
-            background: rgba(0,0,0,.2);  
+            width: 100%;
         }
     }
     @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
         padding: 0 ${props => props.theme.spacingSm};
     }
 `;
+export const Content = styled.section<HeaderTypo> `
+    z-index: 1;
+    &::after {
+        z-index: -1;
+        border-radius: 999px;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: ${props => props.is_scrolling > 0 ? 'rgba(0,0,0,.2)' : 'rgba(255, 255, 255, .3)'};
+        backdrop-filter: blur(40px);
+        position: absolute;
+        content: '';
+    }
+`
 
 export const HeaderBottom = styled.div<HeaderTypo>`
+    position: relative;
     .container {
-        background: rgba(255, 255, 255, .3);
-        backdrop-filter: blur(40px);  
         border-radius: 999px;
         padding: 16px;
         @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
