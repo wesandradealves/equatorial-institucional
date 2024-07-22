@@ -16,7 +16,7 @@ export default function BlockVideos(props: any) {
   const settings = {
     arrows: false,
     infinite: true,
-    dots: false,
+    dots: true,
     speed: 500,
     slidesToShow: 1,
     initialSlide: 0,

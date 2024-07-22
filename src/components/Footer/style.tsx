@@ -184,7 +184,12 @@ export const FooterTop = styled.div`
                             }
                         }
                         &:first-of-type:not(:only-child) {
-                            font-weight: 600
+                            font-weight: 600;
+                        }
+                        &:not(:first-of-type:not(:only-child)):hover {
+                            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                                color: ${props => props.theme.colorHighlight300}
+                            }
                         }
                     }
                     .nav-submenu {
@@ -210,6 +215,11 @@ export const SocialItem = styled.li`
 export const SocialLink = styled.a`
     color: inherit;
     font-size: 1.8rem;
+    &:hover {
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            color: ${props => props.theme.colorHighlight300}
+        }
+    }
 `;
 
 export const Label = styled.p`

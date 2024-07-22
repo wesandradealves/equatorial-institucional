@@ -80,6 +80,7 @@ export const VideoPillTitle = styled.h3`
     font-weight: 600;
     font-size: ${props => props.theme.fontMobile.subtitle1.fontSize};
     z-index: 3;
+    gap: 24px 0;
 `;
 
 export const PlayVideo = styled.a`
