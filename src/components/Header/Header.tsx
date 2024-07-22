@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, HeaderBottom, Logo, Hamburger } from "./style";
+import {Container, HeaderBottom, Logo, Hamburger, Content } from "./style";
 import Topbar from "@/components/Topbar/Topbar";
 import ConfigProvider from "@/context/config";
 import { useContext, useEffect, useState } from "react";
@@ -62,30 +62,30 @@ export default function Header() {
       {data && <Topbar data={data} is_scrolling={scrollPosition > 0 ? 1 : 0} />}
 
       {config && navigation && <HeaderBottom is_scrolling={scrollPosition > 0 ? 1 : 0}>
-        <div className="container d-flex justify-content-center align-items-center justify-content-xxl-between">
+        <Content className="container d-flex justify-content-center align-items-center justify-content-xxl-between" is_scrolling={scrollPosition}>
           <SearchIcon className="search-icon d-flex d-xxl-none" />         
           {config?.logo && <Logo className="d-flex justify-content-center" href={process.env.NEXT_PUBLIC_HOME_URL}>
             <Image
               src={config?.logo}
               alt={config?.site_name}
-              width={151}
-              height={33}
-            />          
+              width={150}
+              height={42}
+            />
           </Logo>}     
-          {navigation && 
+          {navigation &&
             <>
               <Navigation classMenuName="flex-auto" className="d-none d-xxl-flex align-items-center justify-content-center" data={navigation} />
               <Hamburger className="d-flex d-xxl-none align-items-center justify-content-center">
                 <button onClick={(e: any) => {
                   expandMenu(!isExpanded)
-                }} 
+                }}
                 className={
                   classNames(
                     'hamburger hamburger--elastic',
                     {
                       'is-active': isExpanded
                     }
-                  )      
+                  )
                 }
                 type="button" aria-label="Menu" aria-controls="navigation">
                   <span className="hamburger-box">
@@ -96,7 +96,7 @@ export default function Header() {
             </>
           }
           <SearchBar data={data?.searchbar} className="d-none d-xxl-flex" />
-        </div>
+        </Content>
       </HeaderBottom>}
     </Container>
   );
