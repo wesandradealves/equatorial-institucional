@@ -26,9 +26,22 @@ export const Text = styled.div`
 export const Thumbnail = styled.div`   
     border-radius: 20px;
     position: relative;
-    flex: 0 0 100%;
+    width: 100%;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        flex: 0 0 auto;
+        width: 400px;
+    }
+    flex: 0 0 auto;
+    &.is-video {
+        height: 611px;
+        img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
     }
 `;
 
@@ -52,4 +65,22 @@ export const Mask = styled.svg`
     left: 0;
     width: 100%;
     height: auto;
+`;
+
+export const VideoInfo = styled.div`   
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    color: white;
+    padding: 25px;
+    gap: 12px 0;
+`;
+
+export const Title = styled.h3`   
+    font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};
+`;
+
+export const Views = styled.p`   
+    font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize};
 `;

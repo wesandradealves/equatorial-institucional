@@ -19,7 +19,7 @@ export const Text = styled.div`
 `;
 
 export const BlockTitle = styled.h2`
-    font-size: 1.5rem;
+    font-size: ${props => props.theme.fontMobile.subtitle1.fontSize};
     line-height: 2.5rem;
     
     br {

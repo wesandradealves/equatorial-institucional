@@ -10,6 +10,7 @@ import "@/components/BlockShorts/style.scss";
 import ModalVideo from 'react-modal-video';
 import { Button } from '@/assets/tsx/objects';
 import BlockHead from '@/template-parts/BlockHead/BlockHead';
+import { Views } from '../Intro/style';
 
 export default function BlockShorts(props: any) {
   const http = new HttpService();
@@ -50,6 +51,30 @@ export default function BlockShorts(props: any) {
     return response
   }  
 
+  const fetchVideoData = async (data: any[]) => {
+    // Map each row asynchronously
+    const newData = await Promise.all(data.map(async (row: any) => {
+      let vid = row?.url.split("shorts/")[1];
+
+      // // If vid is not defined, skip the current row
+      if (!vid) return row;
+
+      let responses = await Promise.all([`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${vid}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`,`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${vid}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`].map(async (row: any) => {
+        let response: any = await http.get(row);
+        return response;
+      }));       
+
+      let newRow = {
+        ...row,
+        youtubeData: responses
+      };
+  
+      return newRow;
+    }));
+  
+    return newData;
+  };  
+
   useEffect(() => {
     const main: HTMLElement | null = document.getElementById("primary");
     main?.classList.toggle("modal-opened");
@@ -88,6 +113,14 @@ export default function BlockShorts(props: any) {
     }
   }, []);
 
+  useEffect(() => {
+    if(data && data.length) {
+      fetchVideoData(data).then((response: any) => {
+        setContentData(response)
+      }).catch(console.error)
+    }
+  }, [data]);    
+
   return (
     <Content id="block_shorts" className='block_shorts'>
       {blockData && data && blockData?.title && <Container className='container'>
@@ -97,9 +130,12 @@ export default function BlockShorts(props: any) {
             <Slider {...settings}>
               {data.map((row: any, i: any) => (
                 <div key={i}>
-                  <VideoPill background_image={row.thumbnail}  >
+                  <VideoPill background_image={row?.youtubeData ? row?.youtubeData[1]?.items[0]?.snippet?.thumbnails['high']?.url : row?.thumbnail}  >
                     <VideoPillInner className='d-flex flex-column justify-content-end'>
-                      <VideoPillTitle>{row.title}</VideoPillTitle>
+                      <VideoPillTitle className='d-flex flex-column'>
+                        {row.title ? row.title : row?.youtubeData[1]?.items[0]?.snippet?.title}
+                        {row?.youtubeData && <Views>{row?.youtubeData[0]?.items[0]?.statistics?.viewCount} Views</Views>}
+                      </VideoPillTitle>
 
                       {row.url && <PlayVideo onClick={() => setOpen({
                         status: true,
