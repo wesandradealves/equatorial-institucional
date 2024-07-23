@@ -9,8 +9,12 @@ export default function AccordionItem(props: any) {
   return (<Item className="d-flex flex-column">
     <Title onClick={() => {
       setExpand(!isExpanded);
-    }} className="d-flex align-items-center justify-content-between">{props?.data?.title} 
+    }} className="d-flex align-items-center justify-content-between">
+      
+    <span dangerouslySetInnerHTML={{__html: props?.data?.title ? props?.data?.title : props?.data?.field_title[0]?.value}} />
+    
     <Arrow className={`fa-solid fa-angle-${isExpanded ? "up" : "down"}`}></Arrow></Title>
+    
     <Text className={
       classNames(
         {
@@ -18,6 +22,6 @@ export default function AccordionItem(props: any) {
           'd-block': !!isExpanded
         }
       )      
-    } dangerouslySetInnerHTML={{__html: props?.data?.body}} />
+    } dangerouslySetInnerHTML={{__html: props?.data?.body ? props?.data?.body : props?.data?.field_texto[0]?.value}} />
   </Item>);
 };

@@ -13,6 +13,9 @@ export const Title = styled.h3`
     cursor: pointer;
     font-size: ${props => props.theme.fontMobile.linkText.fontSize};
     font-weight: 600;
+    span {
+        font-size: inherit;
+    }
 `;
 
 export const Text = styled.div`
