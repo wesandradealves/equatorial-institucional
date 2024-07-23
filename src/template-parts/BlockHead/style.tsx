@@ -10,10 +10,18 @@ export const Text = styled.div`
         font-size: ${props => props.theme.fontMobile.subtitle1.fontSize}; 
     }
     max-width: ${props => props.theme.screenLgMin};
+
+    @media screen and (max-width: ${props => props.theme.screenSmMin}){
+        text-align: center;
+        width: 260px;
+        font-size: ${props => props.theme.fontMobile.subtitle1.fontSize};
+    }
 `;
 
 export const BlockTitle = styled.h2`
     font-size: ${props => props.theme.fontMobile.subtitle1.fontSize};
+    line-height: 2.5rem;
+    
     br {
         @media screen and (max-width: ${props => props.theme.screenLgMin}) {
             display: none;
@@ -21,6 +29,11 @@ export const BlockTitle = styled.h2`
     }
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         font-size: 2.5rem;
+    }
+    
+    @media screen and (max-width: ${props => props.theme.screenSmMin}){
+        width: 249px;
+        font-size: ${props => props.theme.fontMobile.header1.fontSize};
     }
 `;
 

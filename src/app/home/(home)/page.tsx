@@ -2,7 +2,6 @@
 import BlockShorts from "@/components/BlockShorts/BlockShorts";
 import ConfigProvider from "@/context/config";
 import { useContext } from "react";
-import { Helmet } from "react-helmet-async";
 import Hero from "@/components/Hero/Hero";
 import UltimasNoticias from "@/components/UltimasNoticias/UltimasNoticias";
 import { Content } from "./style";

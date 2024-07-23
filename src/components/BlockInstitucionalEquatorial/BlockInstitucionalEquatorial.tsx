@@ -65,11 +65,11 @@ export default function BlockInstitucionalEquatorial(props: any) {
                 raw: category?.name[0]?.value
               }
             }
-          })).then((data) => setData(data));          
+          })).then((data) => setData(data));
         }
       }).catch(console.error);  
     }    
-  }, [config]); 
+  }, [config]);
 
   return (
     <>
