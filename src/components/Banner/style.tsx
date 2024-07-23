@@ -32,6 +32,7 @@ export const Container = styled.div`
 export const Title = styled.span`  
     color: inherit;
     position: relative;
+    font-weight: 600;
     font-size: ${props => props.theme.fontDesktop.header3.fontSize};
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         font-size: ${props => props.theme.fontDesktop.display1.fontSize};

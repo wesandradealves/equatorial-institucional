@@ -16,13 +16,6 @@ export const Gallery = styled.div`
                     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
                         padding: 32px 16px;
                     }
-                    &.slick-active.slick-center.slick-current {
-                        transition: 600ms ease-in-out all;
-                        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                            transform: scale(1.07);
-                            margin: 0 30px;
-                        }
-                    }
                 }
             }
         }
@@ -33,21 +26,29 @@ export const GalleryItem = styled.article`
     border-radius: 24px;
 `;
 
-export const Title = styled.h3`   
+export const Info = styled.div`   
     color: inherit;
     z-index: 2;
-    position: relative;    
-    font-size: ${props => props.theme.fontMobile.header1.fontSize}; 
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        font-size: ${props => props.theme.fontDesktop.header2.fontSize}; 
-    }
     padding: 48px;
     position: absolute;
     left: 0;
     bottom: 0;
+    gap: 16px 0;
 `;
 
-export const Text = styled.p`   
+export const Title = styled.div`   
+    color: inherit;
+    font-weight: 600;
+    font-size: ${props => props.theme.fontMobile.header2.fontSize}; 
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        font-size: ${props => props.theme.fontDesktop.header2.fontSize}; 
+    }
+    * {
+        font-size: inherit;
+    }
+`;
+
+export const Subtitle = styled.p`   
     color: inherit;
     z-index: 2;
     position: relative;   
@@ -63,6 +64,19 @@ export const Text = styled.p`
         height: 3px;
         width: 25px;
         background: white;
+    }
+`;
+
+export const Text = styled.div`   
+    color: inherit;
+    z-index: 2;
+    position: relative;   
+    font-weight: 500;
+    max-width: 535px;
+    font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize}; 
+    * {
+        font-size: inherit;
+        color: inherit;
     }
 `;
 
