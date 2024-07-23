@@ -41,7 +41,7 @@ export const Arrow = styled.i`
     padding: 9px;    
 `;
 
-export const List = styled.ul`   
+export const ListGroup = styled.ul`   
 
 `;
 

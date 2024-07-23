@@ -31,6 +31,30 @@ export default function BlockVideos(props: any) {
     ]  
   };    
 
+  const fetchVideoData = async (data: any[]) => {
+    // Map each row asynchronously
+    const newData = await Promise.all(data.map(async (row: any) => {
+      let vid = row?.url.split("?v=")[1];
+
+      // // If vid is not defined, skip the current row
+      if (!vid) return row;
+
+      let responses = await Promise.all([`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${vid}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`,`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${vid}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`].map(async (row: any) => {
+        let response: any = await http.get(row);
+        return response;
+      }));       
+
+      let newRow = {
+        ...row,
+        youtubeData: responses
+      };
+  
+      return newRow;
+    }));
+  
+    return newData;
+  };  
+
   useEffect(() => {
     let endpoints: any[] = ['/api/taxonomy/videos', '/api/videos'];
 
@@ -65,19 +89,27 @@ export default function BlockVideos(props: any) {
     if(el) el.style.zIndex = isOpen.status ? '5' : '1';
   }, [isOpen]);  
 
+  useEffect(() => {
+    if(data && data.length) {
+      fetchVideoData(data).then((response: any) => {
+        setData(response)
+      }).catch(console.error)
+    }
+  }, [data]);     
+
   return (
     <>{data && <Content id="block_videos" className="block_videos">
       <Container className="container">
         <Slider {...settings}>
           {data.map((row: any, index: any) => (
             <Item key={index} className="overflow-hidden">
-                <Inner className="d-flex flex-column overflow-hidden" background_image={`https://img.youtube.com/vi/${ row.url.split("?v=")[1] }/0.jpg`}>
+                <Inner className="d-flex flex-column overflow-hidden" background_image={row?.youtubeData ? row?.youtubeData[1]?.items[0]?.snippet?.thumbnails['high']?.url : `https://img.youtube.com/vi/${ row.url.split("?v=")[1] }/0.jpg`}>
                   <Text className="d-flex flex-column" dangerouslySetInnerHTML={{__html: row?.body}} />
                   <Info className="d-flex flex-column">
-                    <Title dangerouslySetInnerHTML={{__html: row?.title}} />
+                    <Title dangerouslySetInnerHTML={{__html: row?.youtubeData ? row?.youtubeData[1]?.items[0]?.snippet?.title : row?.title}} />
                     <Button className="me-auto" onClick={() => setOpen({
                         status: true,
-                        video: row.url.split("?v=")[1]
+                        video: row?.youtubeData ? row?.youtubeData[1]?.items[0]?.id : row.url.split("?v=")[1]
                       })}>
                       Saiba como usar
                       <i className="fa-solid fa-arrow-right"></i>

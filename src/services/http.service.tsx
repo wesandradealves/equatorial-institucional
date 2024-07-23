@@ -9,7 +9,6 @@ class HttpService {
 
   constructor() {
     axios.interceptors.response.use(req => {
-      console.log(req)
       return req
     }, err => err);
 

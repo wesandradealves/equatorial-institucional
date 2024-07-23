@@ -1,11 +1,11 @@
 "use client";
 
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
-import { Content, Container, Column, List, ListItem, Arrow, Title, Text, Inner } from "./style";
+import { Content, Container, Column, ListGroup, ListItem, Arrow, Title, Text, Inner } from "./style";
 import { useEffect, useState } from "react";
 import { HttpService } from "@/services";
 
-export default function Faq(props: any) {   
+export default function List(props: any) {   
   const [data, setData] = useState<any>(null);
   const http = new HttpService();
     
@@ -24,7 +24,7 @@ export default function Faq(props: any) {
         <Container className="container d-flex col-xxl-9 flex-wrap">
           <BlockHead className="col-12 col-lg-4 pe-lg-3 mb-5 mb-lg-0" data={props?.data} />
           {data && <Column className="flex-fill">
-              <List className="d-flex align-items-center flex-wrap">
+              <ListGroup className="d-flex align-items-center flex-wrap">
                 {data.map(function(row: any, i: number){
                   return (
                     <ListItem onClick={() => (location.href = row?.field_link[0]?.value)} className="col-12 d-flex align-items-center" key={i}>
@@ -38,7 +38,7 @@ export default function Faq(props: any) {
                     </ListItem>
                   );
                 })}
-              </List>
+              </ListGroup>
             </Column>}
         </Container>
       </Content>}
