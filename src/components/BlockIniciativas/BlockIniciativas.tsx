@@ -1,28 +1,17 @@
 "use client";
 import { HttpService } from "@/services";
 import { Content, Container, Columns, Summary, Title, Info } from "./style";
-import { Gallery, GalleryItem, Inner, Text, Anchor } from "../Galeria/style";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BlockTypo } from "@/types/enums";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
-import Slider from "react-slick";
 import ConfigProvider from "@/context/config";
+import Galeria from "@/components/Galeria/Galeria";
 
 export default function BlockIniciativas(props: any) {
   const { config } = useContext<any>(ConfigProvider);
   const http = new HttpService();
   const [blockData, setBlockData] = useState<BlockTypo[] | {} | any>(null);
   const [data, setData] = useState<any>(null);
-  const settings = {
-    dots: false,
-    arrows: false,
-    infinite: false,
-    speed: 500,
-    centerMode: true,
-    slidesToShow: 1,
-    initialSlide: 1,
-    slidesToScroll: 1  
-  }; 
   
   const fetchData = async(uri: any) => {
     let response:any[] = await http.get(uri)
@@ -42,7 +31,7 @@ export default function BlockIniciativas(props: any) {
     }
 
     if(!data) {
-      fetchData('/api/iniciativas?items_per_page=10').then((response: any) => {
+      fetchData('/api/iniciativas').then((response: any) => {
         if(response && response?.rows) {
           Promise.all(response?.rows.map(async (row: any) => {
             let category: any = await http.get(`/api/taxonomy/${row?.category}`);
@@ -66,24 +55,7 @@ export default function BlockIniciativas(props: any) {
           {blockData && <Container className="container">
             <BlockHead className="col-12 d-flex flex-column justify-content-center align-items-center p-0" data={blockData} />
           </Container>}
-          <Gallery className="col-12">
-            <Slider {...settings}>
-              {data.map((row: any, index: any) => (
-                <GalleryItem key={index} className="overflow-hidden">
-                  <Inner background_image={`${config?.basePath}${row?.image}`}>
-                    <Anchor className="d-none d-md-flex align-items-center justify-content-center" href={`/iniciativas/${row?.nid}`}>
-                      <i className="fa-solid fa-arrow-right"></i>
-                    </Anchor>
-                    <Text className="d-flex flex-column" dangerouslySetInnerHTML={{__html: row?.category?.raw}} />
-                    <Info>
-                      <Title dangerouslySetInnerHTML={{__html: row?.field_title ? row?.field_title : row?.title}} />
-                      {row?.summary && <Summary dangerouslySetInnerHTML={{__html: `${row?.summary.substr(0, 140)}...` }} />}
-                    </Info>
-                  </Inner>
-                </GalleryItem>      
-              ))}
-            </Slider>
-          </Gallery>        
+          {data && <Galeria data={data} />}
         </Columns>
       </Container>  
     </Content>}</>
