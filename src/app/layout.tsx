@@ -44,6 +44,10 @@ export default function RootLayout({
   // useEffect(() => {
   //   if(theme) console.log(theme)
   // }, [theme]);   
+
+  useEffect(() => {
+    console.log(process.env) 
+  }, []);   
   
   return (
     <html lang="pt-br">
