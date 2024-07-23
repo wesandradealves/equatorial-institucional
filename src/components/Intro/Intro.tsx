@@ -50,7 +50,7 @@ export default function Intro(props: any) {
           <BlockHead className="col-12 col-lg-3 pe-0" data={props?.data} />
           {props?.data.field_texto && <Text className="flex-fill" dangerouslySetInnerHTML={{__html: props?.data.field_texto[0]?.value}} />}
           
-          {(props?.data.field_imagem || (video && video?.thumbnail)) && <Thumbnail  
+          {(props?.data.field_imagem && props?.data.field_imagem.length || (video && video?.thumbnail)) && <Thumbnail  
           className={
             classNames(
               "overflow-hidden",

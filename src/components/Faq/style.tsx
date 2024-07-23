@@ -45,8 +45,23 @@ export const Inner = styled.div`
 
 export const Mask = styled.svg`
     position: absolute;
-    bottom: -100px;
-    left: calc(50% - 960px);
+    &:not(.compact) {
+        left: calc(50% - 1400px);
+        top: -80px;
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            bottom: -100px;
+            top: initial;
+            left: calc(50% - 960px);
+        }
+    }
+    &.compact {
+        left: calc(50% - 1400px);
+        top: -80px;
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            top: 0;
+            left: calc(50% - 960px);
+        }        
+    }
     z-index: 1;
     path {
         fill: ${props => props.theme.colorPrimary100};
