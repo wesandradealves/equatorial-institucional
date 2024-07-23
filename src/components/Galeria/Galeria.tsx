@@ -38,10 +38,6 @@ export default function Galeria(props: any) {
     }
   }, [props]); 
   
-  useEffect(() => {
-    if(gallery) console.log(gallery)
-  }, [gallery]);  
-  
   return (
     <>{gallery && config && 
       <Content className={props?.data?.type ? props?.data?.type[0]?.target_id : "col-12"}>

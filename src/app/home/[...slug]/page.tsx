@@ -49,9 +49,9 @@ export default function Page(props: any) {
     }
   }, [data]);  
 
-  useEffect(() => {
-    console.log(data, content)
-  }, [data, content]);  
+  // useEffect(() => {
+  //   console.log(data, content)
+  // }, [data, content]);  
 
   return <Content className="d-flex flex-column">
     {data && <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>}  
