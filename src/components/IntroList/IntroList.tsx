@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Content, Container, Column, Mask, ListItem, List, Text, Title, Arrow, Inner } from "./style";
+import { Content, Container, Column, Mask, ListItem, ListGroup, Text, Title, Arrow, Inner } from "./style";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
 import { HttpService } from "@/services";
 
@@ -25,7 +25,7 @@ export default function IntroList(props: any) {
           <Container className="container d-flex align-items-start flex-wrap">
             <BlockHead className="col-12 col-lg-3 pe-lg-5 mb-4 mb-lg-0 d-flex align-items-start justify-content-start d-flex" data={props?.data} />
             {data && <Column className="flex-fill">
-              <List className="d-flex align-items-center flex-wrap">
+              <ListGroup className="d-flex align-items-center flex-wrap">
                 {data.map(function(row: any, i: number){
                   return (
                     <ListItem onClick={() => (location.href = row?.field_link[0]?.value)} className="col-12 col-lg-6 d-flex align-items-stretch" key={i}>
@@ -39,7 +39,7 @@ export default function IntroList(props: any) {
                     </ListItem>
                   );
                 })}
-              </List>
+              </ListGroup>
             </Column>}
           </Container>
         </Container>

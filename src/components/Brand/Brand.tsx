@@ -8,9 +8,6 @@ import LanguageProvider from "@/components/LanguageSwitcher/context";
 export default function Brand(props: ConfigTypo) {
   const { config } = useContext<any>(ConfigProvider);
   const { lang } = useContext<any>(LanguageProvider);
-    console.log(config)
-    console.log(lang)
-
   return (
     <Container>
       <div className="container d-flex flex-column flex-md-row  align-items-md-center justify-content-md-between flex-sm-column align-items-sm-center align-items-center">

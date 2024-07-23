@@ -134,7 +134,7 @@ export default function BlockShorts(props: any) {
                     <VideoPillInner className='d-flex flex-column justify-content-end'>
                       <VideoPillTitle className='d-flex flex-column'>
                         {row.title ? row.title : row?.youtubeData[1]?.items[0]?.snippet?.title}
-                        {row?.yotubeData && <Views>{row?.youtubeData[0]?.items[0]?.statistics?.viewCount} Views</Views>}
+                        {row?.youtubeData && <Views>{row?.youtubeData[0]?.items[0]?.statistics?.viewCount} Views</Views>}
                       </VideoPillTitle>
 
                       {row.url && <PlayVideo onClick={() => setOpen({

@@ -43,7 +43,7 @@ export const Column = styled.div`
 
 `;
 
-export const List = styled.ul`   
+export const ListGroup = styled.ul`   
     gap: 24px 0;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         margin: 0 -40px;
