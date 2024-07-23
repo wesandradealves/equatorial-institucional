@@ -14,6 +14,7 @@ export const Text = styled.div`
 
 export const BlockTitle = styled.h2`
     font-size: 1.5rem;
+    line-height: 2.5rem;
     br {
         @media screen and (max-width: ${props => props.theme.screenLgMin}) {
             display: none;

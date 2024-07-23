@@ -69,7 +69,11 @@ export default function BlockInstitucionalEquatorial(props: any) {
         }
       }).catch(console.error);  
     }    
-  }, [config]); 
+  }, [config]);
+
+  useEffect(() => {
+    console.log(data,filter)
+  }, [data, filter]);
 
   return (
     <>

@@ -8,7 +8,7 @@ export interface HeroTypo {
 
 export const Container = styled.section<HeroTypo>`
     ${({ background_image }) => background_image && css`
-        background: url(${background_image}) center center / cover no-repeat;
+        background: url(${background_image}) -250px center / cover no-repeat;
     `}    
     margin-bottom: 200px;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
