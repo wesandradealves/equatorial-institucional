@@ -57,7 +57,7 @@ export default function Galeria(props: any) {
                   <Subtitle className="d-flex flex-column" dangerouslySetInnerHTML={{__html: item?.field_subtitulo ? item?.field_subtitulo[0]?.value : (item?.category ? item?.category?.raw : item?.field_texto[0]?.value)}} />
                   
                   <Info className="d-flex flex-column">
-                    <Title dangerouslySetInnerHTML={{__html: item?.field_title ? (item?.field_title[0] ? item?.field_title[0]?.value : item?.field_title) : item?.title}} />
+                    <Title dangerouslySetInnerHTML={{__html: item?.field_title ? (item?.field_title[0] && item?.field_title[0]?.value ? item?.field_title[0]?.value : item?.field_title) : item?.title}} />
                     {((item?.field_subtitulo && item?.field_texto) || item?.body) && <Text className="d-none d-md-block" dangerouslySetInnerHTML={{__html: item?.body ? `${item?.body.substr(0, 100)}...` : item?.field_texto[0]?.value }} />}
                   </Info>
                 </Inner>
