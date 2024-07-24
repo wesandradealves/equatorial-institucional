@@ -1,14 +1,52 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
-export const Content = styled.section`   
+export interface IntroTypo {
+    layout?: any;
+}
 
+export const Content = styled.section<IntroTypo>`   
+    position: relative;
+    ${({ layout }) => (layout == 'alternative') && css`
+        background-color: ${props => props.theme.colorPrimary400};
+        color: white;
+        padding-bottom: calc(16vw + 88px);
+        &:not(:first-of-type) {
+            margin-top: calc(-8vw - 30px);
+            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                margin-top: calc(-8vw - 60px);
+            }
+        }
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            padding-bottom: calc(16vw + 179px);
+        }
+        padding-top: 8vw;
+        margin-bottom: -8vw;
+        [class*="Thumbnail"] {
+            svg {
+                transform: rotate(90deg);
+                transform-origin: right 0;
+                top: 100%;
+                @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                    top: calc(100% + 130px);
+                }
+                left: initial;
+                right: -35px;                
+                path {
+                    fill: ${props => props.theme.colorHighlight300}
+                }
+            }
+        }        
+    `}     
 `;
 
 export const Container = styled.div`   
     gap: 40px 32px;
+    position: relative;
+    z-index: 2;
     .block-head {
-        @media screen and (max-width: ${props => props.theme.screenLgMin}) {
-            gap: 18px 0
+        gap: 18px 0;
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            gap: 0
         }
         [class*="Button"] {
             @media screen and (max-width: ${props => props.theme.screenLgMin}) {
@@ -83,4 +121,32 @@ export const Title = styled.h3`
 
 export const Views = styled.p`   
     font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize};
+`;
+
+export const WrapperMask = styled.svg`   
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    path {
+        fill: ${props => props.theme.colorPrimary400};
+    }    
+    &.--top {
+        top: calc(-16vw - 10px);
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            top: calc(-16vw - 30px);
+        }
+    }
+    &.--bottom {
+        // -moz-transform: scaleX(-1);
+        // -o-transform: scaleX(-1);
+        // -webkit-transform: scaleX(-1);
+        // transform: scaleX(-1);      
+        path {
+            fill: white;
+        }
+        left: -20vw;
+        width: 152vw;
+        bottom: 0;  
+    }    
 `;

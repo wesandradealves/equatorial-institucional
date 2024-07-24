@@ -1,5 +1,9 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
+export interface FaqTypo {
+    nobackground?: any;
+}
+
 export const Container = styled.div`
     position: relative;
     padding-bottom: 25px;
@@ -22,7 +26,7 @@ export const Container = styled.div`
     }
 `;
 
-export const Content = styled.section`
+export const Content = styled.section<FaqTypo>`
     position: relative;
     z-index: 2;
     .accordion {
@@ -34,6 +38,22 @@ export const Content = styled.section`
             margin-bottom: -179px;
         } 
     }
+    &[data-layout="home"] {
+        > [class*="Container"] {
+            padding-bottom: 100px;
+            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                padding-bottom: 300px;
+            }
+        }
+    }
+    ${({ nobackground }) => nobackground && css`
+        &:last-of-type {
+            padding-bottom: 88px;
+            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                padding-bottom: 179px;
+            }
+        }
+    `}          
 `;
 
 export const Inner = styled.div`
