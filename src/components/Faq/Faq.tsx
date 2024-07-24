@@ -2,13 +2,15 @@
 
 import { HttpService } from "@/services"
 import { BlockTypo } from "@/types/enums"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Img, Content, Container, Inner, Mask } from "./style"
 import BlockHead from "@/template-parts/BlockHead/BlockHead"
 import Accordion from "../Accordion/Accordion"
 import { Button } from "@/assets/tsx/objects"
+import ConfigProvider from "@/context/config"
 
 export default function Faq(props: any) {  
+    const { config } = useContext<any>(ConfigProvider);
     const http = new HttpService()
     const [data, setData] = useState<any>(null)
     const [blockData, setBlockData] = useState<BlockTypo[] | {} | any>(null)
@@ -52,18 +54,29 @@ export default function Faq(props: any) {
             })).then((data) => setData(data));             
         }
     }, []);
-    
+
     return (
         <>
-            {data && <Content className='perguntas-frequentes overflow-hidden'>
-                <Container className="container d-flex flex-column align-items-end">
+            {data && <Content 
+                nobackground={props?.data?.field_no_background ? `${props?.data?.field_no_background[0]?.value}` : false}
+                data-layout={`${props?.data?.field_layout ? props?.data?.field_layout[0]?.value : 'default'}`} className='perguntas-frequentes overflow-hidden'>
+                <Container 
+                    className={
+                        classNames(
+                        "container d-flex flex-column align-items-end",
+                            {
+                                'pt-0': props?.data?.field_no_background && props?.data?.field_no_background[0]?.value
+                            }
+                        )      
+                    }>
                     {blockData && <BlockHead hideButton={true} className="col-12 d-flex align-items-start justify-content-start text-start" data={blockData} />}   
                     <Container 
                     className={
                         classNames(
                         "container col-12 d-flex flex-column col-xxl-8",
                             {
-                                'ps-0 pe-0 align-items-end': !props?.data,
+                                'pt-0': props?.data?.field_no_background && props?.data?.field_no_background[0]?.value,
+                                'ps-0 pe-0 align-items-end': !props?.data || (props?.data?.field_layout && props?.data?.field_layout[0]?.value == 'home'),
                             }
                         )      
                     }>
@@ -72,7 +85,7 @@ export default function Faq(props: any) {
                                 classNames(
                                 "col-12 d-flex flex-column",
                                     {
-                                        'col-lg-8': !props?.data,
+                                        'col-lg-8': !props?.data || (props?.data?.field_layout && props?.data?.field_layout[0]?.value == 'home'),
                                     }
                                 )      
                             }
@@ -84,14 +97,15 @@ export default function Faq(props: any) {
                             </Button>}   
                         </Inner>
                     </Container>
-                    {data[0] && data[0] && data[0].data?.contact?.talktoclara?.img && <Img loading="lazy" className="img-fluid" src={data[0].data?.contact?.talktoclara?.img} />}
+                    {((config && props?.data?.field_layout && props?.data?.field_layout[0]?.value == 'home') || !props?.data?.field_layout) && <Img loading="lazy" className="img-fluid" src={config?.clara_img} />}
                 </Container>
                 <Mask 
                     className={
                         classNames(
                         "d-block",
                             {
-                                'compact': !!props?.data,
+                                'compact': !!props?.data || (props?.data?.field_layout && props?.data?.field_layout[0]?.value !== 'compact'),
+                                'd-none': props?.data?.field_no_background && props?.data?.field_no_background[0]?.value,
                             }
                         )      
                     }                

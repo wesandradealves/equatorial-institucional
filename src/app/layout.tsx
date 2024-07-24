@@ -34,16 +34,20 @@ export default function RootLayout({
 
   const fetchData = async() => {
     const config:ConfigTypo = await http.get('/api/config')
-    if(config) setConfig(config?.data)
+    const footer:any = await http.get('/api/footer')
+    if(config && footer) setConfig({
+      ...config?.data,
+      clara_img: footer?.data?.contact?.talktoclara?.img
+    })
   }  
 
   useEffect(() => {
     fetchData();
   }, []);  
 
-  // useEffect(() => {
-  //   if(theme) console.log(theme)
-  // }, [theme]);   
+  useEffect(() => {
+    if(theme) console.log(theme)
+  }, [theme]);   
 
   useEffect(() => {
     console.log(process.env) 
