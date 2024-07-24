@@ -68,7 +68,8 @@ export default function NavigationColumn(props: NavColTypo) {
               )      
             }>
             <Link onClick={(e) => {
-              if(disallowed_urls.includes(props?.data?.relative) || pathname.split("/").includes(props?.data?.alias)) e.preventDefault()
+              // e.preventDefault();
+              // if(disallowed_urls.includes(props?.data?.relative) || pathname.split("/").includes(props?.data?.alias)) e.preventDefault()
             } } className="nav-link" href={`${process.env.NEXT_PUBLIC_HOME_URL}/${props?.data?.alias}`}>
               {props?.data?.title} 
             </Link>
@@ -78,16 +79,33 @@ export default function NavigationColumn(props: NavColTypo) {
             }} className={`fa-solid fa-angle-${isExpanded ? 'up' : 'down'}`} />}
           </NavLink>
 
-          {props?.data?.below && <NavSubmenu className={`d-${isExpanded ? 'flex' : 'none'} nav-submenu flex-column`}>
+          {props?.data?.below && <NavSubmenu className={`d-${isExpanded ? 'flex' : 'none'} nav-submenu lvl-1 flex-column`}>
             {props?.data?.below.map(function(row: any, i: number){
                 return (
                   <NavItem className='nav-item' key={i}>
                     <NavLink className="nav-link d-flex align-items-center justify-content-between">
                       <Link onClick={(e) => {
-                        if(disallowed_urls.includes(row?.relative) || pathname.split("/").includes(row?.alias)) e.preventDefault()
+                        // e.preventDefault();
+                        // if(disallowed_urls.includes(row?.relative) || pathname.split("/").includes(row?.alias)) e.preventDefault()
                       } } className="nav-link" href={`${process.env.NEXT_PUBLIC_HOME_URL}/${row?.alias}`}>
                         {row?.title} 
                       </Link>
+                      {row?.below && <NavSubmenu className='nav-submenu flex-column lvl-2'>{
+                        row?.below.map(function(row: any, i: number){
+                          return (
+                            <NavItem className='nav-item' key={i}>
+                              <NavLink className="nav-link d-flex align-items-center justify-content-between">
+                                <Link onClick={(e) => {
+                                  // e.preventDefault();
+                                  // if(disallowed_urls.includes(row?.relative) || pathname.split("/").includes(row?.alias)) e.preventDefault()
+                                } } className="nav-link" href={`${process.env.NEXT_PUBLIC_HOME_URL}/${row?.alias}`}>
+                                  {row?.title} 
+                                </Link>
+                              </NavLink>
+                            </NavItem>
+                          );
+                        })                        
+                      }</NavSubmenu>}   
                     </NavLink>
                   </NavItem>
                 );

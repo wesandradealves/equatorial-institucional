@@ -29,10 +29,11 @@ export default function Page(props: any) {
   }
  
   useEffect(() => {
-    fetchData(`/api/page/${pathname.split("/").filter(index => index !== "" && index !== "home").join("/")}`).then((response: any) => {
+    let slug = pathname.split("/");
+    fetchData(`/api/page/${slug.pop()}`).then((response: any) => {
       if(response) setData(response)
     })
-  }, [props]);    
+  }, [props, pathname]);    
 
   useEffect(() => {
     if(data && data?.field_conteudo) {
