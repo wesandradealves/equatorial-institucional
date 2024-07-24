@@ -43,18 +43,6 @@ export const Container = styled.div`
     gap: 40px 32px;
     position: relative;
     z-index: 2;
-    .block-head {
-        gap: 18px 0;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-            gap: 0
-        }
-        [class*="Button"] {
-            @media screen and (max-width: ${props => props.theme.screenLgMin}) {
-                display: flex !important;
-                margin: 0 auto !important;
-            }
-        }
-    }
 `;
 
 export const Text = styled.div`   
