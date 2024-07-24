@@ -58,7 +58,7 @@ export default function Faq(props: any) {
     return (
         <>
             {data && <Content 
-                nobackground={props?.data?.field_no_background ? `${props?.data?.field_no_background[0]?.value}` : false}
+                nobackground={props?.data?.field_no_background ? `${props?.data?.field_no_background[0]?.value}` : null}
                 data-layout={`${props?.data?.field_layout ? props?.data?.field_layout[0]?.value : 'default'}`} className='perguntas-frequentes overflow-hidden'>
                 <Container 
                     className={

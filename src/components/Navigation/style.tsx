@@ -30,6 +30,19 @@ export const NavLink = styled.span`
 `;
 
 export const NavSubmenu = styled.ul`
+    &.lvl-2 {
+        top: 0 !important;
+        left: 100% !important;
+        box-shadow: -15px -10px 20px -28px black !important;
+        display: none;
+    }
+    &.lvl-1 {
+        > .nav-item {
+            &:hover .lvl-2 {
+                display: flex;
+            }         
+        }
+    }
 `;
 
 export const Arrow = styled.i`
