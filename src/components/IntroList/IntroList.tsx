@@ -15,6 +15,8 @@ export default function IntroList(props: any) {
         return item
       })).then((data) => setData(data)); 
     }
+
+    console.log(props, true)
   }, [props]); 
 
   return (
@@ -25,10 +27,12 @@ export default function IntroList(props: any) {
           <Container className="container d-flex align-items-start flex-wrap">
             <BlockHead className="col-12 col-lg-3 pe-lg-5 mb-4 mb-lg-0 d-flex align-items-start justify-content-start d-flex" data={props?.data} />
             {data && <Column className="flex-fill">
-              <ListGroup className="d-flex align-items-center flex-wrap">
+              <ListGroup data-layout={props?.data?.field_layout_intro_list ? props?.data?.field_layout_intro_list[0]?.value : "col-lg-6"} className="d-flex align-items-center flex-wrap">
                 {data.map(function(row: any, i: number){
                   return (
-                    <ListItem onClick={() => (location.href = row?.field_link[0]?.value)} className="col-12 col-lg-6 d-flex align-items-stretch" key={i}>
+                    <ListItem onClick={() => (location.href = row?.field_link[0]?.value)} 
+                    className={`col-12 ${props?.data?.field_layout_intro_list && props?.data?.field_layout_intro_list[0]?.value ? props?.data?.field_layout_intro_list[0]?.value : "col-lg-6"} d-flex align-items-stretch`} 
+                    key={i}>
                       <Inner className="d-flex flex-column flex-fill pe-xl-5">
                         <Title>
                           <span dangerouslySetInnerHTML={{__html: row?.field_title[0]?.value}} />

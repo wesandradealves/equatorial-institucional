@@ -54,7 +54,7 @@ export default function Intro(props: any) {
 
         <Container className="container d-flex align-items-start flex-wrap">
           {props?.data?.field_title && props?.data?.field_title[0]?.value && <BlockHead className="col-12 col-lg-3 pe-0" data={props?.data} />}
-          {props?.data.field_texto && <Text className="flex-fill" dangerouslySetInnerHTML={{__html: props?.data.field_texto[0]?.value}} />}
+          {props?.data.field_texto && <Text className="flex-fill d-flex flex-column" dangerouslySetInnerHTML={{__html: props?.data.field_texto[0]?.value}} />}
           
           {(props?.data.field_imagem && props?.data.field_imagem.length || (video && video?.thumbnail)) && <Thumbnail  
           className={

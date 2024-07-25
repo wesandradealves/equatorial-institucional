@@ -4,6 +4,8 @@ import ConfigProvider from "@/context/config";
 import { useContext, useEffect, useState } from "react";
 import { HttpService } from "@/services";
 import { NavTypo } from "@/types/enums";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Select() {
   const http = new HttpService();
@@ -26,12 +28,14 @@ export default function Select() {
           <title>{`${config?.site_name} - Escolha seu estado`}</title>
           <Inner>
             <Logo>
-              <img
-                src={config?.logo}
-                alt={config?.site_name}
-                width={234}
-                height={83}
-              />
+              <Link href={`${process.env.NEXT_PUBLIC_HOME_URL}`}>
+                <Image
+                  src={config?.logo}
+                  alt={config?.site_name}
+                  width={234}
+                  height={83}
+                />
+              </Link>
             </Logo>
             <Navigation className='container d-flex flex-wrap gap-2'>
                 <NavTitle className='col-1 col-sm-12'>Escolha seu<br/><b>Estado:</b></NavTitle>
