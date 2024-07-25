@@ -7,20 +7,12 @@ export interface IntroTypo {
 export const Content = styled.section<IntroTypo>`   
     position: relative;
     ${({ layout }) => (layout == 'alternative') && css`
-        background-color: ${props => props.theme.colorPrimary400};
         color: white;
-        padding-bottom: calc(16vw + 88px);
-        &:not(:first-of-type) {
-            margin-top: calc(-8vw - 30px);
-            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                margin-top: calc(-8vw - 60px);
-            }
-        }
+        z-index: 2;
+        margin-top: -220px;
         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-            padding-bottom: calc(16vw + 179px);
+            margin-top: -350px;
         }
-        padding-top: 8vw;
-        margin-bottom: -8vw;
         [class*="Thumbnail"] {
             svg {
                 transform: rotate(90deg);
@@ -39,10 +31,17 @@ export const Content = styled.section<IntroTypo>`
     `}     
 `;
 
-export const Container = styled.div`   
+export const Container = styled.div<IntroTypo>`   
     gap: 40px 32px;
     position: relative;
     z-index: 2;
+    ${({ layout }) => (layout == 'alternative') && css`
+        &.container-fluid {
+            padding-top: 88px;
+            padding-bottom: 88px;
+            background-color: ${props => props.theme.colorPrimary400};
+        }
+    `}      
 `;
 
 export const Text = styled.div`   
@@ -50,11 +49,9 @@ export const Text = styled.div`
     p {
         font-size: ${props => props.theme.fontDesktop.linkText.fontSize};
     }
-    @for $i from 1 through 3 {
-        h#{$i} {
-            font-size: ${props => props.theme.fontMobile.header3.fontSize};
-        }
-    }              
+    h1, h2, h3, h4, h5, h6 {
+        font-size: ${props => props.theme.fontMobile.header3.fontSize};
+    }             
 `;
 
 export const Thumbnail = styled.div`   
@@ -120,29 +117,24 @@ export const Views = styled.p`
 `;
 
 export const WrapperMask = styled.svg`   
-    position: absolute;
-    left: 0;
-    width: 100%;
-    z-index: 2;
     path {
         fill: ${props => props.theme.colorPrimary400};
     }    
     &.--top {
-        top: calc(-16vw - 10px);
+        position: relative;
+        margin-bottom: -2px;
         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-            top: calc(-16vw - 30px);
+            width: 3000px;
+            margin-top: -290px;
+            left: calc(50% - 1500px);  
+            margin-bottom: -180px;  
         }
     }
     &.--bottom {
-        // -moz-transform: scaleX(-1);
-        // -o-transform: scaleX(-1);
-        // -webkit-transform: scaleX(-1);
-        // transform: scaleX(-1);      
-        path {
-            fill: white;
-        }
-        left: -20vw;
-        width: 152vw;
-        bottom: 0;  
+        -moz-transform: scale(-1, -1);
+        -o-transform: scale(-1, -1);
+        -webkit-transform: scale(-1, -1);
+        transform: scale(-1, -1);     
+        margin-top: -2px; 
     }    
 `;

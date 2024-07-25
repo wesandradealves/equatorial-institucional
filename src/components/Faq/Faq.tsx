@@ -59,7 +59,8 @@ export default function Faq(props: any) {
         <>
             {data && <Content 
                 nobackground={props?.data?.field_no_background ? `${props?.data?.field_no_background[0]?.value}` : null}
-                data-layout={`${props?.data?.field_layout ? props?.data?.field_layout[0]?.value : 'default'}`} className='perguntas-frequentes overflow-hidden'>
+                data-layout={`${props?.data?.field_layout && props?.data?.field_layout[0] ? props?.data?.field_layout[0]?.value : 'default'}`} 
+                className={`${props?.id} overflow-hidden`}>
                 <Container 
                     className={
                         classNames(
@@ -76,7 +77,7 @@ export default function Faq(props: any) {
                         "container col-12 d-flex flex-column col-xxl-8",
                             {
                                 'pt-0': props?.data?.field_no_background && props?.data?.field_no_background[0]?.value,
-                                'ps-0 pe-0 align-items-end': !props?.data || (props?.data?.field_layout && props?.data?.field_layout[0]?.value == 'home'),
+                                'ps-0 pe-0 align-items-end': !props?.data || (props?.data?.field_layout && props?.data?.field_layout[0] && props?.data?.field_layout[0]?.value == 'home'),
                             }
                         )      
                     }>
@@ -85,7 +86,7 @@ export default function Faq(props: any) {
                                 classNames(
                                 "col-12 d-flex flex-column",
                                     {
-                                        'col-lg-8': !props?.data || (props?.data?.field_layout && props?.data?.field_layout[0]?.value == 'home'),
+                                        'col-lg-8': !props?.data || (props?.data?.field_layout && props?.data?.field_layout[0] && props?.data?.field_layout[0]?.value == 'home'),
                                     }
                                 )      
                             }
@@ -97,14 +98,14 @@ export default function Faq(props: any) {
                             </Button>}   
                         </Inner>
                     </Container>
-                    {((config && props?.data?.field_layout && props?.data?.field_layout[0]?.value == 'home') || !props?.data?.field_layout) && <Img loading="lazy" className="img-fluid" src={config?.clara_img} />}
+                    {((config && props?.data?.field_layout && props?.data?.field_layout[0] && props?.data?.field_layout[0]?.value == 'home') || !props?.data?.field_layout) && <Img loading="lazy" className="img-fluid" src={config?.clara_img} />}
                 </Container>
                 <Mask 
                     className={
                         classNames(
                         "d-block",
                             {
-                                'compact': !!props?.data || (props?.data?.field_layout && props?.data?.field_layout[0]?.value !== 'compact'),
+                                'compact': !!props?.data || (props?.data?.field_layout && props?.data?.field_layout[0] && props?.data?.field_layout[0]?.value !== 'compact'),
                                 'd-none': props?.data?.field_no_background && props?.data?.field_no_background[0]?.value,
                             }
                         )      

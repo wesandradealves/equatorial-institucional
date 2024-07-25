@@ -26,12 +26,17 @@ export const Content = styled.section<HeroTypo>`
 
 export const Mask = styled.svg`   
     position: relative;
-    bottom: -1px;
     z-index: 2;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        bottom: 240px;
+        width: 3000px;
+        left: calc(50% - 1500px);    
+    }
 `;
 
 export const Container = styled.div`   
     padding-top: calc(100px + 44px);
+    padding-bottom: 120px;
     gap: 24px 0;
     @media screen and (min-width: ${props => props.theme.screenMdMin}) {
         padding-top: calc(210px + 78px);
