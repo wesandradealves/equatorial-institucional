@@ -50,11 +50,9 @@ export const Text = styled.div`
     p {
         font-size: ${props => props.theme.fontDesktop.linkText.fontSize};
     }
-    @for $i from 1 through 3 {
-        h#{$i} {
-            font-size: ${props => props.theme.fontMobile.header3.fontSize};
-        }
-    }              
+    h1, h2, h3, h4, h5, h6 {
+        font-size: ${props => props.theme.fontMobile.header3.fontSize};
+    }             
 `;
 
 export const Thumbnail = styled.div`   

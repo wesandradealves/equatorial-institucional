@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 interface TextoNumeroContent {
-    layout:string
+    layout:any
 }
 export const Content = styled.section<TextoNumeroContent> `
     padding: 120px 0px;
     background-color: ${props => props.layout == "alternative" ? props.theme.colorPrimary100 : props.theme.colorPrimary400};
 `
-export const Container = styled.section `
+export const Container = styled.div`
     
 `
 export const Cards = styled.div `
@@ -15,8 +15,6 @@ export const Cards = styled.div `
 `
 export const Card = styled.div `
     position: relative;
-    height: 172px;
-    //max-width: 501px;
     border-radius: 16px;
     background-color: #ffff;
     padding: 32px;
@@ -27,31 +25,25 @@ export const Column = styled.div `
 export const Circle = styled.div `
     width: 48px;
     height: 48px;
-    background-color: #0414A1;
+    z-index: 2;
+    background: ${props => props.theme.colorPrimary300}; 
     color: white;
-    border-radius: 30px;
-    font-family: Inter;
-    font-size: 24px;
-    font-style: normal;
+    border-radius: 999px;
+    font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize};
     font-weight: 600;
-    line-height: 32px; /* 133.333% */
 `
 
 export const Text = styled.div `
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
     font-weight: 400;
-    line-height: 24px;
-    color:#0a0a0a;
     width: 100%;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    
-    @media screen and (max-width: ${props => props.theme.screenMdMin}) {
-        font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize};
+    z-index: 2;
+
+    p {
+        font-size: ${props => props.theme.fontMobile.bodyLarge1.fontSize};
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize};
     }
 `
 
@@ -65,15 +57,6 @@ export const Mask = styled.svg`
         fill: ${props => props.theme.colorPrimary100};
     }
 `;
-
-export const Link = styled.a`
-    font-family: Inter;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px; 
-    color:${props => props.theme.colorPrimary300}
-`
 
 
 

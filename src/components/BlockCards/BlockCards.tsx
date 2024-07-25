@@ -24,7 +24,7 @@ export default function BlockCards(props: any) {
   }, [props]);    
 
   return (
-    <>{props?.data && content && <Content className={props?.data?.type[0]?.target_id}>
+    <>{props?.data && content && <Content className={`${props?.id} ${props?.data?.type[0]?.target_id}`}>
       <Container className="container d-flex flex-column">
         <BlockHead className="col-12 pe-0 d-flex align-items-center justify-content-center text-center" data={props?.data} />
         {content && <Cards className="cards d-flex flex-column flex-lg-row flex-wrap align-items-stretch">
