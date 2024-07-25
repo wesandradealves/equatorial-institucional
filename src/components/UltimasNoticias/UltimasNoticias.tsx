@@ -44,7 +44,7 @@ export default function UltimasNoticias(props: any) {
   }, []);
 
   return (
-    <Content className='block_ultimas_noticias'>
+    <Content data-component="BlockUltimasNoticias" className='BlockUltimasNoticias'>
       <Container className="container">
         <Columns className="d-flex align-items-center flex-wrap">
           {blockData && <BlockHead className="col-12 col-lg-5 col-xl-4 col-xxl-3" data={blockData} />}

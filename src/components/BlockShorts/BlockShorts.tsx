@@ -78,7 +78,7 @@ export default function BlockShorts(props: any) {
   useEffect(() => {
     const main: HTMLElement | null = document.getElementById("primary");
     main?.classList.toggle("modal-opened");
-    const el: HTMLElement | null = document.getElementById("block_shorts");
+    const el: HTMLElement | null = document.getElementById("BlockShorts");
     if(el) el.style.zIndex = isOpen.status ? '4' : '3'; 
   }, [isOpen]);  
 
@@ -122,7 +122,7 @@ export default function BlockShorts(props: any) {
   }, [data]);    
 
   return (
-    <Content id="block_shorts" className='block_shorts'>
+    <Content id={props?.id ? props?.id : "BlockShorts"} data-component={props?.id ? props?.id : "BlockShorts"} className='BlockShorts'>
       {blockData && data && blockData?.title && <Container className='container'>
         <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center flex-lg-row justify-content-lg-start align-items-lg-start'>
           {blockData && <BlockHead className="col-12 col-lg-5" data={blockData} />}

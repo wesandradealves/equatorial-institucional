@@ -5,7 +5,7 @@ import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 export default function Banner(props: any) {
   return (
     <>
-      {props?.data && <Content background_image={props?.data?.field_imagem[0]?.url} className={`overflow-hidden ${props?.data?.type[0]?.target_id}`}>
+      {props?.data && <Content data-component="Banner" background_image={props?.data?.field_imagem[0]?.url} className={`overflow-hidden ${props?.id}`}>
         <Container className="container d-flex flex-column">
           <Breadcrumbs data={props} />
           <Title dangerouslySetInnerHTML={{__html: props?.data?.field_title[0]?.value ? props?.data?.field_title[0]?.value  : props?.page?.title[0]?.value}}></Title>

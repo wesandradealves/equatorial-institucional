@@ -74,7 +74,7 @@ export default function BlockInstitucionalEquatorial(props: any) {
   return (
     <>
     {
-      data && filter && <Content className='block_institucional_equatorial'>
+      data && filter && <Content data-component={props?.id ? props?.id : "BlockInstitucionalEquatorial"} className={props?.id ? props?.id : "BlockInstitucionalEquatorial"}>
         <Container className='container-fluid p-0'>
           <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center'>
               {blockData && <Container className="container">

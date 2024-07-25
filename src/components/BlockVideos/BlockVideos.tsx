@@ -84,8 +84,7 @@ export default function BlockVideos(props: any) {
   useEffect(() => {
     const main: HTMLElement | null = document.getElementById("primary");
     main?.classList.toggle("modal-opened");
-    const el: HTMLElement | null = document.getElementById("block_videos");
-    const block_shorts: HTMLElement | null = document.getElementById("block_shorts");
+    const el: HTMLElement | null = document.getElementById("BlockVideos");
     if(el) el.style.zIndex = isOpen.status ? '5' : '1';
   }, [isOpen]);  
 
@@ -98,7 +97,7 @@ export default function BlockVideos(props: any) {
   }, [data]);     
 
   return (
-    <>{data && <Content id="block_videos" className="block_videos">
+    <>{data && <Content id={props?.id ? props?.id : "BlockVideos"} className={props?.id ? props?.id : "BlockVideos"}>
       <Container className="container">
         <Slider {...settings}>
           {data.map((row: any, index: any) => (

@@ -27,6 +27,7 @@ export default function TextoNumerado(props: any) {
     return (
         <>
             {data &&  <Content 
+                data-component={props?.id}
                 data-layout={props?.data?.field_layout_texto_enumerado && props?.data?.field_layout_texto_enumerado[0] ? props?.data?.field_layout_texto_enumerado[0]?.value : "default"} 
                 layout={props?.data?.field_layout_texto_enumerado && props?.data?.field_layout_texto_enumerado[0] ? props?.data?.field_layout_texto_enumerado[0]?.value : "default"}
                 className={`overflow-hidden ${props?.id}`}>

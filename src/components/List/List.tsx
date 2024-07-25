@@ -20,7 +20,7 @@ export default function List(props: any) {
 
   return (
     <>
-      {props?.data && <Content className={props?.id}> 
+      {props?.data && <Content data-component={props?.id} className={props?.id}> 
         <Container className="container d-flex col-xxl-9 flex-wrap">
           <BlockHead className="col-12 col-lg-4 pe-lg-3 mb-5 mb-lg-0" data={props?.data} />
           {data && <Column className="flex-fill">

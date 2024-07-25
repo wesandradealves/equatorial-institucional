@@ -46,6 +46,7 @@ export default function Intro(props: any) {
   return (
     <>
       {props?.data && <Content 
+        data-component={props?.id}
         layout={`${props?.data?.field_layout_intro && props?.data?.field_layout_intro[0] ? props?.data?.field_layout_intro[0]?.value : 'default'}`}
         data-layout={`${props?.data?.field_layout_intro && props?.data?.field_layout_intro[0] ? props?.data?.field_layout_intro[0]?.value : 'default'}`} 
         className={`${props?.id} overflow-hidden`}>

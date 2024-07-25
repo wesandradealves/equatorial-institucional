@@ -36,7 +36,7 @@ export default function Hero(props: any) {
   }, [data]); 
 
   return (<>
-    {data && <Container className="hero" background_image={config?.basePath + data?.image}>
+    {data && <Container data-component={props?.id ? props?.id : "Hero"} className="Hero" background_image={config?.basePath + data?.image}>
       <div className="container">
         <div className="inner d-flex align-items-lg-end flex-column flex-lg-row">
           <Information className="d-flex flex-column col-lg-5">

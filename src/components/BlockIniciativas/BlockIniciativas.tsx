@@ -49,7 +49,7 @@ export default function BlockIniciativas(props: any) {
   }, []); 
 
   return (
-    <>{data && blockData && <Content className="block_iniciativas">
+    <>{data && blockData && <Content data-component={props?.id} className={props?.id}>
       <Container className="container-fluid p-0">
         <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center'>
           {blockData && <Container className="container">

@@ -60,7 +60,8 @@ export default function Faq(props: any) {
             {data && <Content 
                 nobackground={props?.data?.field_no_background ? `${props?.data?.field_no_background[0]?.value}` : null}
                 data-layout={`${props?.data?.field_layout && props?.data?.field_layout[0] ? props?.data?.field_layout[0]?.value : 'default'}`} 
-                className={`${props?.id} overflow-hidden`}>
+                data-component={props?.id ? props?.id : "Faq"}
+                className={`${props?.id ? props?.id : "Faq"} overflow-hidden`}>
                 <Container 
                     className={
                         classNames(
