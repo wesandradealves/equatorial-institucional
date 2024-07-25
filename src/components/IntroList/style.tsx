@@ -4,19 +4,9 @@ export const Content = styled.section`
     z-index: 3;
     position: relative;
     color: white;
-    padding-top: 21.5vw;
-    margin-top: -34.5vw;
-    @media screen and (min-width: ${props => props.theme.screenSmMin}) {
-        padding-bottom: 12.5vw;
-        @media screen and (min-width: ${props => props.theme.screenMdMin}) {
-            margin-top: -23.5vw;
-            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                margin-top: -32.5vw;
-                @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
-                    margin-top: -27.5vw;
-                }
-            }
-        }
+    margin-top: -210px;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        margin-top: -540px;  
     }
     [class*="BlockTitle"] {
         text-align: left !important;
@@ -28,13 +18,11 @@ export const Container = styled.div`
     z-index: 4;
     &[class*="fluid"] {
         background: ${props => props.theme.colorPrimary400};
-        margin-top: -1px;
-        margin-bottom: -1px;
         padding-top: 66px;
-        padding-bottom: 132px;        
+        padding-bottom: 66px;        
         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-            padding-top: 0;
-            padding-bottom: 0;
+            margin-top: -190px;
+            margin-bottom: -190px;
         }
     }
 `;
@@ -53,9 +41,6 @@ export const ListGroup = styled.ul`
 
 export const ListItem = styled.li`  
     cursor: pointer;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        padding: 0 40px;
-    }
     &:hover {
         [class*="fa"] {
             color: ${props => props.theme.colorHighlight300};
@@ -63,48 +48,46 @@ export const ListItem = styled.li`
     }
     border-bottom: 1px ${props => props.theme.colorNeutral100} solid;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        padding: 0 40px;
         border-bottom: 0;
-    }        
+    }
 `;
 
-export const Mask = styled.svg`   
-    position: absolute;
-    left: 0;
-    width: 100%;
-    z-index: 2;
+export const Mask = styled.svg`  
+    position: relative;
+    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        width: 3000px;
+        left: calc(50% - 1500px);  
+    }
     path {
         fill: ${props => props.theme.colorPrimary400};
     }    
     &.--top {
-        top: 0;
+        margin-bottom: -2px;
+        z-index: 2;
     }
     &.--bottom {
+        z-index: 2;
         -moz-transform: scale(-1, -1);
         -o-transform: scale(-1, -1);
         -webkit-transform: scale(-1, -1);
-        transform: scale(-1, -1);  
-        &:not(.--backdrop) {
-            left: -40vw;
-            width: 152vw;
-            bottom: -16vw;  
+        transform: scale(-1, -1);     
+        margin-top: -2px; 
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            margin-bottom: -295px;
         }
         &.--backdrop {
-            z-index: 4;
-            -moz-transform: initial;
-            -o-transform: initial;
-            -webkit-transform: initial;
-            transform: initial;    
-            bottom: 0;
-            @media screen and (min-width: ${props => props.theme.screenSmMin}) {   
-                bottom: 0; 
-                z-index: 1;                      
+            z-index: 1;
+            left: 0;
+            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                left: calc(50% - 1500px);  
             }
+            bottom: -20px;
+            position: absolute;
             path {
                 fill: ${props => props.theme.colorHighlight300};
-                right: 0;
-                left: initial;
             }
-        }
+        }        
     }    
 `;
 

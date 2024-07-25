@@ -40,7 +40,7 @@ export default function Galeria(props: any) {
   
   return (
     <>{gallery && config && 
-      <Content className={props?.id}>
+      <Content className={`${props?.id} col-12`}>
         <Gallery className="col-12">
           <Slider {...settings}>
             {gallery.map((item: any, index: any) => (
