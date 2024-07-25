@@ -27,8 +27,8 @@ export default function TextoNumerado(props: any) {
     return (
         <>
             {data &&  <Content 
-                data-layout={props?.data?.field_layout_texto_enumerado ? props?.data?.field_layout_texto_enumerado[0]?.value : "default"} 
-                layout={props?.data?.field_layout_texto_enumerado ? props?.data?.field_layout_texto_enumerado[0]?.value : "default"}
+                data-layout={props?.data?.field_layout_texto_enumerado && props?.data?.field_layout_texto_enumerado[0] ? props?.data?.field_layout_texto_enumerado[0]?.value : "default"} 
+                layout={props?.data?.field_layout_texto_enumerado && props?.data?.field_layout_texto_enumerado[0] ? props?.data?.field_layout_texto_enumerado[0]?.value : "default"}
                 className={`overflow-hidden ${props?.id}`}>
                 <Container className='container d-flex flex-column gap-5 overflow-hidden block-objective'>
                     {blockData && <BlockHead className="col-12 d-flex align-items-center
@@ -36,7 +36,7 @@ export default function TextoNumerado(props: any) {
                     <Cards className="d-flex flex-wrap flex-column flex-lg-row justify-content-center align-items-stretch">
                         {data && data.map((item:any, index:any) => (
                             <Card key={index} className='d-flex flex-column flex-fill gap-2 overflow-hidden'>
-                                {props?.data?.field_layout_texto_enumerado && props?.data?.field_layout_texto_enumerado[0]?.value && props?.data?.field_layout_texto_enumerado[0]?.value !== 'alternative' && <>
+                                {props?.data?.field_layout_texto_enumerado && props?.data?.field_layout_texto_enumerado[0] && props?.data?.field_layout_texto_enumerado[0]?.value !== 'alternative' && <>
                                     <Mask xmlns="http://www.w3.org/2000/svg" width="207" height="72" viewBox="0 0 207 72" fill="none">
                                         <path d="M-31 72L-31 -9.00002L207 -9C163.836 49.8151 122.026 45.314 80.1001 41.0919C43.4824 37.4044 6.77582 33.7241 -31 72Z"
                                     fill="#F6F8FF"/>
