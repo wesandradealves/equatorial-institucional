@@ -12,7 +12,7 @@ export const Text = styled.div`
     max-width: ${props => props.theme.screenLgMin};
 `;
 
-export const BlockTitle = styled.h2`
+export const BlockTitle = styled.div`
     font-size: ${props => props.theme.fontMobile.header1.fontSize};
     line-height: 2.5rem;
     

@@ -46,7 +46,15 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.div`   
-
+    gap: 32px 0;
+    p {
+        font-size: ${props => props.theme.fontDesktop.linkText.fontSize};
+    }
+    @for $i from 1 through 3 {
+        h#{$i} {
+            font-size: ${props => props.theme.fontMobile.header3.fontSize};
+        }
+    }              
 `;
 
 export const Thumbnail = styled.div`   

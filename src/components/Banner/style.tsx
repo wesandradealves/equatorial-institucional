@@ -10,11 +10,24 @@ export const Content = styled.section<HeroTypo>`
     @media screen and (min-width: ${props => props.theme.screenMdMin}) {
         margin: 0 0 -88px;
     }
+    position: relative;
+    &::after {
+        z-index: 1;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(0,0,0);
+        background: linear-gradient(90deg, rgba(0,0,0,0.17970938375350143) 18%, rgba(0,0,0,0.4066001400560224) 60%);
+    }
 `;
 
 export const Mask = styled.svg`   
     position: relative;
     bottom: -1px;
+    z-index: 2;
 `;
 
 export const Container = styled.div`   
@@ -27,6 +40,8 @@ export const Container = styled.div`
         }        
     }
     color: white;
+    z-index: 3;
+    position: relative;
 `;
 
 export const Title = styled.span`  
