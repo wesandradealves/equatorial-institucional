@@ -11,13 +11,10 @@ export const Container = styled.div`
     
 `
 export const Cards = styled.div `
-    gap: 32px;
+    margin: 0 -16px -32px;
 `
 export const Card = styled.div `
-    position: relative;
-    border-radius: 16px;
-    background-color: #ffff;
-    padding: 32px;
+    padding: 0 16px 32px;
 `
 export const Column = styled.div `
     z-index: 2;
@@ -58,6 +55,11 @@ export const Mask = styled.svg`
     }
 `;
 
-
-
+export const Inner = styled.div`
+    height: 100%;
+    position: relative;
+    border-radius: 16px;
+    background-color: white;
+    padding: 32px;    
+`;
 
