@@ -23,6 +23,10 @@ export const BlockTitle = styled.div`
     * {
         font-size: inherit;
     }
+
+    strong {
+        font-weight: 600
+    }         
 `;
 
 export const BlockHeading = styled.div`

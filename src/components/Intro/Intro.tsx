@@ -53,7 +53,7 @@ export default function Intro(props: any) {
         {props?.data?.field_layout_intro  && props?.data?.field_layout_intro[0]&& props?.data?.field_layout_intro[0]?.value == 'alternative' && <WrapperMask className="--top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FBDB33" fillOpacity="1" d="M0,256L80,234.7C160,213,320,171,480,170.7C640,171,800,213,960,202.7C1120,192,1280,128,1360,96L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></WrapperMask>     }   
 
         <Container className="container-fluid ps-0 pe-0" layout={`${props?.data?.field_layout_intro && props?.data?.field_layout_intro[0] ? props?.data?.field_layout_intro[0]?.value : 'default'}`}>
-          <Container className={`container d-flex align-items-${props?.data?.field_layout_intro && props?.data?.field_layout_intro[0] ? 'center' : 'default'} flex-wrap`}>
+          <Container className={`container d-flex align-items-start flex-wrap`}>
             {props?.data?.field_title && props?.data?.field_title[0]?.value && <BlockHead className="col-12 col-lg-3 pe-0" data={props?.data} />}
             {props?.data.field_texto && <Text className="flex-fill d-flex flex-column" dangerouslySetInnerHTML={{__html: props?.data.field_texto[0]?.value}} />}
             
@@ -66,7 +66,9 @@ export default function Intro(props: any) {
                 }
               )      
             }>
-              {!video && <Mask width="368" height="103" viewBox="0 0 368 103" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {!video && <Mask 
+                field_detail_color={props?.data?.field_detail_color && props?.data?.field_detail_color[0] ? props?.data?.field_detail_color[0]?.color_pickr : ""}
+                field_detail_position={props?.data?.field_detail_position && props?.data?.field_detail_position[0] ? props?.data?.field_detail_position[0]?.value : ""} width="368" height="103" viewBox="0 0 368 103" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M493.584 33.6891L462.598 44.2325C432.087 54.704 370.114 75.791 305.151 73.9277C240.189 72.0645 171.287 47.395 106.758 48.3915C42.2285 49.3881 -18.8781 76.1945 -48.9561 89.5258L-79.5094 102.929L-95.101 -0.0228424L-63.2483 -4.84676C-31.8711 -9.59869 31.8341 -19.2465 95.064 -28.8224C158.294 -38.3982 221.999 -48.0461 285.229 -57.6219C348.459 -67.1978 412.164 -76.8456 443.541 -81.5975L475.394 -86.4215L493.584 33.6891Z" fill="#0414A1"/>
               </Mask>}
               
