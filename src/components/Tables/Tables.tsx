@@ -17,13 +17,16 @@ export default function Tables(props: any) {
   };
 
   useEffect(() => {
-    if(props?.data?.field_csv) {
+    if(props?.data?.field_csv && props?.data?.field_csv[0]) {
       fetchData(props?.data?.field_csv[0]?.url).then((response: any) => {
         setData(JSON.parse(response))
-        setFilter(JSON.parse(response))
       })
     }
   }, []); 
+
+  useEffect(() => {
+    if(data) setFilter(data)
+  }, [data]);   
 
   return (
     <>
@@ -35,7 +38,7 @@ export default function Tables(props: any) {
             {props?.data?.field_title && props?.data?.field_title[0]?.value && <BlockHead className="col-12 col-lg-3 pe-0" data={props?.data} />}
             {data && 
             <Column className="flex-fill ms-lg-5 d-flex flex-column">
-              <TablesFilter 
+              {props?.data?.field_filter_key && props?.data?.field_filter_key[0] && <TablesFilter 
                 config={
                   [props?.data].map((o:any)=>{
                     return {
@@ -51,7 +54,8 @@ export default function Tables(props: any) {
                 onChange={(e:any) => {
                   setFilter(e !== '-' ? data.filter((o:any) => o[props?.data?.field_filter_key[0]?.value].trim().toLowerCase() == e.trim().toLowerCase()) : data)
                 }}
-              />
+              />}
+
               <TablesData  
               config={
                 [props?.data].map((o:any)=>{
