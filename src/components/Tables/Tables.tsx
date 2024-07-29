@@ -37,7 +37,7 @@ export default function Tables(props: any) {
           <Container className={`container d-flex align-items-start flex-wrap`}>
             {props?.data?.field_title && props?.data?.field_title[0]?.value && <BlockHead className="col-12 col-lg-3 pe-0" data={props?.data} />}
             {data && 
-            <Column className="flex-fill ms-lg-5 d-flex flex-column">
+            <Column className="flex-fill ms-lg-5 mt-5 mt-lg-0 d-flex flex-column">
               {props?.data?.field_filter_key && props?.data?.field_filter_key[0] && <TablesFilter 
                 config={
                   [props?.data].map((o:any)=>{
