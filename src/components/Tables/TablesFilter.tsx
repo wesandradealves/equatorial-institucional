@@ -1,6 +1,6 @@
 "use client";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { Label, FilterWrapper, Select, Option, Arrow, SelectWrapper } from "./style";
+import { useMemo } from "react";
+import { Label, FilterWrapper, Select, Option, SelectWrapper } from "./style";
 
 export default function TablesFilter(props: any) {  
     const _ = require("lodash");

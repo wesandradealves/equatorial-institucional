@@ -1,10 +1,64 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
 export const Content = styled.section`   
+   position: relative;
 
+   &.has-mask {
+      background: ${props => props.theme.colorPrimary100};
+      margin-bottom: -88px;
+      padding-top: 32px;
+      z-index: 1;
+      & + * {
+         z-index: 2;
+      }
+
+      @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+         background: transparent;
+         margin-bottom: -150px;
+         padding-top: 0;
+         content: "";
+      }
+
+      &::after {
+         display: block;
+         left: 0;
+         bottom: -88px;
+         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            bottom: -179px;
+            content: "";
+         } 
+         position: absolute;
+         z-index: 1;
+         width: 100%;
+         background: ${props => props.theme.colorPrimary100};
+         height: 50%;
+      }
+
+      [class*="MuiTableContainer"] [class*="MuiTable"] {
+         background: white;
+         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            background-color: ${props => props.theme.colorNeutral200};
+         }
+
+         [class*="MuiTableFooter"] {
+            background: ${props => props.theme.colorPrimary100};
+            &::before {
+               background-color: white;
+               @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                  background-color: ${props => props.theme.colorNeutral200};   
+               }
+            }
+            * {
+               background: transparent;
+            }
+         }       
+      }  
+   }
 `;
 
 export const Container = styled.div`   
+   position: relative;
+   z-index: 2;
    [class*="MuiTableContainer"] {
       box-shadow: none;
       [class*="MuiTable"] {
@@ -126,8 +180,15 @@ export const Option = styled.option`
    color: black;
 `;
 
-export const Arrow = styled.i`   
-   
+export const Mask = styled.svg`   
+   position: absolute;
+   bottom: 0;  
+   left: calc(50% - 1500px);
+   width: 3000px;
+   z-index: 1;
+   path {
+      fill: ${props => props.theme.colorPrimary100};
+   }
 `;
 
 export const Column = styled.div`   

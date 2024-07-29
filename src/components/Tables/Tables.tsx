@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Content, Container, Column } from "./style";
+import { Content, Container, Column, Mask } from "./style";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
 import { HttpService } from "@/services";
 import TablesData from "./TablesData";
@@ -10,6 +10,7 @@ export default function Tables(props: any) {
   const http = new HttpService();
   const [data, setData] = useState<any>(null);
   const [filter, setFilter] = useState<any>(null);
+  const classNames = require('classnames');
 
   const fetchData = async (uri: any) => {
     let response: any[] = await http.get(`/api/csv/?csv=${uri}`);
@@ -31,8 +32,15 @@ export default function Tables(props: any) {
   return (
     <>
       <Content 
-        data-component={props?.id}
-        className={`${props?.id} overflow-hidden`}>
+        className={
+          classNames(
+            `${props?.id}`,
+            {
+              'has-mask': props?.data?.field_mask_enabled && props?.data?.field_mask_enabled[0] && props?.data?.field_mask_enabled[0]?.value
+            }
+          )      
+        } 
+        data-component={props?.id}>
         <Container>
           <Container className={`container d-flex align-items-start flex-wrap`}>
             {props?.data?.field_title && props?.data?.field_title[0]?.value && <BlockHead className="col-12 col-lg-3 pe-0" data={props?.data} />}
@@ -72,6 +80,7 @@ export default function Tables(props: any) {
             </Column>}
           </Container>
         </Container>
+        {props?.data?.field_mask_enabled && props?.data?.field_mask_enabled[0] && props?.data?.field_mask_enabled[0]?.value && <Mask className="d-none d-lg-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fillOpacity="1" d="M0,256L80,234.7C160,213,320,171,480,170.7C640,171,800,213,960,202.7C1120,192,1280,128,1360,96L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></Mask>  }      
       </Content>  
     </>
   );

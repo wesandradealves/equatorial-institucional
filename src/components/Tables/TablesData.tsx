@@ -110,21 +110,27 @@ export default function TablesData(props: any) {
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
         <TableHead>
           <TableRow>
-              {keys ? keys.map(function(key: any, i: number){
+            <>
+              {keys && keys.length ? keys.map(function(key: any, i: number){
                   if(Object.keys(props?.data[0]).includes(key)) {
                     return (
-                      <TableCell key={i} component="th" scope="row">
-                        {key}
-                      </TableCell>                    
+                      <>
+                        <TableCell key={i} component="th" scope="row">
+                          {key.replaceAll('-', ' ')}
+                        </TableCell>
+                      </>                    
                     );
                   }
               }) : Object.keys(props?.data[0]).map(function(key: any, i: number){
                   return (
-                    <TableCell key={i} component="th" scope="row">
-                      {key}
-                    </TableCell>                    
+                    <>
+                      <TableCell key={i} component="th" scope="row">
+                        {key.replaceAll('-', ' ')}
+                      </TableCell> 
+                    </>
                   );
-              })}
+              })}            
+            </>
           </TableRow>   
         </TableHead>
         
@@ -132,24 +138,26 @@ export default function TablesData(props: any) {
           {(rowsPerPage > 0
             ? (props?.filter ? props?.filter.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : props?.data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage))
             : (props?.filter ? props?.filter : props?.data)
-          ).map((row: any) => (
-            <TableRow key={row.name}>
-                {keys ? keys.map(function(key: any, i: number){
-                    if(Object.keys(props?.data[0]).includes(key)) {
-                      return (
-                        <TableCell key={i} component="th" scope="row">
-                          {row[key]}
-                        </TableCell>                    
-                      );                      
-                    }
-                }) : Object.keys(props?.data[0]).map(function(key: any, i: number){
-                  return (
-                    <TableCell key={i} component="th" scope="row">
-                      {row[key]}
-                    </TableCell>                    
-                  );
-              })}
-            </TableRow>
+          ).map((row: any, i: number) => (
+            <>
+              <TableRow key={i}>
+                  {keys && keys.length ? keys.map(function(key: any, i: number){
+                      if(Object.keys(props?.data[0]).includes(key)) {
+                        return (
+                          <TableCell key={i} component="th" scope="row">
+                            {row[key]}
+                          </TableCell>                    
+                        );                      
+                      }
+                  }) : Object.keys(props?.data[0]).map(function(key: any, i: number){
+                    return (
+                      <TableCell key={i} component="th" scope="row">
+                        {row[key]}
+                      </TableCell>                    
+                    );
+                })}
+              </TableRow>            
+            </>
           ))}
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
@@ -158,7 +166,7 @@ export default function TablesData(props: any) {
           )}
         </TableBody>
         
-        <TableFooter>
+        {rowsPerPageOptions && rowsPerPageOptions.length > 1 && <TableFooter>
           <TableRow>
             <TablePagination
               rowsPerPageOptions={rowsPerPageOptions}
@@ -181,7 +189,7 @@ export default function TablesData(props: any) {
               ActionsComponent={TablePaginationActions}
             />
           </TableRow>
-        </TableFooter>
+        </TableFooter>}
       </Table>
     </TableContainer>
   );
