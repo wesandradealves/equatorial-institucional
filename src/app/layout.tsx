@@ -49,10 +49,6 @@ export default function RootLayout({
     if(theme) console.log(theme)
   }, [theme]);   
 
-  useEffect(() => {
-    console.log(process.env) 
-  }, []);   
-  
   return (
     <html lang="pt-br">
       <body suppressHydrationWarning={true}>

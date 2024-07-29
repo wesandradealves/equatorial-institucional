@@ -2,7 +2,49 @@ import styled, {css, createGlobalStyle} from "styled-components";
 
 export interface IntroTypo {
     layout?: any;
+    field_detail_position?:any;
+    field_detail_color?:any;
 }
+
+const handleDetailPosition = (position: any) => {
+    switch (position) {
+        case "bottom":
+            return `
+                transform: rotate(0deg) !important; 
+                transform-origin: right 0 !important; 
+                top: 100% !important;
+                bottom: initial !important; 
+                right: initial !important;  
+                left: 0 !important;
+                width: auto;
+
+                -moz-transform: scaleY(-1) !important;
+                -o-transform: scaleY(-1) !important;
+                -webkit-transform: scaleY(-1) !important;
+                transform: scaleY(-1) !important;                
+            `;
+        case "left":
+            return `
+                transform: rotate(-90deg) !important; 
+                transform-origin: ${position} 0 !important; 
+                top: 100% !important; 
+                left: -25px !important; 
+                right: initial !important;  
+                width: auto;
+            `;
+        case "right":
+            return `
+                transform: rotate(90deg) !important;
+                transform-origin: ${position} 0 !important;
+                top: 100% !important;
+                left: initial !important;
+                right: -25px !important;   
+                width: auto;           
+            `;
+        default:
+            return `width: 100%;`;
+    }
+};
 
 export const Content = styled.section<IntroTypo>`   
     position: relative;
@@ -18,9 +60,6 @@ export const Content = styled.section<IntroTypo>`
                 transform: rotate(90deg);
                 transform-origin: right 0;
                 top: 100%;
-                @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                    top: calc(100% + 130px);
-                }
                 left: initial;
                 right: -35px;                
                 path {
@@ -81,12 +120,11 @@ export const Img = styled.img`
     object-fit: cover;
     height: 300px;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        width: auto;
         height: auto;
     }
 `;
 
-export const Mask = styled.svg`   
+export const Mask = styled.svg<IntroTypo>`   
     position: absolute;
     z-index: 2;
     top: -20px;
@@ -96,6 +134,12 @@ export const Mask = styled.svg`
     left: 0;
     width: 100%;
     height: auto;
+    ${({ field_detail_color }) => field_detail_color && css`
+        path {
+            fill: ${field_detail_color} !important;
+        }        
+    `}      
+    ${({ field_detail_position }) => handleDetailPosition(field_detail_position)};
 `;
 
 export const VideoInfo = styled.div`   

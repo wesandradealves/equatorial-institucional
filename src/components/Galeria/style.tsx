@@ -45,6 +45,9 @@ export const Title = styled.div`
     }
     * {
         font-size: inherit;
+        strong {
+            font-weight: 600
+        }        
     }
 `;
 
