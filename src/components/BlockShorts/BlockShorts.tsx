@@ -133,7 +133,7 @@ export default function BlockShorts(props: any) {
                   <VideoPill background_image={row?.youtubeData ? row?.youtubeData[1]?.items[0]?.snippet?.thumbnails['high']?.url : row?.thumbnail}  >
                     <VideoPillInner className='d-flex flex-column justify-content-end'>
                       <VideoPillTitle className='d-flex flex-column'>
-                        {row?.youtubeData[1]?.items[0]?.snippet?.title ? row?.youtubeData[1]?.items[0]?.snippet?.title : row?.title}
+                        {row?.youtubeData && row?.youtubeData[1]?.items[0]?.snippet?.title ? row?.youtubeData[1]?.items[0]?.snippet?.title : row?.title}
                         {row?.youtubeData && <Views>{row?.youtubeData[0]?.items[0]?.statistics?.viewCount} Views</Views>}
                       </VideoPillTitle>
 

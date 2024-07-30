@@ -51,7 +51,7 @@ export default function Header() {
   }, []);
 
   return (
-    <Container className={
+    <Container id="header" data-component="Header" className={
       classNames(
         'header',
         {

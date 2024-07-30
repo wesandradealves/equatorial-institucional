@@ -111,7 +111,7 @@ export default function Footer() {
   };  
 
   return (
-    <Container className="footer mt-auto">
+    <Container id="footer" data-component="Footer" className="footer mt-auto">
       {footerData && navigation && <FooterTop>
         <div className="container d-flex flex-column flex-lg-row flex-wrap align-items-start">
           <Navigation classMenuName="flex-fill" className="flex-fill col-12 d-flex flex-column flex-lg-row flex-wrap align-items-stretch" data={navigation} />
