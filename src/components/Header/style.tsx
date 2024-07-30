@@ -22,7 +22,7 @@ export const Container = styled.header`
         padding: 0 ${props => props.theme.spacingSm};
     }
 `;
-export const Content = styled.section<HeaderTypo> `
+export const Content = styled.div<HeaderTypo> `
     z-index: 1;
     &::after {
         z-index: -1;

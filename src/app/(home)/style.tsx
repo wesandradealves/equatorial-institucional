@@ -188,5 +188,29 @@ export const GlobalStyle = createGlobalStyle`
     }
     body {
         animation: opacity 600ms forwards;
+        &.error-page {
+            .header {
+                .topbar {
+                    color: black;
+                    .accessibility {
+                        background: ${props => props.theme.colorPrimary300} !important;  
+                    }
+                    [class*="MuiSwitch-root"] {
+                        padding: 0px 12px!important;
+                        .MuiSwitch-track {
+                            background: ${props => props.theme.colorPrimary300} !important;  
+                        }
+                        &::after, &::before {
+                            color: white !important;
+                        }
+                    }
+                }
+                [class*="HeaderBottom"] {
+                    > .container {
+                        background: ${props => props.theme.colorPrimary300};    
+                    }
+                }
+            }
+        }
     }
 `;
