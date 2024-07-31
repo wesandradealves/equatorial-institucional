@@ -30,6 +30,8 @@ export default function Page(props: any) {
   }
   
   useEffect(() => {
+    const el = document.body;
+    el.classList.remove("error-page");            
     let slug = pathname?.split("/");
     fetchData(`/api/page/${slug?.pop()}`).then((response: any) => {
       if(response) setData(response)

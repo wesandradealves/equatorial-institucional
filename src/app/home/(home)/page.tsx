@@ -1,7 +1,7 @@
 "use client";
 import BlockShorts from "@/components/BlockShorts/BlockShorts";
 import ConfigProvider from "@/context/config";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Hero from "@/components/Hero/Hero";
 import UltimasNoticias from "@/components/UltimasNoticias/UltimasNoticias";
 import { Content } from "./style";
@@ -13,6 +13,10 @@ import BlockInstitucionalEquatorial from "@/components/BlockInstitucionalEquator
 
 export default function Home() {
   const { config } = useContext<any>(ConfigProvider);
+  useEffect(() => {
+    const el = document.body;
+    el.classList.remove("error-page");            
+  }, []);   
   return (
     <Content className="d-flex flex-column">
       {config && (
