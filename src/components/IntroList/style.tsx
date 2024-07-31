@@ -4,9 +4,9 @@ export const Content = styled.section`
     z-index: 3;
     position: relative;
     color: white;
-    margin-top: -210px;
+    margin-top: -290px;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        margin-top: -540px;  
+        margin-top: -590px;  
     }
     [class*="BlockTitle"] {
         text-align: left !important;
