@@ -29,8 +29,8 @@ export default function Page(props: any) {
   }
  
   useEffect(() => {
-    let slug = pathname.split("/");
-    fetchData(`/api/page/${slug.pop()}`).then((response: any) => {
+    let slug = pathname?.split("/");
+    fetchData(`/api/page/${slug?.pop()}`).then((response: any) => {
       if(response) setData(response)
     })
   }, [props, pathname]);    

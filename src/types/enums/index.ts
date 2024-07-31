@@ -170,3 +170,7 @@ export interface DynamicComponentProps {
   componentName: string;
   [key: string]: any;
 }
+
+export type SearchTypo = {
+  keywords: string,
+};
