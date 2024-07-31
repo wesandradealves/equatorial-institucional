@@ -11,6 +11,7 @@ import ModalVideo from 'react-modal-video';
 import { Button } from '@/assets/tsx/objects';
 import BlockHead from '@/template-parts/BlockHead/BlockHead';
 import { Views } from '../Intro/style';
+import { fetchData } from '@/app/layout';
 
 export default function BlockShorts(props: any) {
   const http = new HttpService();
@@ -45,11 +46,6 @@ export default function BlockShorts(props: any) {
       }
     ]    
   };  
-
-  const fetchData = async(uri: any) => {
-    let response:any[] = await http.get(uri)
-    return response
-  }  
 
   const fetchVideoData = async (data: any[]) => {
     // Map each row asynchronously

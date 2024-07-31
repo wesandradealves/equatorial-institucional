@@ -1,9 +1,5 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
-interface LocationSelectorTypo {
-    onChange?: any;
-}
-
 export const Container = styled.div`
     margin-bottom: 16px;
     gap: 0 16px;
@@ -20,7 +16,7 @@ export const Select = styled.div`
     }
 `;
 
-export const SelectField = styled.select<LocationSelectorTypo>`
+export const SelectField = styled.select`
     background: none;
     width: 107px;
     padding: 0;

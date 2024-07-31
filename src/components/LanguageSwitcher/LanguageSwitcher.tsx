@@ -23,7 +23,7 @@ export default function LanguageSwitcher() {
     padding: 7,
     '&': {
       width: '100px !important',
-      padding: '1px 12px !important',
+      padding: '0 12px !important',
       position: 'relative',  
       '&::after, &::before': {
         content: `"${data.find((l:any) => l?.key !== lang?.key)?.key.includes('-') ? data.find((l:any) => l?.key !== lang?.key)?.key.split("-")[0] : data.find((l:any) => l?.key !== lang?.key)?.key }"`,
