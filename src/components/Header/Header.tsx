@@ -27,25 +27,14 @@ export default function Header() {
     setScrollPosition(window?.scrollY);
   };  
 
-  const fetchNavigation = async () => {
-    const navigation: NavigationTypo[] = await http.get(
-      "/api/menu_items/main"
-    );
-    setNavigation(navigation);
-  };
-
-  const fetchData = async(uri: any) => {
-    let response:any[] = await http.get(uri)
-    return response
-  }  
-
   useEffect(() => {
-    if(!data) {
-      fetchData('/api/header').then((response: HeaderTypo | any) => {
-        if(response) setData(response?.data)
-      }).catch(console.error);
-    }    
-    if(!navigation) fetchNavigation()
+    Promise.all(["/api/header", "/api/menu_items/main"].map(function(url: any) {
+      return http.get(`${url}`);
+    })).then((response: any) => {
+      setData(response[0]?.data)
+      setNavigation(response[1])
+    }).catch(console.error); 
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);    
   }, []);

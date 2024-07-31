@@ -18,6 +18,13 @@ import { GlobalStyle } from './(home)/style';
 import Spinner from '@/components/Spinner/Spinner';
 import SpinnerProvider from '@/components/Spinner/context';
 
+const http = new HttpService();
+
+export const fetchData = async($url: any) => {
+  const response:any = await http.get($url);
+  return response;
+}  
+
 export default function RootLayout({
   children,
 }: {
@@ -29,25 +36,21 @@ export default function RootLayout({
   const [lang, setLanguage] = useState<LanguagesTypo | any>(null);
   const [navigation, setNavigation] = useState<NavigationTypo | any>(null);
   const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!@/assets/scss/variables.scss');
-  const [ , , subdomain] = typeof window !== "undefined" ? window.location.hostname.split(".").reverse() : [];
-  const pathname = usePathname();
-
-  const fetchData = async() => {
-    const config:ConfigTypo = await http.get('/api/config')
-    const footer:any = await http.get('/api/footer')
-    if(config && footer) setConfig({
-      ...config?.data,
-      clara_img: footer?.data?.contact?.talktoclara?.img
-    })
-  }  
 
   useEffect(() => {
-    fetchData();
+    Promise.all(['/api/config', '/api/footer'].map(function(url: any) {
+      return http.get(`${url}`);
+    })).then((response: any) => {
+      setConfig({
+        ...response[0]?.data,
+        clara_img: response[1]?.data?.contact?.talktoclara?.img
+      })      
+    });    
   }, []);  
 
-  useEffect(() => {
-    if(theme) console.log(theme)
-  }, [theme]);   
+  // useEffect(() => {
+  //   if(theme) console.log(theme)
+  // }, [theme]);   
 
   return (
     <html lang="pt-br">

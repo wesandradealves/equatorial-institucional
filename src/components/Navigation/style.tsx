@@ -32,9 +32,11 @@ export const NavLink = styled.span`
 export const NavSubmenu = styled.ul`
     &.lvl-2 {
         top: 0 !important;
-        left: 100% !important;
+        left: initial !important;
+        right: -100%;
         box-shadow: -15px -10px 20px -28px black !important;
         display: none;
+        z-index: 2;
     }
     &.lvl-1 {
         > .nav-item {

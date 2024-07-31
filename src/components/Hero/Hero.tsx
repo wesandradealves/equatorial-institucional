@@ -5,17 +5,13 @@ import { Container, Information, Mask, Services, Title, ServiceCard, CardIcon, C
 import { useContext, useEffect, useState } from "react";
 import ConfigProvider from "@/context/config";
 import LocationSelector from "@/components/LocationSelector/LocationSelector";
+import { fetchData } from "@/app/layout";
 
 export default function Hero(props: any) {
   const http = new HttpService();
   const { config } = useContext<any>(ConfigProvider);
   const [data, setData] = useState<any>(null);
   const [services, setServices] = useState<any>(null);
-
-  const fetchData = async(uri: any) => {
-    let response:any[] = await http.get(uri)
-    return response
-  }  
 
   useEffect(() => {
     if(!data) {

@@ -6,6 +6,7 @@ import { BlockTypo } from "@/types/enums";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
 import ConfigProvider from "@/context/config";
 import Galeria from "@/components/Galeria/Galeria";
+import { fetchData } from "@/app/layout";
 
 export default function BlockIniciativas(props: any) {
   const { config } = useContext<any>(ConfigProvider);
@@ -13,11 +14,6 @@ export default function BlockIniciativas(props: any) {
   const [blockData, setBlockData] = useState<BlockTypo[] | {} | any>(null);
   const [data, setData] = useState<any>(null);
   
-  const fetchData = async(uri: any) => {
-    let response:any[] = await http.get(uri)
-    return response
-  }  
-
   useEffect(() => {
     if(!blockData) {
       fetchData('/entity/block/block_iniciativas_equatorial').then((response: BlockTypo[] | any) => {

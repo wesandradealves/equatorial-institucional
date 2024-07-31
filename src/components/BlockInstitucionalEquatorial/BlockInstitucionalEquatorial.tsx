@@ -8,6 +8,7 @@ import ConfigProvider from "@/context/config";
 import { Container, Content, Columns, Filter, FilterLink, Item, Inner, Thumbnail, Info, Text, Category, Title, Logo, Top, Bottom } from './style';
 import logo from '@/assets/img/logo.svg';
 import { Button } from "@/assets/tsx/objects";
+import { fetchData } from "@/app/layout";
 
 export default function BlockInstitucionalEquatorial(props: any) {
   const { config } = useContext<any>(ConfigProvider);
@@ -27,11 +28,6 @@ export default function BlockInstitucionalEquatorial(props: any) {
     slidesToScroll: 1  
   }; 
   
-  const fetchData = async(uri: any) => {
-    let response:any[] = await http.get(uri)
-    return response
-  }  
-
   const classNames = require('classnames');
 
   useEffect(() => {

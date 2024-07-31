@@ -7,6 +7,15 @@ import { useEffect } from "react";
 import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
 import { usePathname } from "next/navigation";
 import { Content } from "../(home)/style";
+import { fetchData } from "@/app/layout";
+
+export const camelCase = (str:any) => {
+  var splitStr = str.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+  }
+  return splitStr.join(' '); 
+}
 
 export default function Page(props: any) {
   const { config } = useContext<any>(ConfigProvider);
@@ -15,24 +24,11 @@ export default function Page(props: any) {
   const [content, setContent] = useState<any>(null);
   const pathname = usePathname();
   
-  const fetchData = async($url: any) => {
-    const response:any = await http.get($url);
-    return response;
-  }  
-
-  const camelCase = (str:any) => {
-    var splitStr = str.toLowerCase().split(' ');
-    for (var i = 0; i < splitStr.length; i++) {
-        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-    }
-    return splitStr.join(' '); 
-  }
- 
   useEffect(() => {
     let slug = pathname?.split("/");
     fetchData(`/api/page/${slug?.pop()}`).then((response: any) => {
       if(response) setData(response)
-    })
+    }).catch(console.error);   
   }, [props, pathname]);    
 
   useEffect(() => {
@@ -49,7 +45,6 @@ export default function Page(props: any) {
       }).catch(console.error);      
     }
   }, [data]);
-
 
   return <Content className="d-flex flex-column">
     {data && <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>}  

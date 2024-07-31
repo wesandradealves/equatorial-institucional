@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Accessibility = styled.div`
     border-radius: 30px;
-    background-color: ${props => props.theme.colorPrimary110};
+    background-color: rgba(255,255,255, .3);
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     

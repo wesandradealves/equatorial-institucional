@@ -8,6 +8,7 @@ import BlockHead from "@/template-parts/BlockHead/BlockHead"
 import Accordion from "../Accordion/Accordion"
 import { Button } from "@/assets/tsx/objects"
 import ConfigProvider from "@/context/config"
+import { fetchData } from "@/app/layout"
 
 export default function Faq(props: any) {  
     const { config } = useContext<any>(ConfigProvider);
@@ -15,10 +16,6 @@ export default function Faq(props: any) {
     const [data, setData] = useState<any>(null)
     const [blockData, setBlockData] = useState<BlockTypo[] | {} | any>(null)
     const classNames = require('classnames');
-    const fetchData = async (uri: any) => {
-        let response: any[] = await http.get(uri);
-        return response;
-    };
 
     useEffect(() => {
         if(!props?.data) {
