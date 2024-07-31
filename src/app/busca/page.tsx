@@ -22,7 +22,7 @@ export default function Search(props: any) {
   const [taxonomies, setTaxonomies] = useState<any>(null);
   const [content, setContent] = useState<any>(null);
   const [pager, setPager] = useState<any>(null);
-  const items_per_page = 2;
+  const items_per_page = 12;
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
   const pathname = usePathname();

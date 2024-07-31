@@ -3,16 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { Container, Navigation, NavigationItem } from "./style";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from 'next/navigation';
 
 export default function Pagination(props: any, onPaginate: any) {
   const [data, setData] = useState<any>(null);
   const classNames = require('classnames');
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const params = new URLSearchParams(searchParams);
-  const router = useRouter();
 
   useEffect(() => {
     setData({
@@ -34,8 +28,8 @@ export default function Pagination(props: any, onPaginate: any) {
 
   return (<Container className="pagination d-flex align-items-center justify-content-center pb-5">
     {props?.data?.total_pages > 1 && <Navigation className="d-flex flex-wrap ps-5 pe-5 align-items-center justify-content-center">
-      <NavigationItem>
-          <Link href="javascript:void(0)" onClick={(e) => {
+      <NavigationItem className="d-flex increaser justify-content-center align-items-center text-center">
+          <Link href="" onClick={(e) => {
             e.preventDefault(),
             handlePaginate("decrease")
           }}>
@@ -44,7 +38,7 @@ export default function Pagination(props: any, onPaginate: any) {
       </NavigationItem>
 
       {props?.showNumbers && [...Array(props?.data?.total_pages)].map((x, i) =>
-        <NavigationItem>
+        <NavigationItem className="d-flex justify-content-center align-items-center text-center">
             <Link 
             className={
               classNames(
@@ -53,6 +47,7 @@ export default function Pagination(props: any, onPaginate: any) {
                 }
               )      
             }
+            key={i}
             href="" onClick={(e) => {
 
             e.preventDefault(),
@@ -65,7 +60,7 @@ export default function Pagination(props: any, onPaginate: any) {
         </NavigationItem>
       )}
 
-      <NavigationItem>
+      <NavigationItem className="d-flex increaser justify-content-center align-items-center text-center">
           <Link href="" onClick={(e) => {
             e.preventDefault(),
             handlePaginate("increase")
