@@ -2,19 +2,19 @@
 
 import React, { lazy, useCallback, useContext, useMemo, useState } from "react";
 import { useEffect } from "react";
-import Template from "../home/template";
+import Template from "../../home/template";
 import ConfigProvider from "@/context/config";
 import { HttpService } from "@/services";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
-import { camelCase } from "../home/[...slug]/page";
+import { camelCase } from "../../home/[...slug]/page";
 import { Label, FilterWrapper, Select, Option, SelectWrapper } from "@/components/Tables/style";
-import { fetchData } from "../layout";
+import { fetchData } from "../../layout";
 import NewsCard from "@/components/NewsCard/NewsCard";
 import { Column } from "@/components/UltimasNoticias/style";
 import Pagination from "@/components/Pagination/Pagination";
 
-export default function Search(props: any) {
+export default function Noticias(props: any) {
   const { config } = useContext<any>(ConfigProvider);
   const http = new HttpService();
   const router = useRouter();
@@ -33,20 +33,17 @@ export default function Search(props: any) {
   }, [props]);    
   
   useEffect(() => {
-    if(props?.searchParams?.s && props?.searchParams) {
-      Promise.all([
-        `/api/busca/?s=${props?.searchParams?.s}&items_per_page=${items_per_page}&page=${page}${params.get("cat") ? `&cat=${params.get("cat")}` : ''}`, 
-        `/api/page/busca`].map(function(url: any) {
-        return http.get(`${url}`);
-      })).then((data) => {
-        setData({
-          page: data[1],
-          search: data[0]
-        })
-      });        
-    } else {
-      router.push(`${process.env.NEXT_PUBLIC_HOME_URL}`);
-    }
+    // ?items_per_page=${items_per_page}&page=${page}${params.get("cat") ? `&cat=${params.get("cat")}` : ''}
+    Promise.all([
+      `/api/noticias/${params.get("cat") ? `${params.get("cat")}` : ''}?items_per_page=${items_per_page}&page=${page}`, 
+      `/api/page/noticias`].map(function(url: any) {
+      return http.get(`${url}`);
+    })).then((data) => {
+      setData({
+        page: data[1],
+        search: data[0]
+      })
+    });  
   }, [props]);  
 
   useEffect(() => {
@@ -89,7 +86,7 @@ export default function Search(props: any) {
 
   return <Template>
     {config && <>
-      <title>{`${config?.site_name} - ${data?.page?.title[0]?.value} - (${data?.search?.pager?.total_items}) Resultado(s) de busca para "${props?.searchParams?.s}"`}</title>
+      <title>{`${config?.site_name} - ${data?.page?.title[0]?.value}`}</title>
     </>}
 
     {content && <>
