@@ -95,43 +95,47 @@ export default function Search(props: any) {
         {content.map((component: any, index: Number) => (
           <>
             <DynamicComponent page={data} data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
-            
-            {taxonomies && <section>
-              <div className="container pb-5">
-                <FilterWrapper className="col-12 d-flex align-items-center">
-                    <Label>Ver notícias sobre </Label>
-                    {taxonomies && <SelectWrapper>
-                        <Select onChange={(e) => handleFilter(e.target.value)}>
-                            <Option key={0} value="">-</Option>
-                            {taxonomies.map((term: any, i: number) => (
-                                <Option key={i + 1} value={term?.tid[0]?.value}>{term?.name[0]?.value}</Option>
-                            ))}    
-                        </Select>
-                    </SelectWrapper>}
-                </FilterWrapper>     
-
-                {data && data?.search && data?.search?.rows.length ? <><Column className='flex-fill mt-5 d-flex flex-wrap align-items-stretch'>
-                  {data?.search?.rows.map((row:any, index:any) => (
-                    <NewsCard
-                      nid={row.nid}
-                      key={index}
-                      index={index}
-                      className="col-12 col-sm-6 col-md-4 col-lg-3"
-                      title={row.title}
-                      description={row.summary}
-                      image={config?.basePath + row.image}
-                      link={row.image}
-                      date={row.date}
-                      category={row.category}
-                    />
-                ))}</Column></> : <p className="d-block text-align-center pt-5">{`Nenhum resultado encontrado. :(`}</p>}                
-              </div>
-            </section>}
-
-            {pager && <Pagination showNumbers={true} onPaginate={handlePaginate} data={pager} />}
           </>
         ))}
       </>}
+    </>}
+
+    {(taxonomies || data) && <>
+      <section>
+        <div className="container pb-5">
+          {taxonomies && <FilterWrapper className="col-12 d-flex align-items-center">
+              <Label>Ver notícias sobre </Label>
+              <SelectWrapper>
+                  <Select onChange={(e) => handleFilter(e.target.value)}>
+                      <Option key={0} value="">-</Option>
+                      {taxonomies.map((term: any, i: number) => (
+                          <Option key={i + 1} value={term?.tid[0]?.value}>{term?.name[0]?.value}</Option>
+                      ))}    
+                  </Select>
+              </SelectWrapper>
+          </FilterWrapper>}     
+
+          {data && data?.search && data?.search?.rows.length ? <>
+            <Column className='flex-fill mt-5 d-flex flex-wrap align-items-stretch'>
+              {data?.search?.rows.map((row:any, index:any) => (
+                <NewsCard
+                  nid={row.nid}
+                  key={index}
+                  index={index}
+                  className="col-12 col-sm-6 col-md-4 col-lg-3"
+                  title={row.title}
+                  description={row.summary}
+                  image={config?.basePath + row.image}
+                  link={row.image}
+                  date={row.date}
+                  category={row.category}
+                />
+            ))}</Column>
+
+            {pager && <Pagination showNumbers={false} onPaginate={handlePaginate} data={pager} />} 
+          </> : <p className="d-block text-align-center pt-5">{`Nenhum resultado encontrado. :(`}</p>}                
+        </div>
+      </section>
     </>}
   </Template>;
 }
