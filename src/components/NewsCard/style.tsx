@@ -34,6 +34,9 @@ export const Title = styled.h3`
   @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
     font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize}; 
   }
+  * {
+    color: inherit
+  }
 `;
 
 export const Text = styled.p`
