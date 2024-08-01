@@ -26,7 +26,7 @@ export default function Pagination(props: any, onPaginate: any) {
     props?.onPaginate(data?.current_page)
   }, [data]);
 
-  return (<Container className="pagination d-flex align-items-center justify-content-center pb-5">
+  return (<Container className={`pagination d-flex align-items-center justify-content-center pb-5 ${props?.className}`}>
     {props?.data?.total_pages > 1 && <Navigation className="d-flex flex-wrap ps-5 pe-5 align-items-center justify-content-center">
       <NavigationItem className="d-flex increaser justify-content-center align-items-center text-center">
           <Link href="" onClick={(e) => {
