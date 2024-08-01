@@ -5,8 +5,8 @@ import { HttpService } from "@/services";
 import React, { lazy, useCallback, useContext, useMemo, useState } from "react";
 import { useEffect } from "react";
 import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
-import { usePathname, useRouter } from "next/navigation";
-import { Content } from "../(home)/style";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Content } from "../../(home)/style";
 import { fetchData } from "@/app/layout";
 
 export const camelCase = (str:any) => {
@@ -24,42 +24,37 @@ export default function Page(props: any) {
   const [data, setData] = useState<any>(null);
   const [content, setContent] = useState<any>(null);
   const pathname = usePathname();
-
-  const handleNotFound = () => {
-    router.push(`/page-not-found`, {scroll : true})
-  }
   
   useEffect(() => {
-    const el = document.body;
-    el.classList.remove("error-page");            
-    let slug = pathname?.split("/");
-    fetchData(`/api/page/${slug?.pop()}`).then((response: any) => {
-      if(response) setData(response)
-    }).catch(handleNotFound);   
-  }, [props, pathname]);    
+    fetchData(`/api/noticia/${props?.params?.id}`).then((response: any) => {
+      if(response && response?.rows?.length) setData(response?.rows?.shift())
+    }).catch(console.error);     
+  }, [props]);    
 
   useEffect(() => {
     if(data && data?.field_conteudo) {
-
-      let conteudo = data?.field_conteudo.map(function(row: any){
-          return row.target_id
-      });
-
-      Promise.all(conteudo.map(function(pid: any) {
+      Promise.all(data?.field_conteudo.map(function(pid: any) {
         return http.get(`/entity/paragraph/${pid}`);
       })).then((response: any) => {
         setContent(response)
-      }).catch(console.error);      
+      }).catch(console.error);   
     }
+
+    console.log(data)
   }, [data]);
 
   return <Content className="d-flex flex-column">
-    {data && config && <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>}  
+    <>
+      {config && <title>{`${config?.site_name} - ${data?.title}`}</title>}  
+      {content && <>
+        {content.map((component: any, index: Number) => (
+          <DynamicComponent page={data} data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
+        ))}
+      </>}
+      {data?.body && <section>
+        <div className="container" dangerouslySetInnerHTML={{ __html: data?.body }} />
+      </section>}
+    </>
 
-    {content && <>
-      {content.map((component: any, index: Number) => (
-        <DynamicComponent page={data} data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
-      ))}
-    </>}
   </Content>;
 }

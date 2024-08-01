@@ -20,7 +20,7 @@ export default function Select() {
 
   return (
     <Wrapper>
-      {config && <>
+      {config && navigation && <>
         <Content background_image={config?.location_screen_bg}>
           <title>{`${config?.site_name} - Escolha seu estado`}</title>
           <Inner>

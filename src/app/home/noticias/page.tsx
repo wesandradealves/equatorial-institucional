@@ -85,7 +85,7 @@ export default function Noticias(props: any) {
   };  
 
   return <Template>
-    {config && <>
+    {config && data && <>
       <title>{`${config?.site_name} - ${data?.page?.title[0]?.value}`}</title>
     </>}
 

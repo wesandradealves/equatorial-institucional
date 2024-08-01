@@ -32,7 +32,7 @@ const NewsCard: React.FC<NewsCardProps> = (props: any) => {
     <NewsCardContainer key={props?.index} className={`d-flex flex-column ${props?.className}`}>
     <CardImage className="d-flex flex-column justify-content-end" imageUrl={props?.image} tags={props?.category} />
     <Content className="news-card__content d-flex flex-column">
-      <Title dangerouslySetInnerHTML={{ __html: `<a href="/noticias/${props?.nid}">${props?.title}</a>` }} />
+      <Title dangerouslySetInnerHTML={{ __html: `<a href="${process.env.NEXT_PUBLIC_HOME_URL}/noticias/${props?.nid}">${props?.title}</a>` }} />
       <Text
         dangerouslySetInnerHTML={{ __html: props?.description }}
       />
