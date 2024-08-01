@@ -38,7 +38,7 @@ export default function Pagination(props: any, onPaginate: any) {
       </NavigationItem>
 
       {props?.showNumbers && [...Array(props?.data?.total_pages)].map((x, i) =>
-        <NavigationItem className="d-flex justify-content-center align-items-center text-center">
+        <NavigationItem className="d-none d-xl-flex justify-content-center align-items-center text-center">
             <Link 
             className={
               classNames(
