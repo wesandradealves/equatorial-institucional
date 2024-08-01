@@ -51,9 +51,12 @@ export const Content = styled.section<IntroTypo>`
     ${({ layout }) => (layout == 'alternative') && css`
         color: white;
         z-index: 2;
-        margin-top: -220px;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-            margin-top: -350px;
+        margin-top: -240px;
+        @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+            margin-top: -270px;
+            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                margin-top: -240px;
+            }            
         }
         [class*="Thumbnail"] {
             svg {
