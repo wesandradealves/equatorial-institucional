@@ -13,6 +13,7 @@ import { fetchData } from "../../layout";
 import NewsCard from "@/components/NewsCard/NewsCard";
 import { Column } from "@/components/UltimasNoticias/style";
 import Pagination from "@/components/Pagination/Pagination";
+import { SearchResults } from "@/app/busca/style";
 
 export default function Noticias(props: any) {
   const { config } = useContext<any>(ConfigProvider);
@@ -96,7 +97,7 @@ export default function Noticias(props: any) {
     </>}    
 
     {(taxonomies || data) && <>
-      <section>
+      <SearchResults>
         <div className="container pb-5">
           {taxonomies && <FilterWrapper className="col-12 d-flex align-items-center">
               <Label>Ver notícias sobre </Label>
@@ -130,7 +131,7 @@ export default function Noticias(props: any) {
             {pager && <Pagination className="pt-5" showNumbers={false} onPaginate={handlePaginate} data={pager} />} 
           </> : <p className="d-block text-align-center pt-5">{`Nenhum resultado encontrado. :(`}</p>}                
         </div>
-      </section>
+      </SearchResults>
     </>}
   </Template>;
 }
