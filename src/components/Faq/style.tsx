@@ -38,6 +38,14 @@ export const Content = styled.section<FaqTypo>`
             margin-bottom: -179px;
         } 
     }
+    &[data-layout="default"],
+    &[data-layout="home"] {
+        [class*="Inner"] {
+            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                min-height: 570px;
+            }
+        }
+    }
     &[data-layout="home"] {
         > [class*="Container"] {
             padding-bottom: 100px;
