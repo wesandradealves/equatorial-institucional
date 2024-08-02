@@ -47,10 +47,16 @@ Navegue até o diretório raiz do projeto e execute o seguinte comando para inst
 cd /nome-do-app
 npm install
 ```
+## Passo 3: Configuração do ambiente local
+Para que você possa trabalhar no seu ambiente local, faça uma cópia do arquivo .env.example, 
+mas renomeando para .env.local. Assim não haverá conflitos entre os ambientes.
 
-Esse comando irá ler o arquivo `package.json` e instalar todas as dependências necessárias para o projeto.
+```bash
+touch .env.local
+cp .env.example .env.local
+```
 
-## Passo 3: Rodar o site
+## Passo 4: Rodar o site
 
 Para iniciar o site, execute o seguinte comando:
 
