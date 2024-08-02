@@ -13,6 +13,7 @@ export const Content = styled.section<HeroTypo>`
     z-index: 1;    
     & + * {
         z-index: 2;
+        position: relative;
     }
     &:not(:first-of-type) {
         margin: 0 0 -44px;

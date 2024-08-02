@@ -9,6 +9,8 @@ import { Content } from "../../(home)/style";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
 import { Column, Columns, Container } from '@/components/UltimasNoticias/style';
 import NewsCard from "@/components/NewsCard/NewsCard";
+import { SearchResults } from "@/app/busca/style";
+import { PostContent } from "./style";
 
 export const camelCase = (str:any) => {
   var splitStr = str.toLowerCase().split(' ');
@@ -44,44 +46,46 @@ export default function Page(props: any) {
     }
   }, [data]);
 
-  return <Content className="d-flex flex-column">
-      {config && <title>{`${config?.site_name} - ${data?.title}`}</title>}  
+  return <>
+    <Content className="d-flex flex-column">
+        {config && <title>{`${config?.site_name} - ${data?.title}`}</title>}  
 
-      {content && <>
-        {content.map((component: any, index: Number) => (
-          <DynamicComponent page={data} data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
-        ))}
-      </>}
+        {content && <>
+          {content.map((component: any, index: Number) => (
+            <DynamicComponent page={data} data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
+          ))}
+        </>}
 
-      {data?.body && <section>
-        <Container className="container" dangerouslySetInnerHTML={{ __html: data?.body }} />
-      </section>}
+        {data?.body && <PostContent>
+          <Container className="container d-flex flex-column" dangerouslySetInnerHTML={{ __html: data?.body }} />
+        </PostContent>}
 
-      {news && <section>
-        <Container className="container">
-          <BlockHead className="col-12" data={{
-            title: "<strong>Ver mais notícias</strong>"
-          }} />
-          <Columns className="d-flex mt-5">
-            <Column className='col-12 flex-fill d-flex flex-wrap align-items-stretch'>
-              {news.map((row: any, index: any) => (
-                <>
-                  <NewsCard
-                    nid={row.nid}
-                    key={index}
-                    index={index}
-                    title={row.title}
-                    description={row.summary}
-                    image={config?.basePath + row.image}
-                    link={row.image}
-                    date={row.date}
-                    category={row.category}
-                    className="col-12 col-md-6 col-lg-3"
-                  />              
-                </>
-            ))}</Column>    
-          </Columns>     
-        </Container>
-      </section>}
-  </Content>;
+        {news && <SearchResults>
+          <Container className="container">
+            <BlockHead className="col-12" data={{
+              title: "<strong>Ver mais notícias</strong>"
+            }} />
+            <Columns className="d-flex mt-5">
+              <Column className='col-12 flex-fill d-flex flex-wrap align-items-stretch'>
+                {news.map((row: any, index: any) => (
+                  <>
+                    <NewsCard
+                      nid={row.nid}
+                      key={index}
+                      index={index}
+                      title={row.title}
+                      description={row.summary}
+                      image={config?.basePath + row.image}
+                      link={row.image}
+                      date={row.date}
+                      category={row.category}
+                      className="col-12 col-md-6 col-lg-3"
+                    />              
+                  </>
+              ))}</Column>    
+            </Columns>     
+          </Container>
+        </SearchResults>}          
+    </Content>
+  </>;
 }
