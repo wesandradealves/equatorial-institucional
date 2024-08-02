@@ -3,11 +3,7 @@ Esse projeto é a aplicação front-end do site institucional da Equatorial com 
 
 Este repositório contém um projeto desenvolvido utilizando o framework [Next.js](https://nextjs.org/) utilizando a biblioteca javascript React JS como base. Neste arquivo README, você encontrará um guia passo a passo para abrir o projeto em seu ambiente local.
 
-
-
 # [PADRÃO DE DESENVOLVIMENTO E QUALIDADE](/readme/Definitions.md)
-
-
 
 # Fluxo da Aplicação
 - Cada estado terá seu par te aplicações, uma front-ende outra back-end, ambas dentro do Open Shift;
