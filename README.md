@@ -13,8 +13,6 @@ Este repositório contém um projeto desenvolvido utilizando o framework [Next.j
 
 ![Fluxo da aplicação](/readme/app_flow.png)
 
-
-
 # Subir a aplicação no ambiente local
 ## Pré-requisitos
 
