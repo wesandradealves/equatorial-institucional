@@ -21,10 +21,21 @@ export const Container = styled.header`
     @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
         padding: 0 ${props => props.theme.spacingSm};
     }
+    .topbar {
+        display: none;
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            display: flex;
+        }
+    }
+    &.expanded {
+        .container {
+            background: transparent;
+        }
+    }
 `;
 export const Content = styled.div<HeaderTypo> `
     border-radius: 999px;
-    background: ${props => props.is_scrolling > 0 ? 'rgba(0,0,0,.2)' : 'rgba(255, 255, 255, .3)'};
+    background: ${props => props.is_scrolling > 0 ? props.theme.colorPrimary300 : 'rgba(255, 255, 255, .3)'};
     backdrop-filter: blur(40px);        
     padding: 16px;
 `

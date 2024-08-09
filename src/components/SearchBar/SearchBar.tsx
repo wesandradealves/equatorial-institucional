@@ -32,12 +32,12 @@ export default function SearchBar(props: any) {
 
   return (
     <>
-      {props?.data && lang && <Container onSubmit={handleSubmit(onSubmit)} className={`searchbar ${props?.className}`}>
+      <Container onSubmit={handleSubmit(onSubmit)} className={`searchbar ${props?.className}`}>
         <Inner className="d-flex align-items-center flex-wrap">
           <Submit>
             <SearchIcon />
           </Submit>
-          <Input
+          {props?.data && <Input
             placeholder={props?.data[lang?.key.replace("-", "_")]}
             type="text"
             {...register("keywords", { required: true })} 
@@ -55,9 +55,9 @@ export default function SearchBar(props: any) {
               if(pathname.indexOf("busca") > -1) router.push(`/busca/?${params.toString()}`, {scroll : false});
             }}
             defaultValue={searchParams.get("s"?.toString()) || ''}
-          />
+          />}
         </Inner>
-      </Container>}    
+      </Container>
     </>
   );
 }

@@ -19,7 +19,7 @@ export default function LanguageSwitcher() {
 
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
-    height: 34,
+    height: 38,
     padding: 7,
     '&': {
       width: '100px !important',
