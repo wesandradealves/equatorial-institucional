@@ -50,3 +50,71 @@ export const NavSubmenu = styled.ul`
 export const Arrow = styled.i`
     cursor: pointer;
 `;
+
+export const PanelBottom = styled.div`
+`;
+
+export const Panel = styled.nav`
+    position: fixed;
+    padding: 143px 24px 24px;
+    background: ${props => props.theme.colorPrimary300};  
+    z-index: 10;
+    top: 0;
+    transition: 600ms ease-in-out all;
+    opacity: 0;
+    left: -100%;
+    &.is-visible {
+        opacity: 1;
+        left: 0;
+    }
+    width: 100%;
+    height: 100%;
+    .inner {
+        gap: 51px 0;
+        .searchbar {
+            max-width: initial;
+            input {
+                text-align: center;
+                padding-right: 24px;
+            }
+        }
+        .location-selection {
+            margin: 0;
+            [class*="Label"] {
+                font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize}; 
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 63px;    
+                @media screen and (min-width: ${props => props.theme.screenXsMin}) {
+                    max-width: initial;
+                }            
+            }
+            [class*="Select"] {
+                padding: 0;
+                background: none;
+                box-shadow: initial;
+                font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize}; 
+            }
+        }
+        .topbar {
+            .container {
+                padding: 0;
+                justify-content: flex-end !important;
+                .MuiSwitch-root {
+                    margin: 0;
+                }                
+            }
+        }
+        .nav {
+            color: white;
+            max-height: 300px;
+            overflow-y: auto;
+            flex-wrap: nowrap;
+            &-link {
+                padding-left: 0;
+                color: inherit;
+            }
+        }
+    }
+`;
