@@ -5,21 +5,16 @@ import BlockHead from "@/template-parts/BlockHead/BlockHead";
 import { HttpService } from "@/services";
 import TablesData from "./TablesData";
 import TablesFilter from "./TablesFilter";
+import { fetchData } from "@/app/layout";
 
 export default function Tables(props: any) {  
-  const http = new HttpService();
   const [data, setData] = useState<any>(null);
   const [filter, setFilter] = useState<any>(null);
   const classNames = require('classnames');
 
-  const fetchData = async (uri: any) => {
-    let response: any[] = await http.get(`/api/csv/?csv=${uri}`);
-    return response;
-  };
-
   useEffect(() => {
     if(props?.data?.field_csv && props?.data?.field_csv[0]) {
-      fetchData(props?.data?.field_csv[0]?.url).then((response: any) => {
+      fetchData(`/api/csv/?csv=${props?.data?.field_csv[0]?.url}`).then((response: any) => {
         setData(JSON.parse(response))
       })
     }

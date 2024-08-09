@@ -5,34 +5,37 @@ import { HttpService } from "@/services";
 import React, { lazy, useCallback, useContext, useMemo, useState } from "react";
 import { useEffect } from "react";
 import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Content } from "../(home)/style";
+import { fetchData } from "@/app/layout";
+
+export const camelCase = (str:any) => {
+  var splitStr = str.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+  }
+  return splitStr.join(' '); 
+}
 
 export default function Page(props: any) {
+  const router = useRouter();
   const { config } = useContext<any>(ConfigProvider);
   const http = new HttpService();
   const [data, setData] = useState<any>(null);
   const [content, setContent] = useState<any>(null);
   const pathname = usePathname();
-  
-  const fetchData = async($url: any) => {
-    const response:any = await http.get($url);
-    return response;
-  }  
 
-  const camelCase = (str:any) => {
-    var splitStr = str.toLowerCase().split(' ');
-    for (var i = 0; i < splitStr.length; i++) {
-        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-    }
-    return splitStr.join(' '); 
+  const handleNotFound = () => {
+    router.push(`/page-not-found`, {scroll : true})
   }
- 
+  
   useEffect(() => {
-    let slug = pathname.split("/");
-    fetchData(`/api/page/${slug.pop()}`).then((response: any) => {
+    const el = document.body;
+    el.classList.remove("error-page");            
+    let slug = pathname?.split("/");
+    fetchData(`/api/page/${slug?.pop()}`).then((response: any) => {
       if(response) setData(response)
-    })
+    }).catch(handleNotFound);   
   }, [props, pathname]);    
 
   useEffect(() => {
@@ -50,9 +53,8 @@ export default function Page(props: any) {
     }
   }, [data]);
 
-
   return <Content className="d-flex flex-column">
-    {data && <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>}  
+    {data && config && <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>}  
 
     {content && <>
       {content.map((component: any, index: Number) => (

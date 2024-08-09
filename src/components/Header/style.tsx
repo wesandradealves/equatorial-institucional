@@ -21,28 +21,28 @@ export const Container = styled.header`
     @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
         padding: 0 ${props => props.theme.spacingSm};
     }
+    .topbar {
+        display: none;
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            display: flex;
+        }
+    }
+    &.expanded {
+        .container {
+            background: transparent;
+        }
+    }
 `;
 export const Content = styled.div<HeaderTypo> `
-    z-index: 1;
-    &::after {
-        z-index: -1;
-        border-radius: 999px;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        background: ${props => props.is_scrolling > 0 ? 'rgba(0,0,0,.2)' : 'rgba(255, 255, 255, .3)'};
-        backdrop-filter: blur(40px);
-        position: absolute;
-        content: '';
-    }
+    border-radius: 999px;
+    background: ${props => props.is_scrolling > 0 ? props.theme.colorPrimary300 : 'rgba(255, 255, 255, .3)'};
+    backdrop-filter: blur(40px);        
+    padding: 16px;
 `
 
 export const HeaderBottom = styled.div<HeaderTypo>`
     position: relative;
     .container {
-        border-radius: 999px;
-        padding: 16px;
         @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
             padding: 32px 52px;       
         }
@@ -77,6 +77,7 @@ export const HeaderBottom = styled.div<HeaderTypo>`
                         left: calc(50% - 200px);  
                         box-shadow: 0px 10px 30px -10px rgba(255,255,255,.5);
                         min-width: 400px;
+                       
                         .nav-item {
                             color: ${props => props.theme.colorPrimary300};
                             font-weight: 600;

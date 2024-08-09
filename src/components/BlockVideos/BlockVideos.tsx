@@ -13,6 +13,7 @@ export default function BlockVideos(props: any) {
     status: false,
     video: null
   });
+
   const settings = {
     arrows: false,
     infinite: true,
@@ -31,7 +32,7 @@ export default function BlockVideos(props: any) {
     ]  
   };    
 
-  const fetchVideoData = async (data: any[]) => {
+  const fetchData = async (data: any[]) => {
     // Map each row asynchronously
     const newData = await Promise.all(data.map(async (row: any) => {
       let vid = row?.url.split("?v=")[1];
@@ -90,7 +91,7 @@ export default function BlockVideos(props: any) {
 
   useEffect(() => {
     if(data && data.length) {
-      fetchVideoData(data).then((response: any) => {
+      fetchData(data).then((response: any) => {
         setData(response)
       }).catch(console.error)
     }

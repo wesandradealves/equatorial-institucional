@@ -27,23 +27,26 @@ export const Tag = styled.span`
   font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize};  
 `;
 
-export const ResponsiveTitle = styled.h3`
+export const Title = styled.h3`
   font-weight: bold;
   color: ${props => props.theme.colorPrimary300};
   font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize}; 
   @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
     font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize}; 
   }
+  * {
+    color: inherit
+  }
 `;
 
-export const ResponsiveDescription = styled.p`
+export const Text = styled.p`
   font-size: ${props => props.theme.fontDesktop.smallText1.fontSize}; 
   @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
     font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize}; 
   }  
 `;
 
-export const ResponsiveDate = styled.p`
+export const Date = styled.p`
   font-size: ${props => props.theme.fontDesktop.smallText1.fontSize}; 
 `;
 

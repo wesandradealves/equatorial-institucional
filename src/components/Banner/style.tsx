@@ -5,10 +5,21 @@ export const Content = styled.section<HeroTypo>`
     ${({ background_image }) => background_image && css`
         background: url(${background_image}) center center / cover no-repeat;
     `}  
-    margin: 0 0 -44px;
-    max-height: 776px;
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
-        margin: 0 0 -88px;
+    &:not(:only-child) {
+        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            margin-bottom: -320px;
+        }
+    }
+    z-index: 1;    
+    & + * {
+        z-index: 2;
+        position: relative;
+    }
+    &:not(:first-of-type) {
+        margin: 0 0 -44px;
+        @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+            margin: 0 0 -88px;
+        }
     }
     position: relative;
     &::after {
@@ -25,10 +36,10 @@ export const Content = styled.section<HeroTypo>`
 `;
 
 export const Mask = styled.svg`   
-    position: relative;
+    position: absolute;
     z-index: 2;
+    bottom: 0;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        bottom: 240px;
         width: 3000px;
         left: calc(50% - 1500px);    
     }
@@ -36,12 +47,14 @@ export const Mask = styled.svg`
 
 export const Container = styled.div`   
     padding-top: calc(100px + 44px);
-    padding-bottom: 120px;
+    padding-bottom: 240px;
     gap: 24px 0;
     @media screen and (min-width: ${props => props.theme.screenMdMin}) {
         padding-top: calc(210px + 78px);
+        padding-bottom: 240px;
         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
             padding-top: calc(220px + 78px);
+            padding-bottom: 500px;
         }        
     }
     color: white;

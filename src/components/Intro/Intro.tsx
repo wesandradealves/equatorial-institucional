@@ -8,7 +8,7 @@ import ModalVideo from 'react-modal-video';
 
 export default function Intro(props: any) {   
   const http = new HttpService();
-  const [video, setVideoData] = useState<any>(null);
+  const [video, setData] = useState<any>(null);
   const classNames = require('classnames');
   const [isOpen, setOpen] = useState<any>({
     status: false,
@@ -23,7 +23,7 @@ export default function Intro(props: any) {
         let response: any = await http.get(row);
         return response;
       })).then((data) => (
-        setVideoData({
+        setData({
           vid: data[1]?.items[0]?.id,
           viewCount: data[0]?.items[0]?.statistics?.viewCount,
           title: data[1]?.items[0]?.snippet?.title,
@@ -33,7 +33,7 @@ export default function Intro(props: any) {
         if(e?.response?.status == 403) {
           let vid = props?.data?.field_video_url[0]?.value.split("v=")[1];
 
-          setVideoData({
+          setData({
             vid: vid,
             title: props?.data?.field_video_title[0]?.value,
             thumbnail: `https://img.youtube.com/vi/${vid}/0.jpg`

@@ -3,7 +3,11 @@ Esse projeto é a aplicação front-end do site institucional da Equatorial com 
 
 Este repositório contém um projeto desenvolvido utilizando o framework [Next.js](https://nextjs.org/) utilizando a biblioteca javascript React JS como base. Neste arquivo README, você encontrará um guia passo a passo para abrir o projeto em seu ambiente local.
 
+
+
 # [PADRÃO DE DESENVOLVIMENTO E QUALIDADE](/readme/Definitions.md)
+
+
 
 # Fluxo da Aplicação
 - Cada estado terá seu par te aplicações, uma front-ende outra back-end, ambas dentro do Open Shift;
@@ -12,6 +16,8 @@ Este repositório contém um projeto desenvolvido utilizando o framework [Next.j
 - Atualmente teremos 14 aplicações, 7 para back-end, uma por estado e outras 7 de front-end, uma para cada estado.
 
 ![Fluxo da aplicação](/readme/app_flow.png)
+
+
 
 # Subir a aplicação no ambiente local
 ## Pré-requisitos
@@ -41,10 +47,16 @@ Navegue até o diretório raiz do projeto e execute o seguinte comando para inst
 cd /nome-do-app
 npm install
 ```
+## Passo 3: Configuração do ambiente local
+Para que você possa trabalhar no seu ambiente local, faça uma cópia do arquivo .env.example, 
+mas renomeando para .env.local. Assim não haverá conflitos entre os ambientes.
 
-Esse comando irá ler o arquivo `package.json` e instalar todas as dependências necessárias para o projeto.
+```bash
+touch .env.local
+cp .env.example .env.local
+```
 
-## Passo 3: Rodar o site
+## Passo 4: Rodar o site
 
 Para iniciar o site, execute o seguinte comando:
 

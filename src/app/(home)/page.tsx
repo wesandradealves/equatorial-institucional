@@ -6,24 +6,21 @@ import { HttpService } from "@/services";
 import { NavTypo } from "@/types/enums";
 import Link from "next/link";
 import Image from "next/image";
+import { fetchData } from "../layout";
 
 export default function Select() {
-  const http = new HttpService();
   const { config } = useContext<any>(ConfigProvider);
   const [navigation, setNavigation] = useState<NavTypo[]>([]);
 
-  const fetchData = async() => {
-    const navigation:NavTypo[] = await http.get('/api/menu_items/location')
-    setNavigation(navigation);
-  }  
-
   useEffect(() => {
-    fetchData();
+    fetchData('/api/menu_items/location').then((response: any) => {
+      if(response) setNavigation(response);
+    }).catch(console.error);   
   }, []);
 
   return (
     <Wrapper>
-      {config && <>
+      {config && navigation && <>
         <Content background_image={config?.location_screen_bg}>
           <title>{`${config?.site_name} - Escolha seu estado`}</title>
           <Inner>

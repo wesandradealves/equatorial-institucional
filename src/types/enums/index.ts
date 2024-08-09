@@ -170,3 +170,20 @@ export interface DynamicComponentProps {
   componentName: string;
   [key: string]: any;
 }
+
+export type SearchTypo = {
+  keywords: string,
+};
+
+export interface NewsCardProps {
+  title: string;
+  nid?: any;
+  className: string | null | undefined;
+  description: string;
+  image: string;
+  key: any;
+  index: any;
+  link: string;
+  date: string;
+  category: Array<string>;
+}

@@ -3,6 +3,7 @@ export interface NewsTypo {
 }
 
 export interface News {
+  nid: any;
   image: string;
   category: string[];
   title: string;

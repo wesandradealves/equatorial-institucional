@@ -196,7 +196,6 @@ export const GlobalStyle = createGlobalStyle`
                         background: ${props => props.theme.colorPrimary300} !important;  
                     }
                     [class*="MuiSwitch-root"] {
-                        padding: 0px 12px!important;
                         .MuiSwitch-track {
                             background: ${props => props.theme.colorPrimary300} !important;  
                         }
@@ -208,6 +207,7 @@ export const GlobalStyle = createGlobalStyle`
                 [class*="HeaderBottom"] {
                     > .container {
                         background: ${props => props.theme.colorPrimary300};    
+                        box-shadow: 0px 5px 20px -20px black;
                     }
                 }
             }

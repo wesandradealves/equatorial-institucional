@@ -13,7 +13,7 @@ export default function Footer() {
 
   const classNames = require('classnames');
 
-  const [footerData, setFooterData] = useState<FooterData | any>(null);
+  const [data, setData] = useState<any>(null);
 
   const {navigation, setNavigation} = useContext<any>(NavigationProvider);
 
@@ -21,18 +21,6 @@ export default function Footer() {
     width: typeof window !== "undefined" ? window?.innerWidth : null,
     height: typeof window !== "undefined" ? window?.innerHeight : null,
   });
-
-  const fetchData = async () => {
-    const footer: FooterData = await http.get("/api/footer");
-    setFooterData(footer);
-  };
-
-  const getNavigation = async () => {
-    const navigation: NavigationTypo[] = await http.get(
-      "/api/menu_items/rodape"
-    );
-    setNavigation(navigation);
-  };  
 
   const handleResize = () => {
     setWindowDimensions({
@@ -42,8 +30,12 @@ export default function Footer() {
   };  
 
   useEffect(() => {
-    fetchData();
-    getNavigation();
+    Promise.all(["/api/footer", "/api/menu_items/rodape"].map(function(url: any) {
+      return http.get(`${url}`);
+    })).then((response: any) => {
+      setData(response[0])
+      setNavigation(response[1])
+    }).catch(console.error);      
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);    
@@ -112,35 +104,35 @@ export default function Footer() {
 
   return (
     <Container id="footer" data-component="Footer" className="footer mt-auto">
-      {footerData && navigation && <FooterTop>
+      {data && navigation && <FooterTop>
         <div className="container d-flex flex-column flex-lg-row flex-wrap align-items-start">
-          <Navigation classMenuName="flex-fill" className="flex-fill col-12 d-flex flex-column flex-lg-row flex-wrap align-items-stretch" data={navigation} />
+          <Navigation className="flex-fill col-12 d-flex flex-column flex-lg-row flex-wrap align-items-stretch" data={navigation} />
 
-          {footerData && (footerData?.data?.store || footerData?.data?.social_networks) && <>
+          {data && (data?.data?.store || data?.data?.social_networks) && <>
             <div className="col-lg-4 col-xl-auto">
-              {footerData?.data?.social_networks && footerData?.data?.social_networks?.links && <div className="mb-5">
-                {footerData?.data?.social_networks?.label && <Label className="mb-3">
-                    {footerData?.data?.social_networks?.label[lang?.key.replace("-","_")]}
+              {data?.data?.social_networks && data?.data?.social_networks?.links && <div className="mb-5">
+                {data?.data?.social_networks?.label && <Label className="mb-3">
+                    {data?.data?.social_networks?.label[lang?.key.replace("-","_")]}
                 </Label>}
                 <SocialNetworks className="d-flex align-items-center">
-                  {handleSocialLinks(footerData?.data?.social_networks?.links)}
+                  {handleSocialLinks(data?.data?.social_networks?.links)}
                 </SocialNetworks>              
               </div>}
 
-              {footerData?.data?.store && footerData?.data?.store?.links && <Apps className="d-flex flex-row flex-wrap">
-                {footerData?.data?.store?.label && <Label className="mb-3 col-12">
-                    {footerData?.data?.store?.label[lang?.key.replace("-","_")]}
+              {data?.data?.store && data?.data?.store?.links && <Apps className="d-flex flex-row flex-wrap">
+                {data?.data?.store?.label && <Label className="mb-3 col-12">
+                    {data?.data?.store?.label[lang?.key.replace("-","_")]}
                 </Label>}
-                {handleAppStore(footerData?.data?.store?.links)}
+                {handleAppStore(data?.data?.store?.links)}
               </Apps>}
             </div>
           </>}
         </div>
       </FooterTop>}
 
-      {footerData?.data?.contact && <Contact>
+      {data?.data?.contact && <Contact>
         <div className="container d-flex flex-column flex-lg-row align-items-stretch">
-          {handleContactInfo(footerData?.data?.contact)}
+          {handleContactInfo(data?.data?.contact)}
         </div>
       </Contact>
       }
