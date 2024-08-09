@@ -7,13 +7,10 @@ export default function Spinner(props: any) {
   const classNames = require('classnames');
 
   return (<SpinnerWrapper 
+    id="spinner"
     className={
       classNames(
         `justify-content-center align-items-center`,
-        {
-          'd-flex ': props?.loading,
-          'd-none': !props?.loading
-        }
       )      
     }>
     <Spin></Spin>

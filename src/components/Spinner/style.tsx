@@ -10,9 +10,9 @@ export const SpinnerWrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255,255,255,.05);
-    backdrop-filter: blur(70px);    
-    z-index: 100; 
+    background: ${props => props.theme.colorPrimary300};  
+    z-index: 99999; 
+    display: none;
 `;
 
 export const Spin = styled.div`
@@ -21,7 +21,7 @@ export const Spin = styled.div`
     border-radius: 50%;
     width: 48px;
     height: 48px;
-    color: ${props => props.theme.colorPrimary300};
+    color: white;
     &:before,
     &:after {
         content: '';
