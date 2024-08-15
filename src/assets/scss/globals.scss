@@ -231,9 +231,14 @@ input {
 
 .pace {
   display: none !important;
-  &.pace-active {
+  // &.pace-active {
+  //   & ~ #spinner {
+  //     display: flex !important;
+  //   }
+  // } 
+  &:not([class*="inactive"]) {
     & ~ #spinner {
       display: flex !important;
     }
-  }  
+  } 
 } 
