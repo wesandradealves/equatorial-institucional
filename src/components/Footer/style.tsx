@@ -156,9 +156,12 @@ export const FooterTop = styled.div`
         } 
         .nav {
             gap: 26px 0;
-            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                gap: 0
-            }        
+            @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+                padding-right: 128px;
+                @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                    gap: 0
+                } 
+            }       
             color: white;
             &-col {
                 &:not(:last-of-type) {
