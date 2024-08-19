@@ -1,5 +1,5 @@
 # Institucional React
-Esse projeto é a aplicação front-end do site institucional da Equatorial com a finalidade de consumir os conteúdos via API REST do aplicação back-end em drupal..
+Esse projeto é a aplicação front-end do site institucional da Equatorial com a finalidade de consumir os conteúdos via API REST do aplicação back-end em drupal.
 
 Este repositório contém um projeto desenvolvido utilizando o framework [Next.js](https://nextjs.org/) utilizando a biblioteca javascript React JS como base. Neste arquivo README, você encontrará um guia passo a passo para abrir o projeto em seu ambiente local.
 
