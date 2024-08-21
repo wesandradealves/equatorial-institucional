@@ -37,7 +37,7 @@ export default function Noticias(props: any) {
     // ?items_per_page=${items_per_page}&page=${page}${params.get("cat") ? `&cat=${params.get("cat")}` : ''}
     Promise.all([
       `/api/noticias/${params.get("cat") ? `${params.get("cat")}` : ''}?items_per_page=${items_per_page}&page=${page}`, 
-      `/api/page/noticias`].map(function(url: any) {
+      `/api/page?alias=/noticias`].map(function(url: any) {
       return http.get(`${url}`);
     })).then((data) => {
       setData({

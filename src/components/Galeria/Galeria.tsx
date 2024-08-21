@@ -45,8 +45,8 @@ export default function Galeria(props: any) {
           <Slider {...settings}>
             {gallery.map((item: any, index: any) => (
               <GalleryItem key={index} className="overflow-hidden">
-                <Inner background_image={item?.image ? `${config?.basePath}${item?.image}` : item?.field_imagem[0]?.url}>
-                  {item?.field_link && <Anchor className="d-none d-md-flex align-items-center justify-content-center" href={item?.field_link[0]?.value}>
+                <Inner background_image={item?.image ? `${config?.basePath}${item?.image}` : (item?.field_imagem && item?.field_imagem[0] ? item?.field_imagem[0]?.url : '')}>
+                  {item?.field_link && item?.field_link.length && <Anchor className="d-none d-md-flex align-items-center justify-content-center" href={item?.field_link[0]?.value}>
                     <i className="fa-solid fa-arrow-right"></i>
                   </Anchor>}
 

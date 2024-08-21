@@ -37,7 +37,7 @@ export default function Search(props: any) {
     if(props?.searchParams?.s && props?.searchParams) {
       Promise.all([
         `/api/busca/?s=${props?.searchParams?.s}&items_per_page=${items_per_page}&page=${page}${params.get("cat") ? `&cat=${params.get("cat")}` : ''}`, 
-        `/api/page/busca`].map(function(url: any) {
+        `/api/page?alias=/busca`].map(function(url: any) {
         return http.get(`${url}`);
       })).then((data) => {
         setData({

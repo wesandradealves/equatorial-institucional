@@ -34,13 +34,9 @@ export default function Page(props: any) {
     el.classList.remove("error-page");            
     let slug = pathname?.split("/");
     slug.splice(0,2);
-    console.log(slug.join("/"));
     fetchData(`/api/page?alias=/${slug.join("/")}`).then((response: any) => {
       if(response) setData(response)
-    }).catch((e: any) => {
-      console.log(e);
-      // handleNotFound
-    });   
+    }).catch(handleNotFound);   
   }, [props, pathname]);    
 
   useEffect(() => {
