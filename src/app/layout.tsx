@@ -58,7 +58,7 @@ export default function RootLayout({
         <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>       
         <ThemeProvider theme={theme}>
           <SpinnerProvider.Provider value={{loading, setLoading}}>
-            <Spinner />
+            {/* <Spinner /> */}
             <ConfigProvider.Provider value={{config, setConfig}}> 
               <HelmetProvider>                     
                 <LanguageProvider.Provider value={{lang, setLanguage}}>

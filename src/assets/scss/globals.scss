@@ -229,16 +229,16 @@ input {
   }
 }
 
-.pace {
-  display: none !important;
-  // &.pace-active {
-  //   & ~ #spinner {
-  //     display: flex !important;
-  //   }
-  // } 
-  &:not([class*="inactive"]) {
-    & ~ #spinner {
-      display: flex !important;
-    }
-  } 
-} 
+// .pace {
+//   display: none !important;
+//   // &.pace-active {
+//   //   & ~ #spinner {
+//   //     display: flex !important;
+//   //   }
+//   // } 
+//   &:not([class*="inactive"]) {
+//     & ~ #spinner {
+//       display: flex !important;
+//     }
+//   } 
+// } 
