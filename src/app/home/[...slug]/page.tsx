@@ -9,13 +9,14 @@ import { usePathname, useRouter } from "next/navigation";
 import { Content } from "../(home)/style";
 import { fetchData } from "@/app/layout";
 
-export const camelCase = (str:any) => {
-  var splitStr = str.toLowerCase().split(' ');
+export const camelCase = (str: any) => {
+  var splitStr = str.toLowerCase().split(" ");
   for (var i = 0; i < splitStr.length; i++) {
-      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+    splitStr[i] =
+      splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
   }
-  return splitStr.join(' '); 
-}
+  return splitStr.join(" ");
+};
 
 export default function Page(props: any) {
   const router = useRouter();
@@ -26,40 +27,61 @@ export default function Page(props: any) {
   const pathname = usePathname();
 
   const handleNotFound = () => {
-    router.push(`/page-not-found`, {scroll : true})
-  }
-  
+    router.push(`/page-not-found`, { scroll: true });
+  };
+
   useEffect(() => {
     const el = document.body;
-    el.classList.remove("error-page");            
+    el.classList.remove("error-page");
     let slug = pathname?.split("/");
-    fetchData(`/api/page/${slug?.pop()}`).then((response: any) => {
-      if(response) setData(response)
-    }).catch(handleNotFound);   
-  }, [props, pathname]);    
+    slug.splice(0, 2);
+    fetchData(`/api/page?alias=/${slug.join("/")}`)
+      .then((response: any) => {
+        if (response) setData(response);
+      })
+      .catch(handleNotFound);
+  }, [props, pathname]);
 
   useEffect(() => {
-    if(data && data?.field_conteudo) {
-
-      let conteudo = data?.field_conteudo.map(function(row: any){
-          return row.target_id
+    if (data && data?.field_conteudo) {
+      let conteudo = data?.field_conteudo.map(function (row: any) {
+        return row.target_id;
       });
 
-      Promise.all(conteudo.map(function(pid: any) {
-        return http.get(`/entity/paragraph/${pid}`);
-      })).then((response: any) => {
-        setContent(response)
-      }).catch(console.error);      
+      Promise.all(
+        conteudo.map(function (pid: any) {
+          return http.get(`/entity/paragraph/${pid}`);
+        })
+      )
+        .then((response: any) => {
+          setContent(response);
+        })
+        .catch(console.error);
     }
   }, [data]);
 
-  return <Content className="d-flex flex-column">
-    {data && config && <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>}  
+  return (
+    <Content className="d-flex flex-column">
+      {data && config && (
+        <title>{`${config?.site_name} - ${data?.title[0].value}`}</title>
+      )}
 
-    {content && <>
-      {content.map((component: any, index: Number) => (
-        <DynamicComponent page={data} data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
-      ))}
-    </>}
-  </Content>;
+      {content && (
+        <>
+          {content.map((component: any, index: Number) => (
+            <DynamicComponent
+              page={data}
+              data={component}
+              key={index}
+              componentName={camelCase(
+                component?.type[0]?.target_id.replaceAll("_", " ")
+              )
+                .split(" ")
+                .join("")}
+            />
+          ))}
+        </>
+      )}
+    </Content>
+  );
 }
