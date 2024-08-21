@@ -121,6 +121,7 @@ input {
 #primary {
   z-index: 1;
   position: relative;
+  transition: 500ms ease-in-out all;
 }
 
 .flex-fill {
@@ -230,15 +231,9 @@ input {
 }
 
 // .pace {
-//   display: none !important;
-//   // &.pace-active {
-//   //   & ~ #spinner {
-//   //     display: flex !important;
-//   //   }
-//   // } 
-//   &:not([class*="inactive"]) {
-//     & ~ #spinner {
-//       display: flex !important;
+//   &-done {
+//     #primary {
+//       opacity: 1;
 //     }
-//   } 
+//   }
 // } 
