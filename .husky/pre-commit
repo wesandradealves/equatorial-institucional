@@ -6,7 +6,7 @@ if echo "$COMMIT_MSG" | grep -q "$KEYWORD"; then
   echo "Atualizando versão... "
   npm run update-version
 
-  git add composer.json
+  git add package.json
 else
   echo "Palavra '$KEYWORD' não encontrada na mensagem do commit. Nenhuma ação necessária. "
 fi
