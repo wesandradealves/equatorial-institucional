@@ -17,7 +17,9 @@
     "push-para": "git push para --all",
     "push-piaui": "git push piaui --all",
     "push-rio-grande-do-sul": "git push rio-grande-do-sul --all",
-    "push-all-repos": "npm run push-alagoas && npm run push-amapa && npm run push-goias && npm run push-maranhao && npm run push-para && npm run push-piaui && npm run push-rio-grande-do-sul"
+    "push-all-repos": "npm run push-alagoas && npm run push-amapa && npm run push-goias && npm run push-maranhao && npm run push-para && npm run push-piaui && npm run push-rio-grande-do-sul",
+    "prepare": "husky",
+    "update-version": "node update-version.js"
   },
   "dependencies": {
     "@djpfs/react-vlibras": "^2.0.2",
@@ -69,6 +71,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "eslint-plugin-storybook": "^0.8.0",
+    "husky": "^9.1.5",
     "node-sass": "^9.0.0",
     "sass": "^1.77.4",
     "sass-extract": "^3.0.0",
