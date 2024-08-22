@@ -32,20 +32,24 @@ export const Content = styled.section<FaqTypo>`
     .accordion {
         max-height: 330px;
     }
+
     &:last-of-type {
         margin-bottom: -88px;
+        padding-bottom: 0;
         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
             margin-bottom: -179px;
         } 
     }
+
     &[data-layout="default"],
     &[data-layout="home"] {
         [class*="Inner"] {
             @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                min-height: 570px;
+                max-height: 570px;
             }
         }
     }
+
     &[data-layout="home"] {
         > [class*="Container"] {
             padding-bottom: 100px;
@@ -54,14 +58,15 @@ export const Content = styled.section<FaqTypo>`
             }
         }
     }
-    ${({ nobackground }) => nobackground && css`
+        
+    &[nobackground="true"] {
         &:last-of-type {
             padding-bottom: 88px;
             @media screen and (min-width: ${props => props.theme.screenLgMin}) {
                 padding-bottom: 179px;
             }
         }
-    `}          
+    }      
 `;
 
 export const Inner = styled.div`
@@ -77,7 +82,7 @@ export const Mask = styled.svg`
         left: calc(50% - 1400px);
         top: -80px;
         @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-            bottom: -100px;
+            bottom: -160px;
             top: initial;
             left: calc(50% - 960px);
         }
