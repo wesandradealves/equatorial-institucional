@@ -96,6 +96,13 @@ export default function BlockShorts(props: any) {
     }).catch(console.error); 
   }, []);   
 
+  useEffect(() => {
+    const main: HTMLElement | null = document.getElementById("primary");
+    main?.classList.toggle("modal-opened");
+    const el: HTMLElement | null = document.getElementById("BlockShorts");
+    if(el) el.style.zIndex = isOpen.status ? '5' : '1';
+  }, [isOpen]);   
+
   return (
     <Content id={props?.id ? props?.id : "BlockShorts"} data-component={props?.id ? props?.id : "BlockShorts"} className='BlockShorts'>
       {blockData && data && data.length > 0 && blockData?.title && <Container className='container'>
@@ -115,7 +122,7 @@ export default function BlockShorts(props: any) {
                         {row?.viewCount && <Views>{row?.viewCount} Views</Views>}
                       </VideoPillTitle>
 
-                      {row.url && <PlayVideo onClick={() => setOpen({
+                      <PlayVideo onClick={() => setOpen({
                         status: true,
                         video: row?.id
                       })}  className='d-flex flex-column justify-content-start align-items-end justify-content-lg-center align-items-lg-center' href="#">
@@ -125,7 +132,7 @@ export default function BlockShorts(props: any) {
                         <svg className='d-block d-lg-none' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
                           <path d="M19.998 27.5C21.3814 27.5 22.498 28.6167 22.498 30C22.498 31.3833 21.3814 32.5 19.998 32.5C18.6147 32.5 17.498 31.3833 17.498 30C17.498 28.6167 18.6147 27.5 19.998 27.5ZM17.498 20C17.498 21.3833 18.6147 22.5 19.998 22.5C21.3814 22.5 22.498 21.3833 22.498 20C22.498 18.6167 21.3814 17.5 19.998 17.5C18.6147 17.5 17.498 18.6167 17.498 20ZM17.498 10C17.498 11.3833 18.6147 12.5 19.998 12.5C21.3814 12.5 22.498 11.3833 22.498 10C22.498 8.61667 21.3814 7.5 19.998 7.5C18.6147 7.5 17.498 8.61667 17.498 10Z" fill="white"/>
                         </svg>              
-                      </PlayVideo>}
+                      </PlayVideo>
                     </VideoPillInner>
                   </VideoPill>
                 </div>                  
