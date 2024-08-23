@@ -6,7 +6,7 @@ export enum EHttpMethod {
 }
 
 interface DataTypo {
-    pt_br: DataTypo
+    pt_br?: DataTypo
     copyright?: any | undefined
     site_name?: string | undefined
     basePath?: string | undefined
@@ -91,21 +91,14 @@ export interface FieldLink {
 }
 
 export interface FieldTitulo {
-    value?: string
+  value?: string
 }
 
 export class Service {
-    public id?: number
-    public titulo?: string
-    public icon?: string
-    public url?: string
-
-    public constructor(data: any = {}) {
-        this.id = data.id || 0
-        this.titulo = data.titulo || ""
-        this.icon = data.icon || ""
-        this.url = data.url || ""
-    }
+  id?: number
+  titulo?: string
+  icon?: string
+  url?: string
 }
 
 export interface NavigationTypo {
@@ -155,9 +148,9 @@ export interface NavColTypo {
 }
 
 export interface HeaderTypo {
-  text: any
-  tariff_band: any
-  searchbar: any
+  text?: any
+  tariff_band?: any
+  searchbar?: any
 }
 
 export interface LanguagesTypo {
@@ -167,23 +160,22 @@ export interface LanguagesTypo {
 }
 
 export interface DynamicComponentProps {
-  componentName: string;
+  componentName?: string;
   [key: string]: any;
 }
 
 export type SearchTypo = {
-  keywords: string,
+  keywords?: string,
 };
 
 export interface NewsCardProps {
-  title: string;
+  title?: string;
   nid?: any;
-  className: string | null | undefined;
-  description: string;
-  image: string;
-  key: any;
-  index: any;
-  link: string;
-  date: string;
-  category: Array<string>;
+  className?: string | null | undefined;
+  description?: string;
+  image?: string;
+  key?: any;
+  link?: string;
+  date?: string;
+  category?: Array<string>;
 }
