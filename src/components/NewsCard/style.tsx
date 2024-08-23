@@ -15,7 +15,7 @@ export const TagsContainer = styled.div`
   gap: 8px
 `;
 
-export const NewsCardContainer = styled.div`
+export const NewsCardContainer = styled.article`
   gap: 16px 0;
   padding: 0 16px;
 `;

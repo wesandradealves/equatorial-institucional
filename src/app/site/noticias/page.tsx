@@ -2,12 +2,12 @@
 
 import React, { lazy, useCallback, useContext, useMemo, useState } from "react";
 import { useEffect } from "react";
-import Template from "../../home/template";
+import Template from "../template";
 import ConfigProvider from "@/context/config";
 import { HttpService } from "@/services";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
-import { camelCase } from "../../home/[...slug]/page";
+import { camelCase } from "../[...slug]/page";
 import { Label, FilterWrapper, Select, Option, SelectWrapper } from "@/components/Tables/style";
 import { fetchData } from "../../layout";
 import NewsCard from "@/components/NewsCard/NewsCard";

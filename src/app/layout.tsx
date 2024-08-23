@@ -55,10 +55,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body suppressHydrationWarning={true}>
-        <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>       
+        <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>  
         <ThemeProvider theme={theme}>
           <SpinnerProvider.Provider value={{loading, setLoading}}>
-            <Spinner />
+            {/* <Spinner /> */}
             <ConfigProvider.Provider value={{config, setConfig}}> 
               <HelmetProvider>                     
                 <LanguageProvider.Provider value={{lang, setLanguage}}>
@@ -70,7 +70,7 @@ export default function RootLayout({
             </ConfigProvider.Provider>
           </SpinnerProvider.Provider>
           <GlobalStyle/>
-        </ThemeProvider>     
+        </ThemeProvider>  
       </body>
     </html>
   )
