@@ -7,16 +7,13 @@ import UltimasNoticias from "@/components/UltimasNoticias/UltimasNoticias";
 import { Content } from "./style";
 import BlockVideos from "@/components/BlockVideos/BlockVideos";
 import BlockIniciativas from "@/components/BlockIniciativas/BlockIniciativas";
-
+import { fetchData } from "@/app/layout";
 import Faq from "@/components/Faq/Faq";
 import BlockInstitucionalEquatorial from "@/components/BlockInstitucionalEquatorial/BlockInstitucionalEquatorial";
+import { usePathname } from "next/navigation";
 
 export default function Home() {
   const { config } = useContext<any>(ConfigProvider);
-  useEffect(() => {
-    const el = document.body;
-    el.classList.remove("error-page");            
-  }, []);   
   return (
     <Content className="d-flex flex-column">
       {config && (

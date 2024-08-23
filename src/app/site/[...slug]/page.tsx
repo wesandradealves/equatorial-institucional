@@ -31,8 +31,14 @@ export default function Page(props: any) {
   };
 
   useEffect(() => {
+<<<<<<< HEAD:src/app/home/[...slug]/page.tsx
     const el = document.body;
     el.classList.remove("error-page");
+=======
+    // const el = document.body;
+    // el.classList.remove("error-page");            
+    
+>>>>>>> b7abc726 (Implementação dos shorts diretamente do youtube, sem a necessidade de adição de videos via painel;):src/app/site/[...slug]/page.tsx
     let slug = pathname?.split("/");
     slug.splice(0, 2);
     fetchData(`/api/page?alias=/${slug.join("/")}`)

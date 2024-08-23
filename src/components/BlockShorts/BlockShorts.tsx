@@ -15,12 +15,14 @@ import { fetchData } from '@/app/layout';
 
 export default function BlockShorts(props: any) {
   const http = new HttpService();
-  const [blockData, setBlockData] = useState<BlockTypo[] | {} | any>(null);
-  const [data, setContentData] = useState<BlockShortsTypo[] | {} | any>(null);
+  const [blockData, setBlockData] = useState<any>(null);
+
   const [isOpen, setOpen] = useState<any>({
     status: false,
     video: null
   });
+
+  const [data, setData] = useState<any>(null);
 
   const settings = {
     dots: true,
@@ -47,95 +49,75 @@ export default function BlockShorts(props: any) {
     ]    
   };  
 
-  const fetchVideoData = async (data: any[]) => {
-    // Map each row asynchronously
-    const newData = await Promise.all(data.map(async (row: any) => {
-      let vid = row?.url.split("shorts/")[1];
-
-      // // If vid is not defined, skip the current row
-      if (!vid) return row;
-
-      let responses = await Promise.all([`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${vid}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`,`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${vid}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`].map(async (row: any) => {
-        let response: any = await http.get(row);
-        return response;
-      }));       
-
-      let newRow = {
-        ...row,
-        youtubeData: responses
-      };
+  const fetchShorts = async (channelId: any) => {
+    try {
+      const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&channelId=${channelId}&part=snippet&maxResults=10&order=date`);
+      const data = await response.json();
   
-      return newRow;
-    }));
-  
-    return newData;
-  };  
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', JSON.stringify(error, null, 2));
+      return [];
+    }
+  }; 
+
+  const fetchStatistics = async (data: any) => {
+    let results: any = await Promise.all(data.map(async (item: any): Promise<any> => {
+      let id = item?.id?.videoId;
+      const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${id}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`);
+      const statistics = await response.json();   
+
+      return {
+        id: id,
+        ...item?.snippet,
+        ...statistics?.items[0]?.statistics
+      }
+    }));   
+
+    return results;
+  }     
 
   useEffect(() => {
-    const main: HTMLElement | null = document.getElementById("primary");
-    main?.classList.toggle("modal-opened");
-    const el: HTMLElement | null = document.getElementById("BlockShorts");
-    if(el) el.style.zIndex = isOpen.status ? '4' : '3'; 
-  }, [isOpen]);  
+    fetchShorts(process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID).then((response: any) => {
+      if(response?.items) {
+        fetchStatistics(response?.items).then((response: any) => {
+          if(response) setData(response)
+        })        
+      }
+    })
 
-  useEffect(() => {
-    if(!blockData) {
-      fetchData('/entity/block/block_shorts').then((response: BlockTypo[] | any) => {
-        if(response) {
-          let uuid = response?.settings?.id.split("block_content:").pop();
-          fetchData(`/api/blocks/${uuid}`).then((response: BlockTypo[]) => {
-            if(response) setBlockData(response[0])
-          }).catch(console.error);        
-        }
-      }).catch(console.error);   
-    }
-
-    if(!data) {
-      fetchData('/api/taxonomy/videos').then((response: any[]) => {
-        if(response) {
-          let term = response.find(o => o.name[0].value = 'Shorts');
-          let tid = term.tid[0].value;
-  
-          fetchData(`/api/videos/${tid}`).then((response: BlockTypo[] | any) => {
-            if(response) setContentData(response.rows.map(function(row: any, i: number){
-                return {
-                  ...row,
-                  thumbnail: `https://img.youtube.com/vi/${ row.url.split("shorts/")[1] }/0.jpg`
-                };
-            }))
-          }).catch(console.error);           
-        }
-      }).catch(console.error); 
-    }
-  }, []);
-
-  useEffect(() => {
-    if(data && data.length) {
-      fetchVideoData(data).then((response: any) => {
-        setContentData(response)
-      }).catch(console.error)
-    }
-  }, [data]);    
+    fetchData('/entity/block/block_shorts').then((response: BlockTypo[] | any) => {
+      if(response) {
+        let uuid = response?.settings?.id.split("block_content:").pop();
+        fetchData(`/api/blocks/${uuid}`).then((response: BlockTypo[]) => {
+          if(response) setBlockData(response[0])
+        }).catch(console.error);        
+      }
+    }).catch(console.error); 
+  }, []);   
 
   return (
     <Content id={props?.id ? props?.id : "BlockShorts"} data-component={props?.id ? props?.id : "BlockShorts"} className='BlockShorts'>
-      {blockData && data && blockData?.title && <Container className='container'>
+      {blockData && data && data.length > 0 && blockData?.title && <Container className='container'>
         <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center flex-lg-row justify-content-lg-start align-items-lg-start'>
           {blockData && <BlockHead className="col-12 col-lg-5" data={blockData} />}
+
           <Column className='col-12 col-lg-7'>
+
             <Slider {...settings}>
               {data.map((row: any, i: any) => (
                 <div key={i}>
-                  <VideoPill background_image={row?.youtubeData ? row?.youtubeData[1]?.items[0]?.snippet?.thumbnails['high']?.url : row?.thumbnail}  >
+                  <VideoPill background_image={row?.thumbnails?.high?.url}  >
                     <VideoPillInner className='d-flex flex-column justify-content-end'>
                       <VideoPillTitle className='d-flex flex-column'>
-                        {row?.youtubeData && row?.youtubeData[1]?.items[0]?.snippet?.title ? row?.youtubeData[1]?.items[0]?.snippet?.title : row?.title}
-                        {row?.youtubeData && <Views>{row?.youtubeData[0]?.items[0]?.statistics?.viewCount} Views</Views>}
+                        {row?.title}
+
+                        {row?.viewCount && <Views>{row?.viewCount} Views</Views>}
                       </VideoPillTitle>
 
                       {row.url && <PlayVideo onClick={() => setOpen({
                         status: true,
-                        video: row.url.split("shorts/")[1]
+                        video: row?.id
                       })}  className='d-flex flex-column justify-content-start align-items-end justify-content-lg-center align-items-lg-center' href="#">
                         <svg className='d-none d-lg-block' xmlns="http://www.w3.org/2000/svg" width="59" height="58" viewBox="0 0 59 58" fill="none">
                           <path d="M43.8667 26.3161C47.1324 28.136 47.1443 30.4253 43.8667 32.4828L18.541 49.563C15.3588 51.2612 13.1976 50.2585 12.9708 46.584L12.8633 10.8355C12.7916 7.45075 15.5797 6.49444 18.2365 8.11726L43.8667 26.3161Z" stroke="white" strokeWidth="4.05691"/>
@@ -149,6 +131,7 @@ export default function BlockShorts(props: any) {
                 </div>                  
               ))}
             </Slider>
+
             {blockData && <span className="d-block mt-5 d-lg-none text-center">
               <Button  href={blockData?.cta_url}>
                 {blockData?.cta_label}
