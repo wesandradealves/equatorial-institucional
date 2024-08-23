@@ -13,6 +13,34 @@ import BlockHead from '@/template-parts/BlockHead/BlockHead';
 import { Views } from '../Intro/style';
 import { fetchData } from '@/app/layout';
 
+export const fetchVideos = async (channelId: any, videoDuration?: any) => {
+  try {
+    const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&channelId=${channelId}&part=snippet&maxResults=10&type=video&order=date${videoDuration ? `&videoDuration=${videoDuration}` : ''}`);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', JSON.stringify(error, null, 2));
+    return [];
+  }
+}; 
+
+export const fetchStatistics = async (data: any) => {
+  let results: any = await Promise.all(data.map(async (item: any): Promise<any> => {
+    let id = item?.id?.videoId;
+    const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${id}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`);
+    const statistics = await response.json();   
+
+    return {
+      id: id,
+      ...item?.snippet,
+      ...statistics?.items[0]?.statistics
+    }
+  }));   
+
+  return results;
+}    
+
 export default function BlockShorts(props: any) {
   const http = new HttpService();
   const [blockData, setBlockData] = useState<any>(null);
@@ -47,38 +75,10 @@ export default function BlockShorts(props: any) {
         }
       }
     ]    
-  };  
-
-  const fetchShorts = async (channelId: any) => {
-    try {
-      const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&channelId=${channelId}&part=snippet&maxResults=10&order=date`);
-      const data = await response.json();
-  
-      return data;
-    } catch (error) {
-      console.error('Error fetching data:', JSON.stringify(error, null, 2));
-      return [];
-    }
-  }; 
-
-  const fetchStatistics = async (data: any) => {
-    let results: any = await Promise.all(data.map(async (item: any): Promise<any> => {
-      let id = item?.id?.videoId;
-      const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${id}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`);
-      const statistics = await response.json();   
-
-      return {
-        id: id,
-        ...item?.snippet,
-        ...statistics?.items[0]?.statistics
-      }
-    }));   
-
-    return results;
-  }     
+  };   
 
   useEffect(() => {
-    fetchShorts(process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID).then((response: any) => {
+    fetchVideos(process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID, 'short').then((response: any) => {
       if(response?.items) {
         fetchStatistics(response?.items).then((response: any) => {
           if(response) setData(response)
@@ -100,7 +100,7 @@ export default function BlockShorts(props: any) {
     const main: HTMLElement | null = document.getElementById("primary");
     main?.classList.toggle("modal-opened");
     const el: HTMLElement | null = document.getElementById("BlockShorts");
-    if(el) el.style.zIndex = isOpen.status ? '5' : '1';
+    if(el) el.style.zIndex = isOpen.status ? '5' : '4';
   }, [isOpen]);   
 
   return (
