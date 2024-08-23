@@ -61,6 +61,8 @@ export const Columns = styled.div`
 export const Filter = styled.nav`
     gap: 0 16px;
     padding: 0 ${props => props.theme.spacingSm};
+    position: relative;
+    z-index: 5;
 `;
 
 export const FilterLink = styled.a`
