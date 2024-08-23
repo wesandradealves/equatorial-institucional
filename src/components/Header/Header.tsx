@@ -12,9 +12,28 @@ import { HeaderTypo, NavigationTypo } from "@/types/enums";
 import { HttpService } from "@/services";
 import MobileNavigation from "../Navigation/MobileNavigation";
 
+const http = new HttpService();
+
+export const getMedia = async (data: any) => {
+  let results: any = await Promise.all(data.map(async (item: any): Promise<any> => {
+    if(item?.field_icone) {
+      const field_icone: any = await http.get(`/api/media/?fid=${item?.field_icone[0]?.file_id}`);
+  
+      return {
+        ...item,
+        field_icone: `${field_icone}`
+      }
+    }
+
+    return item;
+  }));   
+
+  return results;  
+}; 
+
 export default function Header() {
-  const http = new HttpService();
   const { config } = useContext<any>(ConfigProvider);
+
   const [scrollPosition, setScrollPosition] = useState<any>(typeof window !== "undefined" ? window?.scrollY : null);
   const classNames = require('classnames');
 
@@ -33,12 +52,19 @@ export default function Header() {
       return http.get(`${url}`);
     })).then((response: any) => {
       setData(response[0]?.data)
-      setNavigation(response[1])
+
+      getMedia(response[1]).then((response: any) => {
+        if(response) setNavigation(response)
+      }) 
     }).catch(console.error); 
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);    
   }, []);
+
+  useEffect(() => {
+    console.log(navigation)
+  }, [navigation]);
 
   return (
     <>

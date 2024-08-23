@@ -1,10 +1,12 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { NavCol, NavItem, NavLink, NavSubmenu, Arrow } from './style';
 import { NavColTypo } from '@/types/enums';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
+import ConfigProvider from "@/context/config";
 
 export default function NavigationColumn(props: NavColTypo) {
+  const { config } = useContext<any>(ConfigProvider);
   const [isExpanded, setExpand] = useState<any>(false);
   const [scrollPosition, setScroll] = useState<any>(false);
   const classNames = require('classnames');
@@ -77,6 +79,10 @@ export default function NavigationColumn(props: NavColTypo) {
             {props?.data?.below && <Arrow onClick={() => {
               setExpand(!isExpanded);
             }} className={`fa-solid fa-angle-${isExpanded ? 'up' : 'down'}`} />}
+
+            {props?.data?.field_icone && <>
+              <img src={`${config?.basePath}${props?.data?.field_icone}`} loading='lazy' />
+            </>}
           </NavLink>
 
           {props?.data?.below && <NavSubmenu className={`d-${isExpanded ? 'flex' : 'none'} nav-submenu lvl-1 flex-column`}>

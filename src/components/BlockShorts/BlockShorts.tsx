@@ -31,11 +31,15 @@ export const fetchStatistics = async (data: any) => {
     const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${id}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`);
     const statistics = await response.json();   
 
-    return {
-      id: id,
-      ...item?.snippet,
-      ...statistics?.items[0]?.statistics
+    if(item?.snippet && statistics?.items) {
+      return {
+        id: id,
+        ...item?.snippet,
+        ...statistics?.items[0]?.statistics
+      }
     }
+
+    return null;
   }));   
 
   return results;
