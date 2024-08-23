@@ -47,10 +47,6 @@ export default function BlockVideos(props: any) {
     if(el) el.style.zIndex = isOpen.status ? '5' : '1';
   }, [isOpen]);  
 
-  useEffect(() => {
-    if(data) console.log(data)
-  }, [data]);     
-
   return (
     <>{data && <Content id={props?.id ? props?.id : "BlockVideos"} className={props?.id ? props?.id : "BlockVideos"}>
       <Container className="container">

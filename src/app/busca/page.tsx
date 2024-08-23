@@ -7,19 +7,8 @@ import ConfigProvider from "@/context/config";
 import { HttpService } from "@/services";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
-<<<<<<< HEAD
-import { camelCase } from "../home/[...slug]/page";
-import {
-  Label,
-  FilterWrapper,
-  Select,
-  Option,
-  SelectWrapper,
-} from "@/components/Tables/style";
-=======
 import { camelCase } from "../site/[...slug]/page";
 import { Label, FilterWrapper, Select, Option, SelectWrapper } from "@/components/Tables/style";
->>>>>>> b7abc726 (Implementação dos shorts diretamente do youtube, sem a necessidade de adição de videos via painel;)
 import { fetchData } from "../layout";
 import NewsCard from "@/components/NewsCard/NewsCard";
 import { Column, Container } from "@/components/UltimasNoticias/style";
