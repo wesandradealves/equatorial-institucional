@@ -12,25 +12,6 @@ import { HeaderTypo, NavigationTypo } from "@/types/enums";
 import { HttpService } from "@/services";
 import MobileNavigation from "../Navigation/MobileNavigation";
 
-const http = new HttpService();
-
-export const getMedia = async (data: any) => {
-  let results: any = await Promise.all(data.map(async (item: any): Promise<any> => {
-    if(item?.field_icone) {
-      const field_icone: any = await http.get(`/api/media/?fid=${item?.field_icone[0]?.file_id}`);
-  
-      return {
-        ...item,
-        field_icone: `${field_icone}`
-      }
-    }
-
-    return item;
-  }));   
-
-  return results;  
-}; 
-
 export default function Header() {
   const { config } = useContext<any>(ConfigProvider);
 
@@ -42,6 +23,25 @@ export default function Header() {
   const [data, setData] = useState<HeaderTypo | any>(null);
 
   const [isExpanded, expandMenu] = useState<boolean>(false);  
+
+  const http = new HttpService();
+
+  const getMedia = async (data: any) => {
+    let results: any = await Promise.all(data.map(async (item: any): Promise<any> => {
+      if(item?.field_icone) {
+        const field_icone: any = await http.get(`/api/media/?fid=${item?.field_icone[0]?.file_id}`);
+    
+        return {
+          ...item,
+          field_icone: `${field_icone}`
+        }
+      }
+  
+      return item;
+    }));   
+  
+    return results;  
+  }; 
 
   const handleScroll = () => {
     setScrollPosition(window?.scrollY);
