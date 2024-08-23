@@ -23,10 +23,6 @@ export default function Breadcrumbs(props: any) {
     setSearchParams(params?.get('s')); 
   }, [params]); 
 
-  useEffect(() => {
-    console.log(paths)
-  }, [paths]);   
-
   const handleBreadcrumbPaths = () => {
     var paths: any = [];
 

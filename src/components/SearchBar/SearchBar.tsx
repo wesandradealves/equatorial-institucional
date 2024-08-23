@@ -21,8 +21,8 @@ export default function SearchBar(props: any) {
   const onSubmit: SubmitHandler<SearchTypo> = async data => {
     try {
       if(data?.keywords) {
-        const el = document.body;
-        el.classList.remove("error-page");        
+        // const el = document.body;
+        // el.classList.remove("error-page");        
         router.push(`/busca/?s=${data?.keywords}&page=1`);
       }
     } catch (error) {

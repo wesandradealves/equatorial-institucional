@@ -2,7 +2,7 @@
 
 import ConfigProvider from "@/context/config";
 import { useContext, useEffect } from "react";
-import Template from "./home/template";
+import Template from "./site/template";
 import { App, ErrorPage, Mask } from "./style";
 import LanguageProvider from "@/components/LanguageSwitcher/context";
 
