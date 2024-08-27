@@ -42,5 +42,6 @@ next-env.d.ts
 *storybook.log
 
 .env.local
+.env
 
 package-lock.json

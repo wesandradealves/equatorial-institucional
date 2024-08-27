@@ -1,4 +1,4 @@
-version: "3"
+
 
 services:
   next-app:
@@ -6,20 +6,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-
-#    environment:
-#      ENV_VARIABLE: ${ENV_VARIABLE}
-#      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
-
-    # Set environment
     env_file:
-      - .env.production
-    volumes:
-      - ./next-app/src:/app/src
-      - ./next-app/public:/app/public
+      - .env
+
     restart: always
     ports:
-      - 3000:3000
+      - 8997:3000
     networks:
       - my_network
 

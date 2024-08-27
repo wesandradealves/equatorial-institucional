@@ -1,23 +1,20 @@
-FROM node:20-alpine
+FROM node:20.15.0-alpine
 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN \
-  if [ -f package-lock.json ]; then npm install --legacy-peer-deps; \
-  else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
-  fi
+COPY package.json ./
 
 COPY src ./src
 COPY public ./public
 COPY next.config.mjs .
 COPY tsconfig.json .
 
-RUN chown -R node. /app
+RUN npm install --legacy-peer-deps;
+
+RUN chown -R node:node /app
 
 USER node
 
-CMD \
-  if [ -f package-lock.json ]; then npm run dev; \
-  else npm run dev; \
-  fi
+RUN npm run build
+
+CMD ["npm", "run", "start"]
