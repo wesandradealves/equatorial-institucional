@@ -22,7 +22,7 @@ export default function Search(props: any) {
   const [pager, setPager] = useState<any>(null);
   const items_per_page = 12;
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
+  const params = new URLSearchParams(searchParams || '');
   const pathname = usePathname();
 
   const page = useMemo(() => {
