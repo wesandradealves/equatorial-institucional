@@ -6,7 +6,7 @@ import { BlockTypo } from "@/types/enums";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
 import ConfigProvider from "@/context/config";
 import Galeria from "@/components/Galeria/Galeria";
-import { fetchData } from "@/app/layout";
+import { fetchData } from "@/utils";
 
 export default function BlockIniciativas(props: any) {
   const { config } = useContext<any>(ConfigProvider);

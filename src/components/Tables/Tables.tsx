@@ -4,7 +4,7 @@ import { Content, Container, Column, Mask } from "./style";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
 import TablesData from "./TablesData";
 import TablesFilter from "./TablesFilter";
-import { fetchData } from "@/app/layout";
+import { fetchData } from "@/utils";
 
 export default function Tables(props: any) {
   const [data, setData] = useState<any>(null);

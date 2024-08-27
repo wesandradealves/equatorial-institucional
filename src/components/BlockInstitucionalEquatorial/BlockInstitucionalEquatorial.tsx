@@ -8,7 +8,7 @@ import ConfigProvider from "@/context/config";
 import { Container, Content, Columns, Filter, FilterLink, Item, Inner, Thumbnail, Info, Text, Category, Title, Logo, Top, Bottom } from './style';
 import logo from '@/assets/img/logo.svg';
 import { Button } from "@/assets/tsx/objects";
-import { fetchData } from "@/app/layout";
+import { fetchData } from "@/utils";
 
 export default function BlockInstitucionalEquatorial(props: any) {
   const { config } = useContext<any>(ConfigProvider);

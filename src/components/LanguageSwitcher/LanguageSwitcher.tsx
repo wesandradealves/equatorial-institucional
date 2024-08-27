@@ -6,16 +6,12 @@ import { useContext, useEffect, useState } from 'react';
 import styled from "styled-components";
 import { LanguagesTypo } from '@/types/enums';
 import LanguageProvider from './context';
+import { fetchData } from "@/utils";
 
 export default function LanguageSwitcher() {
   const http = new HttpService();
   const [data, setData] = useState<LanguagesTypo | any>(null);
   const {lang, setLanguage} = useContext<any>(LanguageProvider);
-
-  const fetchData = async(uri: any) => {
-    let response:any[] = await http.get(uri)
-    return response
-  }  
 
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,

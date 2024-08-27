@@ -5,7 +5,7 @@ import { BlockTypo } from "@/types/enums";
 import { useContext, useEffect, useState } from "react";
 import BlockHead from "@/template-parts/BlockHead/BlockHead";
 import ConfigProvider from '@/context/config';
-import { fetchData } from '@/app/layout';
+import { fetchData } from "@/utils";
 
 export default function UltimasNoticias(props: any) {
   const [news, setData] = useState<any>([]);

@@ -11,39 +11,8 @@ import ModalVideo from 'react-modal-video';
 import { Button } from '@/assets/tsx/objects';
 import BlockHead from '@/template-parts/BlockHead/BlockHead';
 import { Views } from '../Intro/style';
-import { fetchData } from '@/app/layout';
-
-export const fetchVideos = async (channelId: any, videoDuration?: any) => {
-  try {
-    const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&channelId=${channelId}&part=snippet&maxResults=10&type=video&order=date${videoDuration ? `&videoDuration=${videoDuration}` : ''}`);
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    console.error('Error fetching data:', JSON.stringify(error, null, 2));
-    return [];
-  }
-}; 
-
-export const fetchStatistics = async (data: any) => {
-  let results: any = await Promise.all(data.map(async (item: any): Promise<any> => {
-    let id = item?.id?.videoId;
-    const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${id}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`);
-    const statistics = await response.json();   
-
-    if(item?.snippet && statistics?.items) {
-      return {
-        id: id,
-        ...item?.snippet,
-        ...statistics?.items[0]?.statistics
-      }
-    }
-
-    return null;
-  }));   
-
-  return results;
-}    
+import { fetchData } from "@/utils";
+import { fetchVideos, fetchStatistics } from '@/utils';
 
 export default function BlockShorts(props: any) {
   const http = new HttpService();

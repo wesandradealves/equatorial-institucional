@@ -6,10 +6,8 @@ import Template from "../template";
 import ConfigProvider from "@/context/config";
 import { HttpService } from "@/services";
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
-import { camelCase } from "../[...slug]/page";
 import { Label, FilterWrapper, Select, Option, SelectWrapper } from "@/components/Tables/style";
-import { fetchData } from "../../layout";
+import { fetchData } from "@/utils";
 import NewsCard from "@/components/NewsCard/NewsCard";
 import { Column, Container } from "@/components/UltimasNoticias/style";
 import Pagination from "@/components/Pagination/Pagination";
@@ -21,7 +19,6 @@ export default function Noticias(props: any) {
   const router = useRouter();
   const [data, setData] = useState<any>(null);
   const [taxonomies, setTaxonomies] = useState<any>(null);
-  const [content, setContent] = useState<any>(null);
   const [pager, setPager] = useState<any>(null);
   const items_per_page = 12;
   const searchParams = useSearchParams();
@@ -34,7 +31,6 @@ export default function Noticias(props: any) {
   }, [props]);    
   
   useEffect(() => {
-    // ?items_per_page=${items_per_page}&page=${page}${params.get("cat") ? `&cat=${params.get("cat")}` : ''}
     Promise.all([
       `/api/noticias/${params.get("cat") ? `${params.get("cat")}` : ''}?items_per_page=${items_per_page}&page=${page}`, 
       `/api/page?alias=/noticias`].map(function(url: any) {
@@ -48,19 +44,6 @@ export default function Noticias(props: any) {
   }, [props]);  
 
   useEffect(() => {
-    if(data && data?.page && data?.page?.field_conteudo) {
-
-      let conteudo = data?.page?.field_conteudo.map(function(row: any){
-          return row.target_id
-      });
-
-      Promise.all(conteudo.map(function(pid: any) {
-        return http.get(`/entity/paragraph/${pid}`);
-      })).then((response: any) => {
-        setContent(response)
-      }).catch(console.error);      
-    }
-
     if(data?.search?.pager && data?.search) setPager(data?.search?.pager)
   }, [data]);  
   
@@ -89,12 +72,6 @@ export default function Noticias(props: any) {
     {config && data && <>
       <title>{`${config?.site_name} - ${data?.page?.title[0]?.value}`}</title>
     </>}
-
-    {content && <>
-      {content.map((component: any, index: Number) => (
-        <DynamicComponent page={data} data={component} key={index} componentName={camelCase(component?.type[0]?.target_id.replaceAll("_"," ")).split(" ").join("")} />
-      ))}
-    </>}    
 
     {(taxonomies || data) && <>
       <SearchResults>

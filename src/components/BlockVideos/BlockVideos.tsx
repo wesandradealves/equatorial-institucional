@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/assets/tsx/objects";
 import ModalVideo from 'react-modal-video';
 import Slider from "react-slick";
-import { fetchVideos, fetchStatistics } from "../BlockShorts/BlockShorts";
+import { fetchVideos, fetchStatistics } from '@/utils';
 
 export default function BlockVideos(props: any) {
   const [isOpen, setOpen] = useState<any>({

@@ -6,7 +6,7 @@ import { HttpService } from "@/services";
 import { NavTypo } from "@/types/enums";
 import Link from "next/link";
 import Image from "next/image";
-import { fetchData } from "../layout";
+import { fetchData } from "@/utils";
 
 export default function Select() {
   const { config } = useContext<any>(ConfigProvider);

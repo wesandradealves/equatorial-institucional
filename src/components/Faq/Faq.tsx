@@ -8,7 +8,7 @@ import BlockHead from "@/template-parts/BlockHead/BlockHead"
 import Accordion from "../Accordion/Accordion"
 import { Button } from "@/assets/tsx/objects"
 import ConfigProvider from "@/context/config"
-import { fetchData } from "@/app/layout"
+import { fetchData } from "@/utils";
 
 export default function Faq(props: any) {  
     const { config } = useContext<any>(ConfigProvider);

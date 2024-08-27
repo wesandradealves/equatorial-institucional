@@ -3,7 +3,7 @@
 import { Container, Label, Select, SelectField, Option } from "./style";
 import { useContext, useEffect, useState } from "react";
 import { NavTypo } from "@/types/enums";
-import { fetchData } from "@/app/layout";
+import { fetchData } from "@/utils";
 
 export default function LocationSelector(props: any) {
   const [navigation, setData] = useState<NavTypo[]>([]);

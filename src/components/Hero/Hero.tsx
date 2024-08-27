@@ -5,7 +5,7 @@ import { Container, Information, Mask, Services, Title, ServiceCard, CardIcon, C
 import { useContext, useEffect, useState } from "react";
 import ConfigProvider from "@/context/config";
 import LocationSelector from "@/components/LocationSelector/LocationSelector";
-import { fetchData } from "@/app/layout";
+import { fetchData } from "@/utils";
 
 export default function Hero(props: any) {
   const http = new HttpService();
