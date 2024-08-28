@@ -24,7 +24,7 @@ export default function Page(props: any) {
     // const el = document.body;
     // el.classList.remove("error-page");
 
-    let slug = pathname?.split("/");
+    let slug = pathname?.split("/") ?? [];
     slug.splice(0, 2);
     fetchData(`/api/page?alias=/${slug.join("/")}`)
       .then((response: any) => {
