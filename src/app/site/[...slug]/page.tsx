@@ -1,14 +1,12 @@
 "use client";
 
+import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
 import ConfigProvider from "@/context/config";
 import { HttpService } from "@/services";
-import React, { lazy, useCallback, useContext, useMemo, useState } from "react";
-import { useEffect } from "react";
-import DynamicComponent from "@/components/DynamicComponent/DynamicComponent";
+import { camelCase, fetchData } from "@/utils";
 import { usePathname, useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 import { Content } from "../(home)/style";
-import { fetchData } from "@/utils";
-import { camelCase } from "@/utils";
 
 export default function Page(props: any) {
   const router = useRouter();
@@ -24,8 +22,8 @@ export default function Page(props: any) {
 
   useEffect(() => {
     // const el = document.body;
-    // el.classList.remove("error-page");            
-    
+    // el.classList.remove("error-page");
+
     let slug = pathname?.split("/");
     slug.splice(0, 2);
     fetchData(`/api/page?alias=/${slug.join("/")}`)
