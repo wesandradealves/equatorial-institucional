@@ -76,13 +76,6 @@ export default function BlockShorts(props: any) {
     if(el) el.style.zIndex = isOpen.status ? '5' : '4';
   }, [isOpen]);   
 
-  useEffect(() => {
-    const main: HTMLElement | null = document.getElementById("primary");
-    main?.classList.toggle("modal-opened");
-    const el: HTMLElement | null = document.getElementById("BlockShorts");
-    if(el) el.style.zIndex = isOpen.status ? '5' : '1';
-  }, [isOpen]);   
-
   return (
     <Content id={props?.id ? props?.id : "BlockShorts"} data-component={props?.id ? props?.id : "BlockShorts"} className='BlockShorts'>
       {blockData && data && data.length > 0 && blockData?.title && <Container className='container'>

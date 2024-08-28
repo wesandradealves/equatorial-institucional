@@ -1,7 +1,7 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
 export const Container = styled.div`
-    background-color: ${props => props.theme.colorPrimary300};   
+    background-color: ${props => props.theme.colorBrandDark};   
     color: white;
     .container {
         padding-top: 40px;
