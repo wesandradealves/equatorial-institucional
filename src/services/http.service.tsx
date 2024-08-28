@@ -3,14 +3,15 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 class HttpService {
   private http: AxiosInstance;
-  private baseURL =
-    process.env.NEXT_PUBLIC_BASE_URL ||
-    "http://drupal-institucional-drupal-dev.apps.ocpdrupal.equatorial.corp";
+  private baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
   constructor() {
-    axios.interceptors.response.use(req => {
-      return req
-    }, err => err);
+    axios.interceptors.response.use(
+      (req) => {
+        return req;
+      },
+      (err) => err
+    );
 
     this.http = axios.create({
       baseURL: this.baseURL,
