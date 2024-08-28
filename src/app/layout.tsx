@@ -14,13 +14,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { GlobalStyle } from './(home)/style';
 
-// const http = new HttpService();
-
-// export const fetchData = async($url: any) => {
-//   const response:any = await http.get($url);
-//   return response;
-// }  
-
 export default function RootLayout({
   children,
 }: {

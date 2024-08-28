@@ -47,3 +47,8 @@ export const fetchStatistics = async (data: any) => {
 
   return results;
 }    
+
+export const getMedia = async (fid: any) => {
+  const media: any = await http.get(`/api/media/?fid=${fid}`);  
+  return media;  
+}; 

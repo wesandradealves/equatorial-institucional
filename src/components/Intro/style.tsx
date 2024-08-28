@@ -74,7 +74,7 @@ export const Content = styled.section<IntroTypo>`
 `;
 
 export const Container = styled.div<IntroTypo>`   
-    gap: 40px 32px;
+    gap: 40px 67px;
     position: relative;
     z-index: 2;
     ${({ layout }) => (layout == 'alternative') && css`

@@ -62,10 +62,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);    
   }, []);
 
-  useEffect(() => {
-    console.log(navigation)
-  }, [navigation]);
-
   return (
     <>
       <Container id="header" data-component="Header" className={
