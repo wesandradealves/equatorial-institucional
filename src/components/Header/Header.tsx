@@ -26,7 +26,7 @@ export default function Header() {
 
   const http = new HttpService();
 
-  const getMedia = async (data: any) => {
+  const getNavigationWithThumb = async (data: any) => {
     let results: any = await Promise.all(data.map(async (item: any): Promise<any> => {
       if(item?.field_icone) {
         const field_icone: any = await http.get(`/api/media/?fid=${item?.field_icone[0]?.file_id}`);
@@ -53,7 +53,7 @@ export default function Header() {
     })).then((response: any) => {
       setData(response[0]?.data)
 
-      getMedia(response[1]).then((response: any) => {
+      getNavigationWithThumb(response[1]).then((response: any) => {
         if(response) setNavigation(response)
       }) 
     }).catch(console.error); 
