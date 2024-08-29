@@ -1,11 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  try {
-    // Verificar o status da aplicação (aqui estamos simplificando)
-    // Você pode adicionar verificações adicionais conforme necessário
+  // Adicionar cabeçalhos CORS
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-    // Responder com HTTP 200 se tudo estiver OK
+  try {
     res.status(200).json({
       status: "ok",
       message: "Next.js está funcionando corretamente.",
