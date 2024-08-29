@@ -58,10 +58,6 @@ export default function Tabs(props: any) {
     }
   }, []);
 
-  useEffect(() => {
-    if(props) console.log(props)
-  }, [props]);
-
   return (
     <>
     {
@@ -70,23 +66,26 @@ export default function Tabs(props: any) {
           <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center'>
               {props?.data?.field_title && props?.data?.field_title[0]?.value && <BlockHead className="col-12 p-0" data={props?.data} />}
 
-              {props?.data?.field_enable_tabs && props?.data?.field_enable_tabs[0] && tabs && <Filter className="d-flex overflow-auto col-12 align-items-center justify-content-lg-center">
+              {props?.data?.field_enable_tabs && tabs && <Filter className="d-flex overflow-auto col-12 align-items-center justify-content-lg-center">
                 {tabs.map((row: any, index: any) => (
-                  <FilterLink 
-                  className={
-                    classNames(
-                      {
-                        'current': index == currentFilter
-                      }
-                    )      
-                  }                
-                  onClick={(e: any) => {
-                    let dots = e.target.closest('.Tabs').querySelector('[class*="slick-dots"]').childNodes;
-                    dots[index].childNodes[0].click()
-                    setCurrentFilter(index)                      
-                  }} key={index}>{row}</FilterLink>
+                  <>
+                    {row && <FilterLink 
+                    className={
+                      classNames(
+                        {
+                          'current': index == currentFilter
+                        }
+                      )      
+                    }                
+                    onClick={(e: any) => {
+                      let dots = e.target.closest('.Tabs').querySelector('[class*="slick-dots"]').childNodes;
+                      dots[index].childNodes[0].click()
+                      setCurrentFilter(index)                      
+                    }} key={index}>{row}</FilterLink>}                  
+                  </>
                 ))} 
-              </Filter>}
+              </Filter>
+            }
 
               {content && <Container className="container-fluid slick p-0">
                 <Slider {...settings}>
