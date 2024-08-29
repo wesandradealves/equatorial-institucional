@@ -58,10 +58,6 @@ export default function Tabs(props: any) {
     }
   }, []);
 
-  useEffect(() => {
-    if(props) console.log(props)
-  }, [props]);
-
   return (
     <>
     {
