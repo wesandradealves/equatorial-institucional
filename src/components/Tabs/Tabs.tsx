@@ -5,6 +5,8 @@ import { HttpService } from "@/services";
 import Slider from "react-slick";
 import { getMedia } from '@/utils';
 import ConfigProvider from '@/context/config';
+import { Button } from '@/assets/tsx/objects';
+import logo from '@/assets/img/logo.svg';
 
 export default function Tabs(props: any) {
   const [tabs, setTabs] = useState<any>(null);
@@ -56,15 +58,19 @@ export default function Tabs(props: any) {
     }
   }, []);
 
+  useEffect(() => {
+    if(props) console.log(props)
+  }, [props]);
+
   return (
     <>
     {
-      tabs && content && <Content data-component={props?.id ? props?.id : "BlockInstitucionalEquatorial"} className={props?.id ? props?.id : "BlockInstitucionalEquatorial"}>
+      tabs && content && <Content data-component={props?.id} className={props?.id}>
         <Container className='container-fluid p-0'>
           <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center'>
               {props?.data?.field_title && props?.data?.field_title[0]?.value && <BlockHead className="col-12 p-0" data={props?.data} />}
 
-              {tabs && <Filter className="d-flex overflow-auto col-12 align-items-center justify-content-lg-center">
+              {props?.data?.field_enable_tabs && props?.data?.field_enable_tabs[0] && tabs && <Filter className="d-flex overflow-auto col-12 align-items-center justify-content-lg-center">
                 {tabs.map((row: any, index: any) => (
                   <FilterLink 
                   className={
@@ -91,10 +97,14 @@ export default function Tabs(props: any) {
                         <Info className="flex-fill d-flex text-center text-md-start justify-content-center justify-content-start flex-column flex-wrap">
                           {row?.field_subtitulo && row?.field_subtitulo[0] && <Top className="d-flex align-items-center text-md-start justify-content-center justify-content-start justify-content-md-between">
                             <Category dangerouslySetInnerHTML={{__html: row?.field_subtitulo[0]?.value}} />
+                            {row?.field_cta_url || row?.field_cta_label && <Logo className="img-fluid d-none d-md-block" loading="lazy" src={logo?.src} />}
                           </Top>}
                           <Bottom className="mt-md-auto d-flex flex-column">
                             {row?.field_title && row?.field_title[0] && <Title dangerouslySetInnerHTML={{__html: row?.field_title[0]?.value}}/>}
                             {row?.field_texto && row?.field_texto[0] && <Text dangerouslySetInnerHTML={{__html: `${row?.field_texto[0]?.value}`}} />}
+                            {row?.field_cta_url || row?.field_cta_label && <Button className="me-md-auto mt-auto" href={row?.field_cta_url}>
+                              {row?.field_cta_label ? row?.field_cta_label : 'Ver mais'}
+                            </Button>}                         
                           </Bottom>
                         </Info>
                       </Inner>

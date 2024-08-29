@@ -73,7 +73,7 @@ export default function BlockShorts(props: any) {
     const main: HTMLElement | null = document.getElementById("primary");
     main?.classList.toggle("modal-opened");
     const el: HTMLElement | null = document.getElementById("BlockShorts");
-    if(el) el.style.zIndex = isOpen.status ? '5' : '4';
+    if(el) el.style.zIndex = isOpen.status ? '5' : '1';
   }, [isOpen]);   
 
   return (
