@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:20-15-alpine
 
 WORKDIR /app
 
@@ -11,7 +11,13 @@ COPY next.config.mjs .
 COPY tsconfig.json .
 
 RUN chown -R node. /app
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
+# Dar permissão de execução ao script de inicialização
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Definir o script de inicialização como o ponto de entrada
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 USER node
 
 CMD npm run dev
