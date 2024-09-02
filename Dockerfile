@@ -2,7 +2,7 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
+COPY package.json ./
 
 RUN npm install --legacy-peer-deps
 
@@ -22,4 +22,4 @@ USER node
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-CMD npm run dev
+CMD [ "npm", "run", "dev" ]
