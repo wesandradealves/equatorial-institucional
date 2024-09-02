@@ -12,7 +12,7 @@ COPY tsconfig.json .
 
 RUN chown -R node. /app
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-
+RUN run build
 # Dar permissão de execução ao script de inicialização
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
@@ -20,4 +20,4 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 USER node
 
-CMD npm run dev
+CMD npm run start
