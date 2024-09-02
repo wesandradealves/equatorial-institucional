@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY package.json package-lock.json* ./
 
-# RUN npm install --legacy-peer-deps
-COPY node_modules ./node_modules
+RUN npm install --legacy-peer-deps
+# COPY node_modules ./node_modules
 
 COPY src ./src
 COPY public ./public
