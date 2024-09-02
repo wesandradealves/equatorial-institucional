@@ -11,7 +11,7 @@ COPY public ./public
 COPY next.config.mjs .
 COPY tsconfig.json .
 
-RUN npm run build
+# RUN npm run build
 
 RUN chown -R node: /app
 
@@ -22,4 +22,4 @@ USER node
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-CMD npm run start
+CMD npm run dev
