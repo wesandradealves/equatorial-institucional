@@ -29,9 +29,6 @@ export const Container = styled.div`
 export const Content = styled.section<FaqTypo>`
     position: relative;
     z-index: 2;
-    .accordion {
-        max-height: 330px;
-    }
 
     &:last-of-type {
         margin-bottom: -88px;
@@ -40,15 +37,8 @@ export const Content = styled.section<FaqTypo>`
             margin-bottom: -179px;
         } 
     }
-
+    
     &[data-layout="default"],
-    &[data-layout="home"] {
-        [class*="Inner"] {
-            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                max-height: 570px;
-            }
-        }
-    }
 
     &[data-layout="home"] {
         > [class*="Container"] {
