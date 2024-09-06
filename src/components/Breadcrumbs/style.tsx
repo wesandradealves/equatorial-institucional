@@ -1,6 +1,7 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
 export const Content = styled.nav`   
+    margin-bottom: 2rem;
     width: 32px;
     height: 32px;
     @media screen and (min-width: ${props => props.theme.screenMdMin}) {
