@@ -8,6 +8,7 @@ export const Container = styled.div`
     position: relative;
     padding-bottom: 25px;
     padding-top: 48px;
+    gap: 5rem;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding-top: 90px;
     }
