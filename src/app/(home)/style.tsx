@@ -149,32 +149,6 @@ export const Logo = styled.h1`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-    @keyframes moveLeft {
-        from {
-            opacity: 0;
-            left: -30px;
-            visibility: hidden;
-        }
-
-        to {
-            left: 0;
-            opacity: 1;
-            visibility: visible;
-        } 
-    }
-    @keyframes moveRight {
-        from {
-            opacity: 0;
-            right: -30px;
-            visibility: hidden;
-        }
-
-        to {
-            right: 0;
-            opacity: 1;
-            visibility: visible;
-        } 
-    }        
     @keyframes opacity {
         from {
             opacity: 0;
@@ -187,7 +161,7 @@ export const GlobalStyle = createGlobalStyle`
         } 
     }
     body {
-        animation: opacity 600ms forwards;
+        // animation: opacity 600ms forwards;
         &.error-page {
             .header {
                 .topbar {
