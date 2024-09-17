@@ -8,7 +8,6 @@ export const Container = styled.div`
     position: relative;
     padding-bottom: 25px;
     padding-top: 48px;
-    gap: 5rem;
     @media screen and (min-width: ${props => props.theme.screenLgMin}) {
         padding-top: 90px;
     }
@@ -34,6 +33,14 @@ export const Container = styled.div`
             }
         }
     }
+    [class*="AccordionWrapper"] {
+        height: 270px;
+        overflow: auto;
+    }
+ 
+    [class*="Filter"] ~ [class*="AccordionWrapper"] {
+        height: auto;
+    }
 `;
 
 export const Content = styled.section<FaqTypo>`
@@ -52,10 +59,10 @@ export const Content = styled.section<FaqTypo>`
 
     &[data-layout="home"] {
         > [class*="Container"] {
-            padding-bottom: 100px;
-            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-                padding-bottom: 300px;
-            }
+            // padding-bottom: 100px;
+            // @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            //     padding-bottom: 300px;
+            // }
         }
     }
         
@@ -114,3 +121,29 @@ export const Img = styled.img`
     }
 `;
 
+export const SearchBar = styled.form`   
+    padding: 20px 16px;
+    border-radius: 16px;
+    border: 1px ${props => props.theme.colorNeutral400} solid;
+`;
+
+export const SearchField = styled.input`   
+    color: ${props => props.theme.colorNeutral600};
+    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
+    font-weight: 400;
+    line-height: 24px;
+    border: 0;
+`;
+
+export const Submit = styled.button`   
+    border: 0;
+    background: none;
+`;
+
+export const Icon = styled.i`   
+    font-size: 24px;
+    color: ${props => props.theme.colorPrimary300};
+`;
+
+export const Filter = styled.div`   
+`;

@@ -18,6 +18,29 @@ export default function Faq(props: any) {
     const [blockData, setBlockData] = useState<BlockTypo[] | {} | any>(null)
     const classNames = require('classnames');
 
+    const getData = (q?: any) => {
+        if(q) {
+            fetchData(`${q}`)
+            .then((response: any) => {
+                setData(response?.rows)
+            })
+            .catch(console.error);
+        } else {
+            if(props?.data?.field_faq_enable && props?.data?.field_faq_enable.length) {
+                fetchData(`/api/faq`)
+                .then((response: any) => {
+                    setData(response)
+                })
+                .catch(console.error);
+            } else {
+                Promise.all(props?.data?.field_list_item.map(async (row: any) => {
+                    let item: any = await http.get(`/entity/paragraph/${row?.target_id}`);
+                    return item
+                })).then((data) => setData(data));   
+            }
+        }
+    };
+
     useEffect(() => {
         if(!props?.data) {
             if(!blockData) {
@@ -45,24 +68,13 @@ export default function Faq(props: any) {
                 }).catch(console.error);    
             }            
         } else {
-            setBlockData(props?.data)
-
-            console.log(props?.data)
-
-            if(props?.data?.field_faq_enable && props?.data?.field_faq_enable.length) {
-                fetchData(`/api/faq`)
-                .then((response: BlockTypo[]) => {
-                    setData(response)
-                })
-                .catch(console.error);
-            } else {
-                Promise.all(props?.data?.field_list_item.map(async (row: any) => {
-                    let item: any = await http.get(`/entity/paragraph/${row?.target_id}`);
-                    return item
-                })).then((data) => setData(data));   
-            }
+            setBlockData(props?.data), getData()
         }
     }, []);
+
+    const handleFilter = (q: any) => {
+        getData(q)
+    };
 
     return (
         <>
@@ -80,7 +92,9 @@ export default function Faq(props: any) {
                             }
                         )      
                     }>
-                    {blockData && <BlockHead hideButton={true} className="col-12 d-flex align-items-start justify-content-start text-start" data={blockData} />}   
+
+                    {blockData && <BlockHead hideButton={true} className="col-auto me-auto d-flex align-items-start justify-content-start text-start" data={blockData} />}   
+                    
                     <Container 
                     className={
                         classNames(
@@ -101,13 +115,23 @@ export default function Faq(props: any) {
                                 )      
                             }
                             >
-                            {data && <Accordion className="col-12 overflow-auto" data={!props?.data ? data[1] : data} />}
+
+                            <div>
+                                {props?.data?.field_enable_filter && props?.data?.field_enable_filter.length && (
+                                    <FaqFilter onFilter={handleFilter} className="mb-5" />
+                                )}
+
+                                {data && <Accordion className="col-12 overflow-auto" data={!props?.data ? data[1] : data} />}   
+                            </div>
+
+                            
                             {blockData && (blockData?.cta_label || blockData?.cta_url) && <Button className="me-auto" href={blockData?.cta_url}>
                                 {blockData?.cta_label}
                                 <i className="fa-solid fa-arrow-right"></i>
                             </Button>}   
                         </Inner>
                     </Container>
+
                     {((config && props?.data?.field_layout && props?.data?.field_layout[0] && props?.data?.field_layout[0]?.value == 'home') || !props?.data?.field_layout) && <Img loading="lazy" className="img-fluid" src={config?.clara_img} />}
                 </Container>
                 <Mask 
