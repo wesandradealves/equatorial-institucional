@@ -36,7 +36,6 @@ export default function BlockInstitucionalEquatorial(props: any) {
         if(response) {
           let uuid = response?.settings?.id.split("block_content:").pop();
           fetchData(`/api/blocks/${uuid}`).then((response: BlockTypo[]) => {
-            console.log(response)
             if(response) setBlockData(response[0])
           }).catch(console.error);        
         }

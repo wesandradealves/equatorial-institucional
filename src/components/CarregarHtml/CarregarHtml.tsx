@@ -1,8 +1,6 @@
 import { Frame } from "./style";
 
 export default function CarregarHtml(props: any) {
-  console.log(props?.data.field_carregar_html[0]?.value);
-  console.log("page", props?.page);
   return (
     <>
       {props?.data && (
