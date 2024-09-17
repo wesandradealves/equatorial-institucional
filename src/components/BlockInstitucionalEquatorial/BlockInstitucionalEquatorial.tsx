@@ -36,19 +36,16 @@ export default function BlockInstitucionalEquatorial(props: any) {
         if(response) {
           let uuid = response?.settings?.id.split("block_content:").pop();
           fetchData(`/api/blocks/${uuid}`).then((response: BlockTypo[]) => {
+            console.log(response)
             if(response) setBlockData(response[0])
           }).catch(console.error);        
         }
       }).catch(console.error);   
     }
+  }, []);
 
-    if(!filter) {
-      fetchData('/api/taxonomy/solucoes').then((response: any) => {
-        if(response) setFilter(response)
-      }).catch(console.error);   
-    }
-
-    if(!data && config && filter) {
+  useEffect(() => {
+    if(filter && config) {
       fetchData(`/api/solucoes/${filter[0]?.tid[0]?.value}`).then((response: any) => {
         if(response && response?.rows) {
           Promise.all(response?.rows.map(async (row: any) => {
@@ -64,13 +61,18 @@ export default function BlockInstitucionalEquatorial(props: any) {
           })).then((data) => setData(data));
         }
       }).catch(console.error);  
-    }    
-  }, [config]);
+    } else {
+      fetchData('/api/taxonomy/solucoes').then((response: any) => {
+        if(response) {
+          setFilter(response)
+        }
+      }).catch(console.error);   
+    }  
+  }, [filter, config]);
 
   return (
     <>
-    {
-      data && filter && <Content data-component={props?.id ? props?.id : "BlockInstitucionalEquatorial"} className={props?.id ? props?.id : "BlockInstitucionalEquatorial"}>
+    {<Content data-component={props?.id ? props?.id : "BlockInstitucionalEquatorial"} className={props?.id ? props?.id : "BlockInstitucionalEquatorial"}>
         <Container className='container-fluid p-0'>
           <Columns className='d-flex flex-wrap flex-column justify-content-center align-items-center'>
               {blockData && <Container className="container">

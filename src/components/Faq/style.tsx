@@ -25,6 +25,15 @@ export const Container = styled.div`
             color: white;
         }
     }
+    [class*="BlockHeading"] {
+        [class*="text-center"] {
+            margin: 0 auto;
+            & + * {
+                margin: -30px auto 0;
+                font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize};
+            }
+        }
+    }
 `;
 
 export const Content = styled.section<FaqTypo>`

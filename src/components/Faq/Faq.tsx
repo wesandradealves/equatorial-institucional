@@ -9,6 +9,7 @@ import Accordion from "../Accordion/Accordion"
 import { Button } from "@/assets/tsx/objects"
 import ConfigProvider from "@/context/config"
 import { fetchData } from "@/utils";
+import FaqFilter from "./FaqFilter"
 
 export default function Faq(props: any) {  
     const { config } = useContext<any>(ConfigProvider);
@@ -33,6 +34,7 @@ export default function Faq(props: any) {
                 })
                 .catch(console.error);
             }
+
             if(!data) {
                 let endpoints = ['/api/footer', '/api/faq'];
     
@@ -44,11 +46,21 @@ export default function Faq(props: any) {
             }            
         } else {
             setBlockData(props?.data)
-            
-            Promise.all(props?.data?.field_list_item.map(async (row: any) => {
-                let item: any = await http.get(`/entity/paragraph/${row?.target_id}`);
-                return item
-            })).then((data) => setData(data));             
+
+            console.log(props?.data)
+
+            if(props?.data?.field_faq_enable && props?.data?.field_faq_enable.length) {
+                fetchData(`/api/faq`)
+                .then((response: BlockTypo[]) => {
+                    setData(response)
+                })
+                .catch(console.error);
+            } else {
+                Promise.all(props?.data?.field_list_item.map(async (row: any) => {
+                    let item: any = await http.get(`/entity/paragraph/${row?.target_id}`);
+                    return item
+                })).then((data) => setData(data));   
+            }
         }
     }, []);
 

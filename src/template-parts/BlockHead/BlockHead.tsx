@@ -2,6 +2,7 @@
 
 import { Button } from "@/assets/tsx/objects";
 import { BlockHeading, BlockTitle, Text } from "./style";
+import { useEffect } from "react";
 
 export default function BlockHead(props: any) {
   const classNames = require('classnames');
@@ -14,7 +15,7 @@ export default function BlockHead(props: any) {
   return (
     <BlockHeading className={`d-flex flex-column block-head ${props?.className}`}>
         <BlockTitle className='text-center text-lg-start' dangerouslySetInnerHTML={{__html: props?.data?.title ? props?.data?.title  : (props?.data && props?.data?.field_title ? props?.data?.field_title[0]?.value : props?.data?.info)}}></BlockTitle>
-        {props?.data?.text && <Text dangerouslySetInnerHTML={{__html: props?.data?.text}} />}
+        {props?.data?.text || props?.data?.field_texto && <Text dangerouslySetInnerHTML={{__html: props?.data?.field_texto ? props?.data?.field_texto[0]?.value : props?.data?.text}} />}
         {(cta?.label && cta?.label !== "") && 
           <Button 
           className={
