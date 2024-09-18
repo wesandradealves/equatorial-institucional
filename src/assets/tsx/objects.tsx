@@ -19,9 +19,9 @@ export const Button = styled.a<ButtonTypo>`
     align-items: center;
     border-radius: 999px;
     color: black;
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
-    background-color: ${props => props.theme.colorHighlight300};
-    border: 2px ${props => props.theme.colorHighlight300} solid;
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};
+    background-color: ${props => props.theme._colors.highlight.highlight300};
+    border: 2px ${props => props.theme._colors.highlight.highlight300} solid;
     [class*="fa"] {
         position: relative;
     }

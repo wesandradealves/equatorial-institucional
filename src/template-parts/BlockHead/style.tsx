@@ -5,19 +5,19 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.div`
-    font-size: ${props => props.theme.fontMobile.bodyLarge1.fontSize}; 
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        font-size: ${props => props.theme.fontMobile.subtitle1.fontSize}; 
+    font-size: ${props => props.theme._fonts.mobile.bodyLarge1.fontSize}; 
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
+        font-size: ${props => props.theme._fonts.mobile.subtitle1.fontSize}; 
     }
-    max-width: ${props => props.theme.screenLgMin};
+    max-width: ${props => props.theme._breakpoints.desktop.lg};
 `;
 
 export const BlockTitle = styled.div`
-    font-size: ${props => props.theme.fontMobile.header1.fontSize};
+    font-size: ${props => props.theme._fonts.mobile.header1.fontSize};
     line-height: 2.5rem;
     
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        font-size: ${props => props.theme.fontDesktop.header3.fontSize};
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
+        font-size: ${props => props.theme._fonts.desktop.header3.fontSize};
     }
 
     * {
@@ -31,7 +31,7 @@ export const BlockTitle = styled.div`
 
 export const BlockHeading = styled.div`
     gap: 53px 0;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         padding-right: 60px;
     }    
 `;

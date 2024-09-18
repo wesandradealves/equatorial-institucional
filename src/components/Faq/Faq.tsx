@@ -117,7 +117,7 @@ export default function Faq(props: any) {
                             >
 
                             <div>
-                                {props?.data?.field_enable_filter && props?.data?.field_enable_filter.length && (
+                                {props?.data?.field_enable_filter && props?.data?.field_enable_filter.length !== 0 && (
                                     <FaqFilter onFilter={handleFilter} className="mb-5" />
                                 )}
 

@@ -6,7 +6,7 @@ export const Content = styled.section<HeroTypo>`
         background: url(${background_image}) center center / cover no-repeat;
     `}  
     &:not(:only-child) {
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             margin-bottom: -320px;
         }
     }
@@ -17,7 +17,7 @@ export const Content = styled.section<HeroTypo>`
     }
     &:not(:first-of-type) {
         margin: 0 0 -44px;
-        @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
             margin: 0 0 -88px;
         }
     }
@@ -39,7 +39,7 @@ export const Mask = styled.svg`
     position: absolute;
     z-index: 2;
     bottom: 0;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         width: 3000px;
         left: calc(50% - 1500px);    
     }
@@ -49,10 +49,10 @@ export const Container = styled.div`
     padding-top: calc(100px + 44px);
     padding-bottom: 240px;
     gap: 24px 0;
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
         padding-top: calc(210px + 78px);
         padding-bottom: 240px;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             padding-top: calc(220px + 78px);
             padding-bottom: 500px;
         }        
@@ -66,9 +66,9 @@ export const Title = styled.span`
     color: inherit;
     position: relative;
     font-weight: 600;
-    font-size: ${props => props.theme.fontDesktop.header3.fontSize};
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        font-size: ${props => props.theme.fontDesktop.display1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.header3.fontSize};
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
+        font-size: ${props => props.theme._fonts.desktop.display1.fontSize};
         animation: moveLeft 600ms forwards;
     }    
     * {

@@ -11,20 +11,20 @@ export const Content = styled.section`
 export const Container = styled.div`
     padding-left: 0;
     padding-right: 0;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        padding-left: ${props => props.theme.spacingSm};
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
+        padding-left: ${props => props.theme._spacing.mobile.sm};
     }
     [class*="BlockHeading"] {
-        @media screen and (max-width: ${props => props.theme.screenMdMin}) {
-            padding-left: ${props => props.theme.spacingSm};
-            padding-right: ${props => props.theme.spacingSm};
+        @media screen and (max-width: ${props => props.theme._breakpoints.mobile.md}) {
+            padding-left: ${props => props.theme._spacing.mobile.sm};
+            padding-right: ${props => props.theme._spacing.mobile.sm};
         }
     }     
 `;
 
 export const Columns = styled.div`
     gap: 48px 0;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         gap: 0
     }
 `;
@@ -41,7 +41,7 @@ export const VideoPill = styled.div<VideoPillTypo>`
     overflow: hidden;
     position: relative;
     height: 480px;
-    @media screen and (min-width: ${props => props.theme.screenXlMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xl}) {
         height: 440px;
     }   
     &::after {
@@ -78,7 +78,7 @@ export const VideoPillInner = styled.div`
 export const VideoPillTitle = styled.h3`
     color: white;
     font-weight: 600;
-    font-size: ${props => props.theme.fontMobile.subtitle1.fontSize};
+    font-size: ${props => props.theme._fonts.mobile.subtitle1.fontSize};
     z-index: 3;
     gap: 24px 0;
 `;

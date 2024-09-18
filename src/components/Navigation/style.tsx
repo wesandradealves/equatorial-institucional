@@ -8,7 +8,7 @@ export const Nav = styled.nav`
 
 export const NavCol = styled.ul`
     gap: 0 32px;
-    @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xxl}) {
         gap: 0 64px;
     }
 `;
@@ -26,7 +26,7 @@ export const NavLink = styled.span`
     &:hover {
         color: inherit;
     }
-    font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};  
+    font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};  
 `;
 
 export const NavSubmenu = styled.ul`
@@ -57,7 +57,7 @@ export const PanelBottom = styled.div`
 export const Panel = styled.nav`
     position: fixed;
     padding: 143px 24px 24px;
-    background: ${props => props.theme.colorPrimary300};  
+    background: ${props => props.theme._colors.primary.primary300};  
     z-index: 10;
     top: 0;
     transition: 600ms ease-in-out all;
@@ -81,12 +81,12 @@ export const Panel = styled.nav`
         .location-selection {
             margin: 0;
             [class*="Label"] {
-                font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize}; 
+                font-size: ${props => props.theme._fonts.desktop.bodySmall1.fontSize}; 
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 max-width: 63px;    
-                @media screen and (min-width: ${props => props.theme.screenXsMin}) {
+                @media screen and (min-width: ${props => props.theme._breakpoints.mobile.xs}) {
                     max-width: initial;
                 }            
             }
@@ -94,7 +94,7 @@ export const Panel = styled.nav`
                 padding: 0;
                 background: none;
                 box-shadow: initial;
-                font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize}; 
+                font-size: ${props => props.theme._fonts.desktop.bodySmall1.fontSize}; 
             }
         }
         .topbar {

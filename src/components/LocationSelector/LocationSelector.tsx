@@ -20,6 +20,7 @@ export default function LocationSelector(props: any) {
         <Label>Você está em</Label>
         <Select className="me-auto">
           <SelectField
+            defaultValue={process.env.NEXT_PUBLIC_ESTADO}
             onChange={(e: any) => {
               window.location.href = e.target.value;
             }}
@@ -29,9 +30,9 @@ export default function LocationSelector(props: any) {
                 <Option
                   value={row?.absolute}
                   key={i}
-                  selected={
-                    row?.title === process.env.NEXT_PUBLIC_ESTADO ? true : false
-                  }
+                  // selected={
+                  //   row?.title === process.env.NEXT_PUBLIC_ESTADO ? true : false
+                  // }
                 >
                   {row?.title}
                 </Option>

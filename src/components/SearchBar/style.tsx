@@ -14,24 +14,24 @@ export const Inner = styled.div`
 export const Submit = styled.button`
     border: 0;
     background-color: initial;
-    color: ${props => props.theme.colorPrimary300};
-    font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};  
+    color: ${props => props.theme._colors.primary.primary300};
+    font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};  
 `;
 
 export const Input = styled.input`
     width: 100%;
     border: 0;
     background-color: initial;
-    color: ${props => props.theme.colorPrimary300};    
-    font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize};  
+    color: ${props => props.theme._colors.primary.primary300};    
+    font-size: ${props => props.theme._fonts.desktop.bodySmall1.fontSize};  
     font-weight: 600;
     outline: none;
     box-shadow: none;
     &::placeholder {
-        color: ${props => props.theme.colorPrimary300};
+        color: ${props => props.theme._colors.primary.primary300};
     }
 
     &::-ms-input-placeholder { /* Edge 12 -18 */
-        color: ${props => props.theme.colorPrimary300};
+        color: ${props => props.theme._colors.primary.primary300};
     }    
 `;

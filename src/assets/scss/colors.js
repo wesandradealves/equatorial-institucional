@@ -1,0 +1,47 @@
+export const colors = {
+    primary: {
+        primary100: '#EFF3FF',
+        primary110: '#4F6999',
+        primary125: '#74DEFF',
+        primary150: '#E9E9E9',
+        primary200: '#636CC5',
+        primary300: '#0414A1',
+        primary400: '#343D88',        
+        primary500: '#040F6D',        
+    },
+    highlight: {
+        highlight100: '#FBF2C3',
+        highlight200: '#F3E081',
+        highlight300: '#FBDB33',
+        highlight400: '#CEAB31',        
+    },
+    warning: {
+        warning100: '#FFE6CF',
+        warning200: '#F28C2E',
+        warning300: '#E06B00',
+        warning400: '#9D4C02',
+    },
+    success: {
+        success100: '#CDF2CF',
+        success200: '#5BD05F',
+        success300: '#028706',
+        success400: '#005802',        
+    },
+    error: {
+        error100: '#FFCDCD',
+        error200: '#E16E70',
+        error300: '#C81B04',
+        error400: '#7D0303',
+    },
+    neutral: {
+        neutral100: '#FFFFFF',
+        neutral200: '#F7F7F7',
+        neutral300: '#EBEBEB',
+        neutral400: '#C8C8C8',
+        neutral500: '#A9A9A9',
+        neutral600: '#606060',
+        neutral700: '#313131',
+        neutral800: '#000000',
+        branddark: '#040F6D',        
+    },
+}

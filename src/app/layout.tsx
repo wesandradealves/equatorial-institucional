@@ -6,13 +6,16 @@ import { ConfigTypo, LanguagesTypo, NavigationTypo } from '@/types/enums';
 import { Suspense, useEffect, useState } from 'react';
 import { HttpService } from '@/services';
 import { ThemeProvider } from 'styled-components';
+import StyledJsxRegistry from "./registry";
+import { AnimatePresence } from 'framer-motion';
+import { _colors, _fonts, _breakpoints, _spacing } from '@/assets/scss/variables';
 
 import "@/assets/scss/globals.scss";
 import "@/../hamburgers/_sass/hamburgers/hamburgers.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { GlobalStyle } from './(home)/style';
+import { GlobalStyle } from '@/app/style';
 
 export default function RootLayout({
   children,
@@ -24,8 +27,14 @@ export default function RootLayout({
   const [loading, setLoading] = useState<any>(false);
   const [lang, setLanguage] = useState<LanguagesTypo | any>(null);
   const [navigation, setNavigation] = useState<NavigationTypo | any>(null);
-  const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!@/assets/scss/variables.scss');
 
+  const theme = {
+    _spacing,
+    _fonts,
+    _colors,
+    _breakpoints
+  }
+  
   useEffect(() => {
     Promise.all(['/api/config', '/api/footer'].map(function(url: any) {
       return http.get(`${url}`);
@@ -38,8 +47,8 @@ export default function RootLayout({
   }, []);  
 
   // useEffect(() => {
-  //   if(theme) console.log(theme)
-  // }, [theme]);   
+  //   console.log(theme)
+  // }, []);   
 
   return (
     <html lang="pt-br">
@@ -49,7 +58,17 @@ export default function RootLayout({
             <ConfigProvider.Provider value={{config, setConfig}}> 
               <LanguageProvider.Provider value={{lang, setLanguage}}>
                 <NavigationProvider.Provider value={{navigation, setNavigation}}> 
-                  <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <StyledJsxRegistry>
+                      <AnimatePresence 
+                        mode="wait" 
+                        initial={true}
+                        onExitComplete={() => window.scrollTo(0, 0)}
+                        >                      
+                          {children}
+                      </AnimatePresence>
+                    </StyledJsxRegistry>
+                  </Suspense>
                 </NavigationProvider.Provider>
               </LanguageProvider.Provider>   
             </ConfigProvider.Provider>

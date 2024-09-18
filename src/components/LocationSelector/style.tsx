@@ -24,9 +24,9 @@ export const SelectField = styled.select`
     outline: 0;
     cursor: pointer;
     color: white;
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};
     @media screen and (min-width: ${props => props.theme.screenLglMin}) {
-        font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};
+        font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};
     }    
     option {
         color: black
@@ -39,8 +39,8 @@ export const Option = styled.option`
 
 export const Label = styled.p`
     color: white;
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};
     @media screen and (min-width: ${props => props.theme.screenLglMin}) {
-        font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};
+        font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};
     }    
 `;

@@ -52,9 +52,9 @@ export const Content = styled.section<IntroTypo>`
         color: white;
         z-index: 2;
         margin-top: -240px;
-        @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
             margin-top: -270px;
-            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
                 margin-top: -240px;
             }            
         }
@@ -66,7 +66,7 @@ export const Content = styled.section<IntroTypo>`
                 left: initial;
                 right: -35px;                
                 path {
-                    fill: ${props => props.theme.colorHighlight300}
+                    fill: ${props => props.theme._colors.highlight.highlight300}
                 }
             }
         }        
@@ -81,7 +81,7 @@ export const Container = styled.div<IntroTypo>`
         &.container-fluid {
             padding-top: 88px;
             padding-bottom: 88px;
-            background-color: ${props => props.theme.colorPrimary400};
+            background-color: ${props => props.theme._colors.primary.primary400};
         }
     `}      
 `;
@@ -89,10 +89,10 @@ export const Container = styled.div<IntroTypo>`
 export const Text = styled.div`   
     gap: 32px 0;
     p {
-        font-size: ${props => props.theme.fontDesktop.linkText.fontSize};
+        font-size: ${props => props.theme._fonts.desktop.linkText.fontSize};
     }
     h1, h2, h3, h4, h5, h6 {
-        font-size: ${props => props.theme.fontMobile.header3.fontSize};
+        font-size: ${props => props.theme._fonts.mobile.header3.fontSize};
     }             
 `;
 
@@ -100,7 +100,7 @@ export const Thumbnail = styled.div`
     border-radius: 20px;
     position: relative;
     width: 100%;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         width: 400px;
     }
     flex: 0 0 auto;
@@ -122,7 +122,7 @@ export const Img = styled.img`
     width: 100%;
     object-fit: cover;
     height: 300px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         height: auto;
     }
 `;
@@ -131,7 +131,7 @@ export const Mask = styled.svg<IntroTypo>`
     position: absolute;
     z-index: 2;
     top: -20px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         top: 0; 
     }
     left: 0;
@@ -156,21 +156,21 @@ export const VideoInfo = styled.div`
 `;
 
 export const Title = styled.h3`   
-    font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};
 `;
 
 export const Views = styled.p`   
-    font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodySmall1.fontSize};
 `;
 
 export const WrapperMask = styled.svg`   
     path {
-        fill: ${props => props.theme.colorPrimary400};
+        fill: ${props => props.theme._colors.primary.primary400};
     }    
     &.--top {
         position: relative;
         margin-bottom: -2px;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             width: 3000px;
             margin-top: -290px;
             left: calc(50% - 1500px);  

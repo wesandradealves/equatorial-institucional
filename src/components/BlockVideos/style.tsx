@@ -26,16 +26,16 @@ export const Inner = styled.div<HeroTypo>`
     }
     height: 0;
     padding: 0 0 414px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         padding: 0 0 52%;
     }    
     color: white;
 `;
 
 export const Title = styled.span`   
-    font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        font-size: ${props => props.theme.fontDesktop.header2.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
+        font-size: ${props => props.theme._fonts.desktop.header2.fontSize};
     }  
     max-width: 714px;
     font-weight: 600;
@@ -49,13 +49,13 @@ export const Text = styled.div`
     z-index: 2;
     position: relative;   
     padding: 24px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         padding: 48px;
     }
     gap: 16px 0;
     font-weight: 600;
     letter-spacing: .2rem;
-    font-size: ${props => props.theme.fontDesktop.smallText1.fontSize}; 
+    font-size: ${props => props.theme._fonts.desktop.smallText1.fontSize}; 
     text-transform: uppercase;
     &::before {
         content: "";
@@ -67,7 +67,7 @@ export const Text = styled.div`
 `;
 export const Info = styled.div`   
     gap: 24px 0;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         gap: 40px 0;
     }
     z-index: 2;
@@ -75,12 +75,12 @@ export const Info = styled.div`
     bottom: 0;
     left: 0;
     padding: 24px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         padding: 48px;
     }
     [class*="Button"] {
         &:hover {
-            color: ${props => props.theme.colorHighlight300};
+            color: ${props => props.theme._colors.highlight.highlight300};
         }
     }
 `;

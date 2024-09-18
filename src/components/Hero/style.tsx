@@ -11,15 +11,15 @@ export const Container = styled.section<HeroTypo>`
         background: url(${background_image}) center center / cover no-repeat;
     `}    
     margin-bottom: 200px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         margin-bottom: -242px;
         overflow: hidden;
     }
     .container {
         padding-top: 134px;
-        @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
             padding-top: 234px;
-            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
                 padding-top: calc(234px + 279px);
                 padding-bottom: 230px;
             }       
@@ -29,10 +29,10 @@ export const Container = styled.section<HeroTypo>`
             z-index: 10;
             position: relative;  
             margin-bottom: -430px;     
-            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
                 gap: 0 32px;
                 margin-bottom: 0;
-                @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
+                @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xxl}) {
                     gap: 0 192px;
                 }                
             }
@@ -51,7 +51,7 @@ export const Mask = styled.svg`
     left: 0;    
     position: relative;
     margin: 0 -24px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         width: 3000px;
         position: absolute;
         left: calc(50% - 1500px);
@@ -61,7 +61,7 @@ export const Mask = styled.svg`
 
 export const Information = styled.div`
     position: relative;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         animation: moveLeft 600ms forwards;
     }
 `;
@@ -69,7 +69,7 @@ export const Information = styled.div`
 export const Services = styled.nav`
     margin: 108px -16px 0;
     position: relative;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         margin: 0 -16px -42px;
         animation: moveRight 600ms forwards;
     }
@@ -78,7 +78,7 @@ export const Services = styled.nav`
 export const ServiceCard = styled.a<HeroTypo>`
     padding: 0 8px 16px;
 
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         padding: 0 16px 32px;
     }
 
@@ -86,14 +86,14 @@ export const ServiceCard = styled.a<HeroTypo>`
         height: 100%;
         padding: 16px;
         gap: 8px 0;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             padding: 31px;
             gap: 31px 0;
         }
         border-radius: 16px;
-        background: ${props => props.theme.colorPrimary100};
-        color: ${props => props.theme.colorPrimary300};
-        @media screen and (min-width: ${props => props.theme.screenXlMin}) {
+        background: ${props => props.theme._colors.primary.primary100};
+        color: ${props => props.theme._colors.primary.primary300};
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xl}) {
             transition: 600ms ease-in-out all;
             &:hover {
                 transform: scale(1.05);
@@ -107,7 +107,7 @@ export const ClaraShortcut = styled.a<HeroTypo>`
     img {
         max-width: 100%;
         width: 100%;
-        @media screen and (min-width: ${props => props.theme.screenSmMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.mobile.sm}) {
             width: auto
         }
     }
@@ -117,22 +117,22 @@ export const CardIcon = styled.img`
 `;
 
 export const CardTitle = styled.h3`
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
+        font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};
     }
     color: inherit;
     max-width: 150px;
 `;
 
 export const Title = styled.h2`
-    font-size: ${props => props.theme.fontDesktop.header5.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.header5.fontSize};
     color: white;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         margin-bottom: 90px;
-        font-size: ${props => props.theme.fontDesktop.header2.fontSize};
-        @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
-            font-size: ${props => props.theme.fontDesktop.display1.fontSize};
+        font-size: ${props => props.theme._fonts.desktop.header2.fontSize};
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xxl}) {
+            font-size: ${props => props.theme._fonts.desktop.display1.fontSize};
         }
     }
 `;

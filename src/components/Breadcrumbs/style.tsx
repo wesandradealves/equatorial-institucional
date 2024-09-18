@@ -4,7 +4,7 @@ export const Content = styled.nav`
     margin-bottom: 2rem;
     width: 32px;
     height: 32px;
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
         padding: 8px 16px;
         height: auto;
         width: auto;
@@ -14,7 +14,7 @@ export const Content = styled.nav`
     backdrop-filter: blur(40px);  
     color: white;
     gap: 0 16px;
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};  
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};  
     .nav-link {
         color: inherit;
         font-size: inherit;
@@ -23,7 +23,7 @@ export const Content = styled.nav`
         gap: 0 16px;
         &:not(:last-of-type) {
             &::after {
-                @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+                @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
                     content: "|";
                 }
                 font-size: .4rem;
@@ -37,7 +37,7 @@ export const Content = styled.nav`
         &:hover {
             span {
                 text-decoration: underline;
-                color: ${props => props.theme.colorHighlight300};
+                color: ${props => props.theme._colors.highlight.highlight300};
             }
         }
     }
