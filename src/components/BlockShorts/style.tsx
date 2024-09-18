@@ -6,6 +6,44 @@ interface VideoPillTypo {
 
 export const Content = styled.section`
     z-index: 1;
+    .slick-slider {
+        position: relative;
+        > * {
+            z-index: 1;
+        }
+        .slick-list {
+            margin: 0 -5px;
+            .slick-track {
+                @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
+                    padding: 60px 0;
+                }
+                display: flex;
+                align-items: center;                    
+                .slick-slide {
+                    margin: 0 10px;
+
+                    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
+                        margin: 0 15px 0 0px;
+                        
+                        transition: 250ms ease-in-out all;
+
+                        &.slick-active.slick-center.slick-current {
+                            transform: scale(1.15);
+                            margin-right: 45px;
+                            margin-left: 20px;
+
+                            & + * {
+                                transform: scale(1.05);
+                                & + * {
+                                    transform: scale(.9);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }           
+    }
 `;
 
 export const Container = styled.div`

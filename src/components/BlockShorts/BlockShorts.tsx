@@ -6,7 +6,6 @@ import { BlockTypo, BlockShortsTypo } from '@/types/enums';
 import { VideoPill, VideoPillInner, VideoPillTitle, PlayVideo, Content, Container, Columns, Column } from './style';
 import React from "react";
 import Slider from "react-slick";
-import "@/components/BlockShorts/style.scss";
 import ModalVideo from 'react-modal-video';
 import { Button } from '@/assets/tsx/objects';
 import BlockHead from '@/template-parts/BlockHead/BlockHead';
