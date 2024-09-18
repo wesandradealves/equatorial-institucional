@@ -10,7 +10,7 @@ import { fetchData } from "@/utils";
 
 export default function Select() {
   const { config } = useContext<any>(ConfigProvider);
-  const [navigation, setNavigation] = useState<NavTypo[]>([]);
+  const [navigation, setNavigation] = useState<any>(null);
 
   useEffect(() => {
     fetchData('/api/menu_items/location').then((response: any) => {
