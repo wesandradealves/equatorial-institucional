@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Container, Label, Option, Select, SelectField } from "./style";
 
 export default function LocationSelector(props: any) {
-  const [navigation, setData] = useState<NavTypo[]>([]);
+  const [navigation, setData] = useState<any>(null);
 
   useEffect(() => {
     fetchData("/api/menu_items/location").then((response: any) => {
