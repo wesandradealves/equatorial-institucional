@@ -2,7 +2,7 @@ import styled, {css, createGlobalStyle} from "styled-components";
 
 export const Columns = styled.div`
     gap: 32px 0;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         gap: 0 32px
     }
 `;

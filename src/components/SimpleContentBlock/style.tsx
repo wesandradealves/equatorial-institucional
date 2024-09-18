@@ -10,22 +10,22 @@ export const Container = styled.div`
 
 export const Text = styled.div`   
     table {
-        background-color: ${props => props.theme.colorNeutral200};
+        background-color: ${props => props.theme._colors.neutral.neutral200};
         padding: 0 8px;
         border-radius: 16px;
         border-collapse: separate;
         border-spacing: 16px 24px;
         min-width: 100%;
-        @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
             min-width: 768px;
         }
         tr {
             td {
-                font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};  
+                font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};  
             }
             &:first-of-type {
                 td {
-                    background: ${props => props.theme.colorPrimary300};  
+                    background: ${props => props.theme._colors.primary.primary300};  
                     color: white;
                     padding: 8px 16px;
                     border-radius: 8px;

@@ -16,9 +16,9 @@ export const Container = styled.div`
         height: 880px;
         top: calc(50% - 440px);
         left: calc(50% - 440px);
-        background: -moz-radial-gradient(circle, ${props => props.theme.colorPrimary125} -60%, rgba(0,212,255,0) 60%);
-        background: -webkit-radial-gradient(circle, ${props => props.theme.colorPrimary125} -60%, rgba(0,212,255,0) 60%);
-        background: radial-gradient(circle, ${props => props.theme.colorPrimary125} -60%, rgba(0,212,255,0) 60%);
+        background: -moz-radial-gradient(circle, ${props => props.theme._colors.primary.primary125} -60%, rgba(0,212,255,0) 60%);
+        background: -webkit-radial-gradient(circle, ${props => props.theme._colors.primary.primary125} -60%, rgba(0,212,255,0) 60%);
+        background: radial-gradient(circle, ${props => props.theme._colors.primary.primary125} -60%, rgba(0,212,255,0) 60%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#74deff",endColorstr="#00d4ff",GradientType=1);        
     }
     .slick-slider {
@@ -26,12 +26,12 @@ export const Container = styled.div`
             .slick-track {
                 display: flex;
                 align-items: stretch;
-                @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+                @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
                     padding: 30px 0;
                 }
                 .slick-slide {
                     padding: 0 8px;
-                    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+                    @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
                         padding: 0 16px;
                     }
                     height: auto;
@@ -46,12 +46,12 @@ export const Container = styled.div`
 
 export const Columns = styled.div`
     gap: 24px 0;
-    @media screen and (max-width: ${props => props.theme.screenMdMin}) {
+    @media screen and (max-width: ${props => props.theme._breakpoints.mobile.md}) {
         [class*="BlockHeading"] {
             gap: 24px 0;
         }
     }
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
         gap: 53px 0;
     }
     position: relative;
@@ -60,13 +60,13 @@ export const Columns = styled.div`
 
 export const Filter = styled.nav`
     gap: 0 16px;
-    padding: 0 ${props => props.theme.spacingSm};
+    padding: 0 ${props => props.theme._spacing.mobile.sm};
     position: relative;
     z-index: 5;
 `;
 
 export const FilterLink = styled.a`
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};
     color: black;
     cursor: pointer;
     font-weight: 600;
@@ -75,7 +75,7 @@ export const FilterLink = styled.a`
     border-radius: 999px;
     flex: 0 0 auto;
     min-width: 300px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         min-width: initial
     }
     &.current,
@@ -99,15 +99,15 @@ export const Inner = styled.div`
 export const Info = styled.div`
     padding: 32px;
     gap: 16px 0;
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
         padding: 48px 32px 32px 0;
     }
 `;
 
 export const Text = styled.div`
-    font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize};
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
-        font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodySmall1.fontSize};
+    @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
+        font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};
     }    
     p {
         font-size: inherit;
@@ -115,8 +115,8 @@ export const Text = styled.div`
 `;
 
 export const Top = styled.div`
-    @media screen and (max-width: ${props => props.theme.screenMdMin}) {
-        border-bottom: 2px ${props => props.theme.colorPrimary150} solid;
+    @media screen and (max-width: ${props => props.theme._breakpoints.mobile.md}) {
+        border-bottom: 2px ${props => props.theme._colors.primary.primary150} solid;
         padding: 0 0 8px;
         margin: 0 0 8px;
     }   
@@ -126,11 +126,11 @@ export const Bottom = styled.div`
     gap: 16px 0;
 
     flex: 1;
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
         flex: 0 0 auto;
         gap: 32px 0;
     }
-    @media screen and (max-width: ${props => props.theme.screenMdMin}) {
+    @media screen and (max-width: ${props => props.theme._breakpoints.mobile.md}) {
         [class*="Button"] {
             padding-left: 20px;
             padding-right: 20px;
@@ -140,17 +140,17 @@ export const Bottom = styled.div`
 
 export const Category = styled.p`
     letter-spacing: .2rem;
-    font-size: ${props => props.theme.fontDesktop.smallText1.fontSize}; 
+    font-size: ${props => props.theme._fonts.desktop.smallText1.fontSize}; 
     text-transform: uppercase;
 `;
 
 export const Title = styled.h2 `
     max-width: 564px;
     font-weight: 600;   
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
-        font-size: ${props => props.theme.fontDesktop.header3.fontSize};
+    @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
+        font-size: ${props => props.theme._fonts.desktop.header3.fontSize};
     }
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};
 `;
 
 export const Logo = styled.img `
@@ -162,7 +162,7 @@ export const Thumbnail = styled.div<HeroTypo>`
     `}  
     min-height: 188px;
     width: 100%;
-    @media screen and (min-width: ${props => props.theme.screenMdMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.mobile.md}) {
         min-height: 618px;
         width: 372px;
         height: 100%;

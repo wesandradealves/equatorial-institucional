@@ -27,7 +27,7 @@ export const Ico = styled.svg`
     border-radius: 30px;
     padding: 8px;
     path {
-        fill: ${props => props.theme.colorPrimary100};
+        fill: ${props => props.theme._colors.primary.primary100};
     }
 `;
 
@@ -51,5 +51,5 @@ export const TariffBand = styled.div<TopbarTypo>`
 `;
 
 export const Text = styled.p`
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};
 `;

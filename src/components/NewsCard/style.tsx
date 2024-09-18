@@ -24,15 +24,15 @@ export const Tag = styled.span`
   background-color: white;
   padding: 3px 8px;
   border-radius: 999px;
-  font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize};  
+  font-size: ${props => props.theme._fonts.desktop.bodySmall1.fontSize};  
 `;
 
 export const Title = styled.h3`
   font-weight: bold;
-  color: ${props => props.theme.colorPrimary300};
-  font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize}; 
-  @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
-    font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize}; 
+  color: ${props => props.theme._colors.primary.primary300};
+  font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize}; 
+  @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xxl}) {
+    font-size: ${props => props.theme._fonts.desktop.subtitle1.fontSize}; 
   }
   * {
     color: inherit
@@ -40,14 +40,14 @@ export const Title = styled.h3`
 `;
 
 export const Text = styled.p`
-  font-size: ${props => props.theme.fontDesktop.smallText1.fontSize}; 
-  @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
-    font-size: ${props => props.theme.fontDesktop.bodySmall1.fontSize}; 
+  font-size: ${props => props.theme._fonts.desktop.smallText1.fontSize}; 
+  @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xxl}) {
+    font-size: ${props => props.theme._fonts.desktop.bodySmall1.fontSize}; 
   }  
 `;
 
 export const Date = styled.p`
-  font-size: ${props => props.theme.fontDesktop.smallText1.fontSize}; 
+  font-size: ${props => props.theme._fonts.desktop.smallText1.fontSize}; 
 `;
 
 export const Content = styled.div`

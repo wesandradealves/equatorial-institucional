@@ -1,10 +1,10 @@
 import styled, {css, createGlobalStyle} from "styled-components";
 
 export const Content = styled.section`  
-    background-color: ${props => props.theme.colorPrimary100}; 
+    background-color: ${props => props.theme._colors.primary.primary100}; 
     &:last-of-type {
         margin-bottom: -88px;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             margin-bottom: -179px;
         }
     }
@@ -13,7 +13,7 @@ export const Content = styled.section`
 export const Container = styled.div`   
     padding-top: 40px;
     padding-bottom: 40px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         padding-top: 102px;
         padding-bottom: 102px;
     }
@@ -24,12 +24,12 @@ export const Column = styled.div`
 `;
 
 export const Text = styled.div`   
-    font-size: ${props => props.theme.fontMobile.bodySmall1.fontSize};
-    color: ${props => props.theme.colorNeutral600};
+    font-size: ${props => props.theme._fonts.mobile.bodySmall1.fontSize};
+    color: ${props => props.theme._colors.neutral.neutral600};
 `;
 
 export const Title = styled.h3`   
-    font-size: ${props => props.theme.fontMobile.subtitle1.fontSize};
+    font-size: ${props => props.theme._fonts.mobile.subtitle1.fontSize};
 `;
 
 export const Arrow = styled.i`   

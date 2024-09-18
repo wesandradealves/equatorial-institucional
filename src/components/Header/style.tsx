@@ -10,20 +10,20 @@ export const Container = styled.header`
     left: 0;
     width: 100%;
     z-index: 99;
-    padding: ${props => props.theme.spacingSm};
+    padding: ${props => props.theme._spacing.mobile.sm};
     transition: 250ms ease-in-out all;
     &.sticky {
-        padding: ${props => props.theme.spacingSm};
+        padding: ${props => props.theme._spacing.mobile.sm};
         .container {
             width: 100%;
         }
     }
-    @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
-        padding: 0 ${props => props.theme.spacingSm};
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xxl}) {
+        padding: 0 ${props => props.theme._spacing.mobile.sm};
     }
     .topbar {
         display: none;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             display: flex;
         }
     }
@@ -35,7 +35,7 @@ export const Container = styled.header`
 `;
 export const Content = styled.div<HeaderTypo> `
     border-radius: 999px;
-    background: ${props => props.is_scrolling > 0 ? props.theme.colorPrimary300 : 'rgba(255, 255, 255, .3)'};
+    background: ${props => props.is_scrolling > 0 ? props.theme._colors.primary.primary300 : 'rgba(255, 255, 255, .3)'};
     backdrop-filter: blur(40px);        
     padding: 16px;
 `
@@ -43,20 +43,20 @@ export const Content = styled.div<HeaderTypo> `
 export const HeaderBottom = styled.div<HeaderTypo>`
     position: relative;
     .container {
-        @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xxl}) {
             padding: 32px 52px;       
         }
         .nav {
-            @media screen and (min-width: ${props => props.theme.screenWideMin}) {
-                gap: 0 ${props => props.theme.spacingSm};
+            @media screen and (min-width: ${props => props.theme._breakpoints.desktop.wide}) {
+                gap: 0 ${props => props.theme._spacing.mobile.sm};
             }   
             &-col {
                 &.is-expanded {
-                    background: ${props => props.theme.colorPrimary100};
+                    background: ${props => props.theme._colors.primary.primary100};
                     border-radius: 999px;
                     .nav-item {
                         .nav-link {
-                            color: ${props => props.theme.colorPrimary300}
+                            color: ${props => props.theme._colors.primary.primary300}
                         }
                     }
                 }
@@ -71,7 +71,7 @@ export const HeaderBottom = styled.div<HeaderTypo>`
                         padding: 40px;
                         gap: 32px 0;
                         border-radius: 40px;
-                        background: ${props => props.theme.colorPrimary100};
+                        background: ${props => props.theme._colors.primary.primary100};
                         position: absolute;
                         top: calc(100% + 44px);
                         left: calc(50% - 200px);  
@@ -79,14 +79,14 @@ export const HeaderBottom = styled.div<HeaderTypo>`
                         min-width: 400px;
                        
                         .nav-item {
-                            color: ${props => props.theme.colorPrimary300};
+                            color: ${props => props.theme._colors.primary.primary300};
                             font-weight: 600;
-                            font-size: ${props => props.theme.fontDesktop.bodyLarge1.fontSize};
+                            font-size: ${props => props.theme._fonts.desktop.bodyLarge1.fontSize};
                             .nav-link {
                                 color: inherit;
                                 padding-top: 0;
                                 padding-bottom: 0;
-                                @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                                @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
                                     &:hover {
                                         color: black;
                                     }
@@ -103,14 +103,14 @@ export const HeaderBottom = styled.div<HeaderTypo>`
             border-radius: 999px;
             background-color: white; 
             padding: 10px;  
-            color: ${props => props.theme.colorPrimary300};
+            color: ${props => props.theme._colors.primary.primary300};
         }             
     }  
 `;
 
 export const Logo = styled.a`
     flex: 1;
-    @media screen and (min-width: ${props => props.theme.screenXxlMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.xxl}) {
         flex: 0 0 auto
     }
 `;
@@ -132,13 +132,13 @@ export const Hamburger = styled.div`
             width: 30px;
             height: 3px;
             margin: 0;
-            background-color: ${props => props.theme.colorPrimary300};
+            background-color: ${props => props.theme._colors.primary.primary300};
         }
         &.is-active {
             .hamburger-inner, 
             .hamburger-inner::before, 
             .hamburger-inner::after {
-                background-color: ${props => props.theme.colorPrimary300};
+                background-color: ${props => props.theme._colors.primary.primary300};
             }        
         }
         &-box {

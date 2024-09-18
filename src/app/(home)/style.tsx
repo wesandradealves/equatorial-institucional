@@ -4,28 +4,28 @@ interface ContentTypo {
     background_image: string;
 }
 
-export const ListNav = styled.ul`
+export const ListNav = styled.nav`
     flex: 0 0 auto;
     display: flex;
     min-width: 100%;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         //padding: 40px 56px;
         min-width: 512px;
     }
 `;
 
-export const Nav = styled.div `
-    padding: ${props => props.theme.spacingSm};
+export const Nav = styled.ul `
+    padding: ${props => props.theme._spacing.mobile.sm};
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.20);
     backdrop-filter: blur(40px);
     
-    @media (min-width: ${props => props.theme.screenMdMin}) {
+    @media (min-width: ${props => props.theme._breakpoints.mobile.md}) {
         width: 502px;
     }
 `
 
-export const Navigation = styled.nav`
+export const Navigation = styled.div`
 `;
 
 export const NavItem = styled.li`
@@ -35,8 +35,11 @@ export const NavItem = styled.li`
     color: white;
     position: relative;
     transition: 300ms ease-in-out all;
-    &{
-        border-bottom: 1px white solid;
+    & {
+        &:not(:last-child) {
+            border-bottom: 1px white solid;
+        }
+
         &::after {
             content: "";
             position: absolute;
@@ -86,7 +89,7 @@ export const NavTitle = styled.h2`
     flex: 1;
     text-align: center;
     font-size: 2.5rem;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         text-align: initial;
         font-size: 5rem;
     }
@@ -120,7 +123,7 @@ export const Content = styled.div<ContentTypo>`
     }
     //display: flex;
     //justify-content: center;
-    @media screen and (max-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (max-width: ${props => props.theme._breakpoints.desktop.lg}) {
         padding-left: 24px;
         padding-right: 24px;
     }    
@@ -139,52 +142,11 @@ export const Inner = styled.div`
     align-items: center;
     gap: 105px 0;
     width: 100%;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         width: auto;
     }
 `;
 
 export const Logo = styled.h1`
 
-`;
-
-export const GlobalStyle = createGlobalStyle`
-    @keyframes opacity {
-        from {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        to {
-            opacity: 1;
-            visibility: visible;
-        } 
-    }
-    body {
-        // animation: opacity 600ms forwards;
-        &.error-page {
-            .header {
-                .topbar {
-                    color: black;
-                    .accessibility {
-                        background: ${props => props.theme.colorPrimary300} !important;  
-                    }
-                    [class*="MuiSwitch-root"] {
-                        .MuiSwitch-track {
-                            background: ${props => props.theme.colorPrimary300} !important;  
-                        }
-                        &::after, &::before {
-                            color: white !important;
-                        }
-                    }
-                }
-                [class*="HeaderBottom"] {
-                    > .container {
-                        background: ${props => props.theme.colorPrimary300};    
-                        box-shadow: 0px 5px 20px -20px black;
-                    }
-                }
-            }
-        }
-    }
 `;

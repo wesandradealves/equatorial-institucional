@@ -8,7 +8,7 @@ export const Container = styled.div`
     position: relative;
     padding-bottom: 25px;
     padding-top: 48px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         padding-top: 90px;
     }
     * {
@@ -16,11 +16,11 @@ export const Container = styled.div`
         z-index: 3;
     }
     [class*="Button"] {
-        border-color: ${props => props.theme.colorPrimary300};
+        border-color: ${props => props.theme._colors.primary.primary300};
         background-color: transparent;
-        color: ${props => props.theme.colorPrimary300};
+        color: ${props => props.theme._colors.primary.primary300};
         &:hover {
-            background-color: ${props => props.theme.colorPrimary300};
+            background-color: ${props => props.theme._colors.primary.primary300};
             color: white;
         }
     }
@@ -29,7 +29,7 @@ export const Container = styled.div`
             margin: 0 auto;
             & + * {
                 margin: -30px auto 0;
-                font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize};
+                font-size: ${props => props.theme._fonts.desktop.subtitle1.fontSize};
             }
         }
     }
@@ -50,7 +50,7 @@ export const Content = styled.section<FaqTypo>`
     &:last-of-type {
         margin-bottom: -88px;
         padding-bottom: 0;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             margin-bottom: -179px;
         } 
     }
@@ -60,7 +60,7 @@ export const Content = styled.section<FaqTypo>`
     &[data-layout="home"] {
         > [class*="Container"] {
             // padding-bottom: 100px;
-            // @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            // @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             //     padding-bottom: 300px;
             // }
         }
@@ -69,7 +69,7 @@ export const Content = styled.section<FaqTypo>`
     &[nobackground="true"] {
         &:last-of-type {
             padding-bottom: 88px;
-            @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+            @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
                 padding-bottom: 179px;
             }
         }
@@ -78,7 +78,7 @@ export const Content = styled.section<FaqTypo>`
 
 export const Inner = styled.div`
     gap: 32px 0;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         gap: 156px 0
     }
 `;
@@ -88,7 +88,7 @@ export const Mask = styled.svg`
     &:not(.compact) {
         left: calc(50% - 1400px);
         top: -80px;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             bottom: -160px;
             top: initial;
             left: calc(50% - 960px);
@@ -97,14 +97,14 @@ export const Mask = styled.svg`
     &.compact {
         left: calc(50% - 1400px);
         top: -80px;
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             top: 0;
             left: calc(50% - 960px);
         }        
     }
     z-index: 1;
     path {
-        fill: ${props => props.theme.colorPrimary100};
+        fill: ${props => props.theme._colors.primary.primary100};
     }
 `;
 
@@ -114,7 +114,7 @@ export const Img = styled.img`
     z-index: 3;
     right: 0;
     height: 123px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         height: auto;
         left: 0;
         right: initial;
@@ -124,12 +124,12 @@ export const Img = styled.img`
 export const SearchBar = styled.form`   
     padding: 20px 16px;
     border-radius: 16px;
-    border: 1px ${props => props.theme.colorNeutral400} solid;
+    border: 1px ${props => props.theme._colors.neutral.neutral400} solid;
 `;
 
 export const SearchField = styled.input`   
-    color: ${props => props.theme.colorNeutral600};
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
+    color: ${props => props.theme._colors.neutral.neutral600};
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};
     font-weight: 400;
     line-height: 24px;
     border: 0;
@@ -142,7 +142,7 @@ export const Submit = styled.button`
 
 export const Icon = styled.i`   
     font-size: 24px;
-    color: ${props => props.theme.colorPrimary300};
+    color: ${props => props.theme._colors.primary.primary300};
 `;
 
 export const Filter = styled.div`   

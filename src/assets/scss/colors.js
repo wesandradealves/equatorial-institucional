@@ -7,6 +7,7 @@ export const colors = {
         primary200: '#636CC5',
         primary300: '#0414A1',
         primary400: '#343D88',        
+        primary500: '#040F6D',        
     },
     highlight: {
         highlight100: '#FBF2C3',

@@ -11,12 +11,12 @@ export const Title = styled.span`
     gap: 0 12px;
     padding: 32px 32px 0;
     font-weight: 600;
-    font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.subtitle1.fontSize};
 `;
 
 export const Img = styled.img`
     height: 200px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         height: 300px;
     }
     object-fit: cover;
@@ -27,14 +27,14 @@ export const Icon = styled.img`
 
 export const Text = styled.span`   
     padding: 0 32px;
-    font-size: ${props => props.theme.fontDesktop.bodyMedium1.fontSize};
+    font-size: ${props => props.theme._fonts.desktop.bodyMedium1.fontSize};
 `;
 
 export const Container = styled.div`   
     gap: 72px 0;
     position: relative;
     &::after {
-        @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+        @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
             content: "";
         }
         position: absolute;
@@ -43,9 +43,9 @@ export const Container = styled.div`
         height: 880px;
         top: calc(50% - 440px);
         left: calc(50% - 440px);
-        background: -moz-radial-gradient(circle, ${props => props.theme.colorPrimary125} 10%, rgba(0,212,255,0) 60%);
-        background: -webkit-radial-gradient(circle, ${props => props.theme.colorPrimary125} 10%, rgba(0,212,255,0) 60%);
-        background: radial-gradient(circle, ${props => props.theme.colorPrimary125} 10%, rgba(0,212,255,0) 60%);
+        background: -moz-radial-gradient(circle, ${props => props.theme._colors.primary.primary125} 10%, rgba(0,212,255,0) 60%);
+        background: -webkit-radial-gradient(circle, ${props => props.theme._colors.primary.primary125} 10%, rgba(0,212,255,0) 60%);
+        background: radial-gradient(circle, ${props => props.theme._colors.primary.primary125} 10%, rgba(0,212,255,0) 60%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#74deff",endColorstr="#00d4ff",GradientType=1);        
     }
     * {
@@ -64,7 +64,7 @@ export const Card = styled.article`
 export const Inner = styled.div`  
     border-radius: 16px;
     gap: 12px 0;
-    background: ${props => props.theme.colorPrimary400};
+    background: ${props => props.theme._colors.primary.primary400};
     color: white;
     padding: 0 0 80px;
     height: 100%;

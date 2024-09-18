@@ -13,7 +13,7 @@ export const Gallery = styled.div`
                 align-items: center;
                 .slick-slide {
                     padding: 0 8px;
-                    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+                    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
                         padding: 32px 16px;
                     }
                 }
@@ -39,9 +39,9 @@ export const Info = styled.div`
 export const Title = styled.div`   
     color: inherit;
     font-weight: 600;
-    font-size: ${props => props.theme.fontMobile.header2.fontSize}; 
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
-        font-size: ${props => props.theme.fontDesktop.header2.fontSize}; 
+    font-size: ${props => props.theme._fonts.mobile.header2.fontSize}; 
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
+        font-size: ${props => props.theme._fonts.desktop.header2.fontSize}; 
     }
     * {
         font-size: inherit;
@@ -59,7 +59,7 @@ export const Subtitle = styled.p`
     gap: 16px 0;
     font-weight: 600;
     letter-spacing: .2rem;
-    font-size: ${props => props.theme.fontDesktop.smallText1.fontSize}; 
+    font-size: ${props => props.theme._fonts.desktop.smallText1.fontSize}; 
     text-transform: uppercase;
     &::before {
         content: "";
@@ -76,7 +76,7 @@ export const Text = styled.div`
     position: relative;   
     font-weight: 500;
     max-width: 535px;
-    font-size: ${props => props.theme.fontDesktop.subtitle1.fontSize}; 
+    font-size: ${props => props.theme._fonts.desktop.subtitle1.fontSize}; 
     * {
         font-size: inherit;
         color: inherit;
@@ -110,7 +110,7 @@ export const Inner = styled.div<HeroTypo>`
     height: 0;
     position: relative;
     padding: 0 0 380px;
-    @media screen and (min-width: ${props => props.theme.screenLgMin}) {
+    @media screen and (min-width: ${props => props.theme._breakpoints.desktop.lg}) {
         padding: 0 0 52%;
     }
     color: white;
